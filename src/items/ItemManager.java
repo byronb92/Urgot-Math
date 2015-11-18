@@ -11,25 +11,39 @@ import urgot.UrgotStats;
 public class ItemManager {
 	UrgotStats urgot;
 	Items urgotItems;
+	ItemFactory itemFactory;
 	public ItemManager(UrgotStats urgot)
 	{
 		this.urgot = urgot;
 		urgotItems = new Items();
+		itemFactory = new ItemFactory();
 	}
 	
-	// Manamune, Black Cleaver, Ionian Boots, Youmuu's Ghostblade
-	// Lord Dominick's, Maw Of Malmortus
-	// For now, only test level 6 urgot.
-	public void setItemSetOne()
+
+	public void applyItemSet(int setNumb)
 	{
+		switch (setNumb) 
+		{
+		case 1:	
+			addItem("Muramana");
+			addItem("Black Cleaver");
+			addItem("Youmuu's Ghostblade");
+			addItem("Death's Dance");
+			addItem("Maw of Malmortius");
+			break;
+		default:
+			break;
+		}
 		
-		ItemFactory itemFactory = new ItemFactory();
-		urgotItems.addItem("Manamune", itemFactory.getItem("Manamune400"));
-		urgotItems.addItem("Sheen", itemFactory.getItem("Sheen"));
-		urgotItems.addItem("Black Cleaver", itemFactory.getItem("Black Cleaver"));
-		urgotItems.addItem("Youmuu's Ghostblade", 
-				itemFactory.getItem("Youmuu's Ghostblade"));
-		
+	}
+	
+	private void addItem(String itemName)
+	{
+		urgotItems.addItem(itemName, itemFactory.getItem(itemName));
+	}
+	
+	public void computeItemStats()
+	{
 		for(Entry<String,Item> item: urgotItems.getItems().entrySet())
 		{
 			// Add every item stat value.

@@ -79,6 +79,11 @@ public class ItemFactory {
 		{
 			return new BansheesVeil();
 		}
+		
+		if (itemName.equals("Muramana"))
+		{
+			return new Muramana();
+		}
 		return null;
 	}
 

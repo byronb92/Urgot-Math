@@ -16,16 +16,34 @@ public class OutputUrgotStats {
 		urgot = new UrgotStats(currentLevel);
 		itemManager = new ItemManager(urgot);		
 		
-		//TODO: Consolidate into an independent method.
-		itemManager.setItemSetOne();
+	}
+	
+	public void configureItemSet(int setNumb)
+	{
+		itemManager.applyItemSet(setNumb);
 		battleManager = new BattleCalculator();
 		urgCombos = new UrgotCombos(battleManager, urgot);
+		itemManager.computeItemStats();
 	}
 	
 	/**
-	 * Output current item set costs. 
+	 * Display the current items and their descriptions.
 	 */
-	public void outputItemCosts()
+	public void outputUrgotItems()
+	{
+		for(Entry<String,Item> item: itemManager.getItems().getItems().entrySet())
+		{
+			System.out.print(item.getValue().getName());
+			if (item.getValue().getDetails() != null)
+			{
+				System.out.print(": " + item.getValue().getDetails());
+				System.out.println();
+			}
+		}
+		
+	}
+	// Output item costs individually.
+	public void outputIndividualCosts()
 	{
 		for(Entry<String,Item> item: itemManager.getItems().getItems().entrySet())
 		{
@@ -33,37 +51,55 @@ public class OutputUrgotStats {
 		}
 	}
 	
-	/**
-	 * Display the current items contained in the current set.
-	 */
-	public void outputUrgotItems()
+
+	// Output combined cost of all current items.
+	public void outputTotalCosts()
 	{
+		int runningCost = 0;
 		for(Entry<String,Item> item: itemManager.getItems().getItems().entrySet())
 		{
-			System.out.println(item.getValue().getName());
-			if (item.getValue().getDetails() != null)
-			{
-				System.out.println(item.getValue().getDetails());
-			}
+			runningCost = runningCost + item.getValue().getCost();
 		}
-		
+		System.out.println("Combined Item Cost: " + runningCost);
 	}
 	
 
 	
-	/**
-	 * Output urgot statistics for comparing.
-	 */
+	// Output offensive and defensive statistics.
 	public void outputUrgotStats()
 	{
+		outputOffense();
+		outputDefense();
+	}
+	
+	private void outputOffense()
+	{
+		System.out.println("Offensive Stats");
 		System.out.println("Current Level: " + urgot.getLevel());
 		System.out.println("Total AD: " + urgot.getTotalAD());
+		System.out.println("Bonus AD: " + urgot.getBonusAD());
 		System.out.println("Total Mana: " + urgot.getTotalMana());
 		System.out.println("Current CDR: " + urgot.getCDR());
 		System.out.println("Current Armor Pen: " + urgot.getArmorPen());
 		System.out.println("Current Armor Reduc: " + urgot.getArmorReduc());
+		System.out.println("-----------------");
 	}
-	
+	private void outputDefense()
+	{
+		System.out.println("Defensive Stats");
+		System.out.println("HP: " + urgot.getTotalHP());
+		System.out.println("Armor: " + urgot.getTotalArmor());
+		System.out.println("Magic Resistance: " + urgot.getTotalMR());
+		System.out.println("Damage Reduction: " + (1 - urgot.getDamageReduc()));
+		System.out.println("Physical Damage Received " 
+				+ (urgot.getResistanceReduction(urgot.getTotalArmor())));
+		System.out.println("Magic Damage Received " 
+				+ (urgot.getResistanceReduction(urgot.getTotalMR())));
+		System.out.println("-----------------");
+
+		
+	}
+	// Output data relating to urgot combo performed.
 	public void outputBattleNumbers()
 	{
 		System.out.println("Damage Done: " + battleManager.getADDamage());
@@ -75,17 +111,20 @@ public class OutputUrgotStats {
 		System.out.println("Mana Usage: " + battleManager.getManaUsage());
 		System.out.println("Shield Amount: " + battleManager.getShieldPoints());
 		System.out.println("Battle Time: " + battleManager.getCastTime());
+		System.out.println("-----------------");
 	}
 
 	
-	public void outputLevelCombo()
+	
+	
+	// ------------- Combos -------------
+	
+	public void outputMaxCombo()
 	{
-		System.out.println("Level Six Combo");
-		urgCombos.levelSix();
+		System.out.println("Lock-on Combo");
+		urgCombos.lockOnWithUlt(urgot.getLevel());
 		outputBattleNumbers();
-		System.out.println("------------");
 		outputUrgotStats();
-		System.out.println("------------");
 		outputUrgotItems();
 	}
 

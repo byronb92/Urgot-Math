@@ -7,7 +7,7 @@ public class MawOfMalmortius extends Item {
 
 	private int mr = 50;
 	private int ad = 50;
-	private int armorPen = 20;
+	private int armorPen = 10;
 	private UrgotStats urgot;
 	private boolean passiveApplied = false;
 	
@@ -47,9 +47,9 @@ public class MawOfMalmortius extends Item {
 	protected void setDetails() {
 		if (passiveApplied)
 		{
-			details = "UNIQUE – LIFELINE: Upon taking magic damage that would" +
-					"reduce maximum health below 30% (+" + urgot.getTotalHP() + 
-					")grants a shield that absorbs 300 " +
+			details = "Upon taking magic damage that would" +
+					"reduce maximum health below 30% (+" + urgot.getTotalHP() * 0.30 + 
+					") grants a shield that absorbs 300 " +
 					"(+ 100% Bonus Magic Resistance)(" + urgot.getTotalMR() +
 					") for 5 seconds.(90 second cooldown)";
 		}

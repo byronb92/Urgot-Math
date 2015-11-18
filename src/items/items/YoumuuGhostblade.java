@@ -42,7 +42,7 @@ public class YoumuuGhostblade extends Item {
 
 	@Override
 	protected void setDetails() {
-		details = "UNIQUE: Gain +40% attack speed and +20% movement "
+		details = "Gain +40% attack speed and +20% movement "
 				+ "speed for 6 seconds. 45 second cooldown";
 	}
 

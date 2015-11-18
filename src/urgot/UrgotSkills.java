@@ -23,8 +23,7 @@ public class UrgotSkills
 	 */
 	public void passiveZaunTouchedBoltAugmenter()
 	{
-		
-		
+		// Assumption: Default Urgot damage reduction is 15%.
 	}
 	
 	/**
@@ -122,6 +121,6 @@ public class UrgotSkills
 	public void rHyperKineticPositionReverser(int level)
 	{
 		battleManager.burnMana(100);
-		battleManager.addDamageReduc(0.30 + (0.10*(level - 1)));
+		urgot.addDamageReduc(0.30 + (0.10*(level - 1)));
 	}
 }

@@ -1,4 +1,4 @@
-package battle.test;
+package items.test;
 
 import static org.junit.Assert.*;
 
@@ -18,7 +18,8 @@ public class ItemStatManagerTest {
 
 	@Test
 	public void testItemSetOne() {
-		statManager.setItemSetOne();
+		statManager.applyItemSet(1);
+		statManager.computeItemStats();
 		UrgotStats urgot = statManager.getUrgotStats();
 		
 		// Level 6 Base A				= 78.072

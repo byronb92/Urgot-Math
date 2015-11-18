@@ -37,10 +37,12 @@ public class UrgotStats {
 	
 
 	private double moveSpeed		= 335;
-	private double cdr;
+	private double cdr				= 0;	//TODO: Include runes/masteries.
 	private double armorPen 		= 0;
 	private double bonusArmorPen 	= 0;
 	private double armorReduc		= 0;
+	
+	private double damageReduc		= 0.85;	// Urgot passive.
 
 	
 	public UrgotStats()
@@ -60,11 +62,13 @@ public class UrgotStats {
 	public double getADPerLevel() { return adPerLevel; }
 	public double getBaseADFromLevel() { return baseAD + (adPerLevel * (currentLevel -1)); }
 	public double getBaseADFromItems() { return bonusBaseAD; }
+	public double getBaseArmorFromLevel() { return baseArmor + (armPerLevel * (currentLevel - 1)); }
 	public double getBaseHPRegenFromLevel() { 
 		return baseHealthRegen + (baseHealthPerLevel * (currentLevel - 1));	
 	}
 	public double getTotalHP() { return baseHP + (hpPerLevel * (currentLevel - 1)) + bonusHP; }
 	public double getTotalAD() 	{ return (baseAD + (adPerLevel * (currentLevel - 1)) + bonusAD); }
+	public double getTotalArmor() { return getBaseArmorFromLevel() + bonusArmor; }
 	public double getTotalMR() { return baseMR + bonusMR; }
 	public double getTotalAS() {
 		return baseAS * (1 + (asPerLevel * (currentLevel - 1)) / 100);
@@ -78,13 +82,31 @@ public class UrgotStats {
 	public double getBonusBaseAD() 	{ return bonusBaseAD; }
 	public double getArmorPen() 	{ return armorPen; }
 	public double getArmorReduc() 	{ return armorReduc; }
+	public double getDamageReduc() 	{ return damageReduc; }
+	public double getResistanceReduction(double resistValue)
+	{
+		if (resistValue >= 0)
+		{
+			return (100) / (100 + resistValue);
+		}
+		else
+		{
+			return (2) - ((100)/(100 - resistValue));
+		}
+	}
 
 	public void addBonusAD(double value) { bonusAD = bonusAD + value; }
 	public void addBonusArmor(double value) { bonusArmor = bonusArmor + value; }
 	public void addBonusHP(double value) { bonusHP = bonusHP + value; }
 	public void addBonusMR(double value) { bonusMR = bonusMR + value; }
 	public void addBonusMana(double value) { bonusMana = bonusMana + value;}
-	public void addCDR(double value) { cdr = cdr + value; }
+	public void addCDR(double value) { 
+		cdr = cdr + value; 
+		if (cdr > 0.40)
+		{
+			cdr = 0.40;
+		}
+	}
 	public void addBonusManaRegen(double value) { 
 		bonusManaRegen = bonusManaRegen + value; 
 	}
@@ -99,6 +121,16 @@ public class UrgotStats {
 		else
 		{
 			armorReduc = armorReduc * (1-value);
+		}
+	}
+	public void addDamageReduc(double value) {
+		if (damageReduc == 0)
+		{
+			damageReduc  = 1 - value;
+		}
+		else
+		{
+			damageReduc  = damageReduc  * (1-value);
 		}
 	}
 	public void addArmorPen(double value) { armorPen = armorPen + value; }

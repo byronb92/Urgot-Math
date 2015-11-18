@@ -33,32 +33,322 @@ public class UrgotCombos {
 		battleManager.adDamage(urgot.getTotalAD());
 	}
 	
-	public void levelSix()
+	/**
+	 * Correct output combos based on skill rank.
+	 * Skill ranked is based on Urgot's current level.
+	 * THIS DOES NOT INCLUDE ULTIMATE LOGIC.
+	 * @param currentLevel level of urgot, valid input is 6-18.
+	 */
+	public void lockOnNoUlt(int currentLevel)
 	{
-		if (urgot.getCDR() < 0.17)
+		lockOnNoUltLogic(currentLevel);
+		// CDR Calculations, 3 Q's at 17% CDR, 4 Q's at 37.5% CDR
+		if (urgot.getCDR() > 0.17 && urgot.getCDR() < 0.375)
 		{
-			urgotSkills.eNoxianCorrosiveCharge(1);
-			urgotSkills.wTerrorCapacitor(1);
-			urgotSkills.qAcidHunter(3);
-			urgotSkills.qAcidHunter(3);
-		}
-		else if (urgot.getCDR() > 0.17 && urgot.getCDR() < 0.40)
-		{
-			urgotSkills.eNoxianCorrosiveCharge(1);
-			urgotSkills.wTerrorCapacitor(1);
-			urgotSkills.qAcidHunter(3);
-			urgotSkills.qAcidHunter(3);
-			urgotSkills.qAcidHunter(3);
+			// Rank 3 Q
+			if (currentLevel == 6)
+			{
+				urgotSkills.qAcidHunter(3);
+			}
+			// Rank 4 Q			
+			else if (currentLevel >= 7 && currentLevel < 9)
+			{
+				urgotSkills.qAcidHunter(4);
+			}
+			// Rank 5 Q
+			else if (currentLevel >= 9)
+			{
+				urgotSkills.qAcidHunter(5);
+			}
+			
 		}
 		else
 		{
-			urgotSkills.eNoxianCorrosiveCharge(1);
-			urgotSkills.wTerrorCapacitor(1);
-			urgotSkills.qAcidHunter(3);
-			urgotSkills.qAcidHunter(3);
-			urgotSkills.qAcidHunter(3);
-			urgotSkills.qAcidHunter(3);
+			// Rank 3 Q
+			if (currentLevel == 6)
+			{
+				urgotSkills.qAcidHunter(3);
+				urgotSkills.qAcidHunter(3);
+			}
+			// Rank 4 Q			
+			else if (currentLevel >= 7 && currentLevel < 9)
+			{
+				urgotSkills.qAcidHunter(4);
+				urgotSkills.qAcidHunter(4);
+			}
+			// Rank 5 Q
+			else if (currentLevel >= 9)
+			{
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
 		}
 	}
 	
+	// Assumption: Q --> E --> W max.
+	private void lockOnNoUltLogic(int currentLevel)
+	{
+		if (currentLevel >=6)
+		{
+			// Power spikes
+			// 6 Ult Rank 1, 9 Q Max, 11 Ult Rank 2, 13 E Max, 16 Ult Rank 3
+			if (currentLevel == 6)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(1);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(3);
+				urgotSkills.qAcidHunter(3);
+			}
+			else if (currentLevel == 7)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(1);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(4);
+				urgotSkills.qAcidHunter(4);
+			}
+			else if (currentLevel == 8)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(2);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(4);
+				urgotSkills.qAcidHunter(4);
+			}
+			else if (currentLevel == 9)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(2);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 10)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(3);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 11)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(3);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 12)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(4);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 13)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 14)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(2);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 15)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(3);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 16)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(3);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 17)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(4);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else
+			{
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(5);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+		}
+
+	}
+	
+	
+	/**
+	 * Correct output combos based on skill rank.
+	 * Skill ranked is based on Urgot's current level.
+	 * @param currentLevel level of urgot, valid input is 6-18.
+	 */
+	public void lockOnWithUlt(int currentLevel)
+	{
+		lockOnWithUltLogic(currentLevel);
+		// CDR Calculations, 3 Q's at 17% CDR, 4 Q's at 37.5% CDR
+		if (urgot.getCDR() > 0.17 && urgot.getCDR() < 0.375)
+		{
+			// Rank 3 Q
+			if (currentLevel == 6)
+			{
+				urgotSkills.qAcidHunter(3);
+			}
+			// Rank 4 Q			
+			else if (currentLevel >= 7 && currentLevel < 9)
+			{
+				urgotSkills.qAcidHunter(4);
+			}
+			// Rank 5 Q
+			else if (currentLevel >= 9)
+			{
+				urgotSkills.qAcidHunter(5);
+			}
+			
+		}
+		else
+		{
+			// Rank 3 Q
+			if (currentLevel == 6)
+			{
+				urgotSkills.qAcidHunter(3);
+				urgotSkills.qAcidHunter(3);
+			}
+			// Rank 4 Q			
+			else if (currentLevel >= 7 && currentLevel < 9)
+			{
+				urgotSkills.qAcidHunter(4);
+				urgotSkills.qAcidHunter(4);
+			}
+			// Rank 5 Q
+			else if (currentLevel >= 9)
+			{
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+		}
+	}
+	
+	private void lockOnWithUltLogic(int currentLevel)
+	{
+		if (currentLevel >=6)
+		{
+			// Power spikes
+			// 6 Ult Rank 1, 9 Q Max, 11 Ult Rank 2, 13 E Max, 16 Ult Rank 3
+			if (currentLevel == 6)
+			{
+				urgotSkills.rHyperKineticPositionReverser(1);
+				urgotSkills.eNoxianCorrosiveCharge(1);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(3);
+				urgotSkills.qAcidHunter(3);
+			}
+			else if (currentLevel == 7)
+			{
+				urgotSkills.rHyperKineticPositionReverser(1);
+				urgotSkills.eNoxianCorrosiveCharge(1);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(4);
+				urgotSkills.qAcidHunter(4);
+			}
+			else if (currentLevel == 8)
+			{
+				urgotSkills.rHyperKineticPositionReverser(1);
+				urgotSkills.eNoxianCorrosiveCharge(2);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(4);
+				urgotSkills.qAcidHunter(4);
+			}
+			else if (currentLevel == 9)
+			{
+				urgotSkills.rHyperKineticPositionReverser(1);
+				urgotSkills.eNoxianCorrosiveCharge(2);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 10)
+			{
+				urgotSkills.rHyperKineticPositionReverser(1);
+				urgotSkills.eNoxianCorrosiveCharge(3);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 11)
+			{
+				urgotSkills.rHyperKineticPositionReverser(2);
+				urgotSkills.eNoxianCorrosiveCharge(3);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 12)
+			{
+				urgotSkills.rHyperKineticPositionReverser(2);
+				urgotSkills.eNoxianCorrosiveCharge(4);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 13)
+			{
+				urgotSkills.rHyperKineticPositionReverser(2);
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 14)
+			{
+				urgotSkills.rHyperKineticPositionReverser(2);
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(2);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 15)
+			{
+				urgotSkills.rHyperKineticPositionReverser(2);
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(3);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 16)
+			{
+				urgotSkills.rHyperKineticPositionReverser(3);
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(3);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else if (currentLevel == 17)
+			{
+				urgotSkills.rHyperKineticPositionReverser(3);
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(4);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+			else
+			{
+				urgotSkills.rHyperKineticPositionReverser(3);
+				urgotSkills.eNoxianCorrosiveCharge(5);
+				urgotSkills.wTerrorCapacitor(5);
+				urgotSkills.qAcidHunter(5);
+				urgotSkills.qAcidHunter(5);
+			}
+		}
+	}
 }
