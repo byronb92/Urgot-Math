@@ -1,0 +1,29 @@
+Output Item Costs
+
+
+Nov 18th 5PM
+Muramana added, active toggle not yet implemented.
+Seperated item sets with applyItemSet method.
+Fixed Maw of Malmortius output bug, added 100% maxhp instead of 30% max hp.
+Fixed Maw of Malmoritus armor pen, was 20, but only gives 10.
+Prevented cdr from going past forty percent
+--Doesn't account for the new mastery that allows 45% cdr.
+Added Base Armor and Total Armor in UrgotStats for defensive output
+Seperated output into offensive and defensive stats
+Redid UrgotCombos to correctly output damage based on level.
+
+
+Nov 19th 8PM
+Added additional item set comparisons.
+Added boots into item lists, manager, and factory.
+Fixed bug where Lord Dominik's Regards inserted a Youmuu's Ghostblade into item sets.
+Reformatted Lord Dominik's Regards details.
+Added in +AD component of Lord Dominik's Regards object.
+Add new Compare class to begin comparing urgot stats at various times in the game.
+--Not Yet Implemented.
+Fixed Maw of Malmortius mispelled in item set two.
+Added Iceborn Gauntlet into ItemFactory.
+Added a print to standard error when an invalid item name is provided.
+
+
+
