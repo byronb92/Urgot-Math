@@ -35,7 +35,7 @@ public class ItemFactory {
 		
 		if (itemName.equals("Lord Dominik's Regards"))
 		{
-			return new YoumuuGhostblade();
+			return new LordDominiksRegards();
 		}
 		if (itemName.equals("Maw of Malmortius"))
 		{
@@ -84,6 +84,33 @@ public class ItemFactory {
 		{
 			return new Muramana();
 		}
+		
+		if (itemName.equals("Boots of Speed"))
+		{
+			return new Boots();
+		}
+		
+		if (itemName.equals("Ionian Boots of Lucidity"))
+		{
+			return new BootsIonian();
+		}
+		
+		if (itemName.equals("Ninja Tabi"))
+		{
+			return new BootsNinja();
+		}
+		
+		if (itemName.equals("Mercury's Treads"))
+		{
+			return new BootsTreads();
+		}
+		
+		if (itemName.equals("Iceborn Gauntlet"))
+		{
+			return new IcebornGauntlet();
+		}
+		
+		System.err.println("Invalid item name: " + itemName);
 		return null;
 	}
 

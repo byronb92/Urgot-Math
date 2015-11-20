@@ -17,7 +17,7 @@ public class OutputUrgotStatsTest {
 
 	@Test
 	public void test() {
-		output.configureItemSet(1);
+		output.configureItemSet(3);
 		output.outputMaxCombo();
 	}
 

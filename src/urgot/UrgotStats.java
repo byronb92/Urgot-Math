@@ -47,7 +47,7 @@ public class UrgotStats {
 	
 	public UrgotStats()
 	{
-		
+		currentLevel = 1;
 	}
 	public UrgotStats(int initialLevel)
 	{
@@ -95,24 +95,24 @@ public class UrgotStats {
 		}
 	}
 
+	public void addBonusHP(double value) { bonusHP = bonusHP + value; }
 	public void addBonusAD(double value) { bonusAD = bonusAD + value; }
 	public void addBonusArmor(double value) { bonusArmor = bonusArmor + value; }
-	public void addBonusHP(double value) { bonusHP = bonusHP + value; }
 	public void addBonusMR(double value) { bonusMR = bonusMR + value; }
 	public void addBonusMana(double value) { bonusMana = bonusMana + value;}
-	public void addCDR(double value) { 
-		cdr = cdr + value; 
-		if (cdr > 0.40)
-		{
-			cdr = 0.40;
-		}
+	public void addBonusHealthRegen(double value) { 
+		bonusHealthRegen = bonusHealthRegen + value;
 	}
 	public void addBonusManaRegen(double value) { 
 		bonusManaRegen = bonusManaRegen + value; 
 	}
-	public void addBonusHealthRegen(double value) { 
-		bonusHealthRegen = bonusHealthRegen + value;
+	public void addBonusArmorPen(double value) { bonusArmorPen = bonusArmorPen + value; }
+	// As of patch 5.22, Sterak's Gauge only affects this.
+	public void addBonusBaseAD(double value) { 
+		bonusBaseAD = getBaseADFromLevel() + (getBaseADFromLevel() * value);
 	}
+	
+
 	public void addArmReduc(double value) {
 		if (armorReduc == 0)
 		{
@@ -123,6 +123,7 @@ public class UrgotStats {
 			armorReduc = armorReduc * (1-value);
 		}
 	}
+	public void addArmorPen(double value) { armorPen = armorPen + value; }
 	public void addDamageReduc(double value) {
 		if (damageReduc == 0)
 		{
@@ -133,9 +134,17 @@ public class UrgotStats {
 			damageReduc  = damageReduc  * (1-value);
 		}
 	}
-	public void addArmorPen(double value) { armorPen = armorPen + value; }
-	public void addBonusArmorPen(double value) { bonusArmorPen = bonusArmorPen + value; }
-	public void addBonusBaseAD(double value) { 
-		bonusBaseAD = getBaseADFromLevel() + (getBaseADFromLevel() * value);
+	public void addCDR(double value) { 
+		cdr = cdr + value; 
+		if (cdr > 0.40)
+		{
+			cdr = 0.40;
+		}
 	}
+	public void addMoveSpeed(double value) {
+		moveSpeed = moveSpeed + value;
+	}
+	
+
+
 }

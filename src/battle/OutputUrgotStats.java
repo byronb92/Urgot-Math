@@ -126,6 +126,7 @@ public class OutputUrgotStats {
 		outputBattleNumbers();
 		outputUrgotStats();
 		outputUrgotItems();
+		outputTotalCosts();
 	}
 
 }

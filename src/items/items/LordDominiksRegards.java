@@ -5,6 +5,7 @@ import urgot.UrgotStats;
 
 public class LordDominiksRegards extends Item {
 
+	private int ad = 40;
 	private double bonusArmorPen = 0.40;
 	
 	public LordDominiksRegards()
@@ -20,6 +21,7 @@ public class LordDominiksRegards extends Item {
 	@Override
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusArmorPen(bonusArmorPen);
+		urgot.addBonusAD(ad);
 	}
 
 	@Override
@@ -35,7 +37,7 @@ public class LordDominiksRegards extends Item {
 
 	@Override
 	protected void setDetails() {
-		details = "UNIQUE – GIANT SLAYER: Grants up to +15% physical damage "
+		details = "Grants up to +15% physical damage "
 				+ "against enemy champions with greater maximum Health than you "
 				+ "(+1.5% damage per 50 Health difference, maxing at 500 Health "
 				+ "difference).";

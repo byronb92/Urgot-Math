@@ -31,6 +31,20 @@ public class ItemManager {
 			addItem("Death's Dance");
 			addItem("Maw of Malmortius");
 			break;
+		case 2:
+			addItem("Iceborn Gauntlet");
+			addItem("Black Cleaver");
+			addItem("Muramana");
+			addItem("Sterak's Gage");
+			addItem("Maw of Malmortius");
+		case 3:	
+			addItem("Muramana");
+			addItem("Black Cleaver");
+			addItem("Youmuu's Ghostblade");
+			addItem("Ionian Boots of Lucidity");
+			addItem("Maw of Malmortius");
+			addItem("Lord Dominik's Regards");
+			break;
 		default:
 			break;
 		}
