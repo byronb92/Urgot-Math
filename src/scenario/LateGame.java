@@ -1,4 +1,4 @@
-package battle.scenario;
+package scenario;
 
 /**
  * Level 13-18 4-5th item purchases. 

@@ -1,4 +1,4 @@
-package battle.scenario;
+package scenario;
 
 import java.util.ArrayList;
 
@@ -30,6 +30,20 @@ public class ScenarioManager {
 	{
 		early = new EarlyGame();
 		early.levelSixCompare();
+		addAllScenarios(early.getScenarios());
+	}
+	
+	public void armorPenVSAD()
+	{
+		early = new EarlyGame();
+		early.CaulfieldVsDirk();
+		addAllScenarios(early.getScenarios());
+	}
+	
+	public void sheenDamage()
+	{
+		early = new EarlyGame();
+		early.earlySheenDamage();
 		addAllScenarios(early.getScenarios());
 	}
 	// ----- Mid Game Setup -----

@@ -1,5 +1,5 @@
 package urgot;
-import battle.BattleCalculator;
+import calc.BattleCalculator;
 
 public class UrgotSkills 
 {
@@ -19,6 +19,11 @@ public class UrgotSkills
 		eSpellCasts = 0;
 		rSpellCasts = 0;
 		numbOfAttacks = 0;
+	}
+	
+	public int getQCasts()
+	{
+		return qSpellCasts;
 	}
 	public UrgotSkills(BattleCalculator manager, UrgotStats urgot)
 	{

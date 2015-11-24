@@ -1,4 +1,4 @@
-package battle.scenario;
+package scenario;
 
 /**
  * Levels 10-15, second-third legendary item purchases.

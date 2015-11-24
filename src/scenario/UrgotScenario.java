@@ -1,6 +1,6 @@
-package battle.scenario;
+package scenario;
 
-import battle.BattleCalculator;
+import calc.BattleCalculator;
 import items.ItemManager;
 import items.Items;
 import urgot.UrgotCombos;
@@ -34,7 +34,6 @@ public class UrgotScenario {
 	
 	public void computeStats()
 	{
-		battleManager.resetBattle();
 		urgCombos = new UrgotCombos(battleManager, urgot);
 		itemManager.computeItemStats();
 	}
@@ -46,7 +45,6 @@ public class UrgotScenario {
 	public void addAndComputeItem(String itemName)
 	{
 		itemManager.addItem(itemName);
-		battleManager.resetBattle();
 		urgCombos = new UrgotCombos(battleManager, urgot);
 		itemManager.computeItemStats();
 	}
@@ -61,6 +59,12 @@ public class UrgotScenario {
 	public UrgotStats getUrgotStats()
 	{
 		return urgot;
+	}
+	
+	
+	public UrgotCombos getUrgotCombos()
+	{
+		return urgCombos;
 	}
 	
 	public Items getUrgotItems()

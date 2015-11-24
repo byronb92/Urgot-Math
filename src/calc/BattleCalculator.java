@@ -1,4 +1,4 @@
-package battle;
+package calc;
 import java.util.ArrayList;
 
 public class BattleCalculator 

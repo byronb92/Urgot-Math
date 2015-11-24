@@ -33,5 +33,12 @@ ScenarioManager sets up objects for the new OutputUrgotCompare class.
 Added Phage and Serrated Dirk into the item list.
 Added Phage, Serrated Dirk, and Tear into the ItemFactory.
 
+Nov. 24th
+Found nasty bug where I forgot to run battle scenarios in UrgotCombos
+Created method for Caulfield vs Dirk comparison
+Created method for Sheen early game damage.
+Fixed bug where CDR under 17% was treated as cdr greater than 37.5%
+Fixed Q casts, Urgot can cast 3 Q's with no CDR, 4 with 16.67, 5 with 37.5
+
 
 

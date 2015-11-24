@@ -1,4 +1,4 @@
-package battle.scenario;
+package scenario;
 
 import java.util.ArrayList;
 

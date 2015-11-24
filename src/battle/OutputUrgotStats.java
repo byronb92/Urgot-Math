@@ -2,6 +2,7 @@ package battle;
 
 import java.util.Map.Entry;
 
+import calc.BattleCalculator;
 import items.Item;
 import items.ItemManager;
 import urgot.*;
