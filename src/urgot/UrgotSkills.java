@@ -12,6 +12,14 @@ public class UrgotSkills
 	private int rSpellCasts = 0;
 	private int numbOfAttacks = 0;
 	
+	public void clearSkillCasts()
+	{
+		qSpellCasts = 0;
+		wSpellCasts = 0;
+		eSpellCasts = 0;
+		rSpellCasts = 0;
+		numbOfAttacks = 0;
+	}
 	public UrgotSkills(BattleCalculator manager, UrgotStats urgot)
 	{
 		battleManager = manager;

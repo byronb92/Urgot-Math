@@ -26,8 +26,13 @@ public class BattleCalculator
 	{
 		manaUsage = 0;
 		physicalDamage = 0;
+		shieldStrength = 0;
+		spellCastTime = 0;
 		listArmReduc.clear();
 		listDamageReduc.clear();
+		
+		armorPenetration = 0;
+		opponentArmor = 0;
 	}
 	
 	public void adDamage(double damage)

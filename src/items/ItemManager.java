@@ -51,7 +51,8 @@ public class ItemManager {
 		
 	}
 	
-	private void addItem(String itemName)
+	// TODO: Fix with Muraman stacks.
+	public void addItem(String itemName)
 	{
 		urgotItems.addItem(itemName, itemFactory.getItem(itemName));
 	}

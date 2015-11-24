@@ -13,6 +13,11 @@ public class ItemFactory {
 			return new Manamune(muneStacks);
 		}
 		
+		if (itemName.equals("Tear"))
+		{
+			return new Tear(0);
+		}
+		
 		if (itemName.equals("Sheen"))
 		{
 			return new Sheen();
@@ -21,6 +26,16 @@ public class ItemFactory {
 		if (itemName.equals("Caulfield's Warhammer"))
 		{
 			return new CaulfieldWarhammer();
+		}
+		
+		if (itemName.equals("Serrated Dirk"))
+		{
+			return new SerratedDirk();
+		}
+		
+		if (itemName.equals("Phage"))
+		{
+			return new Phage();
 		}
 		
 		if (itemName.equals("Black Cleaver"))

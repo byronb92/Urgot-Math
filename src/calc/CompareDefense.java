@@ -1,5 +1,7 @@
 package calc;
 
-public class CompareDefense {
+import battle.OutputUrgotCompare;
+
+public class CompareDefense extends OutputUrgotCompare {
 
 }

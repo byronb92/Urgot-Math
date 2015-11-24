@@ -1,4 +1,4 @@
-package calc;
+package battle.scenario;
 
 /**
  * Levels 10-15, second-third legendary item purchases.
@@ -8,6 +8,6 @@ package calc;
  * @author byronb92
  *
  */
-public class MidGame {
+public class MidGame extends Phase {
 
 }
