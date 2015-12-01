@@ -41,4 +41,8 @@ Fixed bug where CDR under 17% was treated as cdr greater than 37.5%
 Fixed Q casts, Urgot can cast 3 Q's with no CDR, 4 with 16.67, 5 with 37.5
 
 
+Nov. 24th (Daytime)
+Added comparison between Youmuu's Ghostblade and The Black Cleaver.
+Added stat breakdown of early level 6 items.
+
 

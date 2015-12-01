@@ -45,6 +45,62 @@ public class OutputUrgotCompare {
 			outputTotalCosts(currentItems);		
 		}
 	 */
+	
+	public void outputAllLevel6Items()
+	{
+		sceManager.earlySetup();
+		for (UrgotScenario sce : sceManager.getScenarios())
+		{
+			BattleCalculator calc = sce.getBattleStats();
+			UrgotStats urgot = sce.getUrgotStats();
+			Items urgItems = sce.getUrgotItems();
+			printAllItems(urgItems);
+			outputTotalCostsNoName(urgItems);
+			System.out.println("Raw Spell Damage: " + calc.getADDamage());
+			System.out.println("Battle Time: " + calc.getCastTime());
+			System.out.println("Armor Pen: " + sce.getUrgotStats().getArmorPen());
+			System.out.println("Armor Reduction: " + sce.getUrgotStats().getArmorReduc());
+			System.out.println("------------------");
+			
+		}
+	}
+	
+	
+	
+	public void outputGhostbladeVsCleaver()
+	{
+		sceManager.GhostbladeVsClear();
+		UrgotScenario sce = sceManager.getScenarios().get(0);
+		UrgotScenario sce2 = sceManager.getScenarios().get(1);
+		
+		String itemOne = sce.getUrgotItems().getItems().
+				get("Youmuu's Ghostblade").getName();
+		String itemTwo = sce2.getUrgotItems().getItems().
+				get("Black Cleaver").getName();
+		
+		
+		BattleCalculator calcBlade = sce.getBattleStats();
+		UrgotStats urgotBlade = sce.getUrgotStats();
+		
+		BattleCalculator calcCleaver = sce2.getBattleStats();
+		UrgotStats urgotCleaver = sce2.getUrgotStats();
+		
+		System.out.println(itemOne);
+		System.out.println("Raw Spell Damage: " + calcBlade.getADDamage());
+		System.out.println("Battle Time: " + calcBlade.getCastTime());
+		System.out.println("Armor Pen: " + sce.getUrgotStats().getArmorPen());
+		System.out.println("Armor Reduction: " + sce.getUrgotStats().getArmorReduc());
+		System.out.println("-------------");
+		
+		System.out.println(itemTwo);
+		System.out.println("Raw Spell Damage: " + calcCleaver.getADDamage());
+		System.out.println("Battle Time: " + calcCleaver.getCastTime());
+		System.out.println("Armor Pen: " + sce2.getUrgotStats().getArmorPen());
+		System.out.println("Armor Reduction: " + sce2.getUrgotStats().getArmorReduc());
+		System.out.println("-------------");
+		
+		
+	}
 	public void outputSheenDamage()
 	{
 		sceManager.sheenDamage();
@@ -140,6 +196,16 @@ public class OutputUrgotCompare {
 			runningCost = runningCost + item.getValue().getCost();
 		}
 		System.out.println(builder.toString());
+		System.out.println("Combined Item Cost: " + runningCost);
+	}
+	private void outputTotalCostsNoName(Items urgotItems)
+	{
+		int runningCost = 0;
+		StringBuilder builder = new StringBuilder();
+		for(Entry<String,Item> item: urgotItems.getItems().entrySet())
+		{
+			runningCost = runningCost + item.getValue().getCost();
+		}
 		System.out.println("Combined Item Cost: " + runningCost);
 	}
 

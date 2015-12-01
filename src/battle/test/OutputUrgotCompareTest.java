@@ -30,9 +30,19 @@ public class OutputUrgotCompareTest {
 //		comp.outputCaulfieldVsDirk();
 //	}
 	
-	public void testSheenDamage()
+//	public void testSheenDamage()
+//	{
+//		comp.outputSheenDamage();
+//	}
+	
+//	public void testBladeVsClear()
+//	{
+//		comp.outputGhostbladeVsCleaver();
+//	}
+	
+	public void outAllLevel6()
 	{
-		comp.outputSheenDamage();
+		comp.outputAllLevel6Items();
 	}
 
 }

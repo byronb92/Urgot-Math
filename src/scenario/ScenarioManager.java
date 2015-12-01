@@ -46,6 +46,13 @@ public class ScenarioManager {
 		early.earlySheenDamage();
 		addAllScenarios(early.getScenarios());
 	}
+	
+	public void GhostbladeVsClear()
+	{
+		early = new EarlyGame();
+		early.GunbladeVsCleaver();
+		addAllScenarios(early.getScenarios());
+	}
 	// ----- Mid Game Setup -----
 	// ----- Late Game Setup -----
 	private void addAllScenarios(ArrayList<UrgotScenario> smallList)

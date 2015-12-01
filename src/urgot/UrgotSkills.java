@@ -9,7 +9,7 @@ public class UrgotSkills
 	private int qSpellCasts = 0;
 	private int wSpellCasts = 0;
 	private int eSpellCasts = 0;
-	private int rSpellCasts = 0;
+	//private int rSpellCasts = 0;
 	private int numbOfAttacks = 0;
 	
 	public void clearSkillCasts()
@@ -17,7 +17,7 @@ public class UrgotSkills
 		qSpellCasts = 0;
 		wSpellCasts = 0;
 		eSpellCasts = 0;
-		rSpellCasts = 0;
+		//rSpellCasts = 0;
 		numbOfAttacks = 0;
 	}
 	

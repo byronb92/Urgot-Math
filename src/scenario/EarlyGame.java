@@ -43,6 +43,20 @@ public class EarlyGame extends Phase {
 	
 	}
 	
+	public void GunbladeVsCleaver()
+	{
+		UrgotScenario gun = new UrgotScenario(6);
+		UrgotScenario cleaver = new UrgotScenario(6);
+		
+		gun.addAndComputeItem("Youmuu's Ghostblade");
+		cleaver.addAndComputeItem("Black Cleaver");
+		
+		gun.getUrgotCombos().lockOnWithUlt(6);
+		cleaver.getUrgotCombos().lockOnWithUlt(6);
+		
+		addScenario(gun);
+		addScenario(cleaver);
+	}
 	/**
 	 * If auto attacks can be weaved into between Urgot's combo, 
 	 * Sheen is the superior early game item.
