@@ -21,6 +21,24 @@ public class Phase {
 		return listScenarios;
 	}
 	
+	
+	/**
+	 * Adds an all-in ult scenario based on level.
+	 * TODO: Does not prohibit under level 6 scenarios.
+	 * @param itemNames
+	 */
+	public void addScenarioLevel(String[] itemNames, int currentLevel)
+	{
+		UrgotScenario currentScenario = new UrgotScenario(currentLevel);
+		for (String item: itemNames)
+		{
+			currentScenario.addItem(item);
+		}
+		currentScenario.computeStats();
+		currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+		addScenario(currentScenario);
+	}
+	
 
 	
 

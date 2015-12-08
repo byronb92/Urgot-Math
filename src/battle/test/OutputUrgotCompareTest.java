@@ -40,9 +40,16 @@ public class OutputUrgotCompareTest {
 //		comp.outputGhostbladeVsCleaver();
 //	}
 	
-	public void outAllLevel6()
+//	public void outAllLevel6()
+//	{
+//		comp.outputAllLevel6Items();
+//	}
+	
+	
+	// Mid Game tests
+	public void outAllLevel12()
 	{
-		comp.outputAllLevel6Items();
+		comp.outputFullBuild();
 	}
 
 }

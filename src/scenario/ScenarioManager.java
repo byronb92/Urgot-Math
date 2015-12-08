@@ -32,29 +32,41 @@ public class ScenarioManager {
 		early.levelSixCompare();
 		addAllScenarios(early.getScenarios());
 	}
-	
 	public void armorPenVSAD()
 	{
 		early = new EarlyGame();
 		early.CaulfieldVsDirk();
 		addAllScenarios(early.getScenarios());
 	}
-	
 	public void sheenDamage()
 	{
 		early = new EarlyGame();
 		early.earlySheenDamage();
 		addAllScenarios(early.getScenarios());
 	}
-	
 	public void GhostbladeVsClear()
 	{
 		early = new EarlyGame();
-		early.GunbladeVsCleaver();
+		early.ghostbladeVsCleaver();
 		addAllScenarios(early.getScenarios());
 	}
+	
 	// ----- Mid Game Setup -----
+	public void midSetup()
+	{
+		mid = new MidGame();
+		//mid.compareBestThreeItems();
+		mid.compareBruiser();
+		addAllScenarios(mid.getScenarios());
+	}
 	// ----- Late Game Setup -----
+	public void lateSetup()
+	{
+		late = new LateGame();
+		//mid.compareBestThreeItems();
+		late.compareFullBuilds();
+		addAllScenarios(late.getScenarios());
+	}
 	private void addAllScenarios(ArrayList<UrgotScenario> smallList)
 	{
 		listAllScenarios.addAll(smallList);

@@ -18,6 +18,13 @@ public class ItemFactory {
 			return new Tear(0);
 		}
 		
+		else if (itemName.contains("Tear"))
+		{
+			String manaMuneStacks = (String)itemName.subSequence(4, itemName.length());
+			int muneStacks = Integer.parseInt(manaMuneStacks);
+			return new Tear(muneStacks);
+		}
+		
 		if (itemName.equals("Sheen"))
 		{
 			return new Sheen();
@@ -124,6 +131,22 @@ public class ItemFactory {
 		{
 			return new IcebornGauntlet();
 		}
+		
+		if (itemName.equals("Frozen Heart"))
+		{
+			return new FrozenHeart();
+		}
+		
+		if (itemName.equals("Spirit Visage"))
+		{
+			return new SpiritVisage();
+		}
+		
+		if (itemName.equals("Dead Man's Plate"))
+		{
+			return new DeadMansPlate();
+		}
+		
 		
 		System.err.println("Invalid item name: " + itemName);
 		return null;

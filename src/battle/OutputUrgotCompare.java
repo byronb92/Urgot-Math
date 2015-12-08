@@ -46,6 +46,8 @@ public class OutputUrgotCompare {
 		}
 	 */
 	
+	
+	// Early Game Comparisons
 	public void outputAllLevel6Items()
 	{
 		sceManager.earlySetup();
@@ -58,15 +60,14 @@ public class OutputUrgotCompare {
 			outputTotalCostsNoName(urgItems);
 			System.out.println("Raw Spell Damage: " + calc.getADDamage());
 			System.out.println("Battle Time: " + calc.getCastTime());
-			System.out.println("Armor Pen: " + sce.getUrgotStats().getArmorPen());
-			System.out.println("Armor Reduction: " + sce.getUrgotStats().getArmorReduc());
+			System.out.println("Armor Pen: " + urgot.getArmorPen());
+			System.out.println("Armor Reduction: " + urgot.getArmorReduc());
+			System.out.println("Spell Rotations: " + 
+					(int)(urgot.getTotalMana() / calc.getManaUsage()));
 			System.out.println("------------------");
 			
 		}
 	}
-	
-	
-	
 	public void outputGhostbladeVsCleaver()
 	{
 		sceManager.GhostbladeVsClear();
@@ -162,7 +163,6 @@ public class OutputUrgotCompare {
 		System.out.println("Damage Done: " + highestDamage);
 		printAllItems(highestItems);
 	}
-	
 	public void outputEarlyItemCosts()
 	{
 		sceManager.earlySetup();
@@ -175,6 +175,60 @@ public class OutputUrgotCompare {
 		}
 	}
 	
+	
+	// Mid Game Comparisons
+	public void outputLevel12Three()
+	{
+		sceManager.midSetup();
+		for (UrgotScenario sce : sceManager.getScenarios())
+		{
+			BattleCalculator calc = sce.getBattleStats();
+			UrgotStats urgot = sce.getUrgotStats();
+			Items urgItems = sce.getUrgotItems();
+			printAllItems(urgItems);
+			outputTotalCostsNoName(urgItems);
+			System.out.println("Raw Spell Damage: " + calc.getADDamage());
+			System.out.println("Battle Time: " + calc.getCastTime());
+			System.out.println("Total AD: " + urgot.getTotalAD());
+			System.out.println("Health: " + urgot.getTotalHP());
+			System.out.println("Armor: " + urgot.getTotalArmor());
+			System.out.println("Armor Pen: " + urgot.getArmorPen());
+			System.out.println("Armor Reduction: " + urgot.getArmorReduc());
+			System.out.println("Spell Rotations: " + 
+					(int)(urgot.getTotalMana() / calc.getManaUsage()));
+			System.out.println("------------------");
+			
+		}
+	}
+	
+	
+	// Late game Comparisons
+	public void outputFullBuild()
+	{
+		sceManager.lateSetup();
+		for (UrgotScenario sce : sceManager.getScenarios())
+		{
+			BattleCalculator calc = sce.getBattleStats();
+			UrgotStats urgot = sce.getUrgotStats();
+			Items urgItems = sce.getUrgotItems();
+			printAllItems(urgItems);
+			outputTotalCostsNoName(urgItems);
+			System.out.println("Raw Spell Damage: " + calc.getADDamage());
+			System.out.println("Battle Time: " + calc.getCastTime());
+			System.out.println("Total AD: " + urgot.getTotalAD());
+			System.out.println("Health: " + urgot.getTotalHP());
+			System.out.println("Armor: " + urgot.getTotalArmor());
+			System.out.println("Magic Resistance: " + urgot.getTotalMR());
+			System.out.println("Armor Pen: " + urgot.getArmorPen());
+			System.out.println("Armor Reduction: " + urgot.getArmorReduc());
+			System.out.println("Spell Rotations: " + 
+					(int)(urgot.getTotalMana() / calc.getManaUsage()));
+			System.out.println("------------------");
+			
+		}
+	}
+	
+	// Utility functions.
 	private void printAllItems(Items urgotItems)
 	{
 		StringBuilder builder = new StringBuilder();

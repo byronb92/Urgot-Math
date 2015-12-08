@@ -17,15 +17,16 @@ public class ZzRotPortal extends Item {
 	@Override
 	public void applyPassive(UrgotStats urgot) {
 		passiveApplied = true;
-		setDetails();
 		this.urgot = urgot;
+		setDetails();
+		
 		
 	}
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusMR(mr);
-		urgot.addBonusArmor(60);
+		urgot.addBonusArmor(armor);
 		urgot.addBonusHealthRegen(healthRegen);
 		
 	}

@@ -43,7 +43,11 @@ public class EarlyGame extends Phase {
 	
 	}
 	
-	public void GunbladeVsCleaver()
+	/**
+	 * Compares Youmuu's Ghostblade to Black Cleaver.
+	 * Black Cleaver gives the best power spike for Urgot.
+	 */
+	public void ghostbladeVsCleaver()
 	{
 		UrgotScenario gun = new UrgotScenario(6);
 		UrgotScenario cleaver = new UrgotScenario(6);

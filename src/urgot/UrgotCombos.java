@@ -65,7 +65,7 @@ public class UrgotCombos {
 			}
 			
 		}
-		else
+		else if (urgot.getCDR() > 0.375)
 		{
 			// Rank 3 Q
 			if (currentLevel == 6)

@@ -46,3 +46,18 @@ Added comparison between Youmuu's Ghostblade and The Black Cleaver.
 Added stat breakdown of early level 6 items.
 
 
+Nov. 30th
+Add Frozen Heart
+Add mid game scenarios.
+Added tear stack interaction.
+Fixed bug where UrgotWithNoult Logic assumed everything was 40% CDR
+
+Dec. 8th
+Finished up first iteration of mid-game scenarios.
+Added helper method in Phase object that automatically sets up scenarios.
+Added more items.
+-Spirit Visage, Dead Man's Plate
+Fixed bug with Zz'Portal item addition that crashed program.
+Added full-build comparions based on theorizied item sets.
+Added Health and MR outputs when comparing Mid/Late game item sets.
+
