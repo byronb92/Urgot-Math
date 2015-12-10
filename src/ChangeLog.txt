@@ -61,3 +61,15 @@ Fixed bug with Zz'Portal item addition that crashed program.
 Added full-build comparions based on theorizied item sets.
 Added Health and MR outputs when comparing Mid/Late game item sets.
 
+
+Added Passive and Active calculators. 
+-Recalculated Sheen/Trinity/Iceborn damage in all-in scenario.
+Redesigned Phase object to include runStatCollection method.
+-Phase objects must override this method.
+Encapsilated UrgotScenario variables. (made them private)
+Added enum types, LEVEL6/LEVEL9/LEVEL12/LEVEL15/LEVEL18
+-Makes calling of item sets more logical.
+Added outputRawDamage, outputLowestCost, sortRawDamage methods to output.
+
+
+

@@ -1,5 +1,6 @@
 package scenario;
 
+
 /**
  * Level 13-18 4-5th item purchases. 
  * Full build comparisons.
@@ -8,7 +9,21 @@ package scenario;
  *
  */
 public class LateGame extends Phase {
-	public void compareFullBuilds()
+	@Override
+	public void runStatCollection(StatSetup setupCode)
+	{
+		switch (setupCode)
+		{
+			case LEVEL18: compareLevel18();
+			break;
+			
+			default: 	System.out.println("Invalid stat collection code: " + setupCode);
+						System.out.println("There will be errors");
+			break;
+		}
+	}
+	
+	public void compareLevel18()
 	{
 		String[] fullBuild = {"Muramana", "Black Cleaver", "Youmuu's Ghostblade", 
 				"Maw of Malmortius", "Death's Dance", "Ionian Boots of Lucidity"};

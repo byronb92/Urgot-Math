@@ -1,5 +1,6 @@
 package scenario;
 
+
 /**
  * Levels 10-15, second-third legendary item purchases.
  * Level 15 = 45 waves. (24 minutes)
@@ -17,6 +18,42 @@ public class MidGame extends Phase {
 	{
 		
 	}
+	
+	@Override
+	public void runStatCollection(StatSetup setupCode)
+	{
+		switch (setupCode)
+		{
+			case LEVEL9: compareLevelNine();
+			break;
+			
+			default: 	System.out.println("Invalid stat collection code: " + setupCode);
+						System.out.println("There will be errors");
+			break;
+		}
+	}
+	
+	/**
+	 * Level 9 can be achieved around 10 minutes/10 minutes 30 seconds.
+	 * With 80% farming of lane minions, you should be around 3000-3300 gold.
+	 * This is enough to buy 1 legendary item.
+	 * Iceborn Gauntlet/Manamune/Black Cleaver/Youmuu's Ghostblade/Frozen Heart
+	 */
+	public void compareLevelNine()
+	{
+		String manamune = "Manamune350";
+		String ibg = "Iceborn Gauntlet";
+		String cleaver = "Black Cleaver";
+		String ghostblade = "Youmuu's Ghostblade";
+		String frozen = "Frozen Heart";
+		
+		addScenarioLevel(manamune, 9);
+		addScenarioLevel(ibg, 9);
+		addScenarioLevel(cleaver, 9);
+		addScenarioLevel(ghostblade, 9);
+		addScenarioLevel(frozen, 9);
+	}
+	
 	// Tear --> Black Cleaver --> Iceborne Gauntlet
 	// Tear --> Black Cleaver --> Frozen Heart
 	// Tear --> Black Cleaver --> Manamune

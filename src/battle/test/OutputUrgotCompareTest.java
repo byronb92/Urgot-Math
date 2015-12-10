@@ -1,55 +1,37 @@
 package battle.test;
 
 
-import org.junit.Before;
-import org.junit.Test;
+import junit.framework.TestCase;
 
 import battle.OutputUrgotCompare;
+import scenario.StatSetup;
 
-public class OutputUrgotCompareTest {
+
+public class OutputUrgotCompareTest extends TestCase {
 
 	OutputUrgotCompare comp;
-	@Before
-	public void setUp() throws Exception {
+	protected void setUp() throws Exception {
 		comp = new OutputUrgotCompare();
+		System.out.println("-----------------");
 	}
 
-
-	@Test
-//	public void testItemCosts() {
-//		comp.outputEarlyItemCosts();
-//	}
-	
-//	public void testItemDamage() 
-//	{
-//		comp.outputEarlyHighestRaw();
-//	}
-	
-//	public void testHammervsDirk()
-//	{
-//		comp.outputCaulfieldVsDirk();
-//	}
-	
-//	public void testSheenDamage()
-//	{
-//		comp.outputSheenDamage();
-//	}
-	
-//	public void testBladeVsClear()
-//	{
-//		comp.outputGhostbladeVsCleaver();
-//	}
-	
-//	public void outAllLevel6()
-//	{
-//		comp.outputAllLevel6Items();
-//	}
-	
-	
-	// Mid Game tests
-	public void outAllLevel12()
+	// Simple tests to ensure there are no nullpointer exceptions.
+	public void testOutputFullBuild()
 	{
-		comp.outputFullBuild();
+		comp.statCollection(StatSetup.LEVEL18);
+		comp.outputHighestRawDamage();
+	}
+	
+	public void testOutputCheapestFullBuild()
+	{
+		comp.statCollection(StatSetup.LEVEL18);
+		comp.outputLowestCost();
+	}
+	
+	public void testOutputSortedDamageFulLBuild()
+	{
+		comp.statCollection(StatSetup.LEVEL18);
+		comp.outputSortedDamage();
 	}
 
 }

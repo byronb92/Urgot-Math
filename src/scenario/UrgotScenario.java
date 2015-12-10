@@ -7,10 +7,10 @@ import urgot.UrgotCombos;
 import urgot.UrgotStats;
 
 public class UrgotScenario {
-	UrgotStats urgot;
-	ItemManager itemManager;
-	UrgotCombos urgCombos;
-	BattleCalculator battleManager;
+	private UrgotStats urgot;
+	private ItemManager itemManager;
+	private UrgotCombos urgCombos;
+	private BattleCalculator battleManager;
 	
 
 	/**

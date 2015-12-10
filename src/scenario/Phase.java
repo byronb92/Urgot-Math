@@ -2,9 +2,9 @@ package scenario;
 
 import java.util.ArrayList;
 
+
 public class Phase {
-	
-	
+		
 	private ArrayList<UrgotScenario> listScenarios;
 	public Phase()
 	{
@@ -21,7 +21,30 @@ public class Phase {
 		return listScenarios;
 	}
 	
-	
+	/**
+	 * This will be overridden by each individual Phase object.
+	 * Based on the code input, a different comparison will be made.
+	 * @param code
+	 */
+	public void runStatCollection(StatSetup setupCode)
+	{
+		
+	}
+	public void addScenarioLevel(String itemName, int currentLevel)
+	{
+		UrgotScenario currentScenario = new UrgotScenario(currentLevel);
+		currentScenario.addItem(itemName);
+		currentScenario.computeStats();
+		if (currentLevel >= 6)
+		{
+			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+		}
+		else
+		{
+			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+		}
+		addScenario(currentScenario);
+	}
 	/**
 	 * Adds an all-in ult scenario based on level.
 	 * TODO: Does not prohibit under level 6 scenarios.
@@ -35,7 +58,14 @@ public class Phase {
 			currentScenario.addItem(item);
 		}
 		currentScenario.computeStats();
-		currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+		if (currentLevel >= 6)
+		{
+			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+		}
+		else
+		{
+			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+		}
 		addScenario(currentScenario);
 	}
 	
