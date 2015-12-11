@@ -61,8 +61,9 @@ Fixed bug with Zz'Portal item addition that crashed program.
 Added full-build comparions based on theorizied item sets.
 Added Health and MR outputs when comparing Mid/Late game item sets.
 
-
+Dec. 9th
 Added Passive and Active calculators. 
+-ActiveCalculator currently unused.
 -Recalculated Sheen/Trinity/Iceborn damage in all-in scenario.
 Redesigned Phase object to include runStatCollection method.
 -Phase objects must override this method.
@@ -72,4 +73,10 @@ Added enum types, LEVEL6/LEVEL9/LEVEL12/LEVEL15/LEVEL18
 Added outputRawDamage, outputLowestCost, sortRawDamage methods to output.
 
 
+Dec. 10th
+Fixed minor bug where I was foolishly adding all values into a hashmap, 
+then replacing them all with the exact same values.
+Ability to sort highest armor/mr sets.
+Fixes bug where scenarios containing some idential values were unabled to be compared to each other.
+-Handled in makeKeyUnique private method in ScenarioManager class
 

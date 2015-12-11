@@ -17,7 +17,6 @@ public class MyComparator implements Comparator {
 	}
 
 	public int compare(Object o1, Object o2) {
-
 		return ((Integer) map.get(o2)).compareTo((Integer) map.get(o1));
 
 	}

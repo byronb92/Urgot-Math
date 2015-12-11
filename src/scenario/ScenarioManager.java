@@ -1,11 +1,14 @@
 package scenario;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.NavigableMap;
 import java.util.TreeMap;
 
+import calc.CompareDefense;
 import items.Item;
 import items.Items;
 
@@ -143,18 +146,92 @@ public class ScenarioManager {
 		return lowestCost;
 	}
 	
-	
-	public Map<Double,UrgotScenario> sortDamage()
+	/**
+	 * Takes care of duplicate cases inserted into maps, by making them differentiate slightly.
+	 * @param map
+	 * @param key
+	 * @return
+	 */
+	private double makeKeyUnique(Map<?,?> map, Double key)
+	{
+		boolean isUnique = false;
+		double currentValue = key;
+		while (!isUnique)
+		{
+			if (map.containsKey(currentValue))
+			{
+				currentValue = currentValue + 0.0001;
+			}
+			else
+			{
+				isUnique = true;
+			}
+		}
+		return currentValue;
+
+	}
+	public Map<Double,UrgotScenario> sortDamage(SortRank rank)
 	{
 		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
 		for (UrgotScenario sce : listAllScenarios)
 		{
-			map.put(sce.getBattleStats().getADDamage(), sce);
+			double rawDmg = sce.getBattleStats().getADDamage();
+			map.put(makeKeyUnique(map,rawDmg), sce);
 		}
-		Map<Double,UrgotScenario> newMap = new TreeMap(map);
+		Map<Double,UrgotScenario> newMap = null;
+		if (rank == SortRank.ASCENDING)
+		{
+			newMap = new TreeMap(map);
+			return newMap;
+		}
+		newMap = new TreeMap(Collections.reverseOrder());
 		newMap.putAll(map);
 		return newMap;
 	}
+	
+	
+	public Map<Double,UrgotScenario> sortArmor(SortRank rank)
+	{
+		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
+		CompareDefense compareObject = new CompareDefense();
+		for (UrgotScenario sce : listAllScenarios)
+		{
+			double trueHp = compareObject.findHealthVsPhysical(sce);
+			map.put(makeKeyUnique(map,trueHp), sce);
+		}
+		Map<Double,UrgotScenario> newMap = null;
+		if (rank == SortRank.ASCENDING)
+		{
+			newMap = new TreeMap(map);
+		}
+		newMap = new TreeMap(Collections.reverseOrder());
+		newMap.putAll(map);
+		return newMap;
+	}
+	
+	
+	public Map<Double,UrgotScenario> sortMagicResist(SortRank rank)
+	{
+		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
+		CompareDefense compareObject = new CompareDefense();
+		for (UrgotScenario sce : listAllScenarios)
+		{
+			double trueHp = compareObject.findHealthVsMagic(sce);
+			map.put(makeKeyUnique(map,trueHp), sce);
+		}
+		Map<Double,UrgotScenario> newMap = null;
+		if (rank == SortRank.ASCENDING)
+		{
+			newMap = new TreeMap(map);
+		}
+		newMap = new TreeMap(Collections.reverseOrder());
+		newMap.putAll(map);
+		return newMap;
+	}
+	
+
+	
+	
 	public String getScenarioItems(UrgotScenario sce)
 	{
 		StringBuilder builder = new StringBuilder();

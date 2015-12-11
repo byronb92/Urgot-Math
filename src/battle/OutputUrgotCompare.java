@@ -8,6 +8,7 @@ import items.Item;
 import items.Items;
 import scenario.Phase;
 import scenario.ScenarioManager;
+import scenario.SortRank;
 import scenario.UrgotScenario;
 import urgot.UrgotStats;
 
@@ -53,11 +54,11 @@ public class OutputUrgotCompare {
 		return costString.toString();
 	}
 	
-	public String outputSortedDamage()
+	public String outputSortedDamage(SortRank rank)
 	{
 		StringBuilder dmgString = new StringBuilder();
 		
-		for (Entry<Double, UrgotScenario> entry : sceManager.sortDamage().entrySet())
+		for (Entry<Double, UrgotScenario> entry : sceManager.sortDamage(rank).entrySet())
 		{
 			dmgString.append("Raw Damage: " + entry.getKey());
 			dmgString.append(" " + sceManager.getScenarioItems(entry.getValue()));
@@ -66,64 +67,26 @@ public class OutputUrgotCompare {
 		System.out.println(dmgString.toString());
 		return dmgString.toString();
 	}
-	//public void compareHighestRawDamage()
-	//public void compareCost();
-	//public void compareDurability();
+
+	
+	public String outputSortedArmor(SortRank rank)
+	{
+		StringBuilder dmgString = new StringBuilder();
+		
+		for (Entry<Double, UrgotScenario> entry : sceManager.sortArmor(rank).entrySet())
+		{
+			dmgString.append("True HP: " + entry.getKey());
+			dmgString.append(" " + sceManager.getScenarioItems(entry.getValue()));
+			dmgString.append("\n");
+		}
+		System.out.println(dmgString.toString());
+		return dmgString.toString();
+	}
+	
 	//public void compareSustainability();
 	//public void comparePassiveAndActives();
 	//public void compareDamageVsArmor()
-	
-	// Mid Game Comparisons
-//	public void outputLevel12Three()
-//	{
-//		sceManager.midSetup();
-//		for (UrgotScenario sce : sceManager.getScenarios())
-//		{
-//			BattleCalculator calc = sce.getBattleStats();
-//			UrgotStats urgot = sce.getUrgotStats();
-//			Items urgItems = sce.getUrgotItems();
-//			printAllItems(urgItems);
-//			outputTotalCostsNoName(urgItems);
-//			System.out.println("Raw Spell Damage: " + calc.getADDamage());
-//			System.out.println("Battle Time: " + calc.getCastTime());
-//			System.out.println("Total AD: " + urgot.getTotalAD());
-//			System.out.println("Health: " + urgot.getTotalHP());
-//			System.out.println("Armor: " + urgot.getTotalArmor());
-//			System.out.println("Armor Pen: " + urgot.getArmorPen());
-//			System.out.println("Armor Reduction: " + urgot.getArmorReduc());
-//			System.out.println("Spell Rotations: " + 
-//					(int)(urgot.getTotalMana() / calc.getManaUsage()));
-//			System.out.println("------------------");
-//			
-//		}
-//	}
-	
-	
-	// Late game Comparisons
-//	public void outputFullBuild()
-//	{
-//		sceManager.lateSetup();
-//		for (UrgotScenario sce : sceManager.getScenarios())
-//		{
-//			BattleCalculator calc = sce.getBattleStats();
-//			UrgotStats urgot = sce.getUrgotStats();
-//			Items urgItems = sce.getUrgotItems();
-//			printAllItems(urgItems);
-//			outputTotalCostsNoName(urgItems);
-//			System.out.println("Raw Spell Damage: " + calc.getADDamage());
-//			System.out.println("Battle Time: " + calc.getCastTime());
-//			System.out.println("Total AD: " + urgot.getTotalAD());
-//			System.out.println("Health: " + urgot.getTotalHP());
-//			System.out.println("Armor: " + urgot.getTotalArmor());
-//			System.out.println("Magic Resistance: " + urgot.getTotalMR());
-//			System.out.println("Armor Pen: " + urgot.getArmorPen());
-//			System.out.println("Armor Reduction: " + urgot.getArmorReduc());
-//			System.out.println("Spell Rotations: " + 
-//					(int)(urgot.getTotalMana() / calc.getManaUsage()));
-//			System.out.println("------------------");
-//			
-//		}
-//	}
+
 	
 	
 }
