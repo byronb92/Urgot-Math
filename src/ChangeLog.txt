@@ -80,3 +80,10 @@ Ability to sort highest armor/mr sets.
 Fixes bug where scenarios containing some idential values were unabled to be compared to each other.
 -Handled in makeKeyUnique private method in ScenarioManager class
 
+Dec. 11
+Added outputPassiveAndActivies() class when comparing item sets.
+Fixed bug where Sheen passive was not correctly computing bonus damage it gave.
+Computed movement speed boost from Phage.
+Added runes and masteries packages.
+	Base methods (unimplemented for Cunning/Ferocity/Resolve) added.
+Started design of being able to dynamically add runes and output their types.

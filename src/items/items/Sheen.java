@@ -15,9 +15,8 @@ public class Sheen extends Item
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		currentBaseAD = urgot.getBonusBaseAD();
+		currentBaseAD = urgot.getBaseADFromLevel();
 		setDetails();
-		
 	}
 
 	@Override

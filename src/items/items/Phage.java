@@ -7,13 +7,15 @@ public class Phage extends Item {
 
 	private int hp = 200;
 	private int ad = 15;
+	private double moveSpeed = 0;
 	public Phage()
 	{
-		
+		super();
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO: Calculate how much movement speed Urgot receives from Phage.
+		moveSpeed = urgot.getTotalMS();
+		setDetails();
 		
 	}
 
@@ -38,8 +40,11 @@ public class Phage extends Item {
 
 	@Override
 	protected void setDetails() {
-		details = "Basic attacks (on-hit) grant +20 flat movement speed for 2 seconds. "
-				+ "Killing a Unit grants +60 flat movement speed instead.";
+		details = "Basic attacks grant +20 flat movement speed for 2 seconds. \n"
+				+ "Killing units grant +60 flat movement speed. \n"
+				+ "Bonus is half for ranged champs. \n"
+				+ "Urgot basic attack MS: " + (moveSpeed + 10) + " \n"
+				+ "Urgot killing bonus: " + (moveSpeed + 30);
 		
 	}
 

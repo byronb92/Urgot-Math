@@ -37,6 +37,7 @@ public class UrgotStats {
 	
 
 	private double moveSpeed		= 335;
+	private double percentMS		= 0;
 	private double cdr				= 0;	//TODO: Include runes/masteries.
 	private double armorPen 		= 0;
 	private double bonusArmorPen 	= 0;
@@ -60,12 +61,14 @@ public class UrgotStats {
 	
 	public double getBaseAD() { return baseAD; }
 	public double getADPerLevel() { return adPerLevel; }
-	public double getBaseADFromLevel() { return baseAD + (adPerLevel * (currentLevel -1)); }
+	public double getBaseADFromLevel() { return (baseAD + (adPerLevel * (currentLevel -1))) + 
+			(baseAD + (adPerLevel * (currentLevel -1))) * bonusBaseAD; }
 	public double getBaseADFromItems() { return bonusBaseAD; }
 	public double getBaseArmorFromLevel() { return baseArmor + (armPerLevel * (currentLevel - 1)); }
 	public double getBaseHPRegenFromLevel() { 
 		return baseHealthRegen + (baseHealthPerLevel * (currentLevel - 1));	
 	}
+	public double getTotalMS() { return (moveSpeed) + (moveSpeed * percentMS); }
 	public double getTotalHP() { return baseHP + (hpPerLevel * (currentLevel - 1)) + bonusHP; }
 	public double getTotalAD() 	{ return (baseAD + (adPerLevel * (currentLevel - 1)) + bonusAD); }
 	public double getTotalArmor() { return getBaseArmorFromLevel() + bonusArmor; }

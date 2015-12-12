@@ -3,7 +3,7 @@ package calc;
 import scenario.UrgotScenario;
 import urgot.UrgotStats;
 
-public class PassiveCalculator {
+public class UniqueCalculator {
 	/**
 	 * Each scenario is based on a typical urgot E-Q combo.
 	 * Computes enhanced damage of sheen usage.=
@@ -43,6 +43,12 @@ public class PassiveCalculator {
 		return scenarioSheenDamage;
 	}
 
+	
+	// TODO: Randuin's Omen
+	// UNIQUE: Slows the movement speed of nearby enemy units by 35% for 4 seconds (60 second cooldown) (500 Range).
+	// -10% damage taken from Critical strike icon Critical strikes.
+	// TODO: Youmuu's Ghostblade
+	// UNIQUE: Gain +40% attack speed and +20% movement speed for 6 seconds. 45 second cooldown.
 
 
 }

@@ -57,6 +57,10 @@ public class ItemManager {
 		urgotItems.addItem(itemName, itemFactory.getItem(itemName));
 	}
 	
+	/**
+	 * Add all item stats to urgot's stats.
+	 * Then apply any passive or active details after.
+	 */
 	public void computeItemStats()
 	{
 		for(Entry<String,Item> item: urgotItems.getItems().entrySet())
@@ -81,6 +85,8 @@ public class ItemManager {
 	{
 		return urgot;
 	}
+	
+
 	
 	public boolean containsItem(String itemName)
 	{

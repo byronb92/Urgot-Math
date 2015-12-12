@@ -17,11 +17,11 @@ public class OutputUrgotCompareTest extends TestCase {
 	}
 
 	// Simple tests to ensure there are no nullpointer exceptions.
-	public void testOutputLevelSix()
-	{
-		comp.statCollection(StatSetup.LEVEL6);
-		comp.outputSortedArmor(SortRank.ASCENDING);
-	}
+//	public void testOutputLevelSix()
+//	{
+//		comp.statCollection(StatSetup.LEVEL6);
+//		comp.outputSortedArmor(SortRank.ASCENDING);
+//	}
 //	public void testOutputFullBuild()
 //	{
 //		comp.statCollection(StatSetup.LEVEL18);
@@ -45,5 +45,10 @@ public class OutputUrgotCompareTest extends TestCase {
 //		comp.statCollection(StatSetup.LEVEL18);
 //		comp.outputSortedArmorAscending();
 //	}
+	public void testPassiveAndActives()
+	{
+		comp.statCollection(StatSetup.LEVEL6);
+		comp.outputPassiveandActivies();
+	}
 
 }

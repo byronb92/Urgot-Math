@@ -1,6 +1,7 @@
 package items;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class Items {
 
@@ -23,5 +24,19 @@ public class Items {
 	public HashMap<String, Item> getItems()
 	{
 		return items;
+	}
+	
+	public String getAllItemDetails()
+	{
+		StringBuilder itemString = new StringBuilder();
+		for(Entry<String,Item> item: getItems().entrySet())
+		{
+			if (item.getValue().getDetails() != null)
+			{
+				itemString.append(item.getValue().getName());
+				itemString.append(": " + item.getValue().getDetails());
+			}
+		}
+		return itemString.toString();
 	}
 }

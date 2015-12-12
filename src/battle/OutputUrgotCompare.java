@@ -83,6 +83,23 @@ public class OutputUrgotCompare {
 		return dmgString.toString();
 	}
 	
+	
+	public String outputPassiveandActivies()
+	{
+		StringBuilder dmgString = new StringBuilder();
+		
+		for (UrgotScenario sce : sceManager.getScenarios())
+		{
+			dmgString.append(sceManager.getScenarioItems(sce));
+			dmgString.append("\n");
+			dmgString.append(sce.getUrgotItems().getAllItemDetails());
+			dmgString.append("\n");
+			dmgString.append("----------");
+			dmgString.append("\n");
+		}
+		System.out.println(dmgString.toString());
+		return dmgString.toString();
+	}
 	//public void compareSustainability();
 	//public void comparePassiveAndActives();
 	//public void compareDamageVsArmor()
