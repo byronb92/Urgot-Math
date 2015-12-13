@@ -12,7 +12,6 @@ public abstract class Rune {
 		return runeName;
 	}
 
-	
 	public abstract void addRuneStat(UrgotStats urgot);
 	
 }

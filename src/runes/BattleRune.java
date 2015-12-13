@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-public class BattleRune {
+public abstract class BattleRune {
 	
 	private ArrayList<Rune> runeCount;
+	protected HashMap<String,Double> mapRuneValueLookup;
 	public BattleRune()
 	{
 		runeCount = new ArrayList<Rune>(9);
 	}
+	
+	// Each rune type has it's own set of rune types with different value.
+	// This helps differentiate between them all.
+	public abstract void setUpRuneTable();
 	public ArrayList<Rune> getRuneCount() {
 		return runeCount;
 	}
@@ -40,12 +45,18 @@ public class BattleRune {
 			
 			for (Entry<String,Integer> entry : mapRuneTypes.entrySet())
 			{
-				runeTypes.append(entry.getKey() + " Runes: " + entry.getValue());
+				runeTypes.append(entry.getKey() + " Runes: " + entry.getValue()
+				 + " (" + getRuneValueByName(entry.getKey())* entry.getValue());
 			}
 			return runeTypes.toString();
 		}
 		runeTypes.append("No Runes:");
 		return runeTypes.toString();
+	}
+	
+	public double getRuneValueByName(String rn)
+	{
+		return mapRuneValueLookup.get(rn);
 	}
 }
 

@@ -1,5 +1,7 @@
 package runes.quintessences;
 
-public class Quintessences {
+import runes.UtilityRune;
+
+public class Quintessences extends UtilityRune {
 
 }

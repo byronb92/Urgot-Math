@@ -87,3 +87,7 @@ Computed movement speed boost from Phage.
 Added runes and masteries packages.
 	Base methods (unimplemented for Cunning/Ferocity/Resolve) added.
 Started design of being able to dynamically add runes and output their types.
+
+Dec. 12
+Added bonus attack speed, bonus crit, magic pen, and % HP field into Urgot Stats.
+Completed implementation of primary tier 3 Marks, Seals, and Glyphs.
