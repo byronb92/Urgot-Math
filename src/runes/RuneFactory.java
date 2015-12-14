@@ -2,6 +2,7 @@ package runes;
 import runes.marks.*;
 import runes.seals.*;
 import runes.glyphs.*;
+import runes.quintessences.*;
 
 public class RuneFactory {
 
@@ -103,9 +104,53 @@ public class RuneFactory {
 	
 	public Rune getQuint(String runeName)
 	{
+		if (runeName.equals("Ability Power"))
+		{
+			return new QuintAP();
+		}
+		
+		if (runeName.equals("Armor"))
+		{
+			return new QuintArmor();
+		}
+		
+		if (runeName.equals("Gold"))
+		{
+			return new QuintGold();
+		}
+		
+		if (runeName.equals("Health"))
+		{
+			return new QuintHealth();
+		}
+		if (runeName.equals("Health Regeneration"))
+		{
+			return new QuintHealthRegen();
+		}
+		if (runeName.equals("Mana"))
+		{
+			return new QuintMana();
+		}
+		if (runeName.equals("Mana Regeneration"))
+		{
+			return new QuintManaRegen();
+		}
+		if (runeName.equals("Percent Health"))
+		{
+			return new QuintPercentHealth();
+		}
+		
+		if (runeName.equals("Attack Damage"))
+		{
+			return new QuintAD();
+		}
 		if (runeName.equals("Armor Penetration"))
 		{
-			
+			return new QuintArmPen();
+		}
+		if (runeName.equals("Attack Speed"))
+		{
+			return new QuintAS();
 		}
 		System.err.println("Invalid rune name: " + runeName);
 		return null;

@@ -91,3 +91,15 @@ Started design of being able to dynamically add runes and output their types.
 Dec. 12
 Added bonus attack speed, bonus crit, magic pen, and % HP field into Urgot Stats.
 Completed implementation of primary tier 3 Marks, Seals, and Glyphs.
+
+
+Dec. 13
+Finished "important" rune implementation.
+--All primaries, relevant quint secondaries
+Added RuneSets class to manage default rune comparison.
+Fixed printing of runes in getRunesByString()
+Added RuneManager to apply different rune sets to RuneSet class.
+Added addRunes method in UrgotScenario class so runes can be added.
+Adjusted computeStats method to account for runes.
+RunesTest class added.
+-Added method to tests no rune urgot vs. standard rune Urgot.

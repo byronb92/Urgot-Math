@@ -3,12 +3,16 @@ package scenario;
 import calc.BattleCalculator;
 import items.ItemManager;
 import items.Items;
+import runes.RuneManager;
+import runes.RuneSetup;
+import runes.Runes;
 import urgot.UrgotCombos;
 import urgot.UrgotStats;
 
 public class UrgotScenario {
 	private UrgotStats urgot;
 	private ItemManager itemManager;
+	private RuneManager runeManager;
 	private UrgotCombos urgCombos;
 	private BattleCalculator battleManager;
 	
@@ -21,6 +25,7 @@ public class UrgotScenario {
 	{
 		urgot = new UrgotStats(currentLevel);
 		itemManager = new ItemManager(urgot);
+		runeManager = new RuneManager(urgot);
 		battleManager = new BattleCalculator();
 	}
 	
@@ -30,11 +35,18 @@ public class UrgotScenario {
 		itemManager.addItem(itemName);
 	}
 	
-
+	public void addRunes(RuneSetup rs)
+	{
+		runeManager.setUpRunes(rs);
+	}
 	
+	// TODO: Add masteries.
+
+	// Method run after item sets are computed.
 	public void computeStats()
 	{
 		urgCombos = new UrgotCombos(battleManager, urgot);
+		runeManager.getRunes().computeRuneStats(urgot);
 		itemManager.computeItemStats();
 	}
 	

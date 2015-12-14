@@ -6,6 +6,8 @@ import java.util.Map.Entry;
 import calc.BattleCalculator;
 import items.Item;
 import items.Items;
+import runes.RuneManager;
+import runes.RuneSetup;
 import scenario.Phase;
 import scenario.ScenarioManager;
 import scenario.SortRank;
@@ -25,6 +27,7 @@ public class OutputUrgotCompare {
 	{
 		sceManager.setUpStatCollection(setupCode);
 	}
+	
 
 	/** Uses ScenarioManager method findHighestRawDamage()
 	 * To find the build which has the highest combo damage output.
