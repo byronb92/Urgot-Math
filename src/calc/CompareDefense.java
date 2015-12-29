@@ -15,7 +15,9 @@ public class CompareDefense {
 		double healthA = sce.getUrgotStats().getTotalHP();
 		double physicalReductionA = (100 / (100+sce.getUrgotStats().getTotalArmor()));
 		
+		// http://forums.na.leagueoflegends.com/board/showthread.php?t=601034
 		double trueHP = healthA / physicalReductionA;
+		//double trueHP = healthA + ((healthA * 0.01)*(sce.getUrgotStats().getTotalArmor()));
 		return trueHP;
 	}
 	

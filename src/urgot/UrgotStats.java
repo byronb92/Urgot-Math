@@ -1,12 +1,13 @@
 package urgot;
 
+import calc.UniqueCalculator;
+
 public class UrgotStats {
 	
 	private int currentLevel		= 1;
 
 
 	private double baseAD			= 52.048;
-	private double bonusBaseAD		= 0;		// Sterak's gage.
 	private double baseArmor		= 24.544;
 	private double baseMR			= 30.0;
 	private double baseAS			= 0.64443298969;
@@ -16,36 +17,55 @@ public class UrgotStats {
 	private double baseHealthRegen  = 6.505;
 	private double baseManaRegen	= 8.59; 	// 8.59 per 5 seconds, additive.
 
-	private double hpPerLevel		= 89.0;
-	private double adPerLevel		= 5.2048;
-	private double armPerLevel		= 3.3;
-	private double asPerLevel		= 0.29;
-	private double manaPerLevel		= 55.0;
-	private double baseManaPerLevel = 0.65;
-	private double baseHealthPerLevel = 0.6;
+	private double hpPerLevel				= 89.0;
+	private double adPerLevel				= 5.2048;
+	private double armPerLevel				= 3.3;
+	private double asPerLevel				= 0.29;
+	private double manaPerLevel				= 55.0;
+	private double baseManaRegenPerLevel 	= 0.65;
+	private double baseHealthRegenPerLevel 	= 0.6;
+		
+	private double bonusBaseAD		= 0;		// Sterak's gage.
+	private double bonusADPerLevel	= 0;
+	private double bonusAPPerLevel	= 0;
 	
 	// Runes, masteries, items
 	private double bonusHP			= 0;
-	private double bonusPercentHP 	= 0;
 	private double bonusAD			= 0;
 	private double bonusAP			= 0;
 	private double bonusArmor		= 0;
 	private double bonusMR			= 0;
 	private double bonusAS			= 0;
-	private double bonusManaRegen 	= 0;
+	
+	private double bonusPercentHP 	= 0;
 	private double bonusMana	 	= 0;
+	private double bonusManaRegen 	= 0;
 	private double bonusHealthRegen = 0;
-	private double bonusCritChance	= 0;
 	private double bonusArmorPen 	= 0;	// Last Whisper changes in preseason.
 	
+	private double lifeSteal		= 0;
+	private double spellVamp		= 0;
+	private double critChance		= 0;
 
 	private double flatMS			= 335;
 	private double percentMS		= 0;
 	private double cdr				= 0;	//TODO: Include runes/masteries.
+	
+	private double damageAmp		= 0;
+	private double damageReduc		= 0.85;	// Urgot passive.
 	private double flatArmorPen 	= 0;
 	private double flatMagicPen		= 0;
+	private double percentArmorPen  = 0;
+	private double percentMagicPen	= 0;
 	private double armorReduc		= 0;
-	private double damageReduc		= 0.85;	// Urgot passive.
+	
+	private double tenacity			= 0;
+	private double slowResist		= 0;
+
+
+	
+	private boolean intelligenceCDR = false;
+
 
 	
 	public UrgotStats()
@@ -68,14 +88,23 @@ public class UrgotStats {
 	public double getBaseADFromItems() { return bonusBaseAD; }
 	public double getBaseArmorFromLevel() { return baseArmor + (armPerLevel * (currentLevel - 1)); }
 	public double getBaseHPRegenFromLevel() { 
-		return baseHealthRegen + (baseHealthPerLevel * (currentLevel - 1));	
+		return baseHealthRegen + (baseHealthRegenPerLevel * (currentLevel - 1));	
 	}
-	public double getTotalMS() { return (flatMS) + (flatMS * percentMS); }
+	public double getFlatMS()
+	{
+		return flatMS;
+	}
+	public double getTotalMS() { 
+		UniqueCalculator unique = new UniqueCalculator();
+		return unique.moveSpeedCalculator((flatMS) + (flatMS * percentMS));
+	}
 	public double getTotalHP() { 
 		return (baseHP + (hpPerLevel * (currentLevel - 1)) + bonusHP) + 
 			(bonusPercentHP * (baseHP + (hpPerLevel * (currentLevel - 1)) + bonusHP)); 
 	}
-	public double getTotalAD() 	{ return (baseAD + (adPerLevel * (currentLevel - 1)) + bonusAD); }
+	public double getTotalAD() 	{ 
+		return (baseAD + (adPerLevel * (currentLevel - 1)) + bonusAD + (bonusADPerLevel * (currentLevel - 1))); 
+	}
 	public double getTotalArmor() { return getBaseArmorFromLevel() + bonusArmor; }
 	public double getTotalMR() { return baseMR + bonusMR; }
 	public double getTotalAS() {
@@ -83,15 +112,19 @@ public class UrgotStats {
 	}
 	public double getTotalMana() { return (baseMana + (manaPerLevel * (currentLevel - 1)) + bonusMana); }
 	public double getCDR() 		{ return cdr; }
+	public double getTenacity() { return tenacity; }
+	public double getSlowResist() { return slowResist; }	
 	
 	public double getBonusAD()	{ return bonusAD; }
-	public double getBonusAP() 	{ return bonusAP; }
+	public double getBonusAP() 	{ return bonusAP + (bonusAPPerLevel * (currentLevel - 1));  }
 	public double getBonusArmor() { return bonusArmor; }
+	public double getBonusMR() { return bonusMR; }
 	public double getBonusBaseAD() 	{ return bonusBaseAD; }
 	public double getArmorPen() 	{ return flatArmorPen; }
 	public double getArmorReduc() 	{ return armorReduc; }
+	public double getDamageAmp()	{ return damageAmp; }
 	public double getDamageReduc() 	{ return damageReduc; }
-	public double getBonusCrit()	{ return bonusCritChance; }
+	public double getBonusCrit()	{ return critChance; }
 	public double getResistanceReduction(double resistValue)
 	{
 		if (resistValue >= 0)
@@ -100,30 +133,63 @@ public class UrgotStats {
 		}
 		else
 		{
+			// TODO: WTF  is this?
 			return (2) - ((100)/(100 - resistValue));
 		}
 	}
+	
+	public double getPercentMS() { return percentMS; }
+	
+	public double getTotalHPRegen() { 
+		return getBaseHPRegenFromLevel() + bonusHealthRegen; 
+	}
 
+	public double getBonusHealthRegen() { return bonusHealthRegen; }
+	public double getLifeSteal() { return lifeSteal; } 
+	public double getSpellVamp() { return spellVamp; }
+	// Intelligence mastery gives you a max of 45% cdr.
+	public void increaseCDRCap() { intelligenceCDR = true; }
+	
+	// Priority Stats.
 	public void addBonusHP(double value) { bonusHP = bonusHP + value; }
-	public void addBonusPercentHP(double value) { bonusPercentHP = bonusPercentHP + value; }
+	public void addBonusMana(double value) { bonusMana = bonusMana + value;}
 	public void addBonusAD(double value) { bonusAD = bonusAD + value; }
 	public void addBonusAP(double value) { bonusAP = bonusAP + value; }
 	public void addBonusArmor(double value) { bonusArmor = bonusArmor + value; }
 	public void addBonusMR(double value) { bonusMR = bonusMR + value; }
-	public void addBonusMana(double value) { bonusMana = bonusMana + value;}
+	public void addBonusPercentHP(double value) { bonusPercentHP = bonusPercentHP + value; }
+	// As of patch 5.24, Sterak's Gauge only affects this.
+	public void addBonusBaseAD(double value) { 
+		bonusBaseAD = getBaseADFromLevel() + (getBaseADFromLevel() * value);
+	}
+	public void addBonusADPerLevel(double value) { bonusADPerLevel = bonusADPerLevel + value; }
+	public void addBonusAPPerLevel(double value) { bonusAPPerLevel = bonusAPPerLevel + value; }
+	public void addCDR(double value) { 
+		cdr = cdr + value; 
+		if (cdr > 0.45 && intelligenceCDR)
+		{
+			cdr = 0.45;
+		}
+		else if (cdr > 0.40 && !intelligenceCDR)
+		{
+			cdr = 0.40;
+		}
+	}
+	
+	// Regen / Sustain
 	public void addBonusHealthRegen(double value) { 
 		bonusHealthRegen = bonusHealthRegen + value;
 	}
 	public void addBonusManaRegen(double value) { 
 		bonusManaRegen = bonusManaRegen + value; 
 	}
-	public void addBonusArmorPen(double value) { bonusArmorPen = bonusArmorPen + value; }
-	// As of patch 5.22, Sterak's Gauge only affects this.
-	public void addBonusBaseAD(double value) { 
-		bonusBaseAD = getBaseADFromLevel() + (getBaseADFromLevel() * value);
-	}
+	public void addLifeSteal(double value) { lifeSteal = lifeSteal + value; }
+	public void addSpellVamp(double value) { spellVamp = spellVamp + value; }
 	
-
+	// Damage Amplification
+	public void addBonusArmorPen(double value) { bonusArmorPen = bonusArmorPen + value; }
+	public void addPercentArmorPen(double value) { percentArmorPen = percentArmorPen + value; }
+	public void addPercentMagicPen(double value) { percentMagicPen = percentMagicPen + value; }
 	public void addArmReduc(double value) {
 		if (armorReduc == 0)
 		{
@@ -145,16 +211,13 @@ public class UrgotStats {
 			damageReduc  = damageReduc  * (1-value);
 		}
 	}
-	public void addCDR(double value) { 
-		// TODO: Check mastery.
-		cdr = cdr + value; 
-		if (cdr > 0.40)
-		{
-			cdr = 0.40;
-		}
-	}
-	public void addMoveSpeed(double value) {
+
+	public void addFlatMoveSpeed(double value) {
 		flatMS = flatMS + value;
+	}
+	
+	public void addPercentMoveSpeed(double value) {
+		percentMS = percentMS + value;
 	}
 	
 	public void addBonusAS(double value)
@@ -164,12 +227,48 @@ public class UrgotStats {
 	
 	public void addBonusCritChance(double value)
 	{
-		bonusCritChance = bonusCritChance + value;
+		critChance = critChance + value;
 	}
 
 	public void addMagicPen(double value)
 	{
 		flatMagicPen = flatMagicPen + value;
+	}
+	
+	// TODO: Test math of damage amplifcation.
+	public void addDamageAmplification(double value)
+	{
+		if (damageAmp == 0)
+		{
+			damageAmp = 1 - (1-value);
+		}
+		else
+		{
+			damageAmp = (1 - damageAmp) * (1-value);
+		}
+	}
+	
+	public void addTenacity(double value)
+	{
+		if (tenacity == 0)
+		{
+			tenacity = value;
+		}
+		else 
+		{
+			tenacity = tenacity + (tenacity * value);
+		}
+	}
+	public void addSlowResist(double value)
+	{
+		if (slowResist == 0)
+		{
+			slowResist = value;
+		}
+		else 
+		{
+			slowResist = slowResist + (slowResist * value);
+		}
 	}
 
 }

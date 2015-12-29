@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class BattleCalculator 
 {
-	
 	double physicalDamage = 0;
+	double magicDamage = 0;
 	double spellCastTime = 0;
 	double shieldStrength = 0;
 	int manaUsage = 0;

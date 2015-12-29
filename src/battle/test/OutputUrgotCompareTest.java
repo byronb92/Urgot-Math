@@ -40,15 +40,15 @@ public class OutputUrgotCompareTest extends TestCase {
 //		comp.outputSortedDamageDescending();
 //	}
 //	
-//	public void testOutputSortedArmorFullBuild()
-//	{
-//		comp.statCollection(StatSetup.LEVEL18);
-//		comp.outputSortedArmorAscending();
-//	}
-	public void testPassiveAndActives()
+	public void testOutputSortedArmorFullBuild()
 	{
-		comp.statCollection(StatSetup.LEVEL6);
-		comp.outputPassiveandActivies();
+		comp.statCollection(StatSetup.LEVEL18);
+		comp.outputSortedArmor(SortRank.DESCENDING);
 	}
+//	public void testPassiveAndActives()
+//	{
+//		comp.statCollection(StatSetup.LEVEL6);
+//		comp.outputPassiveandActivies();
+//	}
 
 }

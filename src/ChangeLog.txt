@@ -103,3 +103,16 @@ Added addRunes method in UrgotScenario class so runes can be added.
 Adjusted computeStats method to account for runes.
 RunesTest class added.
 -Added method to tests no rune urgot vs. standard rune Urgot.
+
+Dec. 1-Seven
+Deletd Unused MyComparator class.
+Added field for bonus ad per level and ap per leve.
+Added lifesteal and spellvamp
+Incorporate spellvamp into battle calculator:
+
+Dec. 22
+Added damage amplifcaiton.
+Added Intelligence CDR cap increase.
+Added movement speed calculator
+Completed first rough implementation of mastery system.
+

@@ -14,7 +14,7 @@ public class Boots extends Item {
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		urgot.addMoveSpeed(moveSpeed);
+		urgot.addFlatMoveSpeed(moveSpeed);
 		
 	}
 

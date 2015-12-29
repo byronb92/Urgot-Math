@@ -80,12 +80,15 @@ public class Phase {
 	public void addScenarioLevel(String[] itemNames, int currentLevel, RuneSetup runes)
 	{
 		UrgotScenario currentScenario = new UrgotScenario(currentLevel);
+		currentScenario.addRunes(runes);
 		for (String item: itemNames)
 		{
 			currentScenario.addItem(item);
 		}
-		currentScenario.addRunes(runes);
 		currentScenario.computeStats();
+		
+		
+		// Run combos to output Urgot damage.
 		if (currentLevel >= 6)
 		{
 			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);

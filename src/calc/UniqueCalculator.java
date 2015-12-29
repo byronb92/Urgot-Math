@@ -49,6 +49,47 @@ public class UniqueCalculator {
 	// -10% damage taken from Critical strike icon Critical strikes.
 	// TODO: Youmuu's Ghostblade
 	// UNIQUE: Gain +40% attack speed and +20% movement speed for 6 seconds. 45 second cooldown.
+	
+	
+	// Softcap of movement at 415 and final cap at 490.
+	public double moveSpeedCalculator(double speedToAdd, double currentSpeed)
+	{
+		double rawSpeed = speedToAdd + currentSpeed;
+		if (rawSpeed >= 415 && rawSpeed  <= 490)
+		{
+			return rawSpeed * 0.8 + 83;
+		}
+		else if (rawSpeed > 490 )
+		{
+			return rawSpeed * 0.5 + 230;
+		}
+		
+		else if (rawSpeed < 220)
+		{
+			return rawSpeed * 0.5 + 110;
+		}
+			
+		return rawSpeed;
+	}
 
+	
+	public double moveSpeedCalculator(double rawSpeed)
+	{
+		if (rawSpeed >= 415 && rawSpeed  <= 490)
+		{
+			return rawSpeed * 0.8 + 83;
+		}
+		else if (rawSpeed > 490 )
+		{
+			return rawSpeed * 0.5 + 230;
+		}
+		
+		else if (rawSpeed < 220)
+		{
+			return rawSpeed * 0.5 + 110;
+		}
+			
+		return rawSpeed;
+	}
 
 }
