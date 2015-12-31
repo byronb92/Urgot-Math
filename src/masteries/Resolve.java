@@ -66,9 +66,14 @@ public class Resolve {
 				+ "Does not count Ionian Boot reduction.";
 	}
 	
-	public String perseverance(UrgotStats urgot)
+	public void perseveranceBeforeItems(UrgotStats urgot)
 	{
 		urgot.addBonusHealthRegen(0.50);
+
+	}
+	
+	public String perseveranceAfterItems(UrgotStats urgot)
+	{
 		return " 200% health regen when under 25% hp. (" +
 				urgot.getBaseArmorFromLevel() * 1.50 + ")";
 	}

@@ -8,9 +8,15 @@ public class Cunning {
 	/** Wanderer: 3% MS out of combat.
 	 *  Savagery: 5 bonus damage to minions/monsters from autos/single target spells.
 	 */
+	//TODO: Fix wanderer math.
 	public double wanderer(UrgotStats urgot)
 	{
 		return (urgot.getTotalMS() + (urgot.getTotalMR() * 0.03));
+	}
+	
+	public String savagery()
+	{
+		return "5 bonus damage to minions/monsters from autos/single target spells.";
 	}
 
 	/** Runic Affinity: Jungle/Baron buffs last 15% longer.
@@ -20,6 +26,11 @@ public class Cunning {
 	public String runicAffinity()
 	{
 		return "Jungle/Baron buffs last 15% longer";
+	}
+	
+	public String secretStash()
+	{
+		return "Potions last 10% longer, health potions are biscuits that give +20 hp, +10 mana on use.)";
 	}
 	
 	/** Merciless: 5% increased damage to champions below 40% hp.
@@ -57,6 +68,10 @@ public class Cunning {
 		return (perMinute * minutesPassed) + allyPassiveGold;
 	}
 	
+	public String dangerousGame()
+	{
+		return "Champion kills and assists restore 5% of missing health/5% of missing mana.";
+	}
 	/** Precision: 5+ (0.5 x level armor pen) or amgic pen:
 	 *  Intelligence: 45% CDR, 5% starting CDR.
 	 */
@@ -93,9 +108,12 @@ public class Cunning {
 				+ "movement speed for 3 seconds.";
 	}
 	
-	public double thunder(UrgotStats urgot)
+	public String thunder(UrgotStats urgot, BattleCalculator calc)
 	{
-		return (10 * (urgot.getLevel()) + (0.30 * urgot.getBonusAD() + (0.10 * urgot.getBonusAP())));
+		// TODO: This is supposed to be magic damage, not ad damage!
+		double thunderDamage = (10 * (urgot.getLevel()) + (0.30 * urgot.getBonusAD() + (0.10 * urgot.getBonusAP())));
+		calc.adDamage(thunderDamage);
+		return "Thunderlod's Decree damage: " + thunderDamage;
 	}
 	
 	public double windspeaker(BattleCalculator calc)

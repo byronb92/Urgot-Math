@@ -3,6 +3,8 @@ package scenario;
 import calc.BattleCalculator;
 import items.ItemManager;
 import items.Items;
+import masteries.Masteries;
+import masteries.MasterySet;
 import runes.RuneManager;
 import runes.RuneSetup;
 import runes.Runes;
@@ -13,6 +15,7 @@ public class UrgotScenario {
 	private UrgotStats urgot;
 	private ItemManager itemManager;
 	private RuneManager runeManager;
+	private Masteries masteries;
 	private UrgotCombos urgCombos;
 	private BattleCalculator battleManager;
 	
@@ -26,6 +29,7 @@ public class UrgotScenario {
 		urgot = new UrgotStats(currentLevel);
 		itemManager = new ItemManager(urgot);
 		runeManager = new RuneManager(urgot);
+		masteries = new Masteries();
 		battleManager = new BattleCalculator();
 	}
 	
@@ -40,7 +44,21 @@ public class UrgotScenario {
 		runeManager.setUpRunes(rs);
 	}
 	
-	// TODO: Add masteries.
+	public void addPreItemMastery(MasterySet mastery)
+	{
+		masteries.applyUrgotMastery(mastery, urgot);
+	}
+	
+	public void addAfterItemMastery(MasterySet mastery)
+	{
+		masteries.applyUrgotMasteryAfterItems(mastery);
+	}
+	
+	public void addAfterBattleMastery(MasterySet mastery)
+	{
+		masteries.applyUrgotMasteryAfterBattle(mastery, urgot, battleManager);
+	}
+
 
 	// Method run after item sets are computed.
 	public void computeStats()
@@ -82,6 +100,11 @@ public class UrgotScenario {
 	public Items getUrgotItems()
 	{
 		return itemManager.getItems();
+	}
+	
+	public Masteries getMasteries()
+	{
+		return masteries;
 	}
 
 }

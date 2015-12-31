@@ -1,5 +1,6 @@
 package scenario;
 
+import masteries.MasterySet;
 
 /**
  * @author byronb92
@@ -43,6 +44,8 @@ public class EarlyGame extends Phase {
 	{
 		switch (setupCode)
 		{
+			case MASTERIES_LEVEL1: compareLevelOneMasteries();
+			break;
 			case LEVEL6: compareLevelSix();
 			break;
 			
@@ -50,6 +53,14 @@ public class EarlyGame extends Phase {
 						System.out.println("There will be errors");
 			break;
 		}
+	}
+	/**
+	 * Tries to compare 
+	 */
+	public void compareLevelOneMasteries()
+	{
+		addBlankScenario(1, MasterySet.THUNDERLORD_BALANCED);
+		addBlankScenario(1, MasterySet.DEATHFIRE_BALANCED);
 	}
 	/**
 	 * Compares first-level component items before legendaries are built.

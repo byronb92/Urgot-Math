@@ -3,15 +3,16 @@ import java.util.ArrayList;
 
 public class BattleCalculator 
 {
-	double physicalDamage = 0;
-	double magicDamage = 0;
-	double spellCastTime = 0;
-	double shieldStrength = 0;
-	int manaUsage = 0;
+	private double spellDamage = 0;
+	private double physicalDamage = 0;
+	private double magicDamage = 0;
+	private double spellCastTime = 0;
+	private double shieldStrength = 0;
+	private int manaUsage = 0;
 	
-	ArrayList<Double> listDamageReduc;
-	ArrayList<Double> listArmReduc;
-	double armorPenetration;
+	private ArrayList<Double> listDamageReduc;
+	private ArrayList<Double> listArmReduc;
+	private double armorPenetration;
 	
 	
 	double opponentArmor;
@@ -40,6 +41,10 @@ public class BattleCalculator
 		physicalDamage = physicalDamage + damage;
 	}
 	
+	public void addSpellDamage(double damage)
+	{
+		spellDamage = spellDamage + damage;
+	}
 	public void shieldStrength(double strength)
 	{
 		shieldStrength = strength;
@@ -115,7 +120,7 @@ public class BattleCalculator
 	
 	
 	
-	
+	public double getSpellDamage() { return spellDamage; }
 	public double getADDamage() { return physicalDamage; }
 	public double getManaUsage() { return manaUsage; }
 	public double getShieldPoints() { return shieldStrength; }

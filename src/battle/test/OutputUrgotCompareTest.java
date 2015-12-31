@@ -16,6 +16,12 @@ public class OutputUrgotCompareTest extends TestCase {
 		System.out.println("-----------------");
 	}
 
+	public void testMasteries()
+	{
+		comp.statCollection(StatSetup.MASTERIES_LEVEL1);
+		comp.outputHighestRawDamage();
+		comp.outputPassiveandActivies();
+	}
 	// Simple tests to ensure there are no nullpointer exceptions.
 //	public void testOutputLevelSix()
 //	{
@@ -40,11 +46,11 @@ public class OutputUrgotCompareTest extends TestCase {
 //		comp.outputSortedDamageDescending();
 //	}
 //	
-	public void testOutputSortedArmorFullBuild()
-	{
-		comp.statCollection(StatSetup.LEVEL18);
-		comp.outputSortedArmor(SortRank.DESCENDING);
-	}
+//	public void testOutputSortedArmorFullBuild()
+//	{
+//		comp.statCollection(StatSetup.LEVEL18);
+//		comp.outputSortedArmor(SortRank.DESCENDING);
+//	}
 //	public void testPassiveAndActives()
 //	{
 //		comp.statCollection(StatSetup.LEVEL6);

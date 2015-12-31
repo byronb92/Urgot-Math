@@ -36,7 +36,8 @@ public class ScenarioManager {
 	
 	public void setUpStatCollection(StatSetup setupCode)
 	{
-		if (setupCode == StatSetup.LEVEL6)
+		
+		if (setupCode == StatSetup.LEVEL6 || setupCode == StatSetup.MASTERIES_LEVEL1)
 		{
 			early = new EarlyGame();
 			setUpPhase(early, setupCode);
@@ -234,13 +235,18 @@ public class ScenarioManager {
 	
 	public String getScenarioItems(UrgotScenario sce)
 	{
-		StringBuilder builder = new StringBuilder();
-		builder.append("Items: ");
-		for(Entry<String,Item> item: sce.getUrgotItems().getItems().entrySet())
+
+		if (sce.getUrgotItems().getItems().size() > 0)
 		{
-			builder.append(item.getValue().getName() + " ");
+			StringBuilder builder = new StringBuilder();
+			builder.append("Items: ");
+			for(Entry<String,Item> item: sce.getUrgotItems().getItems().entrySet())
+			{
+				builder.append(item.getValue().getName() + " ");
+			}
+			return builder.toString();
 		}
-		return builder.toString();
+		return null;
 	}
 	
 	public int getScenarioCost(UrgotScenario sce)

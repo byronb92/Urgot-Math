@@ -40,7 +40,12 @@ public class OutputUrgotCompare {
 		rawDamageString.append("Highest Raw Damage: ");
 		rawDamageString.append(highestDamage.getBattleStats().getADDamage());
 		rawDamageString.append("\n");
-		rawDamageString.append(sceManager.getScenarioItems(highestDamage));
+		if (sceManager.getScenarioItems(highestDamage) != null)
+		{
+			rawDamageString.append(sceManager.getScenarioItems(highestDamage));
+		}
+		// Keystone:
+		rawDamageString.append(highestDamage.getMasteries().keystone);
 		System.out.println(rawDamageString.toString());
 		return rawDamageString.toString();
 	}
@@ -91,15 +96,34 @@ public class OutputUrgotCompare {
 	{
 		StringBuilder dmgString = new StringBuilder();
 		
+
 		for (UrgotScenario sce : sceManager.getScenarios())
 		{
-			dmgString.append(sceManager.getScenarioItems(sce));
-			dmgString.append("\n");
-			dmgString.append(sce.getUrgotItems().getAllItemDetails());
-			dmgString.append("\n");
-			dmgString.append("----------");
-			dmgString.append("\n");
+			// Items
+			if (sceManager.getScenarioItems(sce) != null)
+			{
+				dmgString.append(sceManager.getScenarioItems(sce));
+				dmgString.append("\n");
+				dmgString.append(sce.getUrgotItems().getAllItemDetails());
+				dmgString.append("\n");
+				dmgString.append("----------");
+				dmgString.append("\n");
+			}
+			
+			// Masteries
+			if (!sce.getMasteries().benefitsIsEmpty())
+			{
+				for (int i = 0; i < sce.getMasteries().getBenefitsList().size(); i++)
+				{
+					dmgString.append(sce.getMasteries().getBenefitsList().get(i));
+					dmgString.append("\n");
+					
+				}
+				dmgString.append("----------");
+				dmgString.append("\n");
+			}
 		}
+		
 		System.out.println(dmgString.toString());
 		return dmgString.toString();
 	}

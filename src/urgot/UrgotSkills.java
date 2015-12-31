@@ -9,7 +9,6 @@ public class UrgotSkills
 	private int qSpellCasts = 0;
 	private int wSpellCasts = 0;
 	private int eSpellCasts = 0;
-	//private int rSpellCasts = 0;
 	private int numbOfAttacks = 0;
 	
 	public void clearSkillCasts()
@@ -17,7 +16,6 @@ public class UrgotSkills
 		qSpellCasts = 0;
 		wSpellCasts = 0;
 		eSpellCasts = 0;
-		//rSpellCasts = 0;
 		numbOfAttacks = 0;
 	}
 	
@@ -57,8 +55,10 @@ public class UrgotSkills
 		}
 		qSpellCasts++;
 		// +30 dmg per level.
-		battleManager.adDamage((10 + (30*(level - 1)) ) +
-				(urgot.getTotalAD() * 0.85));
+		double damage = (10 + (30*(level - 1)) ) +
+				(urgot.getTotalAD() * 0.85);
+		battleManager.adDamage(damage);
+		battleManager.addSpellDamage(damage);
 		numbOfAttacks++;
 	
 	}
@@ -106,8 +106,10 @@ public class UrgotSkills
 	{
 		// Per Level Changes
 		// +55 AD, +5 Mana, -1 CD, 0.02 Armor Reduction 
-		battleManager.adDamage((75 + (55*(level - 1))) + 
-				(urgot.getBonusAD() * 0.60));
+		double damage = (75 + (55*(level - 1))) + 
+				(urgot.getBonusAD() * 0.60);
+		battleManager.adDamage(damage);
+		battleManager.addSpellDamage(damage);
 		battleManager.burnMana(50 + (5*(level - 1)));
 		if (eSpellCasts > 0)
 		{
@@ -115,7 +117,7 @@ public class UrgotSkills
 					* (1-urgot.getCDR()));
 		}
 		eSpellCasts++;
-		numbOfAttacks = numbOfAttacks + 5; // DOT Damage, 1 tick per second.
+		numbOfAttacks = numbOfAttacks + 1;
 		urgot.addArmReduc(0.12 + (0.02*(level - 1)));
 	}
 	

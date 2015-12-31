@@ -5,8 +5,8 @@ import calc.BattleCalculator;
 public class UrgotCombos {
 	/**
 	 * Level 1 - Q, Auto
-	 * Level 2 - Q - E
-	 * Level 3 - E - Q - Q
+	 * Level 2 - E - Q - Q - Q
+	 * Level 3 - E - Q - Q - Q
 	 * Level 4 - E - W - Q - Q
 	 * Level 5 - E - W - Q - Q
 	 * 17% CDR Combo = E - W - Q - Q - Q
@@ -30,12 +30,30 @@ public class UrgotCombos {
 	{
 		return urgotSkills;
 	}
-	public void levelOne()
+	public void levelOneQ()
 	{
 		urgotSkills.qAcidHunter(1);
+		urgotSkills.qAcidHunter(1);
+		battleManager.adDamage(urgot.getTotalAD());
+
+	}
+	
+	// Shield, 3 Auto Attacks
+	public void levelOneW()
+	{
+		urgotSkills.wTerrorCapacitor(1);
+		battleManager.adDamage(urgot.getTotalAD());
+		battleManager.adDamage(urgot.getTotalAD());
 		battleManager.adDamage(urgot.getTotalAD());
 	}
 	
+	public void levelTwoQE()
+	{
+		urgotSkills.eNoxianCorrosiveCharge(1);
+		urgotSkills.qAcidHunter(1);
+		urgotSkills.qAcidHunter(1);
+		urgotSkills.qAcidHunter(1);
+	}
 	/**
 	 * Correct output combos based on skill rank.
 	 * Skill ranked is based on Urgot's current level.
@@ -93,6 +111,7 @@ public class UrgotCombos {
 	{
 		if (currentLevel >=6)
 		{
+			
 			// Power spikes
 			// 6 Ult Rank 1, 9 Q Max, 11 Ult Rank 2, 13 E Max, 16 Ult Rank 3
 			if (currentLevel == 6)
@@ -200,6 +219,44 @@ public class UrgotCombos {
 				urgotSkills.qAcidHunter(5);
 			}
 		}
+		
+		else
+		{
+			if (currentLevel == 1)
+			{
+				levelOneQ();
+			}
+			else if (currentLevel == 2)
+			{
+				levelTwoQE();
+			}
+			else if (currentLevel == 3)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(1);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(1);
+				urgotSkills.qAcidHunter(1);
+				urgotSkills.qAcidHunter(1);
+			}
+			else if (currentLevel == 4)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(1);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(2);
+				urgotSkills.qAcidHunter(2);
+				urgotSkills.qAcidHunter(2);
+			}
+			
+			else if (currentLevel == 5)
+			{
+				urgotSkills.eNoxianCorrosiveCharge(1);
+				urgotSkills.wTerrorCapacitor(1);
+				urgotSkills.qAcidHunter(3);
+				urgotSkills.qAcidHunter(3);
+				urgotSkills.qAcidHunter(3);
+			}
+		}
+		
 
 	}
 	
