@@ -119,8 +119,12 @@ Completed first rough implementation of mastery system.
 December 30th
 Added ability to add masteries in UrgotScenarios
 Fixed bug where E was counted as 5 seperate attacks (because it is a DOT);
-Added "Spell Damage" field in BattleCalculator
+Added Spell Damage field in BattleCalculator
 Changed some logic of the program to account for mastery logic.
 Fixed bug were Ferocity was amplying ALL damage by 2% instead of ability damage.
-Added comparison between thunderlord's decree and deathfire touch at level 1
+Added comparison between Thunderlord's decree and deathfire touch at level 1
+
+
+Jan 1st.
+Adding Youmuu's Ghostblade active calculations.
 
