@@ -5,14 +5,22 @@ import java.util.ArrayList;
 import calc.BattleCalculator;
 import urgot.UrgotStats;
 
+/**
+ * The masteries object will be attached to every UrgotScenario object.
+ * There are several types of masteries that should be applied before any items are added,
+ * right after items are added, and right after battle scenarios. This is due to the fact
+ * that some stats need to be applied before others to correctly compute damage output.
+ * @author byronb92
+ *
+ */
 public class Masteries {
 	
-	Ferocity ferocity;
-	Cunning cunning;
-	Resolve resolve;
+	private Ferocity ferocity;
+	private Cunning cunning;
+	private Resolve resolve;
 	
-	ArrayList<String> masteryBenefits;
-	public String keystone;
+	private ArrayList<String> masteryBenefits;
+	private String keystone;
 	
 	
 	public Masteries()
@@ -33,10 +41,12 @@ public class Masteries {
 	 * Deathfire Touch Balanced
 	 * Ferocity:
 	 * Ferocity, Feast, Vampirism, Oppressor, Battering Blows, Deathfire Touch
-	 *
 	 * Cunning:
 	 * Savagery, Secret Stash, Meditation, Dangerous Game
+	 * 
+	 * Tanky Urgot
 	 */
+	
 	
 
 	/**
@@ -59,10 +69,7 @@ public class Masteries {
 			cunning.meditation(urgot);
 			masteryBenefits.add(cunning.dangerousGame());
 			cunning.intelligence(urgot);
-			masteryBenefits.add(ferocity.feast());
-			
-
-			
+			masteryBenefits.add(ferocity.feast());	
 		}
 		
 		if (mastery == MasterySet.DEATHFIRE_BALANCED)
@@ -73,10 +80,24 @@ public class Masteries {
 			
 			masteryBenefits.add(cunning.savagery());
 			masteryBenefits.add(cunning.secretStash());
-			cunning.meditation(urgot);
+			masteryBenefits.add(cunning.meditation(urgot));
 			masteryBenefits.add(cunning.dangerousGame());
 			
 			
+		}
+		
+		if (mastery == MasterySet.BOND_BALANCED)
+		{
+			masteryBenefits.add(resolve.toughSkin());
+			resolve.veterans(urgot);
+			resolve.perseveranceBeforeItems(urgot);
+			resolve.swiftness(urgot);
+			masteryBenefits.add(resolve.stoneBond());
+			
+			masteryBenefits.add(cunning.savagery());
+			masteryBenefits.add(cunning.secretStash());
+			masteryBenefits.add(cunning.meditation(urgot));
+			masteryBenefits.add(cunning.dangerousGame());
 		}
 	}
 	
@@ -86,9 +107,14 @@ public class Masteries {
 	 * Resolve Tree: Unyielding, Explorer, Perseverence(2nd Half), Grasp of the Undying Dead
 	 * 		
 	 */
-	public void applyUrgotMasteryAfterItems(MasterySet mastery)
+	public void applyUrgotMasteryAfterItems(MasterySet mastery, UrgotStats urgot)
 	{
-		
+		if (mastery == MasterySet.BOND_BALANCED)
+		{
+			resolve.unyieldingArmor(urgot);
+			resolve.unyieldingMR(urgot);
+			resolve.perseveranceAfterItems(urgot);
+		}
 	}
 	
 	/**
@@ -118,14 +144,8 @@ public class Masteries {
 		}	
 	}
 	
-	public ArrayList<String> getBenefitsList()
-	{
-		return masteryBenefits;
-	}
-	
-	public boolean benefitsIsEmpty()
-	{
-		return masteryBenefits.isEmpty();
-	}
+	public String getKeyStone() { return keystone; }
+	public ArrayList<String> getBenefitsList() { return masteryBenefits; }
+	public boolean benefitsIsEmpty() { return masteryBenefits.isEmpty(); }
 
 }

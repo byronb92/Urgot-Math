@@ -4,21 +4,22 @@ import calc.BattleCalculator;
 
 public class UrgotCombos {
 	/**
-	 * Level 1 - Q, Auto
-	 * Level 2 - E - Q - Q - Q
-	 * Level 3 - E - Q - Q - Q
+	 * Level 1 - W, 3 Autos  / 2 Qs, 1 Auto
+	 * Level 2 - W, 3 Autos  / 2 Qs, 1 Auto
+	 * Level 3 - W, 3 Autos  / 2 Qs, 1 Auto
 	 * Level 4 - E - W - Q - Q
 	 * Level 5 - E - W - Q - Q
-	 * 17% CDR Combo = E - W - Q - Q - Q
-	 * 40% CDR Combo = E - W - Q - Q - Q - Q
+	 * 17% CDR Combo = E - W - Q - Q - Q - Q
+	 * 40% CDR Combo = E - W - Q - Q - Q - Q - Q
 	 * 17% CDR All-In= R - E - W - Q - Q - Q 
 	 * 40% CDR All-In= R - E - W - Q - Q - Q - Q
 	 */
 
 	
-	BattleCalculator battleManager;
-	UrgotSkills urgotSkills;
-	UrgotStats urgot;
+	private BattleCalculator battleManager;
+	private UrgotSkills urgotSkills;
+	private UrgotStats urgot;
+	
 	public UrgotCombos(BattleCalculator manager, UrgotStats urgot)
 	{
 		battleManager = manager;

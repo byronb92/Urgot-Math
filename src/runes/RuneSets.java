@@ -52,7 +52,6 @@ public class RuneSets {
 		while(seals > 0) { runes.addRune(RuneType.SEAL, "Armor"); seals--; }
 		while(glyphs > 0) { runes.addRune(RuneType.GLYPH, "Magic Resist"); glyphs--; }
 		while(quints > 0) { runes.addRune(RuneType.QUINT, "Armor Penetration"); quints--; }
-
 	}
 	
 	

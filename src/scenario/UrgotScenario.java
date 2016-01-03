@@ -51,7 +51,7 @@ public class UrgotScenario {
 	
 	public void addAfterItemMastery(MasterySet mastery)
 	{
-		masteries.applyUrgotMasteryAfterItems(mastery);
+		masteries.applyUrgotMasteryAfterItems(mastery, urgot);
 	}
 	
 	public void addAfterBattleMastery(MasterySet mastery)
@@ -60,7 +60,10 @@ public class UrgotScenario {
 	}
 
 
-	// Method run after item sets are computed.
+	/**
+	 * Adds item and rune stats to Urgot's stats. 
+	 * This should always be rune before computing combos, even if no items are added.
+	 */
 	public void computeStats()
 	{
 		urgCombos = new UrgotCombos(battleManager, urgot);

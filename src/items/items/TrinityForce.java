@@ -21,8 +21,7 @@ public class TrinityForce extends Item{
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		currentBaseAD = (urgot.getBaseAD() + 
-				(urgot.getADPerLevel() * (urgot.getLevel() - 1)));
+		currentBaseAD = urgot.getBaseADFromLevel();
 		setDetails();
 		
 	}

@@ -3,17 +3,18 @@ import scenario.StatSetup;
 
 import java.util.Map.Entry;
 
-import calc.BattleCalculator;
-import items.Item;
-import items.Items;
-import runes.RuneManager;
-import runes.RuneSetup;
-import scenario.Phase;
 import scenario.ScenarioManager;
 import scenario.SortRank;
 import scenario.UrgotScenario;
-import urgot.UrgotStats;
 
+
+
+/**
+ * Dumps output providing details from the specified UrgotScenario.
+ * The ScenarioManager handles all the logic to obtain the scenario.
+ * @author byronb92
+ *
+ */
 public class OutputUrgotCompare {
 	public ScenarioManager sceManager;
 
@@ -22,17 +23,14 @@ public class OutputUrgotCompare {
 		sceManager = new ScenarioManager();
 	}
 
-	// Codes: LEVEL6, LEVEL9, LEVEL12, LEVEL15, LEVEL18
+	// StatSetup enum located in scenario package.
 	public void statCollection(StatSetup setupCode)
 	{
 		sceManager.setUpStatCollection(setupCode);
 	}
 	
 
-	/** Uses ScenarioManager method findHighestRawDamage()
-	 * To find the build which has the highest combo damage output.
-	 * @return
-	 */
+	// Highest raw damage. This is the damage before any resistances are incorporated.
 	public String outputHighestRawDamage()
 	{
 		StringBuilder rawDamageString = new StringBuilder();
@@ -44,8 +42,7 @@ public class OutputUrgotCompare {
 		{
 			rawDamageString.append(sceManager.getScenarioItems(highestDamage));
 		}
-		// Keystone:
-		rawDamageString.append(highestDamage.getMasteries().keystone);
+		rawDamageString.append(highestDamage.getMasteries().getKeyStone());
 		System.out.println(rawDamageString.toString());
 		return rawDamageString.toString();
 	}
@@ -62,6 +59,8 @@ public class OutputUrgotCompare {
 		return costString.toString();
 	}
 	
+
+	// SortRank located in Scenario package. ASCENDING/DESCENDING
 	public String outputSortedDamage(SortRank rank)
 	{
 		StringBuilder dmgString = new StringBuilder();
@@ -91,12 +90,14 @@ public class OutputUrgotCompare {
 		return dmgString.toString();
 	}
 	
-	
+	/**
+	 * Passive and actives include any extra item/mastery information.
+	 * This will give an insight to how much utility is given by item/mastery builds.
+	 * @return
+	 */
 	public String outputPassiveandActivies()
 	{
 		StringBuilder dmgString = new StringBuilder();
-		
-
 		for (UrgotScenario sce : sceManager.getScenarios())
 		{
 			// Items

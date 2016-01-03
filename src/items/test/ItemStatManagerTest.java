@@ -29,7 +29,6 @@ public class ItemStatManagerTest {
 		// Debugging.
 		System.out.println("Item set one debugging:");
 		System.out.println("Base AD: " + urgot.getBaseAD());
-		System.out.println("AD Per Level: " + urgot.getADPerLevel());
 		System.out.println("Bonus AD: " + urgot.getBonusAD());
 		System.out.println("Current Mana: " + urgot.getTotalMana());
 		System.out.println("2% of current mana: " + urgot.getTotalMana() * 0.02);

@@ -50,23 +50,23 @@ public class RunesTest {
 
 
 	}
-//	@Test
-//	public void testArmorPenmark()
-//	{
-//		System.out.print("Armor Pen Marks, AD Quints");
-//		System.out.println();
-//		sets.addArmorPenMarks(runes);
-//		System.out.println(runes.getRunesAsString());
-//		System.out.println();
-//	}
-//	@Test
-//	public void testArmorPenQuint()
-//	{
-//		System.out.print("Armor Pen Quints, AD Marks");
-//		System.out.println();
-//		sets.addArmorPenQuints(runes);
-//		System.out.println(runes.getRunesAsString());
-//		System.out.println();
-//	}
+	@Test
+	public void testArmorPenmark()
+	{
+		System.out.print("Armor Pen Marks, AD Quints");
+		System.out.println();
+		sets.addArmorPenMarks(runes);
+		System.out.println(runes.getRunesAsString());
+		System.out.println();
+	}
+	@Test
+	public void testArmorPenQuint()
+	{
+		System.out.print("Armor Pen Quints, AD Marks");
+		System.out.println();
+		sets.addArmorPenQuints(runes);
+		System.out.println(runes.getRunesAsString());
+		System.out.println();
+	}
 
 }
