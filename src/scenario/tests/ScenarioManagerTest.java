@@ -1,12 +1,10 @@
 package scenario.tests;
 
-import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import scenario.ScenarioManager;
-import scenario.SortRank;
 import scenario.StatSetup;
 
 public class ScenarioManagerTest {
@@ -21,7 +19,6 @@ public class ScenarioManagerTest {
 	public void testEarlyRawDamage() {
 		sceManage.setUpStatCollection(StatSetup.LEVEL6);
 		System.out.println(sceManage.findHighestRawDamage().getBattleStats().getADDamage());
-		
 	}
 	
 

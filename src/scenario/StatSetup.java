@@ -1,6 +1,6 @@
 package scenario;
 
 public enum StatSetup {
-	MASTERIES_LEVEL1,
+	MASTERIES_LEVEL1, STARTING_ITEMS,
 	LEVEL6, LEVEL9, LEVEL12, LEVEL15, LEVEL18
 }

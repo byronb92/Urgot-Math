@@ -119,7 +119,8 @@ public class BattleCalculator
 	}
 	
 	
-	
+	public double getArmorPen()	   { return armorPenetration; }
+	public double getMagicDamage() { return magicDamage; }
 	public double getSpellDamage() { return spellDamage; }
 	public double getADDamage() { return physicalDamage; }
 	public double getManaUsage() { return manaUsage; }

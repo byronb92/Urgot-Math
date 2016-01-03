@@ -3,42 +3,35 @@ package items.items;
 import items.Item;
 import urgot.UrgotStats;
 
-public class SapphireCrystal extends Item {
+public class ClothArmor extends Item {
 
-	private int mana = 250;
-	
-	public SapphireCrystal()
+	private int armor = 15;
+	public ClothArmor()
 	{
 		super();
 	}
-	
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// No passive.
-		
 	}
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		urgot.addBonusMana(mana);
-		
+		urgot.addBonusArmor(armor);
 	}
 
 	@Override
 	protected void setCost() {
-		cost = 350;
+		cost = 300;
 		
 	}
 
 	@Override
 	protected void setName() {
-		name = "Sapphire Crystal";
-		
+		name = "Cloth Armor";	
 	}
+
 	@Override
-	protected void setDetails() {
-		// No details
-		
+	protected void setDetails() {	
 	}
 
 }

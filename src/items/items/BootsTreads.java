@@ -13,7 +13,7 @@ public class BootsTreads extends Boots {
 	}
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		urgot.addBonusMR(25);
+		urgot.addBonusMR(mr);
 	}
 	@Override
 	protected void setCost()

@@ -13,7 +13,7 @@ public class CompareDefense {
 	public double findHealthVsPhysical(UrgotScenario sce)
 	{
 		double healthA = sce.getUrgotStats().getTotalHP();
-		double physicalReductionA = (100 / (100+sce.getUrgotStats().getTotalArmor()));
+		//double physicalReductionA = (100 / (100+sce.getUrgotStats().getTotalArmor()));
 		
 		// http://forums.na.leagueoflegends.com/board/showthread.php?t=601034
 		// double trueHP = healthA / physicalReductionA;
@@ -24,7 +24,7 @@ public class CompareDefense {
 	public double findHealthVsMagic(UrgotScenario sce)
 	{
 		double healthA = sce.getUrgotStats().getTotalHP();
-		double magicReductionA = (100 / (100+sce.getUrgotStats().getTotalMR()));
+		//double magicReductionA = (100 / (100+sce.getUrgotStats().getTotalMR()));
 		
 		//double trueHP = healthA / magicReductionA;
 		double trueHP = healthA + ((healthA * 0.01)*(sce.getUrgotStats().getTotalMR()));

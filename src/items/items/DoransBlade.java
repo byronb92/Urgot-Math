@@ -3,13 +3,15 @@ package items.items;
 import items.Item;
 import urgot.UrgotStats;
 
-public class DeadMansPlate extends Item {
-	private int hp = 600;
-	private int arm = 50;
-	public DeadMansPlate()
+public class DoransBlade extends Item {
+
+	public DoransBlade()
 	{
 		super();
 	}
+	private int hp = 80;
+	private int ad = 8;
+	private double lifeSteal = 0.03;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
 		// TODO Auto-generated method stub
@@ -19,26 +21,25 @@ public class DeadMansPlate extends Item {
 	@Override
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusHP(hp);
-		urgot.addBonusArmor(arm);
+		urgot.addBonusAD(ad);
+		urgot.addLifeSteal(lifeSteal);
 		
 	}
 
 	@Override
 	protected void setCost() {
-		cost = 2800;
+		cost = 450;
 		
 	}
 
 	@Override
 	protected void setName() {
-		name = "Dead Man's Plate";
+		name = "Doran's Blade";
 		
 	}
 
 	@Override
 	protected void setDetails() {
-		details = "Generates Momentum stacks while moving, up to 100, "
-				+ "granting up to +60 bonus movement speed.";
 		
 	}
 

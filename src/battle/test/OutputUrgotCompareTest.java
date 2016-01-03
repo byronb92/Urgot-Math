@@ -4,7 +4,6 @@ package battle.test;
 import junit.framework.TestCase;
 
 import battle.OutputUrgotCompare;
-import scenario.SortRank;
 import scenario.StatSetup;
 
 
@@ -18,10 +17,15 @@ public class OutputUrgotCompareTest extends TestCase {
 
 	public void testMasteries()
 	{
-		comp.statCollection(StatSetup.MASTERIES_LEVEL1);
+		comp.statCollection(StatSetup.STARTING_ITEMS);
 		comp.outputHighestRawDamage();
-		comp.outputPassiveandActivies();
 	}
+//	public void testMasteries()
+//	{
+//		comp.statCollection(StatSetup.MASTERIES_LEVEL1);
+//		comp.outputHighestRawDamage();
+//		comp.outputPassiveandActivies();
+//	}
 	// Simple tests to ensure there are no nullpointer exceptions.
 //	public void testOutputLevelSix()
 //	{

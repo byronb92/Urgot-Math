@@ -44,6 +44,8 @@ public class EarlyGame extends Phase {
 	{
 		switch (setupCode)
 		{
+			case STARTING_ITEMS: compareStartingItems();
+			break;
 			case MASTERIES_LEVEL1: compareLevelOneMasteries();
 			break;
 			case LEVEL6: compareLevelSix();
@@ -83,6 +85,14 @@ public class EarlyGame extends Phase {
 		addScenarioLevel(phage, 6);
 	}
 	
+	
+	public void compareStartingItems()
+	{
+		addScenarioLevel("Doran's Blade", 1);
+		addScenarioLevel("Sapphire Crystal", 1);
+		addScenarioLevel("Long Sword", 1);
+		addScenarioLevel("Cloth Armor", 1);
+	}
 
 	
 

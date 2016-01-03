@@ -8,7 +8,6 @@ public class BlackCleaver extends Item {
 	private int health = 300;
 	private int ad = 55;
 	private double cdr = 0.20;
-	private int stacks = 0;
 	
 	public BlackCleaver()
 	{

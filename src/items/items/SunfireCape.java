@@ -19,7 +19,7 @@ public class SunfireCape extends Item {
 	@Override
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusHP(hp);
-		urgot.addBonusArmor(45);
+		urgot.addBonusArmor(armor);
 		
 	}
 

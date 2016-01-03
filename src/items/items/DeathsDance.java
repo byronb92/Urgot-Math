@@ -23,7 +23,7 @@ public class DeathsDance extends Item {
 	@Override
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusAD(ad);
-		urgot.addCDR(0.10);
+		urgot.addCDR(cdr);
 	}
 
 	@Override

@@ -5,12 +5,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.NavigableMap;
 import java.util.TreeMap;
 
 import calc.CompareDefense;
 import items.Item;
-import items.Items;
 
 public class ScenarioManager {
 	
@@ -37,7 +35,8 @@ public class ScenarioManager {
 	public void setUpStatCollection(StatSetup setupCode)
 	{
 		
-		if (setupCode == StatSetup.LEVEL6 || setupCode == StatSetup.MASTERIES_LEVEL1)
+		if (setupCode == StatSetup.LEVEL6 || setupCode == StatSetup.MASTERIES_LEVEL1
+				|| setupCode == StatSetup.STARTING_ITEMS)
 		{
 			early = new EarlyGame();
 			setUpPhase(early, setupCode);

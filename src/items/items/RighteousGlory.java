@@ -20,7 +20,7 @@ public class RighteousGlory extends Item {
 	@Override
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusHP(hp);
-		urgot.addBonusMana(300);
+		urgot.addBonusMana(mana);
 		urgot.addBonusManaRegen(manaRegen);
 		
 	}

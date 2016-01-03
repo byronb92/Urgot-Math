@@ -3,25 +3,21 @@ package items.items;
 import items.Item;
 import urgot.UrgotStats;
 
-public class SapphireCrystal extends Item {
+public class LongSword extends Item {
 
-	private int mana = 250;
-	
-	public SapphireCrystal()
+	private int ad = 10;
+	public LongSword()
 	{
 		super();
 	}
-	
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// No passive.
 		
 	}
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		urgot.addBonusMana(mana);
-		
+		urgot.addBonusAD(ad);
 	}
 
 	@Override
@@ -32,12 +28,13 @@ public class SapphireCrystal extends Item {
 
 	@Override
 	protected void setName() {
-		name = "Sapphire Crystal";
+		name = "Long Sword";
 		
 	}
+
 	@Override
 	protected void setDetails() {
-		// No details
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -128,3 +128,6 @@ Added comparison between Thunderlord's decree and deathfire touch at level 1
 Jan 1st.
 Adding Youmuu's Ghostblade active calculations.
 
+
+Jan 2nd:
+Added Starting Items

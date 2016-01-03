@@ -42,7 +42,10 @@ public class OutputUrgotCompare {
 		{
 			rawDamageString.append(sceManager.getScenarioItems(highestDamage));
 		}
-		rawDamageString.append(highestDamage.getMasteries().getKeyStone());
+		if (highestDamage.getMasteries().getKeyStone() != null)
+		{
+			rawDamageString.append(highestDamage.getMasteries().getKeyStone());
+		}
 		System.out.println(rawDamageString.toString());
 		return rawDamageString.toString();
 	}

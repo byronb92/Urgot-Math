@@ -147,6 +147,26 @@ public class ItemFactory {
 			return new DeadMansPlate();
 		}
 		
+		if (itemName.equals("Doran's Blade"))
+		{
+			return new DoransBlade();
+		}
+		
+		if (itemName.equals("Long Sword"))
+		{
+			return new LongSword();
+		}
+		
+		if (itemName.equals("Cloth Armor"))
+		{
+			return new ClothArmor();
+		}
+		
+		if (itemName.equals("Sapphire Crystal"))
+		{
+			return new SapphireCrystal();
+		}
+		
 		
 		System.err.println("Invalid item name: " + itemName);
 		return null;

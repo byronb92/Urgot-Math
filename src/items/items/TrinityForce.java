@@ -28,12 +28,13 @@ public class TrinityForce extends Item{
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		urgot.addBonusHP(250);
-		urgot.addBonusMana(250);
+		urgot.addBonusHP(hp);
+		urgot.addBonusMana(mana);
 		urgot.addBonusAD(ad);
 		urgot.addCDR(cdr);
-		//TODO: Add crit chance, movement, attack speed.
-		
+		urgot.addBonusCritChance(critChance);
+		urgot.addPercentMoveSpeed(movement);
+		urgot.addBonusAS(attackSpeed);	
 	}
 
 	@Override
