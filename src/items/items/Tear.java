@@ -18,7 +18,7 @@ public class Tear extends Item
 	{
 		super();
 		setStacks(stacks);
-		totalMana = baseMana + stacks;
+		setDetails();
 	}
 
 	public void setCost()

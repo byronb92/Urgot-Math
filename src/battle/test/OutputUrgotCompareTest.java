@@ -15,11 +15,16 @@ public class OutputUrgotCompareTest extends TestCase {
 		System.out.println("-----------------");
 	}
 
-	public void testMasteries()
+	public void testGeneral()
 	{
-		comp.statCollection(StatSetup.STARTING_ITEMS);
-		comp.outputHighestRawDamage();
+		comp.statCollection(StatSetup.LEVEL18);
+		System.out.println(comp.outputGeneral());
 	}
+//	public void testMasteries()
+//	{
+//		comp.statCollection(StatSetup.STARTING_ITEMS);
+//		comp.outputHighestRawDamage();
+//	}
 //	public void testMasteries()
 //	{
 //		comp.statCollection(StatSetup.MASTERIES_LEVEL1);

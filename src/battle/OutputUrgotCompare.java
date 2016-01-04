@@ -29,7 +29,31 @@ public class OutputUrgotCompare {
 		sceManager.setUpStatCollection(setupCode);
 	}
 	
-
+	/**
+	 * Outputs general statistics about every scenario added from statCollection.
+	 * @return
+	 */
+	public String outputGeneral()
+	{
+		StringBuilder generalInfo = new StringBuilder();
+		for (UrgotScenario sce : sceManager.getScenarios())
+		{
+			generalInfo.append(sceManager.getScenarioItems(sce));
+			generalInfo.append("\n");
+			generalInfo.append("Cost: " + sceManager.getScenarioCost(sce));
+			generalInfo.append("\n");
+			generalInfo.append("Raw Damage: " + sceManager.getRawDamage(sce) + "\n");
+			generalInfo.append("Offense: \n");
+			generalInfo.append(sceManager.getOffensiveStats(sce));
+			generalInfo.append("Defense: \n");
+			generalInfo.append(sceManager.getDefensiveStats(sce));
+			generalInfo.append("Sustain: \n");
+			generalInfo.append(sceManager.getSustainStats(sce));
+			generalInfo.append("---------------");
+			generalInfo.append("\n");
+		}
+		return generalInfo.toString();
+	}
 	// Highest raw damage. This is the damage before any resistances are incorporated.
 	public String outputHighestRawDamage()
 	{

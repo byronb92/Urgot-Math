@@ -19,7 +19,7 @@ public class UrgotStats {
 
 	private double adPerLevel				= 5.2048;
 	private double armPerLevel				= 3.3;
-	private double asPerLevel				= 0.29;
+	private double asPerLevel				= 0.029;
 	
 	private double hpPerLevel				= 89.0;
 	private double manaPerLevel				= 55.0;
@@ -115,7 +115,7 @@ public class UrgotStats {
 	public double getTotalArmor() { return getBaseArmorFromLevel() + bonusArmor; }
 	public double getTotalMR() { return baseMR + bonusMR; }
 	public double getTotalAS() {
-		return baseAS * (1 + (asPerLevel * (currentLevel - 1)) / 100);
+		return baseAS + (baseAS * (asPerLevel * (currentLevel - 1))) + (baseAS * bonusAS);
 	}
 	
 	public double getTotalHP() { 
@@ -127,7 +127,7 @@ public class UrgotStats {
 		return getBaseHPRegenFromLevel() + bonusHealthRegen; 
 	}
 	public double getTotalManaRegen() { 
-		return getBaseManaRegenFromLevel() + bonusManaRegen;
+		return getBaseManaRegenFromLevel() + (getBaseManaRegenFromLevel() * bonusManaRegen);
 	}
 	public double getTotalMS() { 
 		UniqueCalculator unique = new UniqueCalculator();

@@ -258,6 +258,57 @@ public class ScenarioManager {
 		return runningCost;
 	}
 	
+	/**
+	 * Accessor method to obtain Scenario's raw damage.
+	 * NOTE: Currently only accounts for physical damage.
+	 * @param sce
+	 * @return
+	 */
+	public double getRawDamage(UrgotScenario sce)
+	{
+		return sce.getBattleStats().getADDamage();
+	}
+	
+	
+	public String getOffensiveStats(UrgotScenario sce)
+	{
+		StringBuilder offense = new StringBuilder();
+		offense.append("AD: " + sce.getUrgotStats().getTotalAD() +  "\n");
+		offense.append("Mana: " + sce.getUrgotStats().getTotalMana() +  "\n");
+		offense.append("Flat Armor Pen: " + sce.getUrgotStats().getArmorPen() + "\n");
+		offense.append("Percent Armor Pen: " + sce.getUrgotStats().getArmorReduc() + "\n");
+		offense.append("AS: " + sce.getUrgotStats().getTotalAS() + "\n");
+		return offense.toString();
+	}
+	
+	public String getDefensiveStats(UrgotScenario sce)
+	{
+		StringBuilder defense = new StringBuilder();
+		defense.append("HP: " + sce.getUrgotStats().getTotalArmor() +  "\n");
+		defense.append("Armor: " + sce.getUrgotStats().getTotalArmor() +  "\n");
+		defense.append("MR: " + sce.getUrgotStats().getTotalMR() +  "\n");
+		return defense.toString();
+	}
+	
+	public String getSustainStats(UrgotScenario sce)
+	{
+		StringBuilder sustain = new StringBuilder();
+		sustain.append("Life Steal: " + sce.getUrgotStats().getLifeSteal() + "\n");
+		sustain.append("Spell Vamp: " + sce.getUrgotStats().getSpellVamp() + "\n");
+		sustain.append("HP Regen: " + sce.getUrgotStats().getTotalHPRegen() + "\n");
+		sustain.append("Mana Regen: " + (sce.getUrgotStats().getTotalManaRegen()) + "\n");
+		return sustain.toString();	
+	}
+	
+	public String getUtilityStats(UrgotScenario sce)
+	{
+		StringBuilder utility = new StringBuilder();
+		utility.append("Movement Speed: " + sce.getUrgotStats().getTotalMS() + "\n");
+		utility.append("CDR: " + sce.getUrgotStats().getCDR() + "\n");
+		utility.append("Tenacity: " + sce.getUrgotStats().getTenacity() + "\n");
+		utility.append("Slow Resist: " + sce.getUrgotStats().getSlowResist() + "\n");
+		return utility.toString();
+	}
 	
 	
 	

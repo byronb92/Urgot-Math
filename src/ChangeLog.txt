@@ -131,3 +131,10 @@ Adding Youmuu's Ghostblade active calculations.
 
 Jan 2nd:
 Added Starting Items
+
+
+
+Jan 3rd:
+Fixed mana regen formula.
+Fixed attack speed per level.
+Added outputGeneral method that dumps all stats out from a given scenario.
