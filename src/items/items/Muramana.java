@@ -4,8 +4,6 @@ import urgot.UrgotStats;
 
 public class Muramana extends Manamune {
 	
-	// TODO: Add dynamic Muramana iteraction.
-	UrgotStats urgot;
 	public Muramana()
 	{
 		super(750);
@@ -17,10 +15,13 @@ public class Muramana extends Manamune {
 		 name = "Muramana";
 	}
 	
-	public void setAdditionalDetails()
+	
+	@Override
+	public void setCost()
 	{
-		details = details + "Consume 3% of current mana to deal 6% of "
-				+ "current mana as physical damage.";
+		 cost = 2400;
 	}
+	
+
 
 }

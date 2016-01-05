@@ -6,7 +6,6 @@ public class Tear extends Item
 {
 	private int baseMana = 250;
 	private int stacks = 0;
-	private int totalMana = 0;
 	private double bonusManaRegen = 0.25;
 	
 	
@@ -21,58 +20,27 @@ public class Tear extends Item
 		setDetails();
 	}
 
-	public void setCost()
-	{
-		cost = 750;
-	}
+	public int getStacks() { return stacks; }
+	public int getTotalMana() { return (stacks + baseMana); }
+	public double getBonusManaRegen() { return bonusManaRegen; }
+	public void setCost() { cost = 750; }
+	public void setStacks(int value) { stacks = stacks + value; }
 
-	public void setStacks(int value)
-	{
-		
-		stacks = value;
-		//setDetails("Stacks: " + stacks);
-	}
 
-	public int getStacks()
-	{
-		return stacks;
-	}
-	
-	public int getTotalMana()
-	{
-		return totalMana;
-	}
-	
-	public double getBonusManaRegen()
-	{
-		return bonusManaRegen;
-	}
-	
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		
-		urgot.addBonusMana(totalMana);
-		urgot.addBonusManaRegen(bonusManaRegen);
-		
+		urgot.addBonusMana(baseMana + stacks);
+		urgot.addBonusManaRegen(bonusManaRegen);	
 	}
 
 	@Override
-	public void applyPassive(UrgotStats urgot) {
-		// Passive is applied directly, doesn't depend on other stats.
-		
-	}
+	public void applyPassive(UrgotStats urgot) { }
 
 	@Override
-	protected void setName() {
-		name = "Tear";
-		
-	}
+	protected void setName() { name = "Tear"; }
 
 	@Override
-	protected void setDetails() {
-		details = "Stacks: " + stacks;
-		
-	}
+	protected void setDetails() { details = "Stacks: " + stacks; }
 	
 	
 	

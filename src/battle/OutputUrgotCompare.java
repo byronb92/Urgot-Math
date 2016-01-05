@@ -23,7 +23,11 @@ public class OutputUrgotCompare {
 		sceManager = new ScenarioManager();
 	}
 
-	// StatSetup enum located in scenario package.
+	/**
+	 * Adds and sets up UrgotScenarios to be analyzed.
+	 * StatSetup enum located in scenario package.
+	 * @param setupCode
+	 */
 	public void statCollection(StatSetup setupCode)
 	{
 		sceManager.setUpStatCollection(setupCode);

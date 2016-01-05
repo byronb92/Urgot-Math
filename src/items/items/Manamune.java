@@ -26,7 +26,6 @@ public class Manamune extends Tear
 	
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		
 		urgot.addBonusAD(attackDamage);
 		urgot.addBonusMana(super.getTotalMana());
 		urgot.addBonusManaRegen(super.getBonusManaRegen());	
@@ -36,7 +35,6 @@ public class Manamune extends Tear
 	public void applyPassive(UrgotStats urgot)
 	{
 		this.urgot = urgot;
-		
 		passiveApplied = true;
 		setDetails();
 	}

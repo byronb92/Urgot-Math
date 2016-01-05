@@ -26,9 +26,9 @@ public class LateGame extends Phase {
 	public void compareLevel18()
 	{
 		String[] fullBuild = {"Muramana", "Black Cleaver", "Youmuu's Ghostblade", 
-				"Maw of Malmortius", "Death's Dance", "Ionian Boots of Lucidity"};
+				"Maw of Malmortius", "Death's Dance", "Mercury's Treads"};
 		String[] ghostTwo = {"Muramana", "Black Cleaver", "Youmuu's Ghostblade", 
-				"Lord Dominik's Regards", "Death's Dance", "Ionian Boots of Lucidity"};
+				"Lord Dominik's Regards", "Death's Dance", "Mercury's Treads"};
 		String[] fullBuildTwo = {"Muramana", "Black Cleaver", "Sterak's Gage", 
 				"Iceborn Gauntlet", "Maw of Malmortius"};
 		String[] fullBuildThree = {"Muramana", "Black Cleaver", "Sterak's Gage", 
