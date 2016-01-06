@@ -1,5 +1,6 @@
 package items.items;
 
+import calc.BattleCalculator;
 import items.Item;
 import urgot.UrgotStats;
 
@@ -20,6 +21,12 @@ public class SpiritVisage extends Item {
 		
 	}
 
+	@Override 
+	public void applyAfterBattleUniques(BattleCalculator calc)
+	{
+		calc.addHealingModifier(0.20);
+	}
+	
 	@Override
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusHP(hp);

@@ -1,12 +1,11 @@
 package items.items;
 
+import calc.BattleCalculator;
 import items.Item;
 import urgot.UrgotStats;
 
 public class DeathsDance extends Item {
 
-	// TODO: Test multiple interactions of death's adnce.
-	// AOE Effect;
 	private int ad = 65;
 	private double cdr = 0.10;
 	
@@ -15,9 +14,13 @@ public class DeathsDance extends Item {
 		super();
 	}
 	
+	@Override 
+	public void applyAfterBattleUniques(BattleCalculator calc)
+	{
+		calc.addHealing(calc.getADDamage() * 0.15);
+	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override

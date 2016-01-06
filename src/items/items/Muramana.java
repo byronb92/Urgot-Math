@@ -1,6 +1,5 @@
 package items.items;
 
-import urgot.UrgotStats;
 
 public class Muramana extends Manamune {
 	

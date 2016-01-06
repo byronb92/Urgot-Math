@@ -138,3 +138,10 @@ Jan 3rd:
 Fixed mana regen formula.
 Fixed attack speed per level.
 Added outputGeneral method that dumps all stats out from a given scenario.
+
+
+
+Jan 4th
+Added additional method in item class to deal with after battle scenarios.
+Added "healing done" field in BattleCalculator.
+Added SpiritVisage healing boost.

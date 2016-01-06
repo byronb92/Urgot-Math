@@ -8,6 +8,9 @@ public class BattleCalculator
 	private double magicDamage = 0;
 	private double spellCastTime = 0;
 	private double shieldStrength = 0;
+	private double healingDone = 0;
+	// Spirit Visage/Hextech Gunblade/Windspeaker's Blessing
+	private double healingModifier = 0; 
 	private int manaUsage = 0;
 	
 	private ArrayList<Double> listDamageReduc;
@@ -41,6 +44,45 @@ public class BattleCalculator
 		physicalDamage = physicalDamage + damage;
 	}
 	
+	public void addHealing(double damage)
+	{
+		healingDone = (healingDone + (damage + (damage * healingModifier)));
+	}
+	
+	/**
+	 * Keeps into account effects that increase healing.
+	 * This accounts for items that are added in random order.
+	 * E.G. Death's dance is added (heal 15% of damage dealt), then
+	 * Spirit Visage is added (increases 20% of all healing)
+	 * @param mod
+	 */
+	public void addHealingModifier(double mod)
+	{
+		// Case A: There has already been healing, but no modifier.
+		//		Aa: There has already been healing, but there modifier is not zero.
+		// Case B: There has not been healing, but no modifier.
+		// Case Bb: There has not been healing, but the modifier is not zero.
+		if (healingDone > 0 && healingModifier == 0)
+		{
+			healingDone = healingDone + healingDone*mod;
+			healingModifier = mod;
+		}
+		else if (healingDone > 0 && healingModifier > 0)
+		{
+			healingDone = healingDone + healingDone*mod;
+			healingModifier = healingModifier + (healingModifier * mod);
+		}
+		
+		else if (healingDone == 0 && healingModifier == 0)
+		{
+			healingModifier = mod;
+		}
+		else if (healingDone == 0 && healingModifier > 0)
+		{
+			healingModifier = healingModifier + (healingModifier * mod);
+		}
+		
+	}
 	public void addSpellDamage(double damage)
 	{
 		spellDamage = spellDamage + damage;
@@ -119,6 +161,7 @@ public class BattleCalculator
 	}
 	
 	
+	public double getHealingDone() { return healingDone; }
 	public double getArmorPen()	   { return armorPenetration; }
 	public double getMagicDamage() { return magicDamage; }
 	public double getSpellDamage() { return spellDamage; }

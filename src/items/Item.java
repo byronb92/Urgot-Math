@@ -1,5 +1,6 @@
 package items;
 
+import calc.BattleCalculator;
 import urgot.UrgotStats;
 
 public abstract class Item {
@@ -10,10 +11,20 @@ public abstract class Item {
 	
 	
 	public abstract void applyPassive(UrgotStats urgot);
+	/**
+	 * Used to take care of special case battle scenarios such as healing
+	 * for a specific set of items.
+	 * @param calc - list of battle numbers that items will be usign.
+	 */
+	public void applyAfterBattleUniques(BattleCalculator calc)
+	{
+		
+	}
 	public abstract void addItemStats(UrgotStats urgot);
 	protected abstract void setCost();
 	protected abstract void setName();
 	protected abstract void setDetails();
+	
 	
 	public int getCost() { return cost; }
 	public String getName() { return name; }
