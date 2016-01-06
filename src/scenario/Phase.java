@@ -47,6 +47,7 @@ public class Phase {
 		currentScenario.computeStats();
 		currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
 		currentScenario.addAfterBattleMastery(mastery);
+		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
 	
@@ -63,6 +64,7 @@ public class Phase {
 		{
 			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
 		}
+		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
 	/**
@@ -86,6 +88,7 @@ public class Phase {
 		{
 			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
 		}
+		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
 	
@@ -111,7 +114,7 @@ public class Phase {
 			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
 		}
 		currentScenario.addAfterBattleMastery(mastery);
-		
+		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
 	
@@ -142,6 +145,7 @@ public class Phase {
 		{
 			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
 		}
+		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
 	
@@ -176,6 +180,7 @@ public class Phase {
 			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
 		}
 		currentScenario.addAfterBattleMastery(mastery);
+		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
 	

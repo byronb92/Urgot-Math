@@ -284,7 +284,7 @@ public class ScenarioManager {
 	public String getDefensiveStats(UrgotScenario sce)
 	{
 		StringBuilder defense = new StringBuilder();
-		defense.append("HP: " + sce.getUrgotStats().getTotalArmor() +  "\n");
+		defense.append("HP: " + sce.getUrgotStats().getTotalHP() +  "\n");
 		defense.append("Armor: " + sce.getUrgotStats().getTotalArmor() +  "\n");
 		defense.append("MR: " + sce.getUrgotStats().getTotalMR() +  "\n");
 		return defense.toString();
@@ -293,6 +293,7 @@ public class ScenarioManager {
 	public String getSustainStats(UrgotScenario sce)
 	{
 		StringBuilder sustain = new StringBuilder();
+		sustain.append("Healing Done: " + sce.getBattleStats().getHealingDone() + "\n");
 		sustain.append("Life Steal: " + sce.getUrgotStats().getLifeSteal() + "\n");
 		sustain.append("Spell Vamp: " + sce.getUrgotStats().getSpellVamp() + "\n");
 		sustain.append("HP Regen: " + sce.getUrgotStats().getTotalHPRegen() + "\n");

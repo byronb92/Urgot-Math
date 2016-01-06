@@ -1,6 +1,9 @@
 package scenario;
 
+import java.util.Map.Entry;
+
 import calc.BattleCalculator;
+import items.Item;
 import items.ItemManager;
 import items.Items;
 import masteries.Masteries;
@@ -38,6 +41,16 @@ public class UrgotScenario {
 	{
 		itemManager.addItem(itemName);
 	}
+	
+	public void computeAfterBattleItemStats()
+	{
+		for(Entry<String,Item> item: itemManager.getItems().getItems().entrySet())
+		{
+			// Add every item stat value.
+			item.getValue().applyAfterBattleUniques(battleManager);
+		}
+	}
+	
 	
 	public void addRunes(RuneSetup rs)
 	{

@@ -142,6 +142,10 @@ Added outputGeneral method that dumps all stats out from a given scenario.
 
 
 Jan 4th
-Added additional method in item class to deal with after battle scenarios.
-Added "healing done" field in BattleCalculator.
-Added SpiritVisage healing boost.
+Added applyAfterBattleUniques in Item class.
+Added healingDone field in BattleCalculator.
+Added Spirit Visage healing boost.
+
+Added applyAfterBattleUniques to ScenarioManager
+--Scenarios now account for after battle item situations.
+Fixed bug where HP displayed was actually armor.
