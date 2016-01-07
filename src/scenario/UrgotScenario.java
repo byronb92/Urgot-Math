@@ -10,10 +10,27 @@ import masteries.Masteries;
 import masteries.MasterySet;
 import runes.RuneManager;
 import runes.RuneSetup;
-import runes.Runes;
 import urgot.UrgotCombos;
 import urgot.UrgotStats;
 
+
+
+/**
+ * A scenario class sets up an Urgot object's items, runes, and masteries.
+ * Then the items are run through battle simulations through the BattleCalculator.
+ *
+ * Order of an UrgotScenario's life:
+ * Add runes and items.
+ * Add masteries that are standalone (don't depend on other any battle scenarios)
+ * Compute all of the bonus stats given by runes, items, and masteries.
+ * Add masteres that depend on item stats. (%Bonus Armor/MR etc.)
+ * Compute battle situations.
+ * Add masteries that depend on battle scenarios(Increasing healing, etc.)
+ * Add items effects that depend o battle scenarios (Healing based off damaage done)
+ * 
+ * @author byronb92
+ *
+ */
 public class UrgotScenario {
 	private UrgotStats urgot;
 	private ItemManager itemManager;
@@ -42,6 +59,11 @@ public class UrgotScenario {
 		itemManager.addItem(itemName);
 	}
 	
+	/**
+	 * Some items unique passivee and actives are only relevant after
+	 * item stats are added and battle situations are generated.
+	 * Should be run last.
+	 */
 	public void computeAfterBattleItemStats()
 	{
 		for(Entry<String,Item> item: itemManager.getItems().getItems().entrySet())
@@ -96,7 +118,6 @@ public class UrgotScenario {
 	}
 	
 	// -------------- Accessor Methods -------------- 
-	// These methods should only be used once an Urgot object has been created.
 	public BattleCalculator getBattleStats()
 	{
 		return battleManager;
@@ -121,6 +142,11 @@ public class UrgotScenario {
 	public Masteries getMasteries()
 	{
 		return masteries;
+	}
+	
+	public RuneManager runeManager()
+	{
+		return runeManager;
 	}
 
 }

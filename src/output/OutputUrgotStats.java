@@ -1,4 +1,4 @@
-package battle;
+package output;
 
 import java.util.Map.Entry;
 

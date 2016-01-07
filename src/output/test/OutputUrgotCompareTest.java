@@ -1,9 +1,8 @@
-package battle.test;
+package output.test;
 
 
 import junit.framework.TestCase;
-
-import battle.OutputUrgotCompare;
+import output.OutputUrgotCompare;
 import scenario.StatSetup;
 
 

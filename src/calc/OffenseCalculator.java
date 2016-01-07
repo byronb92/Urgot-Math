@@ -1,7 +1,7 @@
 package calc;
 
-public class CompareOffense {
-	public CompareOffense()
+public class OffenseCalculator {
+	public OffenseCalculator()
 	{
 		
 	}

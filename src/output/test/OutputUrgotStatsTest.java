@@ -1,10 +1,10 @@
-package battle.test;
+package output.test;
 
 
 import org.junit.Before;
 import org.junit.Test;
 
-import battle.OutputUrgotStats;
+import output.OutputUrgotStats;
 
 public class OutputUrgotStatsTest {
 

@@ -2,10 +2,10 @@ package calc;
 
 import scenario.UrgotScenario;
 
-public class CompareDefense {
+public class DefenseCalculator {
 	
 	
-	public CompareDefense()
+	public DefenseCalculator()
 	{
 		
 	}

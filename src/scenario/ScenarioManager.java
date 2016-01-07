@@ -5,9 +5,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import calc.DefenseCalculator;
+
 import java.util.TreeMap;
 
-import calc.CompareDefense;
 import items.Item;
 
 public class ScenarioManager {
@@ -193,7 +195,7 @@ public class ScenarioManager {
 	public Map<Double,UrgotScenario> sortArmor(SortRank rank)
 	{
 		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
-		CompareDefense compareObject = new CompareDefense();
+		DefenseCalculator compareObject = new DefenseCalculator();
 		for (UrgotScenario sce : listAllScenarios)
 		{
 			double trueHp = compareObject.findHealthVsPhysical(sce);
@@ -213,7 +215,7 @@ public class ScenarioManager {
 	public Map<Double,UrgotScenario> sortMagicResist(SortRank rank)
 	{
 		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
-		CompareDefense compareObject = new CompareDefense();
+		DefenseCalculator compareObject = new DefenseCalculator();
 		for (UrgotScenario sce : listAllScenarios)
 		{
 			double trueHp = compareObject.findHealthVsMagic(sce);

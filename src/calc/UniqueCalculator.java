@@ -44,15 +44,32 @@ public class UniqueCalculator {
 	}
 
 	
-	// TODO: Randuin's Omen
-	// UNIQUE: Slows the movement speed of nearby enemy units by 35% for 4 seconds (60 second cooldown) (500 Range).
-	// -10% damage taken from Critical strike icon Critical strikes.
+
 	// TODO: Youmuu's Ghostblade
 	// UNIQUE: Gain +40% attack speed and +20% movement speed for 6 seconds. 45 second cooldown.
+	
+	/**
+	 * Calculates attack speed boost given by Youmuu's Ghostblade.
+	 * @param baseAS
+	 * @param bonusAS
+	 * @return
+	 */
 	public double youmuuCalculatorAS(double baseAS, double bonusAS)
 	{
 		double youmuuAS = baseAS + (baseAS * (bonusAS+(0.40)));
 		return youmuuAS;
+	}
+	
+	/**
+	 * Caclulates movement speed boost given by Youmuu's Ghostblade
+	 * @param baseAS
+	 * @param bonusAS
+	 * @return
+	 */
+	public double youmuuCalculatorMS(double baseAS, double bonusAS)
+	{
+		double youmuuMS = baseAS + (baseAS * (bonusAS+(0.40)));
+		return youmuuMS;
 	}
 	
 	// Softcap of movement at 415 and final cap at 490.
