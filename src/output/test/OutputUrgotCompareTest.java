@@ -3,6 +3,7 @@ package output.test;
 
 import junit.framework.TestCase;
 import output.OutputUrgotCompare;
+import scenario.SortRank;
 import scenario.StatSetup;
 
 
@@ -14,11 +15,11 @@ public class OutputUrgotCompareTest extends TestCase {
 		System.out.println("-----------------");
 	}
 
-	public void testGeneral()
-	{
-		comp.statCollection(StatSetup.LEVEL18);
-		System.out.println(comp.outputGeneral());
-	}
+//	public void testGeneral()
+//	{
+//		comp.statCollection(StatSetup.LEVEL18);
+//		System.out.println(comp.outputGeneral());
+//	}
 //	public void testMasteries()
 //	{
 //		comp.statCollection(StatSetup.STARTING_ITEMS);
@@ -54,11 +55,11 @@ public class OutputUrgotCompareTest extends TestCase {
 //		comp.outputSortedDamageDescending();
 //	}
 //	
-//	public void testOutputSortedArmorFullBuild()
-//	{
-//		comp.statCollection(StatSetup.LEVEL18);
-//		comp.outputSortedArmor(SortRank.DESCENDING);
-//	}
+	public void testOutputSortedArmorFullBuild()
+	{
+		comp.statCollection(StatSetup.LEVEL18);
+		comp.outputSortedArmor(SortRank.DESCENDING);
+	}
 //	public void testPassiveAndActives()
 //	{
 //		comp.statCollection(StatSetup.LEVEL6);

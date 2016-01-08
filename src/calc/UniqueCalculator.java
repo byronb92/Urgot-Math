@@ -44,10 +44,6 @@ public class UniqueCalculator {
 	}
 
 	
-
-	// TODO: Youmuu's Ghostblade
-	// UNIQUE: Gain +40% attack speed and +20% movement speed for 6 seconds. 45 second cooldown.
-	
 	/**
 	 * Calculates attack speed boost given by Youmuu's Ghostblade.
 	 * @param baseAS
@@ -66,10 +62,13 @@ public class UniqueCalculator {
 	 * @param bonusAS
 	 * @return
 	 */
-	public double youmuuCalculatorMS(double baseAS, double bonusAS)
+	public double youmuuCalculatorMS(double flatSpeed, double bonusSpeed)
 	{
-		double youmuuMS = baseAS + (baseAS * (bonusAS+(0.40)));
+		// Youmuu's gives 20% increase in moveemnt speed.
+		double rawSpeed = flatSpeed + (flatSpeed * (bonusSpeed + 0.20));
+		double youmuuMS = moveSpeedCalculator(rawSpeed);
 		return youmuuMS;
+				
 	}
 	
 	// Softcap of movement at 415 and final cap at 490.
