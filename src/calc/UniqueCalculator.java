@@ -71,7 +71,12 @@ public class UniqueCalculator {
 				
 	}
 	
-	// Softcap of movement at 415 and final cap at 490.
+	/**
+	 * Calculates movement speed increase. Accounts for movement speed cap.
+	 * @param speedToAdd
+	 * @param currentSpeed
+	 * @return
+	 */
 	public double moveSpeedCalculator(double speedToAdd, double currentSpeed)
 	{
 		double rawSpeed = speedToAdd + currentSpeed;
