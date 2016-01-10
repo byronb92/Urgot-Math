@@ -3,16 +3,18 @@ import java.util.ArrayList;
 
 public class BattleCalculator 
 {
-	private double spellDamage = 0;
+	private int spellAttacks = 0;
+	private double spellCastTime = 0;	// TODO: Remove this soon.
+	
+	private double totalSpellDamage = 0;
 	private double physicalDamage = 0;
 	private double magicDamage = 0;
-	private double spellCastTime = 0;
+
 	private double shieldStrength = 0;
 	private double healingDone = 0;
 	private double healingModifier = 0;  // Spirit Visage/Hextech Gunblade
-	private int manaUsage = 0;
 	
-	private double armorPenetration;
+	private int manaUsage = 0;			// TOOD: Remove this soon.
 	
 	
 	double opponentArmor;
@@ -22,18 +24,22 @@ public class BattleCalculator
 
 	}
 	
-	public void resetBattle()
+	/**
+	 * Keeps track of the number of spells casts.
+	 * Helps to perform logic on masteries/effects that depend on number of spells cast.
+	 */
+	public void addSpellAttack()
 	{
-		manaUsage = 0;
-		physicalDamage = 0;
-		shieldStrength = 0;
-		spellCastTime = 0;
-		
-		armorPenetration = 0;
-		opponentArmor = 0;
+		spellAttacks++;
 	}
 	
+	// Will soon be phased out.
 	public void adDamage(double damage)
+	{
+		physicalDamage = physicalDamage + damage;
+	}
+	
+	public void addPhysicalDamage(double damage)
 	{
 		physicalDamage = physicalDamage + damage;
 	}
@@ -79,7 +85,7 @@ public class BattleCalculator
 	}
 	public void addSpellDamage(double damage)
 	{
-		spellDamage = spellDamage + damage;
+		totalSpellDamage = totalSpellDamage + damage;
 	}
 	public void shieldStrength(double strength)
 	{
@@ -96,9 +102,10 @@ public class BattleCalculator
 		spellCastTime = spellCastTime + spellTime;
 	}
 	
+	public int getSpellAttacks() { return spellAttacks; }
 	public double getPhysicalDamage() { return physicalDamage; }
 	public double getMagicDamage() { return magicDamage; }
-	public double getSpellDamage() { return spellDamage; }
+	public double getSpellDamage() { return totalSpellDamage; }
 	
 	
 	public double getHealingDone() { return healingDone; }
