@@ -17,7 +17,7 @@ public class DeathsDance extends Item {
 	@Override 
 	public void applyAfterBattleUniques(BattleCalculator calc)
 	{
-		calc.addHealing(calc.getADDamage() * 0.15);
+		calc.addHealing(calc.getPhysicalDamage() * 0.15);
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {

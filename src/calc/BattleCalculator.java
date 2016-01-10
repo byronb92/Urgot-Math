@@ -9,12 +9,9 @@ public class BattleCalculator
 	private double spellCastTime = 0;
 	private double shieldStrength = 0;
 	private double healingDone = 0;
-	// Spirit Visage/Hextech Gunblade/Windspeaker's Blessing
-	private double healingModifier = 0; 
+	private double healingModifier = 0;  // Spirit Visage/Hextech Gunblade
 	private int manaUsage = 0;
 	
-	private ArrayList<Double> listDamageReduc;
-	private ArrayList<Double> listArmReduc;
 	private double armorPenetration;
 	
 	
@@ -22,8 +19,7 @@ public class BattleCalculator
 	
 	public BattleCalculator()
 	{
-		listDamageReduc = new ArrayList<Double>();
-		listArmReduc = new ArrayList<Double>();
+
 	}
 	
 	public void resetBattle()
@@ -32,8 +28,6 @@ public class BattleCalculator
 		physicalDamage = 0;
 		shieldStrength = 0;
 		spellCastTime = 0;
-		listArmReduc.clear();
-		listDamageReduc.clear();
 		
 		armorPenetration = 0;
 		opponentArmor = 0;
@@ -102,72 +96,16 @@ public class BattleCalculator
 		spellCastTime = spellCastTime + spellTime;
 	}
 	
-	
-	
-	public void addArmorReduction(double armorReducValue)
-	{
-		//Double reducObj = new Double(armorReducValue);
-		listArmReduc.add(armorReducValue);
-	}
-	/**
-	 * Armor reduction is calculated multiplicatively.
-	 * @return adjusted armor reduction value.
-	 */
-	public double getArmorReduc()
-	{
-		double runningReductionTotal = 0;
-		if (!listArmReduc.isEmpty())
-		{
-			for(Double reductionValue: listArmReduc){
-				if (runningReductionTotal == 0) 
-				{
-					runningReductionTotal = reductionValue;
-				}
-				else
-				{
-					runningReductionTotal = runningReductionTotal * reductionValue;
-				}
-			}
-		}
-		return runningReductionTotal;
-	}
-	
-	public void addDamageReduc(double value)
-	{
-		listDamageReduc.add(value);
-	}
-	
-	/**
-	 * Damage reduction is calculated multiplicatively.
-	 * @return damage reduction value.
-	 */
-	public double calculateDmgReduc()
-	{
-		double runningReductionTotal = 0;
-		if (!listDamageReduc.isEmpty())
-		{
-			for(Double reductionValue: listDamageReduc){
-				if (runningReductionTotal == 0) 
-				{
-					runningReductionTotal = reductionValue;
-				}
-				else
-				{
-					runningReductionTotal = runningReductionTotal * reductionValue;
-				}
-			}
-		}
-		return runningReductionTotal;
-	}
+	public double getPhysicalDamage() { return physicalDamage; }
+	public double getMagicDamage() { return magicDamage; }
+	public double getSpellDamage() { return spellDamage; }
 	
 	
 	public double getHealingDone() { return healingDone; }
-	public double getArmorPen()	   { return armorPenetration; }
-	public double getMagicDamage() { return magicDamage; }
-	public double getSpellDamage() { return spellDamage; }
-	public double getADDamage() { return physicalDamage; }
-	public double getManaUsage() { return manaUsage; }
 	public double getShieldPoints() { return shieldStrength; }
+
+
+	public double getManaUsage() { return manaUsage; }
 	public double getCastTime() { return spellCastTime; }
 
 }

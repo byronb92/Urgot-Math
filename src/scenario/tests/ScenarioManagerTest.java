@@ -18,7 +18,7 @@ public class ScenarioManagerTest {
 	@Test
 	public void testEarlyRawDamage() {
 		sceManage.setUpStatCollection(StatSetup.LEVEL6);
-		System.out.println(sceManage.findHighestRawDamage().getBattleStats().getADDamage());
+		System.out.println(sceManage.findHighestRawDamage().getBattleStats().getPhysicalDamage());
 	}
 	
 

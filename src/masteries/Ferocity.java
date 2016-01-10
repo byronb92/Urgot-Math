@@ -28,7 +28,7 @@ public class Ferocity {
 	// Currently hard-coded to only account for Urgot.
 	public void doubleEdged(BattleCalculator calc)
 	{
-		double increasedDaamge = calc.getADDamage() * 0.02;
+		double increasedDaamge = calc.getPhysicalDamage() * 0.02;
 		calc.adDamage(increasedDaamge);
 	}
 	// TODO: Factor this into new field sustain.
@@ -64,12 +64,12 @@ public class Ferocity {
 	// Computing for max bounty damage.
 	public void bounty(BattleCalculator calc)
 	{
-		double increasedDaamge = calc.getADDamage() * 0.05;
+		double increasedDaamge = calc.getPhysicalDamage() * 0.05;
 		calc.adDamage(increasedDaamge);
 	}
 	public void oppressor(BattleCalculator calc)
 	{
-		double increasedDaamge = calc.getADDamage() * 0.025;
+		double increasedDaamge = calc.getPhysicalDamage() * 0.025;
 		calc.adDamage(increasedDaamge);
 	}
 

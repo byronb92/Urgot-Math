@@ -103,11 +103,11 @@ public class OutputUrgotStats {
 	// Output data relating to urgot combo performed.
 	public void outputBattleNumbers()
 	{
-		System.out.println("Damage Done: " + battleManager.getADDamage());
+		System.out.println("Damage Done: " + battleManager.getPhysicalDamage());
 		if (itemManager.containsItem("Death's Dance"))
 		{
 			System.out.println("Death's Dance Damage Healed: " + 
-					battleManager.getADDamage() * 0.12);
+					battleManager.getPhysicalDamage() * 0.12);
 		}
 		System.out.println("Mana Usage: " + battleManager.getManaUsage());
 		System.out.println("Shield Amount: " + battleManager.getShieldPoints());

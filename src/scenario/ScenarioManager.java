@@ -95,8 +95,8 @@ public class ScenarioManager {
 			}
 			else
 			{
-				double rawDamageA = sce.getBattleStats().getADDamage();
-				double rawDamageB = highestDamageSce.getBattleStats().getADDamage();
+				double rawDamageA = sce.getBattleStats().getPhysicalDamage();
+				double rawDamageB = highestDamageSce.getBattleStats().getPhysicalDamage();
 				if (rawDamageA > rawDamageB)
 				{
 					highestDamageSce = sce;
@@ -177,7 +177,7 @@ public class ScenarioManager {
 		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
 		for (UrgotScenario sce : listAllScenarios)
 		{
-			double rawDmg = sce.getBattleStats().getADDamage();
+			double rawDmg = sce.getBattleStats().getPhysicalDamage();
 			map.put(makeKeyUnique(map,rawDmg), sce);
 		}
 		Map<Double,UrgotScenario> newMap = null;
@@ -268,7 +268,7 @@ public class ScenarioManager {
 	 */
 	public double getRawDamage(UrgotScenario sce)
 	{
-		return sce.getBattleStats().getADDamage();
+		return sce.getBattleStats().getPhysicalDamage();
 	}
 	
 	
