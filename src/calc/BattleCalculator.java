@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class BattleCalculator 
 {
-	private int spellAttacks = 0;
+	private int spellsCast = 0;
 	private double spellCastTime = 0;	// TODO: Remove this soon.
 	
 	private double totalSpellDamage = 0;
@@ -28,9 +28,9 @@ public class BattleCalculator
 	 * Keeps track of the number of spells casts.
 	 * Helps to perform logic on masteries/effects that depend on number of spells cast.
 	 */
-	public void addSpellAttack()
+	public void addSpellCast()
 	{
-		spellAttacks++;
+		spellsCast++;
 	}
 	
 	// Will soon be phased out.
@@ -87,9 +87,16 @@ public class BattleCalculator
 	{
 		totalSpellDamage = totalSpellDamage + damage;
 	}
+	
+	// TODO: Phaze out soon...
 	public void shieldStrength(double strength)
 	{
-		shieldStrength = strength;
+		shieldStrength = shieldStrength + strength;
+	}
+	
+	public void addShieldAmount(double shield)
+	{
+		shieldStrength = shieldStrength + shield;
 	}
 	
 	public void burnMana(int mana)
@@ -102,7 +109,7 @@ public class BattleCalculator
 		spellCastTime = spellCastTime + spellTime;
 	}
 	
-	public int getSpellAttacks() { return spellAttacks; }
+	public int getSpellsCast() { return spellsCast; }
 	public double getPhysicalDamage() { return physicalDamage; }
 	public double getMagicDamage() { return magicDamage; }
 	public double getSpellDamage() { return totalSpellDamage; }

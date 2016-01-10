@@ -17,7 +17,7 @@ public class UrgotQ extends Spell {
 		double scalingDamage = urgot.getTotalAD() * 0.85;
 		double totalDamage = 10 + baseDamage + scalingDamage;
 		battle.addPhysicalDamage(totalDamage);		
-		battle.addSpellAttack();
+		battle.addSpellCast();
 	}
 
 }
