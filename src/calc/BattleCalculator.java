@@ -5,6 +5,7 @@ public class BattleCalculator
 {
 	private int spellsCast = 0;
 	private double spellCastTime = 0;	// TODO: Remove this soon.
+	private double physicalAttacksDone = 0;
 	
 	private double totalSpellDamage = 0;
 	private double physicalDamage = 0;
@@ -42,6 +43,7 @@ public class BattleCalculator
 	public void addPhysicalDamage(double damage)
 	{
 		physicalDamage = physicalDamage + damage;
+		physicalAttacksDone++;
 	}
 	
 	public void addHealing(double damage)

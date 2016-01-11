@@ -1,9 +1,9 @@
-package attacks;
+package battle;
 
 import calc.BattleCalculator;
 import urgot.UrgotStats;
 
-public abstract class Spell {
+public abstract class Spell extends BattleAction {
 	
 	private int spellRank;
 	private int cost;
@@ -11,7 +11,7 @@ public abstract class Spell {
 	private double cooldown;
 	private double castTime;		// Average cast time is 0.25 seconds.
 	
-	// Notes: Urgot W does not have a cast time.
+
 	
 	public void setSpellRank(int spellRank)
 	{
@@ -63,7 +63,6 @@ public abstract class Spell {
 	{
 		return castTime;
 	}
-	public abstract void runBattleCalculations(
-			BattleCalculator battle, UrgotStats urgot);
+
 
 }

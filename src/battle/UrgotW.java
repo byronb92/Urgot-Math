@@ -1,4 +1,4 @@
-package attacks;
+package battle;
 
 import calc.BattleCalculator;
 import urgot.UrgotStats;
@@ -12,6 +12,7 @@ public class UrgotW extends Spell {
 				SpellCostType.MANA, 
 				16 - (1 * spellRank - 1), 
 				0);
+		// Notes: Urgot W does not have a cast time.
 	}
 
 	@Override
@@ -21,8 +22,7 @@ public class UrgotW extends Spell {
 				(urgot.getTotalMana() * 0.08);
 		double totalShieldAmount = 60 + baseShieldAmount + scalingAmount;
 		battle.addShieldAmount(totalShieldAmount);
-		battle.addSpellCast();
-		
+		battle.addSpellCast();		
 	}
 
 }

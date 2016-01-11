@@ -1,4 +1,4 @@
-package attacks;
+package battle;
 
 import calc.BattleCalculator;
 import urgot.UrgotStats;
