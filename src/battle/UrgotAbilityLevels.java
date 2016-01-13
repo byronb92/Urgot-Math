@@ -11,6 +11,8 @@ public class UrgotAbilityLevels {
 	public UrgotAbilityLevels()
 	{
 		abilityRanks = new HashMap<SkillRankType, ArrayList<UrgotSkillRank>>();
+		addStandardAbilities();
+		addShieldStartAbilities();
 	}
 	
 	private void addStandardAbilities()
@@ -35,6 +37,50 @@ public class UrgotAbilityLevels {
 		standardRank.add(new UrgotSkillRank(5,4,5,3));
 		standardRank.add(new UrgotSkillRank(5,5,5,3));
 		abilityRanks.put(SkillRankType.STANDARD, standardRank);
+	}
+	
+	private void addShieldStartAbilities()
+	{
+		ArrayList<UrgotSkillRank> shieldStart = new ArrayList<UrgotSkillRank>(18);
+		shieldStart.add(new UrgotSkillRank(0,1,0,0));
+		shieldStart.add(new UrgotSkillRank(1,1,0,0));
+		shieldStart.add(new UrgotSkillRank(2,1,0,0));
+		shieldStart.add(new UrgotSkillRank(2,1,1,0));
+		shieldStart.add(new UrgotSkillRank(3,1,1,0));
+		shieldStart.add(new UrgotSkillRank(3,1,1,1));		// Level 6
+		shieldStart.add(new UrgotSkillRank(4,1,1,1));
+		shieldStart.add(new UrgotSkillRank(4,2,1,1));
+		shieldStart.add(new UrgotSkillRank(5,2,1,1));
+		shieldStart.add(new UrgotSkillRank(5,3,1,1));
+		shieldStart.add(new UrgotSkillRank(5,3,1,2));		// Level 11
+		shieldStart.add(new UrgotSkillRank(5,4,1,2));
+		shieldStart.add(new UrgotSkillRank(5,5,1,2));
+		shieldStart.add(new UrgotSkillRank(5,5,2,2));
+		shieldStart.add(new UrgotSkillRank(5,5,3,2));
+		shieldStart.add(new UrgotSkillRank(5,5,3,3));		// Level 16
+		shieldStart.add(new UrgotSkillRank(5,5,4,3));
+		shieldStart.add(new UrgotSkillRank(5,5,5,3));
+	}
+	
+	
+	public int getUrgotQBasedOnLevel(SkillRankType rankType, int urgotLevel)
+	{
+		return abilityRanks.get(rankType).get(urgotLevel).getQLevel();
+	}
+	
+	public int getUrgotWBasedOnLevel(SkillRankType rankType, int urgotLevel)
+	{
+		return abilityRanks.get(rankType).get(urgotLevel).getWLevel();
+	}
+	
+	public int getUrgotEBasedOnLevel(SkillRankType rankType, int urgotLevel)
+	{
+		return abilityRanks.get(rankType).get(urgotLevel).getELevel();
+	}
+	
+	public int getUrgotRBasedOnLevel(SkillRankType rankType, int urgotLevel)
+	{
+		return abilityRanks.get(rankType).get(urgotLevel).getRLevel();
 	}
 
 

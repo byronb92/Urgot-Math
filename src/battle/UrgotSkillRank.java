@@ -14,4 +14,8 @@ public class UrgotSkillRank {
 		rRank = r;
 	}
 
+	public int getQLevel() { return qRank; }
+	public int getWLevel() { return wRank; }
+	public int getELevel() { return eRank; }
+	public int getRLevel() { return rRank; }
 }
