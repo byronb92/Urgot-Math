@@ -5,6 +5,7 @@ import items.items.*;
 public class ItemFactory {
 	public Item getItem(String itemName)
 	{
+		// Basic Items
 		// Always include the amount of stacks after Manamune.
 		if (itemName.contains("Manamune"))
 		{
@@ -45,6 +46,9 @@ public class ItemFactory {
 			return new Phage();
 		}
 		
+		
+		
+		// Legendary Items
 		if (itemName.equals("Black Cleaver"))
 		{
 			return new BlackCleaver();
@@ -71,10 +75,20 @@ public class ItemFactory {
 		{
 			return new DeathsDance();
 		}
+		
+		
 		if (itemName.equals("Sterak's Gage"))
 		{
 			return new SteraksGage();
 		}
+		
+		if (itemName.equals("Righteous Glory"))
+		{
+			return new RighteousGlory();
+		}
+		
+		
+		// Defensive Items
 		if (itemName.equals("Randuin's Omen"))
 		{
 			return new RanduinsOmen();
@@ -88,10 +102,7 @@ public class ItemFactory {
 			return new SunfireCape();
 		}
 		
-		if (itemName.equals("Righteous Glory"))
-		{
-			return new RighteousGlory();
-		}
+
 		if (itemName.equals("Zz'Rot Portal"))
 		{
 			return new ZzRotPortal();

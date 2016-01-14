@@ -1,7 +1,5 @@
 package battle;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -89,6 +87,7 @@ public class BattleManager {
 		}
 
 	}
+	
 	public void runBattleCalculations()
 	{
 		ListIterator<BattleAction> listIterator = listBattleActions.listIterator();

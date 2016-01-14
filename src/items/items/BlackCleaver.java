@@ -16,7 +16,6 @@ public class BlackCleaver extends Item {
 	
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 

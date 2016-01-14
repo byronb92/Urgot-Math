@@ -8,7 +8,6 @@ public class Boots extends Item {
 	private int moveSpeed = 25;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -32,7 +31,6 @@ public class Boots extends Item {
 
 	@Override
 	protected void setDetails() {
-		// TODO Auto-generated method stub
 		
 	}
 	
