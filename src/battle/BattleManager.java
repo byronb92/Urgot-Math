@@ -3,20 +3,23 @@ package battle;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-import calc.BattleCalculator;
 import urgot.UrgotStats;
 
 public class BattleManager {
 	private LinkedList<BattleAction> listBattleActions;
-	private BattleCalculator battleCalc;
+	private Battle battle;
 	private UrgotStats urgot;
 	
-	public BattleManager(BattleCalculator battleCalc, UrgotStats urgot, BattleSetup battleSetup)
+	
+	public BattleManager(UrgotStats urgot)
 	{
 		listBattleActions = new LinkedList<BattleAction>();
-		this.battleCalc = battleCalc;
+		battle = new Battle();
 		this.urgot = urgot;
 	}
+	
+
+	
 	
 	private void addBattleAction(BattleAction action)
 	{
@@ -83,6 +86,11 @@ public class BattleManager {
 			addBattleAction(new AutoAttack());
 			break;
 		default:
+			addBattleAction(new UrgotW(wRank));
+			addBattleAction(new UrgotE(eRank));
+			addBattleAction(new UrgotQ(qRank));
+			addBattleAction(new UrgotQ(qRank));
+			addBattleAction(new UrgotQ(qRank));
 			break;
 		}
 
@@ -92,8 +100,14 @@ public class BattleManager {
 	{
 		ListIterator<BattleAction> listIterator = listBattleActions.listIterator();
 		while (listIterator.hasNext()) {
-			listIterator.next().runBattleCalculations(battleCalc, urgot);
+			listIterator.next().runBattleCalculations(battle, urgot);
 		}
+	}
+	
+	
+	public Battle getBattle()
+	{
+		return battle;
 	}
 	
 }

@@ -79,7 +79,20 @@ public class ScenarioManager {
 	}
 
 	
+	
 	// --------- Stat Collection --------
+	/**
+	 * Compute stats for each battle scenario.
+	 */
+	
+	public void computeScenarioStats()
+	{
+		for (UrgotScenario sce : listAllScenarios)
+		{
+			sce.computeBattleScenario();
+		}
+	}
+	
 	/**
 	 * Finds the highest damage output scenario in all scenarios.
 	 * @return null - there are no scenarios.

@@ -1,5 +1,6 @@
 package calc;
 
+import battle.Battle;
 import scenario.UrgotScenario;
 import urgot.UrgotStats;
 
@@ -16,7 +17,7 @@ public class UniqueCalculator {
 	 */
 	public double computeSheenDamage(UrgotScenario sce, String sheenVariation)
 	{
-		BattleCalculator calc = sce.getBattleStats();
+		Battle calc = sce.getBattleStats();
 		UrgotStats urgot = sce.getUrgotStats();
 		
 		double battleTime = calc.getCastTime();

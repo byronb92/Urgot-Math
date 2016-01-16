@@ -45,7 +45,8 @@ public class Phase {
 		currentScenario.addPreItemMastery(mastery);
 		currentScenario.addAfterItemMastery(mastery);
 		currentScenario.computeStats();
-		currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+		//currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+		currentScenario.computeBattleScenario();
 		currentScenario.addAfterBattleMastery(mastery);
 		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
@@ -56,14 +57,15 @@ public class Phase {
 		UrgotScenario currentScenario = new UrgotScenario(currentLevel);
 		currentScenario.addItem(itemName);
 		currentScenario.computeStats();
-		if (currentLevel >= 6)
-		{
-			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
-		}
-		else
-		{
-			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
-		}
+//		if (currentLevel >= 6)
+//		{
+//			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+//		}
+//		else
+//		{
+//			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+//		}
+		currentScenario.computeBattleScenario();
 		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
@@ -80,14 +82,15 @@ public class Phase {
 			currentScenario.addItem(item);
 		}
 		currentScenario.computeStats();
-		if (currentLevel >= 6)
-		{
-			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
-		}
-		else
-		{
-			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
-		}
+//		if (currentLevel >= 6)
+//		{
+//			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+//		}
+//		else
+//		{
+//			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+//		}
+		currentScenario.computeBattleScenario();
 		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
@@ -105,14 +108,15 @@ public class Phase {
 		currentScenario.addPreItemMastery(mastery);
 		currentScenario.computeStats();
 		currentScenario.addAfterItemMastery(mastery);
-		if (currentLevel >= 6)
-		{
-			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
-		}
-		else
-		{
-			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
-		}
+//		if (currentLevel >= 6)
+//		{
+//			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+//		}
+//		else
+//		{
+//			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+//		}
+		currentScenario.computeBattleScenario();
 		currentScenario.addAfterBattleMastery(mastery);
 		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
@@ -137,14 +141,15 @@ public class Phase {
 		
 		
 		// Run combos to output Urgot damage.
-		if (currentLevel >= 6)
-		{
-			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
-		}
-		else
-		{
-			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
-		}
+//		if (currentLevel >= 6)
+//		{
+//			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+//		}
+//		else
+//		{
+//			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+//		}
+		currentScenario.computeBattleScenario();
 		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
@@ -171,14 +176,15 @@ public class Phase {
 		
 		
 		// Run combos to output Urgot damage.
-		if (currentLevel >= 6)
-		{
-			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
-		}
-		else
-		{
-			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
-		}
+//		if (currentLevel >= 6)
+//		{
+//			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+//		}
+//		else
+//		{
+//			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+//		}
+		currentScenario.computeBattleScenario();
 		currentScenario.addAfterBattleMastery(mastery);
 		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);

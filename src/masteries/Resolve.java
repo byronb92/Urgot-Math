@@ -1,6 +1,6 @@
 package masteries;
 
-import calc.BattleCalculator;
+import battle.Battle;
 import calc.UniqueCalculator;
 import urgot.UrgotStats;
 
@@ -44,7 +44,7 @@ public class Resolve {
 	/** Runic Armor: 8% stronger shields + healing. (lifesteal, hp regen)
 	 *  Veteran's Scars: Grants 45 bonus hp.
 	 */
-	public void runicArmor(UrgotStats urgot, BattleCalculator calc)
+	public void runicArmor(UrgotStats urgot, Battle calc)
 	{
 		urgot.addBonusHealthRegen(urgot.getTotalHPRegen() * 0.08);
 		urgot.addLifeSteal(urgot.getLifeSteal() * 0.08);

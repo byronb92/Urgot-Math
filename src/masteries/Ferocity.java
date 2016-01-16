@@ -1,6 +1,6 @@
 package masteries;
 
-import calc.BattleCalculator;
+import battle.Battle;
 import urgot.UrgotStats;
 
 public class Ferocity {
@@ -14,7 +14,7 @@ public class Ferocity {
 		urgot.addBonusAS(0.04);
 	}
 	
-	public void ferocity(BattleCalculator calc)
+	public void ferocity(Battle calc)
 	{
 		double increasedDamage = calc.getSpellDamage() * 0.02;
 		calc.adDamage(increasedDamage);
@@ -26,7 +26,7 @@ public class Ferocity {
 	 * Feast: Killing a unit restores 20 health (25 second cooldown).
 	 */
 	// Currently hard-coded to only account for Urgot.
-	public void doubleEdged(BattleCalculator calc)
+	public void doubleEdged(Battle calc)
 	{
 		double increasedDaamge = calc.getPhysicalDamage() * 0.02;
 		calc.adDamage(increasedDaamge);
@@ -62,12 +62,12 @@ public class Ferocity {
 	 * 		(Airborne icon airborne, Slow icon slow, Stun icon stun, Root icon snare, Taunt icon taunt, Suppression icon suppression).
 	 */
 	// Computing for max bounty damage.
-	public void bounty(BattleCalculator calc)
+	public void bounty(Battle calc)
 	{
 		double increasedDaamge = calc.getPhysicalDamage() * 0.05;
 		calc.adDamage(increasedDaamge);
 	}
-	public void oppressor(BattleCalculator calc)
+	public void oppressor(Battle calc)
 	{
 		double increasedDaamge = calc.getPhysicalDamage() * 0.025;
 		calc.adDamage(increasedDaamge);
@@ -117,7 +117,7 @@ public class Ferocity {
 	}
 	
 	public double deathfireDamage(double battleTime, UrgotStats urgot, 
-			BattleCalculator calc)
+			Battle calc)
 	{
 		double unroundedDeathFireStacks = battleTime / 0.5;
 		int deathFireStacks = (int)unroundedDeathFireStacks;

@@ -1,6 +1,5 @@
 package battle;
 
-import calc.BattleCalculator;
 import urgot.UrgotStats;
 
 public class UrgotE extends Spell {
@@ -15,7 +14,7 @@ public class UrgotE extends Spell {
 	}
 
 	@Override
-	public void runBattleCalculations(BattleCalculator battle, UrgotStats urgot) {
+	public void runBattleCalculations(Battle battle, UrgotStats urgot) {
 		double baseDps = 11 * (getSpellRank() - 1);
 		double scalingDps = 15 + urgot.getBonusAD() * 0.12;
 		double totalDps = baseDps + scalingDps;

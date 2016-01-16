@@ -1,10 +1,10 @@
 package urgot;
-import calc.BattleCalculator;
+import battle.Battle;
 
 public class UrgotSkills 
 {
 
-	BattleCalculator battleManager;
+	Battle battleManager;
 	UrgotStats urgot;
 	private int qSpellCasts = 0;
 	private int wSpellCasts = 0;
@@ -23,7 +23,7 @@ public class UrgotSkills
 	{
 		return qSpellCasts;
 	}
-	public UrgotSkills(BattleCalculator manager, UrgotStats urgot)
+	public UrgotSkills(Battle manager, UrgotStats urgot)
 	{
 		battleManager = manager;
 		this.urgot = urgot;

@@ -49,12 +49,12 @@ public class OutputUrgotCompareTest extends TestCase {
 //		comp.outputLowestCost();
 //	}
 //	
-//	public void testOutputSortedDamageFulLBuild()
-//	{
-//		comp.statCollection(StatSetup.LEVEL18);
-//		comp.outputSortedDamageDescending();
-//	}
-//	
+	public void testOutputSortedDamageFulLBuild()
+	{
+		comp.statCollection(StatSetup.LEVEL18);
+		comp.outputSortedDamage(SortRank.DESCENDING);
+	}
+	
 	public void testOutputSortedArmorFullBuild()
 	{
 		comp.statCollection(StatSetup.LEVEL18);

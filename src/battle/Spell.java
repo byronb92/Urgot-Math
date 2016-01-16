@@ -1,6 +1,5 @@
 package battle;
 
-import calc.BattleCalculator;
 import urgot.UrgotStats;
 
 public abstract class Spell extends BattleAction {

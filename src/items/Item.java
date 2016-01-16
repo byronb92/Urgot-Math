@@ -1,6 +1,6 @@
 package items;
 
-import calc.BattleCalculator;
+import battle.Battle;
 import urgot.UrgotStats;
 
 public abstract class Item {
@@ -16,7 +16,7 @@ public abstract class Item {
 	 * for a specific set of items.
 	 * @param calc - list of battle numbers that items will be usign.
 	 */
-	public void applyAfterBattleUniques(BattleCalculator calc)
+	public void applyAfterBattleUniques(Battle calc)
 	{
 		
 	}

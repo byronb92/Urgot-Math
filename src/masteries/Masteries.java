@@ -2,7 +2,7 @@ package masteries;
 
 import java.util.ArrayList;
 
-import calc.BattleCalculator;
+import battle.Battle;
 import urgot.UrgotStats;
 
 /**
@@ -124,7 +124,7 @@ public class Masteries {
 	 * @param battle
 	 */
 	public void applyUrgotMasteryAfterBattle(MasterySet mastery, UrgotStats urgot,
-			BattleCalculator battle)
+			Battle battle)
 	{
 		if (mastery == MasterySet.THUNDERLORD_BALANCED)
 		{

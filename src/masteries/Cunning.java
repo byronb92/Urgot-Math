@@ -1,6 +1,6 @@
 package masteries;
 
-import calc.BattleCalculator;
+import battle.Battle;
 import calc.UniqueCalculator;
 import urgot.UrgotStats;
 
@@ -108,7 +108,7 @@ public class Cunning {
 				+ "movement speed for 3 seconds.";
 	}
 	
-	public String thunder(UrgotStats urgot, BattleCalculator calc)
+	public String thunder(UrgotStats urgot, Battle calc)
 	{
 		// TODO: This is supposed to be magic damage, not ad damage!
 		double thunderDamage = (10 * (urgot.getLevel()) + (0.30 * urgot.getBonusAD() + (0.10 * urgot.getBonusAP())));
@@ -116,7 +116,7 @@ public class Cunning {
 		return "Thunderlod's Decree damage: " + thunderDamage;
 	}
 	
-	public double windspeaker(BattleCalculator calc)
+	public double windspeaker(Battle calc)
 	{
 		return (calc.getShieldPoints() + (calc.getShieldPoints() * 0.10));
 	}

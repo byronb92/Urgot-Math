@@ -2,7 +2,8 @@ package scenario;
 
 import java.util.Map.Entry;
 
-import calc.BattleCalculator;
+import battle.Battle;
+import battle.BattleManager;
 import items.Item;
 import items.ItemManager;
 import items.Items;
@@ -36,8 +37,9 @@ public class UrgotScenario {
 	private ItemManager itemManager;
 	private RuneManager runeManager;
 	private Masteries masteries;
-	private UrgotCombos urgCombos;
-	private BattleCalculator battleManager;
+	//private UrgotCombos urgCombos;
+	//private BattleCalculator battleManager;
+	private BattleManager battleManager;
 	
 
 	/**
@@ -50,7 +52,7 @@ public class UrgotScenario {
 		itemManager = new ItemManager(urgot);
 		runeManager = new RuneManager(urgot);
 		masteries = new Masteries();
-		battleManager = new BattleCalculator();
+		battleManager = new BattleManager(urgot);
 	}
 	
 	
@@ -69,7 +71,7 @@ public class UrgotScenario {
 		for(Entry<String,Item> item: itemManager.getItems().getItems().entrySet())
 		{
 			// Add every item stat value.
-			item.getValue().applyAfterBattleUniques(battleManager);
+			item.getValue().applyAfterBattleUniques(battleManager.getBattle());
 		}
 	}
 	
@@ -91,17 +93,17 @@ public class UrgotScenario {
 	
 	public void addAfterBattleMastery(MasterySet mastery)
 	{
-		masteries.applyUrgotMasteryAfterBattle(mastery, urgot, battleManager);
+		masteries.applyUrgotMasteryAfterBattle(mastery, urgot, battleManager.getBattle());
 	}
 
 
 	/**
 	 * Adds item and rune stats to Urgot's stats. 
-	 * This should always be rune before computing combos, even if no items are added.
+	 * This should always be run before computing combos, even if no items are added.
 	 */
 	public void computeStats()
 	{
-		urgCombos = new UrgotCombos(battleManager, urgot);
+		//urgCombos = new UrgotCombos(battleManager, urgot);
 		runeManager.getRunes().computeRuneStats(urgot);
 		itemManager.computeItemStats();
 	}
@@ -113,14 +115,14 @@ public class UrgotScenario {
 	public void addAndComputeItem(String itemName)
 	{
 		itemManager.addItem(itemName);
-		urgCombos = new UrgotCombos(battleManager, urgot);
+		//urgCombos = new UrgotCombos(battleManager, urgot);
 		itemManager.computeItemStats();
 	}
 	
 	// -------------- Accessor Methods -------------- 
-	public BattleCalculator getBattleStats()
+	public Battle getBattleStats()
 	{
-		return battleManager;
+		return battleManager.getBattle();
 	}
 	
 	public UrgotStats getUrgotStats()
@@ -129,9 +131,14 @@ public class UrgotScenario {
 	}
 	
 	
-	public UrgotCombos getUrgotCombos()
+//	public UrgotCombos getUrgotCombos()
+//	{
+//		return urgCombos;
+//	}
+	
+	public void computeBattleScenario()
 	{
-		return urgCombos;
+		battleManager.runBattleCalculations();
 	}
 	
 	public Items getUrgotItems()

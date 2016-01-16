@@ -2,7 +2,7 @@ package output;
 
 import java.util.Map.Entry;
 
-import calc.BattleCalculator;
+import battle.Battle;
 import items.Item;
 import items.ItemManager;
 import urgot.*;
@@ -11,7 +11,7 @@ public class OutputUrgotStats {
 	UrgotStats urgot;
 	ItemManager itemManager;
 	UrgotCombos urgCombos;
-	BattleCalculator battleManager;
+	Battle battleManager;
 	public OutputUrgotStats(int currentLevel)
 	{
 		urgot = new UrgotStats(currentLevel);
@@ -22,7 +22,7 @@ public class OutputUrgotStats {
 	public void configureItemSet(int setNumb)
 	{
 		itemManager.applyItemSet(setNumb);
-		battleManager = new BattleCalculator();
+		battleManager = new Battle();
 		urgCombos = new UrgotCombos(battleManager, urgot);
 		itemManager.computeItemStats();
 	}

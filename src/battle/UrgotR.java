@@ -1,6 +1,5 @@
 package battle;
 
-import calc.BattleCalculator;
 import urgot.UrgotStats;
 
 public class UrgotR extends Spell {
@@ -15,7 +14,7 @@ public class UrgotR extends Spell {
 	}
 
 	@Override
-	public void runBattleCalculations(BattleCalculator battle, UrgotStats urgot) {
+	public void runBattleCalculations(Battle battle, UrgotStats urgot) {
 		battle.addSpellCast();
 		
 	}

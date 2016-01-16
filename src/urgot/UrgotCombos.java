@@ -1,6 +1,6 @@
 package urgot;
 
-import calc.BattleCalculator;
+import battle.Battle;
 
 public class UrgotCombos {
 	/**
@@ -16,11 +16,11 @@ public class UrgotCombos {
 	 */
 
 	
-	private BattleCalculator battleManager;
+	private Battle battleManager;
 	private UrgotSkills urgotSkills;
 	private UrgotStats urgot;
 	
-	public UrgotCombos(BattleCalculator manager, UrgotStats urgot)
+	public UrgotCombos(Battle manager, UrgotStats urgot)
 	{
 		battleManager = manager;
 		urgotSkills = new UrgotSkills(manager, urgot);

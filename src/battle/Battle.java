@@ -1,7 +1,7 @@
-package calc;
+package battle;
 import java.util.ArrayList;
 
-public class BattleCalculator 
+public class Battle 
 {
 	private int spellsCast = 0;
 	private double spellCastTime = 0;	// TODO: Remove this soon.
@@ -20,7 +20,7 @@ public class BattleCalculator
 	
 	double opponentArmor;
 	
-	public BattleCalculator()
+	public Battle()
 	{
 
 	}

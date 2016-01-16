@@ -1,6 +1,6 @@
 package items.items;
 
-import calc.BattleCalculator;
+import battle.Battle;
 import items.Item;
 import urgot.UrgotStats;
 
@@ -15,7 +15,7 @@ public class DeathsDance extends Item {
 	}
 	
 	@Override 
-	public void applyAfterBattleUniques(BattleCalculator calc)
+	public void applyAfterBattleUniques(Battle calc)
 	{
 		calc.addHealing(calc.getPhysicalDamage() * 0.15);
 	}

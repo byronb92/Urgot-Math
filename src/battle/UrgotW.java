@@ -1,6 +1,5 @@
 package battle;
 
-import calc.BattleCalculator;
 import urgot.UrgotStats;
 
 public class UrgotW extends Spell {
@@ -16,7 +15,7 @@ public class UrgotW extends Spell {
 	}
 
 	@Override
-	public void runBattleCalculations(BattleCalculator battle, UrgotStats urgot) {
+	public void runBattleCalculations(Battle battle, UrgotStats urgot) {
 		double baseShieldAmount = 40 * getSpellRank() - 1;
 		double scalingAmount = (urgot.getBonusAP() * 0.8) + 
 				(urgot.getTotalMana() * 0.08);

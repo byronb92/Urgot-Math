@@ -103,11 +103,11 @@ public class MidGame extends Phase {
 		
 		
 		
-		thirdIG.getUrgotCombos().lockOnNoUlt(12);
-		thirdFH.getUrgotCombos().lockOnNoUlt(12);
-		thirdMune.getUrgotCombos().lockOnNoUlt(12);
-		thirdGhost.getUrgotCombos().lockOnNoUlt(12);
-		antiAD.getUrgotCombos().lockOnNoUlt(12);
+//		thirdIG.getUrgotCombos().lockOnNoUlt(12);
+//		thirdFH.getUrgotCombos().lockOnNoUlt(12);
+//		thirdMune.getUrgotCombos().lockOnNoUlt(12);
+//		thirdGhost.getUrgotCombos().lockOnNoUlt(12);
+//		antiAD.getUrgotCombos().lockOnNoUlt(12);
 		
 		addScenario(thirdIG);
 		addScenario(thirdFH);
@@ -156,7 +156,7 @@ public class MidGame extends Phase {
 			currentScenario.addItem(item);
 		}
 		currentScenario.computeStats();
-		currentScenario.getUrgotCombos().lockOnNoUlt(12);
+		//currentScenario.getUrgotCombos().lockOnNoUlt(12);
 		addScenario(currentScenario);
 	}
 }
