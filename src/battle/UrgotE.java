@@ -26,6 +26,7 @@ public class UrgotE extends Spell {
 		battle.addPhysicalDamage(totalDps);
 		battle.addPhysicalDamage(totalDps);
 		battle.addPhysicalDamage(totalDps);
+		battle.addSpellDamage(totalDps*5);
 		
 	}
 

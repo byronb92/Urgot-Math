@@ -4,6 +4,8 @@ import java.util.Map.Entry;
 
 import battle.Battle;
 import battle.BattleManager;
+import battle.BattleSetup;
+import battle.SkillRankType;
 import items.Item;
 import items.ItemManager;
 import items.Items;
@@ -138,6 +140,12 @@ public class UrgotScenario {
 	
 	public void computeBattleScenario()
 	{
+		battleManager.runBattleCalculations();
+	}
+	
+	public void computeBattleScenario(BattleSetup battleSetup, SkillRankType rankType)
+	{
+		battleManager.battleSetup(battleSetup, rankType);
 		battleManager.runBattleCalculations();
 	}
 	

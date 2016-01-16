@@ -17,7 +17,7 @@ public class Ferocity {
 	public void ferocity(Battle calc)
 	{
 		double increasedDamage = calc.getSpellDamage() * 0.02;
-		calc.adDamage(increasedDamage);
+		calc.addSpellDamage(increasedDamage);
 	}
 	
 	/** Double Edged Sword vs. Feast

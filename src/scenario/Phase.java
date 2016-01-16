@@ -2,6 +2,8 @@ package scenario;
 
 import java.util.ArrayList;
 
+import battle.BattleSetup;
+import battle.SkillRankType;
 import masteries.MasterySet;
 import runes.RuneSetup;
 
@@ -30,6 +32,11 @@ public class Phase {
 	 * @param code
 	 */
 	public void runStatCollection(StatSetup setupCode)
+	{
+		
+	}
+	
+	public void runStatCollectionAndBattle(StatSetup setupCode, BattleSetup battleSetup, SkillRankType rankType)
 	{
 		
 	}
@@ -69,6 +76,25 @@ public class Phase {
 		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}
+	
+	public void addScenarioLevelAndBattle(String itemName, int currentLevel, 
+			BattleSetup battleSetup, SkillRankType rankType)
+	{
+		UrgotScenario currentScenario = new UrgotScenario(currentLevel);
+		currentScenario.addItem(itemName);
+		currentScenario.computeStats();
+//		if (currentLevel >= 6)
+//		{
+//			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+//		}
+//		else
+//		{
+//			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+//		}
+		currentScenario.computeBattleScenario(battleSetup, rankType);
+		currentScenario.computeAfterBattleItemStats();
+		addScenario(currentScenario);
+	}
 	/**
 	 * Adds an all-in ult scenario based on level.
 	 * TODO: Does not prohibit under level 6 scenarios.
@@ -91,6 +117,28 @@ public class Phase {
 //			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
 //		}
 		currentScenario.computeBattleScenario();
+		currentScenario.computeAfterBattleItemStats();
+		addScenario(currentScenario);
+	}
+	
+	public void addScenarioLevelAndBattle(String[] itemNames, int currentLevel, BattleSetup battleSetup,
+			SkillRankType rankType)
+	{
+		UrgotScenario currentScenario = new UrgotScenario(currentLevel);
+		for (String item: itemNames)
+		{
+			currentScenario.addItem(item);
+		}
+		currentScenario.computeStats();
+//		if (currentLevel >= 6)
+//		{
+//			currentScenario.getUrgotCombos().lockOnWithUlt(currentLevel);
+//		}
+//		else
+//		{
+//			currentScenario.getUrgotCombos().lockOnNoUlt(currentLevel);
+//		}
+		currentScenario.computeBattleScenario(battleSetup, rankType);
 		currentScenario.computeAfterBattleItemStats();
 		addScenario(currentScenario);
 	}

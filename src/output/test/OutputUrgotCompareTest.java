@@ -1,6 +1,8 @@
 package output.test;
 
 
+import battle.BattleSetup;
+import battle.SkillRankType;
 import junit.framework.TestCase;
 import output.OutputUrgotCompare;
 import scenario.SortRank;
@@ -51,7 +53,7 @@ public class OutputUrgotCompareTest extends TestCase {
 //	
 	public void testOutputSortedDamageFulLBuild()
 	{
-		comp.statCollection(StatSetup.LEVEL18);
+		comp.statCollectionAndBattle(StatSetup.LEVEL18, BattleSetup.POKE_COMBO, SkillRankType.STANDARD);
 		comp.outputSortedDamage(SortRank.DESCENDING);
 	}
 	

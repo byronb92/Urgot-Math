@@ -29,9 +29,9 @@ public class BattleManager {
 	{
 		UrgotAbilityLevels urgotAbilities = new UrgotAbilityLevels();
 		int qRank = urgotAbilities.getUrgotQBasedOnLevel(rankType, urgot.getLevel());
-		int wRank = urgotAbilities.getUrgotQBasedOnLevel(rankType, urgot.getLevel());
-		int eRank = urgotAbilities.getUrgotQBasedOnLevel(rankType, urgot.getLevel());
-		int rRank = urgotAbilities.getUrgotQBasedOnLevel(rankType, urgot.getLevel());
+		int wRank = urgotAbilities.getUrgotWBasedOnLevel(rankType, urgot.getLevel());
+		int eRank = urgotAbilities.getUrgotEBasedOnLevel(rankType, urgot.getLevel());
+		int rRank = urgotAbilities.getUrgotRBasedOnLevel(rankType, urgot.getLevel());
 		switch (battleSetup)
 		{
 		case AUTOTRADE:

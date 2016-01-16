@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import battle.BattleSetup;
+import battle.SkillRankType;
 import calc.DefenseCalculator;
 
 import java.util.TreeMap;
@@ -55,6 +57,28 @@ public class ScenarioManager {
 		}
 	}
 	
+	
+	public void setUpStatCollectionAndBattle(StatSetup setupCode, BattleSetup battleSetup, SkillRankType rankType)
+	{
+		
+		if (setupCode == StatSetup.LEVEL6 || setupCode == StatSetup.MASTERIES_LEVEL1
+				|| setupCode == StatSetup.STARTING_ITEMS)
+		{
+			early = new EarlyGame();
+			setUpPhaseAndBattle(early, setupCode, battleSetup, rankType);
+		}
+		else if (setupCode == StatSetup.LEVEL9 || setupCode == StatSetup.LEVEL12)
+		{
+			mid = new MidGame();
+			setUpPhaseAndBattle(mid, setupCode, battleSetup, rankType);
+		}
+		else if (setupCode == StatSetup.LEVEL15 || setupCode == StatSetup.LEVEL18)
+		{
+			late = new LateGame();
+			setUpPhaseAndBattle(late, setupCode, battleSetup, rankType);
+		}
+	}
+	
 	/**
 	 * Preps output by grabbing the relevant item sets, based on phase and code passed in.
 	 * @param phase, early, mid, late game setup.
@@ -63,6 +87,19 @@ public class ScenarioManager {
 	private void setUpPhase(Phase phase, StatSetup setupCode)
 	{
 		phase.runStatCollection(setupCode);
+		addAllScenarios(phase.getScenarios());
+	}
+	
+	
+	/**
+	 * Preps output by grabbing the relevant item sets, based on phase and code passed in.
+	 * @param phase, early, mid, late game setup.
+	 * @param code - dependent on phase. Each Phase object has it's own outputs.
+	 */
+	private void setUpPhaseAndBattle(Phase phase, StatSetup setupCode, 
+			BattleSetup battleSetup, SkillRankType rankType)
+	{
+		phase.runStatCollectionAndBattle(setupCode, battleSetup, rankType);
 		addAllScenarios(phase.getScenarios());
 	}
 	

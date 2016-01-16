@@ -3,6 +3,8 @@ import scenario.StatSetup;
 
 import java.util.Map.Entry;
 
+import battle.BattleSetup;
+import battle.SkillRankType;
 import scenario.ScenarioManager;
 import scenario.SortRank;
 import scenario.UrgotScenario;
@@ -31,6 +33,11 @@ public class OutputUrgotCompare {
 	public void statCollection(StatSetup setupCode)
 	{
 		sceManager.setUpStatCollection(setupCode);
+	}
+	
+	public void statCollectionAndBattle(StatSetup setupCode, BattleSetup battleSetup, SkillRankType rankType)
+	{
+		sceManager.setUpStatCollectionAndBattle(setupCode, battleSetup, rankType);
 	}
 	
 	/**

@@ -65,22 +65,22 @@ public class UrgotAbilityLevels {
 	
 	public int getUrgotQBasedOnLevel(SkillRankType rankType, int urgotLevel)
 	{
-		return abilityRanks.get(rankType).get(urgotLevel).getQLevel();
+		return abilityRanks.get(rankType).get(urgotLevel-1).getQLevel();
 	}
 	
 	public int getUrgotWBasedOnLevel(SkillRankType rankType, int urgotLevel)
 	{
-		return abilityRanks.get(rankType).get(urgotLevel).getWLevel();
+		return abilityRanks.get(rankType).get(urgotLevel-1).getWLevel();
 	}
 	
 	public int getUrgotEBasedOnLevel(SkillRankType rankType, int urgotLevel)
 	{
-		return abilityRanks.get(rankType).get(urgotLevel).getELevel();
+		return abilityRanks.get(rankType).get(urgotLevel-1).getELevel();
 	}
 	
 	public int getUrgotRBasedOnLevel(SkillRankType rankType, int urgotLevel)
 	{
-		return abilityRanks.get(rankType).get(urgotLevel).getRLevel();
+		return abilityRanks.get(rankType).get(urgotLevel-1).getRLevel();
 	}
 
 
