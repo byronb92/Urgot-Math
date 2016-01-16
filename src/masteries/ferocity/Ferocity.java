@@ -6,26 +6,7 @@ import urgot.UrgotStats;
 
 public class Ferocity extends MasteryTree {
 
-	/** Fury or Ferocity 
-	
-	 * Ferocity: Increases ability and spell damage by 0.4 / 0.8 / 1.2 / 1.6 / 2%.
-	 */
-	public void fury(UrgotStats urgot)
-	{
-		urgot.addBonusAS(0.04);
-	}
-	
-	public void ferocity(Battle calc)
-	{
-		double increasedDamage = calc.getSpellDamage() * 0.02;
-		calc.addSpellDamage(increasedDamage);
-	}
-	
-	/** Double Edged Sword vs. Feast
-	 * MELEE CHAMPIONS: You deal 3% increased damage, take 1.5% increased damage from all sources.
-	 * RANGED CHAMPIONS: You deal and take 2% increased damage from all sources.
-	 * Feast: Killing a unit restores 20 health (25 second cooldown).
-	 */
+
 	// Currently hard-coded to only account for Urgot.
 	public void doubleEdged(Battle calc)
 	{
@@ -40,10 +21,7 @@ public class Ferocity extends MasteryTree {
 
 	// TODO: Does this count level 1.
 	/** Vampirism vs Natural Talent 
-	 * Vampirism: 2% Lifesteal & Spellvamp
-	 * Natural Talent: 
-	 * 		 0.55 attack damage per level (10 at level 18) 
-	 *		 0.83 ability power per level (15 at level 18).
+
 	 */
 	public void vampirism(UrgotStats urgot)
 	{

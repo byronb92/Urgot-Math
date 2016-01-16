@@ -1,4 +1,4 @@
-package masteries;
+package masteries.ferocity;
 
 import urgot.UrgotStats;
 
@@ -18,4 +18,8 @@ public abstract class Mastery {
 
 	
 	public abstract void runMasteryCalculations(UrgotStats urgot);
+	public void setMasteryDetails(String details)
+	{
+		masteryDetails = details;
+	}
 }

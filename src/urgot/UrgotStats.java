@@ -56,6 +56,7 @@ public class UrgotStats {
 
 	
 	private double spellDamageAmp 	= 0;
+	private double enemyDamageAmp	= 0;		// Double-edged Sword Mastery
 	private double damageAmp		= 0;
 	private double damageReduc		= 0.85;		// Urgot passive.
 	private double flatArmorPen 	= 0;
@@ -222,6 +223,18 @@ public class UrgotStats {
 		}
 	}
 	// TODO: Test math of damage amplifcation.
+	public void addEnemyAmplification(double value)
+	{
+		if (enemyDamageAmp == 0)
+		{
+			enemyDamageAmp = 1 - (1-value);
+		}
+		else
+		{
+			enemyDamageAmp = (1 - enemyDamageAmp) * (1-value);
+		}
+	}
+	
 	public void addDamageAmplification(double value)
 	{
 		if (damageAmp == 0)

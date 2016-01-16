@@ -131,14 +131,14 @@ public class Masteries {
 	{
 		if (mastery == MasterySet.THUNDERLORD_BALANCED)
 		{
-			ferocity.ferocity(battle);
+			//ferocity.ferocity(battle);
 			ferocity.oppressor(battle);
 			masteryBenefits.add(cunning.thunder(urgot, battle));
 			keystone = "Thunderlord's Decree";
 		}
 		if (mastery == MasterySet.DEATHFIRE_BALANCED)
 		{
-			ferocity.ferocity(battle);
+			//ferocity.ferocity(battle);
 			ferocity.oppressor(battle);
 			
 			masteryBenefits.add(ferocity.deathfireString(battle.getCastTime(), urgot));
