@@ -1,4 +1,4 @@
-package masteries;
+package masteries.resolve;
 
 import battle.Battle;
 import calc.UniqueCalculator;

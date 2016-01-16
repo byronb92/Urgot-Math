@@ -51,11 +51,6 @@ public class OutputUrgotCompareTest extends TestCase {
 //		comp.outputLowestCost();
 //	}
 //	
-	public void testOutputSortedDamageFulLBuild()
-	{
-		comp.statCollectionAndBattle(StatSetup.LEVEL18, BattleSetup.POKE_COMBO, SkillRankType.STANDARD);
-		comp.outputSortedDamage(SortRank.DESCENDING);
-	}
 	
 	public void testOutputSortedArmorFullBuild()
 	{

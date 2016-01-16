@@ -55,6 +55,7 @@ public class UrgotStats {
 	private double percentMS		= 0;
 
 	
+	private double spellDamageAmp 	= 0;
 	private double damageAmp		= 0;
 	private double damageReduc		= 0.85;		// Urgot passive.
 	private double flatArmorPen 	= 0;
@@ -230,6 +231,18 @@ public class UrgotStats {
 		else
 		{
 			damageAmp = (1 - damageAmp) * (1-value);
+		}
+	}
+	
+	public void addSpellAmplification(double value)
+	{
+		if (spellDamageAmp == 0)
+		{
+			spellDamageAmp = 1 - (1-value);
+		}
+		else
+		{
+			spellDamageAmp = (1 - spellDamageAmp) * (1-value);
 		}
 	}
 	

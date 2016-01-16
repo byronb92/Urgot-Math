@@ -61,9 +61,9 @@ public class EarlyGameScenarios extends Phase {
 	 */
 	public void compareLevelOneMasteries()
 	{
-		addBlankScenario(1, MasterySet.THUNDERLORD_BALANCED);
-		addBlankScenario(1, MasterySet.DEATHFIRE_BALANCED);
-		addBlankScenario(1, MasterySet.BOND_BALANCED);
+//		addBlankScenario(1, MasterySet.THUNDERLORD_BALANCED);
+//		addBlankScenario(1, MasterySet.DEATHFIRE_BALANCED);
+//		addBlankScenario(1, MasterySet.BOND_BALANCED);
 	}
 	/**
 	 * Compares first-level component items before legendaries are built.

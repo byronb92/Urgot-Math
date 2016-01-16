@@ -1,12 +1,13 @@
-package masteries;
+package masteries.ferocity;
 
 import battle.Battle;
+import masteries.MasteryTree;
 import urgot.UrgotStats;
 
-public class Ferocity {
+public class Ferocity extends MasteryTree {
 
 	/** Fury or Ferocity 
-	 * Fury: Increases champion attack speed by 0.8 / 1.6 / 2.4 / 3.2 / 4%.
+	
 	 * Ferocity: Increases ability and spell damage by 0.4 / 0.8 / 1.2 / 1.6 / 2%.
 	 */
 	public void fury(UrgotStats urgot)
@@ -127,4 +128,14 @@ public class Ferocity {
 	}
 	// Urgot deathfire touch.
 	// 5 seconds from E. -- 10 (+60.25% bonus AD) (+20.5% AP)
+
+	@Override
+	public void addMasteryByName(String masteryName) {
+		if (masteryName.equals("Fury"))
+		{
+			Ferocity01Fury fury = new Ferocity01Fury();
+			addMastery(fury);
+		}
+		
+	}
 }

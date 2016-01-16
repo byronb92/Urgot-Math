@@ -1,4 +1,4 @@
-package masteries;
+package masteries.cunning;
 
 import battle.Battle;
 import calc.UniqueCalculator;
