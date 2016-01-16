@@ -52,10 +52,10 @@ public class Masteries {
 	/**
 	 * List of masteries that are applied before any items should be applied.
 	 * Ferocity Tree: Feast, Vampirism, Natural Talent, Battering Blows/Percing Thoughts
-	 * Cunning Tree: Savagery, Runic Affinity/Secret Stash, Meditation, Bandit,
+	 * Cunning Tree:  Wanderer/Savagery, Runic Affinity/Secret Stash, Meditation, Bandit,
 	 * 		Precision/Intelligence.
 	 * Resolve Tree: Recovery, Tough Skin, Veteran's Scars, Insight, Perseverence(1st Half)
-	 * 		Swiftness, Guardian, Strength of the Ages, Bond of Stone
+	 * 		Swiftness, Guardian, Strength of the Ages, Bond of Stone  Resolve Tree: Runic Armor
 	 * @param mastery
 	 * @param urgot
 	 */
@@ -103,7 +103,7 @@ public class Masteries {
 	
 	/**
 	 * List of masteries that are applied before any items should be applied.
-	 * Cunning Tree: Wanderer
+	 * Cunning Tree:
 	 * Resolve Tree: Unyielding, Explorer, Perseverence(2nd Half), Grasp of the Undying Dead
 	 * 		
 	 */
@@ -119,7 +119,7 @@ public class Masteries {
 	
 	/**
 	 * Ferocity Tree: Ferocity, Oppressor, Deathfire Touch
-	 * Resolve Tree: Runic Armor
+	 *
 	 * @param mastery
 	 * @param battle
 	 */

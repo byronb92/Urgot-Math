@@ -1,5 +1,4 @@
 package battle;
-import java.util.ArrayList;
 
 public class Battle 
 {
@@ -7,9 +6,9 @@ public class Battle
 	private double spellCastTime = 0;	// TODO: Remove this soon.
 	private double physicalAttacksDone = 0;
 	
-	private double totalSpellDamage = 0;
 	private double physicalDamage = 0;
 	private double magicDamage = 0;
+	private double totalSpellDamage = 0;
 
 	private double shieldStrength = 0;
 	private double healingDone = 0;
@@ -112,6 +111,7 @@ public class Battle
 	}
 	
 	public int getSpellsCast() { return spellsCast; }
+	public double getTotalDamage() { return magicDamage + physicalDamage; }
 	public double getPhysicalDamage() { return physicalDamage; }
 	public double getMagicDamage() { return magicDamage; }
 	public double getSpellDamage() { return totalSpellDamage; }
@@ -123,5 +123,6 @@ public class Battle
 
 	public double getManaUsage() { return manaUsage; }
 	public double getCastTime() { return spellCastTime; }
+
 
 }

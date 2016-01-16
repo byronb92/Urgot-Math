@@ -10,7 +10,7 @@ import battle.SkillRankType;
  * @author byronb92
  *
  */
-public class LateGame extends Phase {
+public class LateGameScenarios extends Phase {
 	@Override
 	public void runStatCollection(StatSetup setupCode)
 	{

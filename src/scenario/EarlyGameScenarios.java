@@ -32,8 +32,8 @@ import masteries.MasterySet;
  *
  *
  */
-public class EarlyGame extends Phase {
-	public EarlyGame()
+public class EarlyGameScenarios extends Phase {
+	public EarlyGameScenarios()
 	{
 		
 	

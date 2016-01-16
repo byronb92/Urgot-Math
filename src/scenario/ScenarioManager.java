@@ -14,22 +14,19 @@ import java.util.TreeMap;
 
 import items.Item;
 
+/** 
+ * ScenarioManager gives the ability to aggregate data 
+ * about Urgot builds/stats/calculations.
+ * @author byronb92
+ *
+ */
 public class ScenarioManager {
 	
-	EarlyGame early;
-	MidGame mid;
-	LateGame late;
-	
-	/**
-	 * Create UrgotScenario.
-	 * Use EarlyGame/MidGame/lateGame to setup the Scenario.
-	 * 		Call UrgotScenario(level)
-	 * 		Add an item to the scenario
-	 * 		Compute the stats
-	 * Use ScenarioManager to add the Scenario into the listUrgots
-	 * 
-	 */
+	private EarlyGameScenarios early;
+	private MidGameScenarios mid;
+	private LateGameScenarios late;
 	private ArrayList<UrgotScenario> listAllScenarios;
+	
 	
 	public ScenarioManager()
 	{
@@ -42,42 +39,22 @@ public class ScenarioManager {
 		if (setupCode == StatSetup.LEVEL6 || setupCode == StatSetup.MASTERIES_LEVEL1
 				|| setupCode == StatSetup.STARTING_ITEMS)
 		{
-			early = new EarlyGame();
+			early = new EarlyGameScenarios();
 			setUpPhase(early, setupCode);
 		}
 		else if (setupCode == StatSetup.LEVEL9 || setupCode == StatSetup.LEVEL12)
 		{
-			mid = new MidGame();
+			mid = new MidGameScenarios();
 			setUpPhase(mid, setupCode);
 		}
 		else if (setupCode == StatSetup.LEVEL15 || setupCode == StatSetup.LEVEL18)
 		{
-			late = new LateGame();
+			late = new LateGameScenarios();
 			setUpPhase(late, setupCode);
 		}
 	}
 	
 	
-	public void setUpStatCollectionAndBattle(StatSetup setupCode, BattleSetup battleSetup, SkillRankType rankType)
-	{
-		
-		if (setupCode == StatSetup.LEVEL6 || setupCode == StatSetup.MASTERIES_LEVEL1
-				|| setupCode == StatSetup.STARTING_ITEMS)
-		{
-			early = new EarlyGame();
-			setUpPhaseAndBattle(early, setupCode, battleSetup, rankType);
-		}
-		else if (setupCode == StatSetup.LEVEL9 || setupCode == StatSetup.LEVEL12)
-		{
-			mid = new MidGame();
-			setUpPhaseAndBattle(mid, setupCode, battleSetup, rankType);
-		}
-		else if (setupCode == StatSetup.LEVEL15 || setupCode == StatSetup.LEVEL18)
-		{
-			late = new LateGame();
-			setUpPhaseAndBattle(late, setupCode, battleSetup, rankType);
-		}
-	}
 	
 	/**
 	 * Preps output by grabbing the relevant item sets, based on phase and code passed in.
@@ -90,45 +67,19 @@ public class ScenarioManager {
 		addAllScenarios(phase.getScenarios());
 	}
 	
-	
-	/**
-	 * Preps output by grabbing the relevant item sets, based on phase and code passed in.
-	 * @param phase, early, mid, late game setup.
-	 * @param code - dependent on phase. Each Phase object has it's own outputs.
-	 */
-	private void setUpPhaseAndBattle(Phase phase, StatSetup setupCode, 
-			BattleSetup battleSetup, SkillRankType rankType)
-	{
-		phase.runStatCollectionAndBattle(setupCode, battleSetup, rankType);
-		addAllScenarios(phase.getScenarios());
-	}
-	
 
-	// ---------- Accessor Methods ----------
 	public ArrayList<UrgotScenario> getScenarios()
 	{
 		return listAllScenarios;
 	}
-	// ---------- Helper Methods ----------
+
 	private void addAllScenarios(ArrayList<UrgotScenario> smallList)
 	{
 		listAllScenarios.addAll(smallList);
 	}
+	
 
-	
-	
-	// --------- Stat Collection --------
-	/**
-	 * Compute stats for each battle scenario.
-	 */
-	
-	public void computeScenarioStats()
-	{
-		for (UrgotScenario sce : listAllScenarios)
-		{
-			sce.computeBattleScenario();
-		}
-	}
+
 	
 	/**
 	 * Finds the highest damage output scenario in all scenarios.

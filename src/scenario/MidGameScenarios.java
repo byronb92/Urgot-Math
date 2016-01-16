@@ -11,10 +11,10 @@ package scenario;
  * @author byronb92
  *
  */
-public class MidGame extends Phase {
+public class MidGameScenarios extends Phase {
 	
 	
-	public MidGame()
+	public MidGameScenarios()
 	{
 		
 	}
