@@ -37,7 +37,7 @@ public class Ferocity extends MasteryTree {
 	/** Bounty Hunter vs. Oppressor
 	 * Bounty Hunter: Grants 1% increased damage for each UNIQUE enemy champion you kill. 
 	 * 	(Your damage output increases by 1% each time you kill an enemy champion for the first time)
-	 * Oppressor:  Grants 2.5% increased damage against units with impaired movement 
+	 * 
 	 * 		(Airborne icon airborne, Slow icon slow, Stun icon stun, Root icon snare, Taunt icon taunt, Suppression icon suppression).
 	 */
 	// Computing for max bounty damage.
