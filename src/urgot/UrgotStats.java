@@ -101,6 +101,7 @@ public class UrgotStats {
 	}
 	public double getBaseADFromItems() { return bonusBaseAD; }
 	public double getBaseArmorFromLevel() { return baseArmor + (armPerLevel * (currentLevel - 1)); }
+	public double getBaseAS() { return baseAS; }
 	public double getBaseHPRegenFromLevel() { 
 		return baseHealthRegen + (baseHealthRegenPerLevel * (currentLevel - 1));	
 	}

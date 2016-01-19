@@ -6,12 +6,11 @@ public class Ferocity05Thoughts extends Mastery {
 
 	public Ferocity05Thoughts() {
 		super(5);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		// TODO Auto-generated method stub
+		urgot.addPercentMagicPen(0.07);
 		
 	}
 

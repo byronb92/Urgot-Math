@@ -13,13 +13,11 @@ public class Ferocity extends MasteryTree {
 		double increasedDaamge = calc.getPhysicalDamage() * 0.02;
 		calc.adDamage(increasedDaamge);
 	}
-	// TODO: Factor this into new field sustain.
 	public String feast()
 	{
 		return "80 health per minute (when killing a unit every 25 seconds)";
 	}
 
-	// TODO: Does this count level 1.
 	/** Vampirism vs Natural Talent 
 
 	 */
