@@ -1,4 +1,4 @@
-package masteries.ferocity;
+package masteries;
 
 import urgot.UrgotStats;
 

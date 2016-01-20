@@ -1,5 +1,6 @@
 package masteries.ferocity;
 
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 public class Ferocity05Blows extends Mastery {

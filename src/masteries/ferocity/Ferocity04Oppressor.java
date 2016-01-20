@@ -1,5 +1,6 @@
 package masteries.ferocity;
 
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /**  Oppressor:  Grants 2.5% increased damage against units with impaired movement  */
