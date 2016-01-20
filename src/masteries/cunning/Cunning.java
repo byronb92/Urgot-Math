@@ -5,10 +5,8 @@ import calc.UniqueCalculator;
 import urgot.UrgotStats;
 
 public class Cunning {
-	/** Wanderer: 3% MS out of combat.
-	 *  Savagery: 5 bonus damage to minions/monsters from autos/single target spells.
-	 */
-	//TODO: Fix wanderer math.
+	
+	 
 	public double wanderer(UrgotStats urgot)
 	{
 		return (urgot.getTotalMS() + (urgot.getTotalMR() * 0.03));
@@ -34,7 +32,7 @@ public class Cunning {
 	}
 	
 	/** Merciless: 5% increased damage to champions below 40% hp.
-	 * 	Meditation: 1.5% missing mana every 5 seconds.
+	 
 	 */
 	// All damage dealt modifiers stack multiplicatively
 	public void merciless(UrgotStats urgot)

@@ -1,6 +1,6 @@
 package masteries.ferocity;
 
-import masteries.Mastery;
+import masteries.cunning.Mastery;
 import urgot.UrgotStats;
 
 /** Warlord's: Your critical strikes against enemy champions 

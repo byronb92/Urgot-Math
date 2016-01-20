@@ -1,6 +1,6 @@
 package masteries.ferocity;
 
-import masteries.Mastery;
+import masteries.cunning.Mastery;
 import urgot.UrgotStats;
 
 public class Ferocity04Bounty extends Mastery {

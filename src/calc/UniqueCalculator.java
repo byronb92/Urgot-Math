@@ -73,6 +73,17 @@ public class UniqueCalculator {
 	}
 	
 	/**
+	 * Performs math for various passive movement speed increases.
+	 * @param urgot
+	 * @param moveSpeedIncrease
+	 * @return
+	 */
+	public double getMSBonus(UrgotStats urgot, double moveSpeedIncrease)
+	{
+		double percentBonus = urgot.getPercentMS() + moveSpeedIncrease;
+		return urgot.getFlatMS() + (urgot.getFlatMS() * percentBonus);
+	}
+	/**
 	 * Calculates movement speed increase. Accounts for movement speed cap.
 	 * @param speedToAdd
 	 * @param currentSpeed

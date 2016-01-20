@@ -1,6 +1,6 @@
 package masteries.ferocity;
 
-import masteries.Mastery;
+import masteries.cunning.Mastery;
 import urgot.UrgotStats;
 
 /** Deathfire Touch: Dealing ability damage to enemy champions applies a bleed, 

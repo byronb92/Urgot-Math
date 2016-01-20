@@ -55,6 +55,8 @@ public class UrgotStats {
 	private double percentMS		= 0;
 
 	
+	private double healModifier 	= 0;
+	private double shieldModifier	= 0;
 	private double spellDamageAmp 	= 0;
 	private double enemyDamageAmp	= 0;		// Double-edged Sword Mastery
 	private double damageAmp		= 0;
@@ -191,6 +193,27 @@ public class UrgotStats {
 	public void addBonusAPPerLevel(double value) { bonusAPPerLevel = bonusAPPerLevel + value; }
 
 	
+	public void addHealModifier(double modify) { 
+		if (healModifier == 0)
+		{
+			healModifier = 1 - modify;
+		}
+		else
+		{
+			healModifier= healModifier* (1-modify);
+		}
+	}
+	
+	public void addShieldModifier(double modify) { 
+		if (shieldModifier == 0)
+		{
+			shieldModifier = 1 - modify;
+		}
+		else
+		{
+			shieldModifier= shieldModifier * (1-modify);
+		}
+	}
 	public void addLifeSteal(double value) { lifeSteal = lifeSteal + value; }
 	public void addSpellVamp(double value) { spellVamp = spellVamp + value; }
 	public void addBonusCritChance(double value) { critChance = critChance + value; }
