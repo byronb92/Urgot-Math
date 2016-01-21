@@ -2,17 +2,16 @@ package masteries.resolve;
 
 import urgot.UrgotStats;
 
+/** Recovery: flat2hp per 5 */
 public class Resolve01Recovery extends Mastery {
 
-	public Resolve01Recovery(int tier) {
-		super(tier);
-		// TODO Auto-generated constructor stub
+	public Resolve01Recovery() {
+		super(1);
 	}
 
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		// TODO Auto-generated method stub
-		
+		urgot.addFlatBonusHealthRegen(2);
 	}
 
 }

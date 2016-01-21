@@ -5,7 +5,7 @@ import calc.UniqueCalculator;
 import urgot.UrgotStats;
 
 public class Resolve {
-	/** Recovery: flat2hp per 5
+	/** 
 	 *  Unyielding: 5% bonus armor and 5% bonus MR.
 	 *  
 	 */

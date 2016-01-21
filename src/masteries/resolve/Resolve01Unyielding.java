@@ -4,14 +4,18 @@ import urgot.UrgotStats;
 
 public class Resolve01Unyielding extends Mastery {
 
-	public Resolve01Unyielding(int tier) {
-		super(tier);
-		// TODO Auto-generated constructor stub
+	public Resolve01Unyielding() {
+		super(1);
 	}
 
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		// TODO Auto-generated method stub
+		double bonusUnyieldingArmor = urgot.getBonusArmor() * 0.05;
+		double bonusUnyieldingMR = urgot.getBonusMR() * 0.05;
+		urgot.addBonusArmor(bonusUnyieldingArmor);
+		urgot.addBonusMR(bonusUnyieldingMR);
+		setMasteryDetails("Unyielding: 5% bonus armor (+" + bonusUnyieldingArmor 
+				+ ")  and 5% bonus MR. (+ " + bonusUnyieldingMR + ")");
 		
 	}
 

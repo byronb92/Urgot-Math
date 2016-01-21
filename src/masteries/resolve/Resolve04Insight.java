@@ -2,17 +2,18 @@ package masteries.resolve;
 
 import urgot.UrgotStats;
 
+/** Insight: 15% reduced summoner spell cooldown. */
 public class Resolve04Insight extends Mastery {
 
-	public Resolve04Insight(int tier) {
-		super(tier);
-		// TODO Auto-generated constructor stub
+	public Resolve04Insight() {
+		super(4);
+
 	}
 
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		// TODO Auto-generated method stub
-		
+		setMasteryDetails("Flash cooldown: 255 seconds (4 minutes 15 seconds)."
+				+ "Does not count Ionian Boot reduction.");
 	}
 
 }

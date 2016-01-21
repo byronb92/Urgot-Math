@@ -39,6 +39,7 @@ public class UrgotStats {
 	private double bonusPercentHP 	= 0;
 	private double bonusMana	 	= 0;
 
+	private double flatHealthRegen  = 0;
 	private double bonusHealthRegen = 0;
 	private double bonusManaRegen 	= 0;
 	private double bonusArmorPen 	= 0;		// Last Whisper changes in preseason.
@@ -183,6 +184,7 @@ public class UrgotStats {
 	
 	public void addBonusHP(double value) { bonusHP = bonusHP + value; }
 	public void addBonusMana(double value) { bonusMana = bonusMana + value;}
+	public void addFlatBonusHealthRegen(double value) { flatHealthRegen = flatHealthRegen + value; }
 	public void addBonusHealthRegen(double value) { bonusHealthRegen = bonusHealthRegen + value; }
 	public void addBonusManaRegen(double value) { bonusManaRegen = bonusManaRegen + value; }
 	public void addBonusPercentHP(double value) { bonusPercentHP = bonusPercentHP + value; }

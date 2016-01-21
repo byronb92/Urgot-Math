@@ -4,14 +4,13 @@ import urgot.UrgotStats;
 
 public class Resolve03Veteran extends Mastery {
 
-	public Resolve03Veteran(int tier) {
-		super(tier);
-		// TODO Auto-generated constructor stub
+	public Resolve03Veteran() {
+		super(3);
 	}
 
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		// TODO Auto-generated method stub
+		urgot.addBonusHP(45);
 		
 	}
 

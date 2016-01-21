@@ -2,16 +2,18 @@ package masteries.resolve;
 
 import urgot.UrgotStats;
 
+/** Strength of the Ages: +300 perm hp / +20 perm hp for siege kills. 
+ * +10hp near siege minions */
 public class Resolve06Strength extends Mastery {
 
 	public Resolve06Strength(int tier) {
-		super(tier);
-		// TODO Auto-generated constructor stub
+		super(6);
 	}
 
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		// TODO Auto-generated method stub
+		setMasteryDetails("Strength of the Ages: +300 perm hp / +20 perm hp "
+				+ "for siege kills. +10hp near siege minions");
 		
 	}
 

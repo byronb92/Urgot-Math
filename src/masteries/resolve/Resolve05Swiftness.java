@@ -2,17 +2,19 @@ package masteries.resolve;
 
 import urgot.UrgotStats;
 
+/** Swiftness: 15% Tenacity/Slow Resist
+ * 		Crowd control reduction stacks multiplicatively
+ */
 public class Resolve05Swiftness extends Mastery {
 
-	public Resolve05Swiftness(int tier) {
-		super(tier);
-		// TODO Auto-generated constructor stub
+	public Resolve05Swiftness() {
+		super(5);
 	}
 
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		// TODO Auto-generated method stub
-		
+		urgot.addTenacity(0.15);
+		urgot.addSlowResist(0.15);
 	}
 
 }
