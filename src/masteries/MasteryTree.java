@@ -2,7 +2,7 @@ package masteries;
 
 import java.util.ArrayList;
 
-import masteries.cunning.Mastery;
+import masteries.resolve.Mastery;
 
 public abstract class MasteryTree {
 	private ArrayList<Mastery> listTreeMasteries;

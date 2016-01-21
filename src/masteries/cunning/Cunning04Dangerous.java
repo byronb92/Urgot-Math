@@ -1,5 +1,6 @@
 package masteries.cunning;
 
+import masteries.resolve.Mastery;
 import urgot.UrgotStats;
 
 public class Cunning04Dangerous extends Mastery {

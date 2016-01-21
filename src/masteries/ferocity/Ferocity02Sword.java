@@ -1,6 +1,6 @@
 package masteries.ferocity;
 
-import masteries.cunning.Mastery;
+import masteries.resolve.Mastery;
 import urgot.UrgotStats;
 
 /** Double Edged Sword

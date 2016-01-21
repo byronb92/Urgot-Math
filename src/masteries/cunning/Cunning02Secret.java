@@ -1,5 +1,6 @@
 package masteries.cunning;
 
+import masteries.resolve.Mastery;
 import urgot.UrgotStats;
 
 /** Potions and elixirs last 10% longer. */

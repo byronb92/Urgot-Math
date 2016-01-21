@@ -1,5 +1,6 @@
 package masteries.cunning;
 
+import masteries.resolve.Mastery;
 import urgot.UrgotStats;
 
 /** Meditation: 1.5% missing mana every 5 seconds. */

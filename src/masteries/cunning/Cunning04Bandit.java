@@ -1,5 +1,6 @@
 package masteries.cunning;
 
+import masteries.resolve.Mastery;
 import urgot.UrgotStats;
 
 /** Bandit: Gain 1 Gold for each nearby minion killed by an ally. 

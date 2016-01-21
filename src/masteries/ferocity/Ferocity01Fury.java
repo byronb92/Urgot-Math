@@ -1,7 +1,7 @@
 package masteries.ferocity;
 
 import masteries.*;
-import masteries.cunning.Mastery;
+import masteries.resolve.Mastery;
 import urgot.UrgotStats;
 
 /**

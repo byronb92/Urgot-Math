@@ -1,6 +1,7 @@
 package masteries.cunning;
 
 import calc.UniqueCalculator;
+import masteries.resolve.Mastery;
 import urgot.UrgotStats;
 
 /** Wanderer: 3% MS out of combat. */
