@@ -1,5 +1,6 @@
 package masteries.resolve;
 
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Runic Armor: 8% stronger shields + healing. (lifesteal, hp regen) */

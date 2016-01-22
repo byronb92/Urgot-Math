@@ -1,6 +1,6 @@
 package masteries.cunning;
 
-import masteries.resolve.Mastery;
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Buffs granted by jungle monsters last 15% longer, including epic monsters. */

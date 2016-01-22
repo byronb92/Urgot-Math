@@ -70,10 +70,10 @@ public class OutputUrgotCompare {
 		{
 			rawDamageString.append(sceManager.getScenarioItems(highestDamage));
 		}
-		if (highestDamage.getMasteries().getKeyStone() != null)
-		{
-			rawDamageString.append(highestDamage.getMasteries().getKeyStone());
-		}
+//		if (highestDamage.getMasteries().getKeyStone() != null)
+//		{
+//			rawDamageString.append(highestDamage.getMasteries().getKeyStone());
+//		}
 		System.out.println(rawDamageString.toString());
 		return rawDamageString.toString();
 	}
@@ -143,17 +143,17 @@ public class OutputUrgotCompare {
 			}
 			
 			// Masteries
-			if (!sce.getMasteries().benefitsIsEmpty())
-			{
-				for (int i = 0; i < sce.getMasteries().getBenefitsList().size(); i++)
-				{
-					dmgString.append(sce.getMasteries().getBenefitsList().get(i));
-					dmgString.append("\n");
-					
-				}
-				dmgString.append("----------");
-				dmgString.append("\n");
-			}
+//			if (!sce.getMasteries().benefitsIsEmpty())
+//			{
+//				for (int i = 0; i < sce.getMasteries().getBenefitsList().size(); i++)
+//				{
+//					dmgString.append(sce.getMasteries().getBenefitsList().get(i));
+//					dmgString.append("\n");
+//					
+//				}
+//				dmgString.append("----------");
+//				dmgString.append("\n");
+//			}
 		}
 		
 		System.out.println(dmgString.toString());

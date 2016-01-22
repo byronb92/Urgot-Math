@@ -1,4 +1,4 @@
-package masteries.resolve;
+package masteries;
 
 import urgot.UrgotStats;
 

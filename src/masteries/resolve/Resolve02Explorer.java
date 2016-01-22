@@ -1,6 +1,7 @@
 package masteries.resolve;
 
 import calc.UniqueCalculator;
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** +15 flat MS in brush and river.*/

@@ -1,5 +1,6 @@
 package masteries.resolve;
 
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 public class Resolve02ToughSkin extends Mastery {

@@ -1,5 +1,6 @@
 package masteries.resolve;
 
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Strength of the Ages: +300 perm hp / +20 perm hp for siege kills. 

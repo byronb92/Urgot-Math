@@ -1,5 +1,6 @@
 package masteries.resolve;
 
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Recovery: flat2hp per 5 */

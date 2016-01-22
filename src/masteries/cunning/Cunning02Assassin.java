@@ -1,6 +1,6 @@
 package masteries.cunning;
 
-import masteries.resolve.Mastery;
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Grants 1.5% increased damage while no allied champions are nearby (800 range). */

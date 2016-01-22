@@ -1,5 +1,6 @@
 package masteries.resolve;
 
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Insight: 15% reduced summoner spell cooldown. */

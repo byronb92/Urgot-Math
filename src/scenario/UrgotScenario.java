@@ -10,6 +10,7 @@ import items.Item;
 import items.ItemManager;
 import items.Items;
 import masteries.Masteries;
+import masteries.MasteryManager;
 import masteries.MasterySet;
 import runes.RuneManager;
 import runes.RuneSetup;
@@ -38,7 +39,8 @@ public class UrgotScenario {
 	private UrgotStats urgot;
 	private ItemManager itemManager;
 	private RuneManager runeManager;
-	private Masteries masteries;
+	private MasteryManager masteryManager;
+	//private Masteries masteries;
 	//private UrgotCombos urgCombos;
 	//private BattleCalculator battleManager;
 	private BattleManager battleManager;
@@ -53,14 +55,57 @@ public class UrgotScenario {
 		urgot = new UrgotStats(currentLevel);
 		itemManager = new ItemManager(urgot);
 		runeManager = new RuneManager(urgot);
-		masteries = new Masteries();
+		//masteries = new Masteries();
+		masteryManager = new MasteryManager(urgot);
 		battleManager = new BattleManager(urgot);
 	}
 	
 	
+	/**
+	 * Adds item and rune stats to Urgot's stats. 
+	 * This should always be run before computing combos, even if no items are added.
+	 */
+	public void computeStats()
+	{
+		//urgCombos = new UrgotCombos(battleManager, urgot);
+		runeManager.getRunes().computeRuneStats(urgot);
+		itemManager.computeItemStats();
+	}
+	
+
+	
+	
+	public void addRunes(RuneSetup rs)
+	{
+		runeManager.setUpRunes(rs);
+	}
+	
 	public void addItem(String itemName)
 	{
 		itemManager.addItem(itemName);
+	}
+	
+	/**
+	 * For single item comparisons.
+	 * @param itemName
+	 */
+	public void addAndComputeItem(String itemName)
+	{
+		itemManager.addItem(itemName);
+		//urgCombos = new UrgotCombos(battleManager, urgot);
+		itemManager.computeItemStats();
+	}
+	
+	
+	public void computeBattleScenario()
+	{
+		battleManager.runBattleCalculations();
+	}
+	
+	public void computeBattleScenario(BattleSetup battleSetup, SkillRankType rankType)
+	{
+		battleManager.battleSetup(battleSetup, rankType);
+		battleManager.runBattleCalculations();
 	}
 	
 	/**
@@ -77,49 +122,11 @@ public class UrgotScenario {
 		}
 	}
 	
-	
-	public void addRunes(RuneSetup rs)
-	{
-		runeManager.setUpRunes(rs);
-	}
-	
-	public void addPreItemMastery(MasterySet mastery)
-	{
-		masteries.applyUrgotMastery(mastery, urgot);
-	}
-	
-	public void addAfterItemMastery(MasterySet mastery)
-	{
-		masteries.applyUrgotMasteryAfterItems(mastery, urgot);
-	}
-	
-	public void addAfterBattleMastery(MasterySet mastery)
-	{
-		masteries.applyUrgotMasteryAfterBattle(mastery, urgot, battleManager.getBattle());
-	}
 
 
-	/**
-	 * Adds item and rune stats to Urgot's stats. 
-	 * This should always be run before computing combos, even if no items are added.
-	 */
-	public void computeStats()
-	{
-		//urgCombos = new UrgotCombos(battleManager, urgot);
-		runeManager.getRunes().computeRuneStats(urgot);
-		itemManager.computeItemStats();
-	}
+
 	
-	/**
-	 * For single item comparisons.
-	 * @param itemName
-	 */
-	public void addAndComputeItem(String itemName)
-	{
-		itemManager.addItem(itemName);
-		//urgCombos = new UrgotCombos(battleManager, urgot);
-		itemManager.computeItemStats();
-	}
+
 	
 	// -------------- Accessor Methods -------------- 
 	public Battle getBattleStats()
@@ -138,30 +145,40 @@ public class UrgotScenario {
 //		return urgCombos;
 //	}
 	
-	public void computeBattleScenario()
-	{
-		battleManager.runBattleCalculations();
-	}
+
+
 	
-	public void computeBattleScenario(BattleSetup battleSetup, SkillRankType rankType)
-	{
-		battleManager.battleSetup(battleSetup, rankType);
-		battleManager.runBattleCalculations();
-	}
+
+
 	
 	public Items getUrgotItems()
 	{
 		return itemManager.getItems();
 	}
 	
-	public Masteries getMasteries()
-	{
-		return masteries;
-	}
-	
-	public RuneManager runeManager()
+	public RuneManager getRuneManager()
 	{
 		return runeManager;
 	}
+	
+//	public void addPreItemMastery(MasterySet mastery)
+//	{
+//		masteries.applyUrgotMastery(mastery, urgot);
+//	}
+//	
+//	public void addAfterItemMastery(MasterySet mastery)
+//	{
+//		masteries.applyUrgotMasteryAfterItems(mastery, urgot);
+//	}
+//	
+//	public void addAfterBattleMastery(MasterySet mastery)
+//	{
+//		masteries.applyUrgotMasteryAfterBattle(mastery, urgot, battleManager.getBattle());
+//	}
+	
+//	public Masteries getMasteries()
+//	{
+//		return masteries;
+//	}
 
 }

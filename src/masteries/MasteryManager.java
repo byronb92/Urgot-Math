@@ -12,6 +12,10 @@ public class MasteryManager {
 	private UrgotStats urgot;
 	
 	
+	public MasteryManager(UrgotStats urgot)
+	{
+		this.urgot = urgot;
+	}
 	public void masterySetup(MasterySet masterySet)
 	{
 		

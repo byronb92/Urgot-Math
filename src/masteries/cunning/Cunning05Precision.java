@@ -1,6 +1,6 @@
 package masteries.cunning;
 
-import masteries.resolve.Mastery;
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Precision: 3.0 + (0.3 x level) armor pen and magic pen: */

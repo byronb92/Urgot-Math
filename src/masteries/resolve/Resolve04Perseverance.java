@@ -1,5 +1,6 @@
 package masteries.resolve;
 
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /* Perseverance: +50% base hp regen, 200% when below 25% hp */

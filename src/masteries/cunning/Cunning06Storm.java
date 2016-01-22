@@ -1,7 +1,7 @@
 package masteries.cunning;
 
 import calc.UniqueCalculator;
-import masteries.resolve.Mastery;
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Dealing 30% of a champion's maximum health within 2.5 seconds 

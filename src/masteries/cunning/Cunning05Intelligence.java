@@ -1,6 +1,6 @@
 package masteries.cunning;
 
-import masteries.resolve.Mastery;
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Intelligence: 45% CDR, 5% starting CDR. */

@@ -1,5 +1,6 @@
 package masteries.resolve;
 
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /** Grasp of the Undying: 3% max hp dealt to opponent (4 sec cd) (heals for 3%)

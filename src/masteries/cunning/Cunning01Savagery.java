@@ -1,6 +1,6 @@
 package masteries.cunning;
 
-import masteries.resolve.Mastery;
+import masteries.Mastery;
 import urgot.UrgotStats;
 
 /**  Savagery: 5 bonus damage to minions/monsters from autos/single target spells. */
