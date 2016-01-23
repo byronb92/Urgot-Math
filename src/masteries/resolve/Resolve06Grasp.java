@@ -8,7 +8,7 @@ import urgot.UrgotStats;
  */
 public class Resolve06Grasp extends Mastery {
 
-	public Resolve06Grasp(int tier) {
+	public Resolve06Grasp() {
 		super(6);
 	}
 

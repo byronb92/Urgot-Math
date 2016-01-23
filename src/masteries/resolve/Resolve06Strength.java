@@ -7,7 +7,7 @@ import urgot.UrgotStats;
  * +10hp near siege minions */
 public class Resolve06Strength extends Mastery {
 
-	public Resolve06Strength(int tier) {
+	public Resolve06Strength() {
 		super(6);
 	}
 
