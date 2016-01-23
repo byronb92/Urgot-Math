@@ -5,9 +5,8 @@ import urgot.UrgotStats;
 
 public class Cunning04Dangerous extends Mastery {
 
-	public Cunning04Dangerous(int tier) {
-		super(tier);
-		// TODO Auto-generated constructor stub
+	public Cunning04Dangerous() {
+		super(4);
 	}
 
 	@Override

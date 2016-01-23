@@ -6,7 +6,7 @@ import urgot.UrgotStats;
 /** Meditation: 1.5% missing mana every 5 seconds. */
 public class Cunning03Meditation extends Mastery {
 
-	public Cunning03Meditation(int tier) {
+	public Cunning03Meditation() {
 		super(3);
 	}
 

@@ -44,7 +44,10 @@ public class MasteryManager {
 	 */
 	private void thunderlordBalanced()
 	{
-		ferocity.addMasteryByName("Savagery");
+		ferocity.addMasteryByName("Feast");
+		ferocity.addMasteryByName("Vampirism");
+		ferocity.addMasteryByName("Oppressor");
+		
 	}
 	
 	private void deathfireBalanced()
