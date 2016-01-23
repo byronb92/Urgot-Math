@@ -3,7 +3,7 @@ package masteries.ferocity;
 import masteries.Mastery;
 import urgot.UrgotStats;
 
-/** Double Edged Sword
+/** Double-Edged Sword
  * MELEE CHAMPIONS: You deal 3% increased damage, take 1.5% increased damage from all sources.
  * RANGED CHAMPIONS: You deal and take 2% increased damage from all sources.
  */

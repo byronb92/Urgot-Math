@@ -52,100 +52,100 @@ public class Masteries {
 	
 	
 
-	/**
-	 * List of masteries that are applied before any items should be applied.
-	 * Ferocity Tree: Feast, Vampirism, Natural Talent, Battering Blows/Percing Thoughts
-	 * Cunning Tree:  Wanderer/Savagery, Runic Affinity/Secret Stash, Meditation, Bandit,
-	 * 		Precision/Intelligence.
-	 * Resolve Tree: Recovery, Tough Skin, Veteran's Scars, Insight, Perseverence(1st Half)
-	 * 		Swiftness, Guardian, Strength of the Ages, Bond of Stone  Resolve Tree: Runic Armor
-	 * @param mastery
-	 * @param urgot
-	 */
-	public void applyUrgotMastery(MasterySet mastery, UrgotStats urgot)
-	{
-		if (mastery == MasterySet.THUNDERLORD_BALANCED)
-		{
-			ferocity.vampirism(urgot);
-			masteryBenefits.add(cunning.savagery());
-			masteryBenefits.add(cunning.secretStash());
-			cunning.meditation(urgot);
-			masteryBenefits.add(cunning.dangerousGame());
-			cunning.intelligence(urgot);
-			masteryBenefits.add(ferocity.feast());	
-		}
-		
-		if (mastery == MasterySet.DEATHFIRE_BALANCED)
-		{
-			masteryBenefits.add(ferocity.feast());
-			ferocity.vampirism(urgot);
-			ferocity.battering(urgot);
-			
-			masteryBenefits.add(cunning.savagery());
-			masteryBenefits.add(cunning.secretStash());
-			masteryBenefits.add(cunning.meditation(urgot));
-			masteryBenefits.add(cunning.dangerousGame());
-			
-			
-		}
-		
-		if (mastery == MasterySet.BOND_BALANCED)
-		{
-			masteryBenefits.add(resolve.toughSkin());
-			resolve.veterans(urgot);
-			resolve.perseveranceBeforeItems(urgot);
-			resolve.swiftness(urgot);
-			masteryBenefits.add(resolve.stoneBond());
-			
-			masteryBenefits.add(cunning.savagery());
-			masteryBenefits.add(cunning.secretStash());
-			masteryBenefits.add(cunning.meditation(urgot));
-			masteryBenefits.add(cunning.dangerousGame());
-		}
-	}
-	
-	/**
-	 * List of masteries that are applied before any items should be applied.
-	 * Cunning Tree:
-	 * Resolve Tree: Unyielding, Explorer, Perseverence(2nd Half), Grasp of the Undying Dead
-	 * 		
-	 */
-	public void applyUrgotMasteryAfterItems(MasterySet mastery, UrgotStats urgot)
-	{
-		if (mastery == MasterySet.BOND_BALANCED)
-		{
-			resolve.unyieldingArmor(urgot);
-			resolve.unyieldingMR(urgot);
-			resolve.perseveranceAfterItems(urgot);
-		}
-	}
-	
-	/**
-	 * Ferocity Tree: Ferocity, Oppressor, Deathfire Touch
-	 *
-	 * @param mastery
-	 * @param battle
-	 */
-	public void applyUrgotMasteryAfterBattle(MasterySet mastery, UrgotStats urgot,
-			Battle battle)
-	{
-		if (mastery == MasterySet.THUNDERLORD_BALANCED)
-		{
-			//ferocity.ferocity(battle);
-			ferocity.oppressor(battle);
-			masteryBenefits.add(cunning.thunder(urgot, battle));
-			keystone = "Thunderlord's Decree";
-		}
-		if (mastery == MasterySet.DEATHFIRE_BALANCED)
-		{
-			//ferocity.ferocity(battle);
-			ferocity.oppressor(battle);
-			
-			masteryBenefits.add(ferocity.deathfireString(battle.getCastTime(), urgot));
-			keystone = "Deathfire Touch";
-			battle.adDamage(ferocity.deathfireDamage(battle.getCastTime(), urgot, battle));
-		}	
-	}
+//	/**
+//	 * List of masteries that are applied before any items should be applied.
+//	 * Ferocity Tree: Feast, Vampirism, Natural Talent, Battering Blows/Percing Thoughts
+//	 * Cunning Tree:  Wanderer/Savagery, Runic Affinity/Secret Stash, Meditation, Bandit,
+//	 * 		Precision/Intelligence.
+//	 * Resolve Tree: Recovery, Tough Skin, Veteran's Scars, Insight, Perseverence(1st Half)
+//	 * 		Swiftness, Guardian, Strength of the Ages, Bond of Stone  Resolve Tree: Runic Armor
+//	 * @param mastery
+//	 * @param urgot
+//	 */
+//	public void applyUrgotMastery(MasterySet mastery, UrgotStats urgot)
+//	{
+//		if (mastery == MasterySet.THUNDERLORD_BALANCED)
+//		{
+//			ferocity.vampirism(urgot);
+//			masteryBenefits.add(cunning.savagery());
+//			masteryBenefits.add(cunning.secretStash());
+//			cunning.meditation(urgot);
+//			masteryBenefits.add(cunning.dangerousGame());
+//			cunning.intelligence(urgot);
+//			masteryBenefits.add(ferocity.feast());	
+//		}
+//		
+//		if (mastery == MasterySet.DEATHFIRE_BALANCED)
+//		{
+//			masteryBenefits.add(ferocity.feast());
+//			ferocity.vampirism(urgot);
+//			ferocity.battering(urgot);
+//			
+//			masteryBenefits.add(cunning.savagery());
+//			masteryBenefits.add(cunning.secretStash());
+//			masteryBenefits.add(cunning.meditation(urgot));
+//			masteryBenefits.add(cunning.dangerousGame());
+//			
+//			
+//		}
+//		
+//		if (mastery == MasterySet.BOND_BALANCED)
+//		{
+//			masteryBenefits.add(resolve.toughSkin());
+//			resolve.veterans(urgot);
+//			resolve.perseveranceBeforeItems(urgot);
+//			resolve.swiftness(urgot);
+//			masteryBenefits.add(resolve.stoneBond());
+//			
+//			masteryBenefits.add(cunning.savagery());
+//			masteryBenefits.add(cunning.secretStash());
+//			masteryBenefits.add(cunning.meditation(urgot));
+//			masteryBenefits.add(cunning.dangerousGame());
+//		}
+//	}
+//	
+//	/**
+//	 * List of masteries that are applied before any items should be applied.
+//	 * Cunning Tree:
+//	 * Resolve Tree: Unyielding, Explorer, Perseverence(2nd Half), Grasp of the Undying Dead
+//	 * 		
+//	 */
+//	public void applyUrgotMasteryAfterItems(MasterySet mastery, UrgotStats urgot)
+//	{
+//		if (mastery == MasterySet.BOND_BALANCED)
+//		{
+//			resolve.unyieldingArmor(urgot);
+//			resolve.unyieldingMR(urgot);
+//			resolve.perseveranceAfterItems(urgot);
+//		}
+//	}
+//	
+//	/**
+//	 * Ferocity Tree: Ferocity, Oppressor, Deathfire Touch
+//	 *
+//	 * @param mastery
+//	 * @param battle
+//	 */
+//	public void applyUrgotMasteryAfterBattle(MasterySet mastery, UrgotStats urgot,
+//			Battle battle)
+//	{
+//		if (mastery == MasterySet.THUNDERLORD_BALANCED)
+//		{
+//			//ferocity.ferocity(battle);
+//			ferocity.oppressor(battle);
+//			masteryBenefits.add(cunning.thunder(urgot, battle));
+//			keystone = "Thunderlord's Decree";
+//		}
+//		if (mastery == MasterySet.DEATHFIRE_BALANCED)
+//		{
+//			//ferocity.ferocity(battle);
+//			ferocity.oppressor(battle);
+//			
+//			masteryBenefits.add(ferocity.deathfireString(battle.getCastTime(), urgot));
+//			keystone = "Deathfire Touch";
+//			battle.adDamage(ferocity.deathfireDamage(battle.getCastTime(), urgot, battle));
+//		}	
+//	}
 	
 	public String getKeyStone() { return keystone; }
 	public ArrayList<String> getBenefitsList() { return masteryBenefits; }

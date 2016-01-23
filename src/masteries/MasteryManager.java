@@ -18,13 +18,33 @@ public class MasteryManager {
 	}
 	public void masterySetup(MasterySet masterySet)
 	{
-		
+		switch (masterySet)
+		{
+			case THUNDERLORD_BALANCED:
+				thunderlordBalanced();
+				break;
+			case DEATHFIRE_BALANCED:
+				deathfireBalanced();
+				break;
+			case BOND_BALANCED:
+				bondBalanced();
+				break;
+			default:
+				break;
+		}
 	}
 	
 	
+	/**
+	 * Thunderlord's Urgot Version 1.
+	 * Cunning:
+	 * Savagery, Secret Stash, Meditation, Dangerous Game, Intelligence, Thunderlord's
+	 * Ferocity:
+	 * Ferocity, Feast, Vampirism, Oppressor
+	 */
 	private void thunderlordBalanced()
 	{
-		
+		ferocity.addMasteryByName("Savagery");
 	}
 	
 	private void deathfireBalanced()
