@@ -3,6 +3,8 @@ import scenario.StatSetup;
 
 import java.util.Map.Entry;
 
+import masteries.MasterySet;
+import runes.RuneSetup;
 import scenario.ScenarioManager;
 import scenario.SortRank;
 import scenario.UrgotScenario;
@@ -33,6 +35,8 @@ public class OutputUrgotCompare {
 		sceManager.setUpStatCollection(setupCode);
 	}
 	
+
+			
 	/**
 	 * Outputs general statistics about every scenario added from statCollection.
 	 * @return

@@ -53,28 +53,16 @@ public class UrgotScenario {
 	public UrgotScenario(int currentLevel)
 	{
 		urgot = new UrgotStats(currentLevel);
-		itemManager = new ItemManager(urgot);
+		masteryManager = new MasteryManager();
 		runeManager = new RuneManager(urgot);
-		//masteries = new Masteries();
-		masteryManager = new MasteryManager(urgot);
+		itemManager = new ItemManager(urgot);
 		battleManager = new BattleManager(urgot);
-	}
-	
-	
-	/**
-	 * Adds item and rune stats to Urgot's stats. 
-	 * This should always be run before computing combos, even if no items are added.
-	 */
-	public void computeStats()
-	{
-		//urgCombos = new UrgotCombos(battleManager, urgot);
-		runeManager.getRunes().computeRuneStats(urgot);
-		itemManager.computeItemStats();
 	}
 	
 
 	
 	
+	// --- Dynamic (Individual) stat methods. ---
 	public void addRunes(RuneSetup rs)
 	{
 		runeManager.setUpRunes(rs);
@@ -85,16 +73,41 @@ public class UrgotScenario {
 		itemManager.addItem(itemName);
 	}
 	
-	/**
-	 * For single item comparisons.
-	 * @param itemName
-	 */
+
 	public void addAndComputeItem(String itemName)
 	{
 		itemManager.addItem(itemName);
-		//urgCombos = new UrgotCombos(battleManager, urgot);
 		itemManager.computeItemStats();
 	}
+	
+	
+	
+	
+	/**
+	 * Used to quickly apply rune and mastery sets to scenario objects.
+	 * @param runes
+	 * @param masteries
+	 */
+	public void setUpRunesAndMasteries(RuneSetup runes, MasterySet masteries)
+	{
+		runeManager.setUpRunes(runes);
+		masteryManager.masterySetup(masteries);
+	}
+	
+	
+	/**
+	 * Calculates rune, mastery, and item stats and applies their effects.
+	 */
+	public void computeStats()
+	{
+		runeManager.computeRuneStats();
+		itemManager.computeItemStats();
+	}
+	
+
+	
+	
+
 	
 	
 	public void computeBattleScenario()

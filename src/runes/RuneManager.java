@@ -25,5 +25,10 @@ public class RuneManager {
 	{
 		return runes;
 	}
+	
+	public void computeRuneStats()
+	{
+		getRunes().computeRuneStats(urgot);
+	}
 
 }

@@ -1,19 +1,8 @@
 package masteries.cunning;
 
 import masteries.MasteryTree;
-import masteries.ferocity.Ferocity01Fury;
-import masteries.ferocity.Ferocity01Sorcery;
-import masteries.ferocity.Ferocity02Feast;
-import masteries.ferocity.Ferocity02Sword;
-import masteries.ferocity.Ferocity03NaturalTalent;
-import masteries.ferocity.Ferocity03Vampirism;
-import masteries.ferocity.Ferocity04Bounty;
-import masteries.ferocity.Ferocity04Oppressor;
-import masteries.ferocity.Ferocity05Blows;
-import masteries.ferocity.Ferocity05Thoughts;
-import masteries.ferocity.Ferocity06Bloodlust;
-import masteries.ferocity.Ferocity06Deathfire;
-import masteries.ferocity.Ferocity06Fervor;
+
+
 
 public class Cunning extends MasteryTree {
 
@@ -31,7 +20,7 @@ public class Cunning extends MasteryTree {
 		}
 		else if (masteryName.equals("Runic Affinity"))
 		{
-			Ferocity02Feast cunningM = new Ferocity02Feast();
+			Cunning02Runic cunningM = new Cunning02Runic();
 			addMastery(cunningM);
 		}
 		else if (masteryName.equals("Assassin"))

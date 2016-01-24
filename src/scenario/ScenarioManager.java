@@ -65,6 +65,7 @@ public class ScenarioManager {
 	{
 		phase.runStatCollection(setupCode);
 		addAllScenarios(phase.getScenarios());
+		
 	}
 	
 
