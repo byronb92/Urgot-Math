@@ -3,6 +3,8 @@ import scenario.StatSetup;
 
 import java.util.Map.Entry;
 
+import battle.BattleSetup;
+import battle.SkillRankType;
 import masteries.MasterySet;
 import runes.RuneSetup;
 import scenario.ScenarioManager;
@@ -14,6 +16,7 @@ import scenario.UrgotScenario;
 /**
  * Dumps output providing details from the specified UrgotScenario.
  * The ScenarioManager handles all the logic to obtain the scenario.
+ * Set up stat collection, then run battle calculations.
  * @author byronb92
  *
  */
@@ -34,6 +37,30 @@ public class OutputUrgotCompare {
 	{
 		sceManager.setUpStatCollection(setupCode);
 	}
+	
+
+	/** Provides ability to apply same runes and masteries across multiple scenarios.
+	 * @param setupCode
+	 */
+	public void statCollection(StatSetup setupCode, 
+			RuneSetup runes, MasterySet masteries)
+	{
+		sceManager.setUpStatCollection(setupCode);
+		for (UrgotScenario sce : sceManager.getScenarios())
+		{
+			sce.setUpRunesAndMasteries(runes, masteries);
+			sce.computeStats();
+		}
+	}
+	
+	public void battleCollection(BattleSetup battleSetup, SkillRankType rankType)
+	{
+		for (UrgotScenario sce : sceManager.getScenarios())
+		{
+			sce.computeBattleScenario(battleSetup, rankType);
+		}
+	}
+	
 	
 
 			

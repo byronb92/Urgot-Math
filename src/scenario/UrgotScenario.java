@@ -53,7 +53,7 @@ public class UrgotScenario {
 	public UrgotScenario(int currentLevel)
 	{
 		urgot = new UrgotStats(currentLevel);
-		masteryManager = new MasteryManager();
+		masteryManager = new MasteryManager(urgot);
 		runeManager = new RuneManager(urgot);
 		itemManager = new ItemManager(urgot);
 		battleManager = new BattleManager(urgot);
@@ -102,6 +102,7 @@ public class UrgotScenario {
 	{
 		runeManager.computeRuneStats();
 		itemManager.computeItemStats();
+		masteryManager.computeMasteryStats();
 	}
 	
 
@@ -152,18 +153,6 @@ public class UrgotScenario {
 		return urgot;
 	}
 	
-	
-//	public UrgotCombos getUrgotCombos()
-//	{
-//		return urgCombos;
-//	}
-	
-
-
-	
-
-
-	
 	public Items getUrgotItems()
 	{
 		return itemManager.getItems();
@@ -173,25 +162,4 @@ public class UrgotScenario {
 	{
 		return runeManager;
 	}
-	
-//	public void addPreItemMastery(MasterySet mastery)
-//	{
-//		masteries.applyUrgotMastery(mastery, urgot);
-//	}
-//	
-//	public void addAfterItemMastery(MasterySet mastery)
-//	{
-//		masteries.applyUrgotMasteryAfterItems(mastery, urgot);
-//	}
-//	
-//	public void addAfterBattleMastery(MasterySet mastery)
-//	{
-//		masteries.applyUrgotMasteryAfterBattle(mastery, urgot, battleManager.getBattle());
-//	}
-	
-//	public Masteries getMasteries()
-//	{
-//		return masteries;
-//	}
-
 }

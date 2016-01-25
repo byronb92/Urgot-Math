@@ -4,7 +4,9 @@ package output.test;
 import battle.BattleSetup;
 import battle.SkillRankType;
 import junit.framework.TestCase;
+import masteries.MasterySet;
 import output.OutputUrgotCompare;
+import runes.RuneSetup;
 import scenario.SortRank;
 import scenario.StatSetup;
 
@@ -54,7 +56,10 @@ public class OutputUrgotCompareTest extends TestCase {
 	
 	public void testOutputSortedArmorFullBuild()
 	{
-		comp.statCollection(StatSetup.LEVEL18);
+		comp.statCollection(StatSetup.LEVEL18, 
+				RuneSetup.STANDARD, 
+				MasterySet.THUNDERLORD_BALANCED);
+		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
 		comp.outputSortedArmor(SortRank.DESCENDING);
 	}
 //	public void testPassiveAndActives()

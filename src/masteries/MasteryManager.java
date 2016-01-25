@@ -17,13 +17,15 @@ public class MasteryManager {
 	private Masteries masteries;
 	private ArrayList<Mastery> listCurrentMasteries;
 	private ArrayList<String> masteryBenefits;
+	private UrgotStats urgot;
 	
 	
-	public MasteryManager()
+	public MasteryManager(UrgotStats urgot)
 	{
 		masteries = new Masteries();
 		masteryBenefits = new ArrayList<String>();
 		listCurrentMasteries = new ArrayList<Mastery>();
+		this.urgot = urgot;
 	}
 	
 
@@ -61,7 +63,7 @@ public class MasteryManager {
 		masteries.getCunning().addMasteryByName("Intelligence");
 		masteries.getCunning().addMasteryByName("Thunderlord's Decree");
 		
-		masteries.getFerocity().addMasteryByName("Sorcrery");
+		masteries.getFerocity().addMasteryByName("Sorcery");
 		masteries.getFerocity().addMasteryByName("Feast");
 		masteries.getFerocity().addMasteryByName("Vampirism");
 		masteries.getFerocity().addMasteryByName("Oppressor");
@@ -108,9 +110,13 @@ public class MasteryManager {
 		
 	}
 	
-	public void computeStats()
+	public void computeMasteryStats()
 	{
-		
+		aggregateAllMasteries();
+		for (Mastery mastery : listCurrentMasteries)
+		{
+			mastery.runMasteryCalculations(urgot);
+		}
 	}
 	
 	public ArrayList<String> getBenefitsList() { return masteryBenefits; }

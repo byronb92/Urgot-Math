@@ -16,7 +16,8 @@ public abstract class MasteryTree {
 	}
 	public void addMastery(Mastery mastery)
 	{
-		listTreeMasteries.add(mastery.getTier(), mastery);
+		int zeroBasedIndex = mastery.getTier() - 1;
+		listTreeMasteries.add(zeroBasedIndex, mastery);
 	}
 	public abstract void addMasteryByName(String masteryName);
 	
