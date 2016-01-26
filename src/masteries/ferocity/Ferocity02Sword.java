@@ -9,15 +9,27 @@ import urgot.UrgotStats;
  */
 public class Ferocity02Sword extends Mastery {
 
+	private boolean isRanged = true;
 	public Ferocity02Sword() {
 		super(2);
 	}
 
+	public void setIsRanged(boolean bool)
+	{
+		isRanged = bool;
+	}
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		// TODO Differentiate between melee and ranged.
-		urgot.addDamageAmplification(0.02);
-		urgot.addEnemyAmplification(0.02);
+		if (isRanged)
+		{
+			urgot.addDamageAmplification(0.02);
+			urgot.addEnemyAmplification(0.02);
+		}
+		else
+		{
+			urgot.addDamageAmplification(0.03);
+			urgot.addEnemyAmplification(0.015);
+		}
 	}
 
 }

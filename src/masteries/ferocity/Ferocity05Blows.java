@@ -3,6 +3,7 @@ package masteries.ferocity;
 import masteries.Mastery;
 import urgot.UrgotStats;
 
+/** Grants 1.4 / 2.8 / 4.2 / 5.6 / 7% armor penetration. */
 public class Ferocity05Blows extends Mastery {
 
 	public Ferocity05Blows() {

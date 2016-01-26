@@ -10,10 +10,15 @@ import urgot.UrgotStats;
  */
 public class Cunning04Bandit extends Mastery {
 
+	private boolean isRanged = true;
 	public Cunning04Bandit() {
 		super(4);
 	}
 
+	public void setIsRanged(boolean bool)
+	{
+		isRanged = bool;
+	}
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
 		setMasteryDetails("Gain 1 Gold for each nearby minion killed by an ally. "

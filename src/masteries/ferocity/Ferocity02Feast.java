@@ -3,6 +3,8 @@ package masteries.ferocity;
 import masteries.Mastery;
 import urgot.UrgotStats;
 
+
+/** Feast: Killing a unit restores 20 health (25 second cooldown). */
 public class Ferocity02Feast extends Mastery {
 
 	public Ferocity02Feast() {

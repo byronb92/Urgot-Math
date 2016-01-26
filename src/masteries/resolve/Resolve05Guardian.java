@@ -3,6 +3,9 @@ package masteries.resolve;
 import masteries.Mastery;
 import urgot.UrgotStats;
 
+/** Legendary Guardian 
+ * Grants 0.6 / 1.2 / 1.8 / 2.4 / 3 armor and magic resistance for each nearby enemy champion. 
+ */
 public class Resolve05Guardian extends Mastery {
 
 	private int alliesNear = 0;

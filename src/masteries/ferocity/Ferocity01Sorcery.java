@@ -3,11 +3,7 @@ package masteries.ferocity;
 import masteries.Mastery;
 import urgot.UrgotStats;
 
-/**
- * Sorcery: Increases ability and spell damage by 0.4 / 0.8 / 1.2 / 1.6 / 2%.
- * @author byronb92
- *
- */
+/** Sorcery: Increases ability and spell damage by 0.4 / 0.8 / 1.2 / 1.6 / 2%. */
 public class Ferocity01Sorcery extends Mastery
 {
 

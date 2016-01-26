@@ -3,6 +3,12 @@ package masteries.ferocity;
 import masteries.Mastery;
 import urgot.UrgotStats;
 
+/** 
+ * Bounty Hunter:
+ * Grants 1% increased damage for each UNIQUE enemy champion you kill. 
+ * (Your damage output increases by 1% each time you kill an 
+ * enemy champion for the first time)
+ */
 public class Ferocity04Bounty extends Mastery {
 
 	private int champsKilled = 1;
