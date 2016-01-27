@@ -40,16 +40,9 @@ public class UrgotScenario {
 	private ItemManager itemManager;
 	private RuneManager runeManager;
 	private MasteryManager masteryManager;
-	//private Masteries masteries;
-	//private UrgotCombos urgCombos;
-	//private BattleCalculator battleManager;
 	private BattleManager battleManager;
 	
 
-	/**
-	 * Set-up the manager for one single use.
-	 * @param currentLevel
-	 */
 	public UrgotScenario(int currentLevel)
 	{
 		urgot = new UrgotStats(currentLevel);
@@ -62,7 +55,6 @@ public class UrgotScenario {
 
 	
 	
-	// --- Dynamic (Individual) stat methods. ---
 	public void addRunes(RuneSetup rs)
 	{
 		runeManager.setUpRunes(rs);
@@ -79,7 +71,6 @@ public class UrgotScenario {
 		itemManager.addItem(itemName);
 		itemManager.computeItemStats();
 	}
-	
 	
 	
 	
