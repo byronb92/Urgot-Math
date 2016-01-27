@@ -1,6 +1,5 @@
 package scenario;
 
-import masteries.MasterySet;
 
 /**
  * @author byronb92

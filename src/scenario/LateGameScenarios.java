@@ -1,7 +1,5 @@
 package scenario;
 
-import battle.BattleSetup;
-import battle.SkillRankType;
 
 /**
  * Level 13-18 4-5th item purchases. 

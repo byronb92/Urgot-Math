@@ -1,10 +1,6 @@
 package masteries;
 
 import java.util.ArrayList;
-
-import masteries.cunning.Cunning;
-import masteries.ferocity.Ferocity;
-import masteries.resolve.Resolve;
 import urgot.UrgotStats;
 
 

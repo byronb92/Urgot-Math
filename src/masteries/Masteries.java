@@ -1,12 +1,9 @@
 package masteries;
 
-import java.util.ArrayList;
 
-import battle.Battle;
 import masteries.cunning.Cunning;
 import masteries.ferocity.Ferocity;
 import masteries.resolve.Resolve;
-import urgot.UrgotStats;
 
 /**
  * The masteries object will be attached to every UrgotScenario object.

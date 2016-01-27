@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import battle.BattleSetup;
-import battle.SkillRankType;
 import calc.DefenseCalculator;
 
 import java.util.TreeMap;
@@ -185,10 +183,10 @@ public class ScenarioManager {
 		Map<Double,UrgotScenario> newMap = null;
 		if (rank == SortRank.ASCENDING)
 		{
-			newMap = new TreeMap(map);
+			newMap = new TreeMap<Double, UrgotScenario>(map);
 			return newMap;
 		}
-		newMap = new TreeMap(Collections.reverseOrder());
+		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
 		newMap.putAll(map);
 		return newMap;
 	}
@@ -206,9 +204,9 @@ public class ScenarioManager {
 		Map<Double,UrgotScenario> newMap = null;
 		if (rank == SortRank.ASCENDING)
 		{
-			newMap = new TreeMap(map);
+			newMap = new TreeMap<Double, UrgotScenario>(map);
 		}
-		newMap = new TreeMap(Collections.reverseOrder());
+		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
 		newMap.putAll(map);
 		return newMap;
 	}
@@ -226,9 +224,9 @@ public class ScenarioManager {
 		Map<Double,UrgotScenario> newMap = null;
 		if (rank == SortRank.ASCENDING)
 		{
-			newMap = new TreeMap(map);
+			newMap = new TreeMap<Double, UrgotScenario>(map);
 		}
-		newMap = new TreeMap(Collections.reverseOrder());
+		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
 		newMap.putAll(map);
 		return newMap;
 	}

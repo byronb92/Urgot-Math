@@ -19,6 +19,7 @@ public class Cunning04Bandit extends Mastery {
 	{
 		isRanged = bool;
 	}
+	public boolean getIsRanged() { return isRanged; }
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
 		setMasteryDetails("Gain 1 Gold for each nearby minion killed by an ally. "

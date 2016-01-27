@@ -111,6 +111,7 @@ public class Battle
 	}
 	
 	public int getSpellsCast() { return spellsCast; }
+	public double getPhysicalAttacks() { return physicalAttacksDone; }
 	public double getTotalDamage() { return magicDamage + physicalDamage; }
 	public double getPhysicalDamage() { return physicalDamage; }
 	public double getMagicDamage() { return magicDamage; }
