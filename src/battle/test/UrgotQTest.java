@@ -12,6 +12,9 @@ public class UrgotQTest {
 	}
 
 	@Test
+	/**
+	 * Tests a Q that has been leveled up twice into rank 2.
+	 */
 	public void testQMath() {
 		double spellRank = 2;
 		double totalAD = 0;
@@ -19,7 +22,6 @@ public class UrgotQTest {
 		double scalingDamage = totalAD * 0.85;
 		double totalDamage = 10 + baseDamage + scalingDamage;
 		assertEquals(40, totalDamage, 0.01);
-		
 	}
 
 }

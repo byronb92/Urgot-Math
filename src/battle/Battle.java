@@ -3,7 +3,7 @@ package battle;
 public class Battle 
 {
 	private int spellsCast = 0;
-	private double spellCastTime = 0;	// TODO: Remove this soon.
+	private double spellCastTime = 0;
 	private double physicalAttacksDone = 0;
 	
 	private double physicalDamage = 0;
@@ -14,7 +14,6 @@ public class Battle
 	private double healingDone = 0;
 	private double healingModifier = 0;  // Spirit Visage/Hextech Gunblade
 	
-	private int manaUsage = 0;			// TOOD: Remove this soon.
 	
 	
 	double opponentArmor;
@@ -100,10 +99,6 @@ public class Battle
 		shieldStrength = shieldStrength + shield;
 	}
 	
-	public void burnMana(int mana)
-	{
-		manaUsage = manaUsage + mana;
-	}
 	
 	public void battleTimeFromCD(double spellTime)
 	{
@@ -122,7 +117,6 @@ public class Battle
 	public double getShieldPoints() { return shieldStrength; }
 
 
-	public double getManaUsage() { return manaUsage; }
 	public double getCastTime() { return spellCastTime; }
 
 
