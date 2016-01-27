@@ -173,18 +173,9 @@ public class OutputUrgotCompare {
 				dmgString.append("\n");
 			}
 			
-			// Masteries
-//			if (!sce.getMasteries().benefitsIsEmpty())
-//			{
-//				for (int i = 0; i < sce.getMasteries().getBenefitsList().size(); i++)
-//				{
-//					dmgString.append(sce.getMasteries().getBenefitsList().get(i));
-//					dmgString.append("\n");
-//					
-//				}
-//				dmgString.append("----------");
-//				dmgString.append("\n");
-//			}
+			//Masteries
+	
+			dmgString.append(sce.getMasteryManager().collectMasteryDetails());
 		}
 		
 		System.out.println(dmgString.toString());

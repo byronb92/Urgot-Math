@@ -153,4 +153,9 @@ public class UrgotScenario {
 	{
 		return runeManager;
 	}
+	
+	public MasteryManager getMasteryManager()
+	{
+		return masteryManager;
+	}
 }

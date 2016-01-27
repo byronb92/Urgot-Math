@@ -62,10 +62,13 @@ public class OutputUrgotCompareTest extends TestCase {
 		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
 		comp.outputSortedArmor(SortRank.DESCENDING);
 	}
-//	public void testPassiveAndActives()
-//	{
-//		comp.statCollection(StatSetup.LEVEL6);
+	public void testPassiveAndActives()
+	{
+//		comp.statCollection(StatSetup.LEVEL6,
+//				RuneSetup.STANDARD, 
+//				MasterySet.THUNDERLORD_BALANCED);
+//		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
 //		comp.outputPassiveandActivies();
-//	}
+	}
 
 }

@@ -107,7 +107,6 @@ public class MasteryManager {
 		listCurrentMasteries.addAll(masteries.getCunning().getListTreeMasteries());
 		listCurrentMasteries.addAll(masteries.getFerocity().getListTreeMasteries());
 		listCurrentMasteries.addAll(masteries.getResolve().getListTreeMasteries());
-		
 	}
 	
 	public void computeMasteryStats()
@@ -117,6 +116,19 @@ public class MasteryManager {
 		{
 			mastery.runMasteryCalculations(urgot);
 		}
+	}
+	
+	public String collectMasteryDetails()
+	{
+		StringBuilder masteryDetailBuilder = new StringBuilder();
+		for (Mastery mastery : listCurrentMasteries)
+		{
+			if (mastery.getMasteryDetails() != null)
+			{
+				masteryDetailBuilder.append(mastery.getMasteryDetails() + "\n");
+			}
+		}
+		return masteryDetailBuilder.toString();
 	}
 	
 	public ArrayList<String> getBenefitsList() { return masteryBenefits; }

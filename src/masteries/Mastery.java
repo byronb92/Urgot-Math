@@ -3,7 +3,7 @@ package masteries;
 import urgot.UrgotStats;
 
 public abstract class Mastery {
-	private String masteryDetails;
+	private String masteryDetails = null;
 	private int masteryTier;
 	
 	public Mastery(int tier)
@@ -21,5 +21,9 @@ public abstract class Mastery {
 	public void setMasteryDetails(String details)
 	{
 		masteryDetails = details;
+	}
+	public String getMasteryDetails()
+	{
+		return masteryDetails;
 	}
 }
