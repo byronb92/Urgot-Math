@@ -12,11 +12,10 @@ public class Battle
 
 	private double shieldStrength = 0;
 	private double healingDone = 0;
-	private double healingModifier = 0;  // Spirit Visage/Hextech Gunblade
+	private double healingModifier = 0;  
 	
 	
 	
-	double opponentArmor;
 	
 	public Battle()
 	{
@@ -30,12 +29,6 @@ public class Battle
 	public void addSpellCast()
 	{
 		spellsCast++;
-	}
-	
-	// Will soon be phased out.
-	public void adDamage(double damage)
-	{
-		physicalDamage = physicalDamage + damage;
 	}
 	
 	public void addPhysicalDamage(double damage)
