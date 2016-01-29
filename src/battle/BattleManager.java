@@ -35,7 +35,10 @@ public class BattleManager {
 		switch (battleSetup)
 		{
 		case AUTOTRADE:
-			addBattleAction(new UrgotW(wRank));
+			if (wRank > 0)
+			{
+				addBattleAction(new UrgotW(wRank));
+			}
 			addBattleAction(new AutoAttack());
 			addBattleAction(new AutoAttack());
 			addBattleAction(new AutoAttack());

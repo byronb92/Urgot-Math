@@ -6,18 +6,23 @@ import org.junit.Before;
 import org.junit.Test;
 
 import battle.BattleManager;
+import battle.BattleSetup;
+import battle.SkillRankType;
 import urgot.UrgotStats;
 
 public class BattleSetupTests {
-	private UrgotStats urgot;
-	private BattleManager battleM;
+	BattleManager battleM;
 	@Before
 	public void setUp() throws Exception {	
 	}
 
 	@Test
 	public void testAutotrade() {
-		fail("Not yet implemented");
+		UrgotStats urgot = new UrgotStats(1);
+		battleM = new BattleManager(urgot);
+		battleM.battleSetup(BattleSetup.AUTOTRADE, SkillRankType.TRADE);
+		battleM.runBattleCalculations();
+		assertEquals(battleM.getBattle().getPhysicalAttacks(),3);
 	}
 	
 	public void testAutotrade_No_W() {

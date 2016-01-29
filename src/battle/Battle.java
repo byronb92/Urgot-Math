@@ -4,7 +4,7 @@ public class Battle
 {
 	private int spellsCast = 0;
 	private double spellCastTime = 0;
-	private double physicalAttacksDone = 0;
+	private int physicalAttacksDone = 0;
 	
 	private double physicalDamage = 0;
 	private double magicDamage = 0;
@@ -81,11 +81,6 @@ public class Battle
 		totalSpellDamage = totalSpellDamage + damage;
 	}
 	
-	// TODO: Phaze out soon...
-	public void shieldStrength(double strength)
-	{
-		shieldStrength = shieldStrength + strength;
-	}
 	
 	public void addShieldAmount(double shield)
 	{
@@ -99,7 +94,7 @@ public class Battle
 	}
 	
 	public int getSpellsCast() { return spellsCast; }
-	public double getPhysicalAttacks() { return physicalAttacksDone; }
+	public int getPhysicalAttacks() { return physicalAttacksDone; }
 	public double getTotalDamage() { return magicDamage + physicalDamage; }
 	public double getPhysicalDamage() { return physicalDamage; }
 	public double getMagicDamage() { return magicDamage; }

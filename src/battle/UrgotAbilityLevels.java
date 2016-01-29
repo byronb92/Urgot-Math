@@ -60,6 +60,7 @@ public class UrgotAbilityLevels {
 		shieldStart.add(new UrgotSkillRank(5,5,3,3));		// Level 16
 		shieldStart.add(new UrgotSkillRank(5,5,4,3));
 		shieldStart.add(new UrgotSkillRank(5,5,5,3));
+		abilityRanks.put(SkillRankType.TRADE, shieldStart);
 	}
 	
 	
