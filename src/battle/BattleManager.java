@@ -53,6 +53,7 @@ public class BattleManager {
 			break;
 		case POKE_AUTOWEAVE:
 			addBattleAction(new UrgotW(wRank));
+			addBattleAction(new UrgotQ(qRank));
 			addBattleAction(new AutoAttack());
 			break;
 		case POKE_EXTENDED:
