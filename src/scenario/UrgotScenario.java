@@ -70,6 +70,11 @@ public class UrgotScenario {
 		itemManager.computeItemStats();
 	}
 	
+	public void addMasteries(MasterySet masteries)
+	{
+		masteryManager.masterySetup(masteries);
+	}
+	
 	
 	
 	/**

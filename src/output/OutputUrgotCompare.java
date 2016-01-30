@@ -105,7 +105,6 @@ public class OutputUrgotCompare {
 //		{
 //			rawDamageString.append(highestDamage.getMasteries().getKeyStone());
 //		}
-		System.out.println(rawDamageString.toString());
 		return rawDamageString.toString();
 	}
 	
@@ -117,7 +116,6 @@ public class OutputUrgotCompare {
 		costString.append(sceManager.getScenarioCost(lowestCost));
 		costString.append("\n");
 		costString.append(sceManager.getScenarioItems(lowestCost));
-		System.out.println(costString.toString());
 		return costString.toString();
 	}
 	
@@ -133,7 +131,6 @@ public class OutputUrgotCompare {
 			dmgString.append(" " + sceManager.getScenarioItems(entry.getValue()));
 			dmgString.append("\n");
 		}
-		System.out.println(dmgString.toString());
 		return dmgString.toString();
 	}
 
@@ -148,7 +145,6 @@ public class OutputUrgotCompare {
 			dmgString.append(" " + sceManager.getScenarioItems(entry.getValue()));
 			dmgString.append("\n");
 		}
-		System.out.println(dmgString.toString());
 		return dmgString.toString();
 	}
 	
@@ -178,7 +174,6 @@ public class OutputUrgotCompare {
 			dmgString.append(sce.getMasteryManager().collectMasteryDetails());
 		}
 		
-		System.out.println(dmgString.toString());
 		return dmgString.toString();
 	}
 	//public void compareSustainability();

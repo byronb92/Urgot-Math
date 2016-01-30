@@ -31,6 +31,10 @@ public class Battle
 		spellsCast++;
 	}
 	
+	/**
+	 * Keeps track of the number of physical attacks and physical damage done.
+	 * @param damage
+	 */
 	public void addPhysicalDamage(double damage)
 	{
 		physicalDamage = physicalDamage + damage;

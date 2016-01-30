@@ -1,5 +1,6 @@
 package scenario;
 
+import masteries.MasterySet;
 
 /**
  * @author byronb92
@@ -60,6 +61,18 @@ public class EarlyGameScenarios extends Phase {
 	 */
 	public void compareLevelOneMasteries()
 	{
+		UrgotScenario thunderlord = new UrgotScenario(1);
+		UrgotScenario deathfire = new UrgotScenario(1);
+		UrgotScenario bond = new UrgotScenario(1);
+		thunderlord.addMasteries(MasterySet.THUNDERLORD_BALANCED);
+		thunderlord.addMasteries(MasterySet.DEATHFIRE_BALANCED);
+		thunderlord.addMasteries(MasterySet.BOND_BALANCED);
+		
+		addScenario(thunderlord);
+		addScenario(deathfire);
+		addScenario(bond);
+		
+		
 //		addBlankScenario(1, MasterySet.THUNDERLORD_BALANCED);
 //		addBlankScenario(1, MasterySet.DEATHFIRE_BALANCED);
 //		addBlankScenario(1, MasterySet.BOND_BALANCED);
