@@ -36,6 +36,10 @@ public class OutputUrgotCompare {
 	public void statCollection(StatSetup setupCode)
 	{
 		sceManager.setUpStatCollection(setupCode);
+		for (UrgotScenario sce : sceManager.getScenarios())
+		{
+			sce.computeStats();
+		}
 	}
 	
 

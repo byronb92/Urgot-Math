@@ -14,7 +14,6 @@ public class DoransBlade extends Item {
 	private double lifeSteal = 0.03;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 
