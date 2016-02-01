@@ -34,6 +34,7 @@ import urgot.UrgotStats;
  *
  */
 public class UrgotScenario {
+	private String scenarioName;
 	private UrgotStats urgot;
 	private ItemManager itemManager;
 	private RuneManager runeManager;
@@ -50,7 +51,10 @@ public class UrgotScenario {
 		battleManager = new BattleManager(urgot);
 	}
 	
-
+	public void setScenarioName(String name)
+	{
+		scenarioName = name;
+	}
 	
 	
 	public void addRunes(RuneSetup rs)
@@ -137,6 +141,10 @@ public class UrgotScenario {
 
 	
 	// -------------- Accessor Methods -------------- 
+	public String getScenarioName()
+	{
+		return scenarioName;
+	}
 	public Battle getBattleStats()
 	{
 		return battleManager.getBattle();

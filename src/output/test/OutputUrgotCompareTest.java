@@ -36,14 +36,14 @@ public class OutputUrgotCompareTest extends TestCase {
 		out.println(comp.outputHighestRawDamage());
 		out.close();
 	}
-//	public void testMasteries() throws FileNotFoundException
-//	{
-//		comp.statCollection(StatSetup.MASTERIES_LEVEL1);
-//		PrintWriter out = new PrintWriter("testTextDumps/testMasteries.txt");
-//		out.println(comp.outputHighestRawDamage());
-//		out.println(comp.outputPassiveandActivies());
-//		out.close();
-//	}
+	public void testMasteries() throws FileNotFoundException
+	{
+		comp.statCollection(StatSetup.MASTERIES_LEVEL1);
+		PrintWriter out = new PrintWriter("testTextDumps/testMasteries.txt");
+		out.println(comp.outputHighestRawDamage());
+		out.println(comp.outputPassiveandActivies());
+		out.close();
+	}
 //	// Simple tests to ensure there are no nullpointer exceptions.
 //	public void testArmorLevelSi() throws FileNotFoundException
 //	{

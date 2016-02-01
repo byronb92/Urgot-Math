@@ -105,8 +105,8 @@ public class ScenarioManager {
 				{
 					System.out.println("-----------------");
 					System.out.println("Duplicate raw damage: " + rawDamageA);
-					System.out.println("Set 1: " + getScenarioItems(highestDamageSce));
-					System.out.println("Set 2: " + getScenarioItems(sce));
+					System.out.println("Set 1: " + highestDamageSce.getScenarioName());
+					System.out.println("Set 2: " + sce.getScenarioName());
 				}
 			}
 		}

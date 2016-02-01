@@ -68,9 +68,9 @@ public class EarlyGameScenarios extends Phase {
 		thunderlord.addMasteries(MasterySet.DEATHFIRE_BALANCED);
 		thunderlord.addMasteries(MasterySet.BOND_BALANCED);
 		
-		addScenario(thunderlord);
-		addScenario(deathfire);
-		addScenario(bond);
+		addScenario(thunderlord, "Thunderlord Mastery Start");
+		addScenario(deathfire, "Deathfire Mastery Start");
+		addScenario(bond, "Bond of Stone Start");
 		
 		
 //		addBlankScenario(1, MasterySet.THUNDERLORD_BALANCED);

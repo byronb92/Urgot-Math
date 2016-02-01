@@ -17,6 +17,12 @@ public abstract class Phase {
 		listScenarios.add(sce);
 	}
 	
+	public void addScenario(UrgotScenario sce, String scenarioName)
+	{
+		sce.setScenarioName(scenarioName);
+		listScenarios.add(sce);
+	}
+	
 	public ArrayList<UrgotScenario> getScenarios()
 	{
 		return listScenarios;
