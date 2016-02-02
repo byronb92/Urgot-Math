@@ -65,17 +65,14 @@ public class EarlyGameScenarios extends Phase {
 		UrgotScenario deathfire = new UrgotScenario(1);
 		UrgotScenario bond = new UrgotScenario(1);
 		thunderlord.addMasteries(MasterySet.THUNDERLORD_BALANCED);
-		thunderlord.addMasteries(MasterySet.DEATHFIRE_BALANCED);
-		thunderlord.addMasteries(MasterySet.BOND_BALANCED);
+		deathfire.addMasteries(MasterySet.DEATHFIRE_BALANCED);
+		bond.addMasteries(MasterySet.BOND_BALANCED);
 		
 		addScenario(thunderlord, "Thunderlord Mastery Start");
 		addScenario(deathfire, "Deathfire Mastery Start");
 		addScenario(bond, "Bond of Stone Start");
 		
-		
-//		addBlankScenario(1, MasterySet.THUNDERLORD_BALANCED);
-//		addBlankScenario(1, MasterySet.DEATHFIRE_BALANCED);
-//		addBlankScenario(1, MasterySet.BOND_BALANCED);
+
 	}
 	/**
 	 * Compares first-level component items before legendaries are built.

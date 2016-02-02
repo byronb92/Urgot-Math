@@ -6,6 +6,8 @@ import urgot.UrgotStats;
 
 /**
  * Handles addition of masteries.
+ * Any misspelling of a mastery that does not exist creates an error.
+ * TODO: Catch this error.
  * @author byronb92
  *
  */
@@ -75,7 +77,7 @@ public class MasteryManager {
 	 */ 
 	public void deathfireBalanced()
 	{
-		masteries.getFerocity().addMasteryByName("Sorcrery");
+		masteries.getFerocity().addMasteryByName("Sorcery");
 		masteries.getFerocity().addMasteryByName("Feast");
 		masteries.getFerocity().addMasteryByName("Vampirism");
 		masteries.getFerocity().addMasteryByName("Oppressor");
@@ -91,7 +93,16 @@ public class MasteryManager {
 	
 	public void bondBalanced()
 	{
-		
+		masteries.getResolve().addMasteryByName("Unyielding");
+		masteries.getResolve().addMasteryByName("Tough Skin");
+		masteries.getResolve().addMasteryByName("Runic Armor");
+		masteries.getResolve().addMasteryByName("Perseverance");
+		masteries.getResolve().addMasteryByName("Swiftness");
+		masteries.getResolve().addMasteryByName("Bond of Stone");
+		masteries.getResolve().addMasteryByName("Savagery");
+		masteries.getResolve().addMasteryByName("Secret Stash");
+		masteries.getResolve().addMasteryByName("Meditation");
+		masteries.getResolve().addMasteryByName("Dangerous Game");
 	}
 	
 	
