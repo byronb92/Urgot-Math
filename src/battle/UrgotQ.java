@@ -7,6 +7,7 @@ public class UrgotQ extends Spell {
 	public UrgotQ(int spellRank)
 	{
 		super(spellRank, 40, SpellCostType.MANA, 40, 0.25);
+		setSpellType("Damage");
 	}
 
 	@Override

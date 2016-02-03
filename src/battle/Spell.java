@@ -3,6 +3,7 @@ package battle;
 
 public abstract class Spell extends BattleAction {
 	
+	private String spellType;
 	private int spellRank;
 	private int cost;
 	private SpellCostType costType;
@@ -10,7 +11,10 @@ public abstract class Spell extends BattleAction {
 	private double castTime;		// Average cast time is 0.25 seconds.
 	
 
-	
+	public void setSpellType(String spellType)
+	{
+		this.spellType = spellType;
+	}
 	public void setSpellRank(int spellRank)
 	{
 		this.spellRank = spellRank;
@@ -39,6 +43,11 @@ public abstract class Spell extends BattleAction {
 		setCostType(costType);
 		setBaseCooldown(cooldown);
 		setCastTime(castTime);
+	}
+	
+	public String getSpellType()
+	{
+		return spellType;
 	}
 	public int getSpellRank()
 	{

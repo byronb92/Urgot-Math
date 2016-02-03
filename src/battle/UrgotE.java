@@ -11,6 +11,7 @@ public class UrgotE extends Spell {
 				SpellCostType.MANA, 
 				15 - (1 * spellRank - 1), 
 				0.25);
+		setSpellType("Damage");
 	}
 
 	@Override

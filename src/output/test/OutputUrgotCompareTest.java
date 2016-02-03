@@ -39,6 +39,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	public void testMasteries() throws FileNotFoundException
 	{
 		comp.statCollection(StatSetup.MASTERIES_LEVEL1);
+		comp.battleCollection(BattleSetup.POKE_AUTOWEAVE, SkillRankType.AGGRESSIVE);
 		PrintWriter out = new PrintWriter("testTextDumps/testMasteries.txt");
 		out.println(comp.outputHighestRawDamage());
 		out.println(comp.outputPassiveandActivies());
