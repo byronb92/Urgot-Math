@@ -3,8 +3,10 @@ package battle.effects;
 import java.util.ArrayList;
 
 import battle.AutoAttack;
+import battle.Battle;
 import battle.BattleAction;
 import battle.Spell;
+import urgot.UrgotStats;
 
 public class EffectManager {
 	private ArrayList<Effect> listEffects;
@@ -35,7 +37,7 @@ public class EffectManager {
 		}
 	}
 	
-	public void runActionEffects(BattleAction action)
+	public void runActionEffects(Battle battle, UrgotStats urgot, BattleAction action)
 	{
 		if (action instanceof AutoAttack)
 		{
@@ -52,7 +54,13 @@ public class EffectManager {
 		// TODO: Make UrgotW and UrgotR be involved in spell counting.
 		for (int i = 0; i < listAfterActionEffects.size(); i++)
 		{
-			listAfterActionEffects.get(i).runEffectCalculations();
+			listAfterActionEffects.get(i).runEffectCalculations(battle, urgot);
 		}
 	}
+	
+	
+	
+	
+	// Effects:
+	
 }

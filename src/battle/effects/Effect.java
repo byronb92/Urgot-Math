@@ -1,11 +1,14 @@
 package battle.effects;
 
+import battle.Battle;
+import urgot.UrgotStats;
+
 public abstract class Effect {
 	private String type;
 	
-	public Effect(String effectName)
+	public Effect(String effectNameType)
 	{
-		type = effectName;
+		type = effectNameType;
 	}
 
 	public String getEffectType()
@@ -13,5 +16,5 @@ public abstract class Effect {
 		return type;
 	}
 	
-	public abstract void runEffectCalculations();
+	public abstract void runEffectCalculations(Battle battle, UrgotStats urgot);
 }

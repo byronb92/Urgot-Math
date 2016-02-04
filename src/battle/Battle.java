@@ -41,6 +41,11 @@ public class Battle
 		physicalAttacksDone++;
 	}
 	
+	public void addMagicDamage(double damage)
+	{
+		magicDamage = magicDamage + damage;
+	}
+	
 	public void addHealing(double damage)
 	{
 		healingDone = (healingDone + (damage + (damage * healingModifier)));

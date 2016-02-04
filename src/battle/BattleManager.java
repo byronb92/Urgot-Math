@@ -107,6 +107,7 @@ public class BattleManager {
 		while (listIterator.hasNext()) {
 			listIterator.next().runBattleCalculations(battle, urgot);
 		}
+		
 	}
 	
 	
