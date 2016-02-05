@@ -99,7 +99,7 @@ public class OutputUrgotCompare {
 		StringBuilder rawDamageString = new StringBuilder();
 		UrgotScenario highestDamage = sceManager.findHighestRawDamage();
 		rawDamageString.append("Highest Raw Damage: ");
-		rawDamageString.append(highestDamage.getBattleStats().getPhysicalDamage());
+		rawDamageString.append(highestDamage.getBattleStats().getTotalDamage());
 		rawDamageString.append("\n");
 		if (sceManager.getScenarioItems(highestDamage) != null)
 		{
