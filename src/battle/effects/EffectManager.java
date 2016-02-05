@@ -22,6 +22,11 @@ public class EffectManager {
 		listAfterActionEffects = new ArrayList<Effect>();
 	}
 	
+	public void addEffect(Effect effect)
+	{
+		listEffects.add(effect);
+	}
+	
 	/**
 	 * Sorts effects to be called only when they are added properly.
 	 * Prevents unnecessary calling of effects.
@@ -46,10 +51,11 @@ public class EffectManager {
 		else if (action instanceof Spell)
 		{
 			Spell currentSpell = (Spell)action;
-			if (currentSpell.getSpellType().equals("Damage"))
-			{
-				damageSpells++;
-			}
+
+//			if (currentSpell.getSpellType().equals("Damage"))
+//			{
+//				damageSpells++;
+//			}
 		}
 		// TODO: Make UrgotW and UrgotR be involved in spell counting.
 		for (int i = 0; i < listAfterActionEffects.size(); i++)

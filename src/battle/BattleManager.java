@@ -102,12 +102,24 @@ public class BattleManager {
 	
 	public void runBattleCalculations()
 	{
-		ListIterator<BattleAction> listIterator = listBattleActions.listIterator();
-		
-		while (listIterator.hasNext()) {
-			listIterator.next().runBattleCalculations(battle, urgot);
+		urgot.getEffects().sortEffects();
+//		ListIterator<BattleAction> listIterator = listBattleActions.listIterator();
+//		
+//		while (listIterator.hasNext()) {
+//			listIterator.next().runBattleCalculations(battle, urgot);
+//		}
+		for (int i = 0; i < listBattleActions.size(); i++)
+		{
+			BattleAction currentAction = listBattleActions.get(i);
+			currentAction.runBattleCalculations(battle, urgot);
+			applyAfterBattleActionEffects(currentAction);
 		}
 		
+	}
+	
+	private void applyAfterBattleActionEffects(BattleAction action)
+	{
+		urgot.getEffects().runActionEffects(battle, urgot, action);
 	}
 	
 	

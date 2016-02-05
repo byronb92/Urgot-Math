@@ -7,7 +7,7 @@ public class Thunderlords extends Effect {
 	// TODO: Only make it proc after 3 attacks.s
 	private boolean isProc = false;
 	public Thunderlords() {
-		super("After Battle");
+		super("After Action");
 	}
 
 	@Override

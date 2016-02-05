@@ -1,5 +1,7 @@
 package urgot;
 
+import battle.effects.Effect;
+import battle.effects.EffectManager;
 import calc.UniqueCalculator;
 
 public class UrgotStats {
@@ -74,15 +76,17 @@ public class UrgotStats {
 	private boolean intelligenceCDR = false;
 
 
-	
+	private EffectManager effects;
 
 	public UrgotStats()
 	{
 		currentLevel = 1;
+		effects = new EffectManager();
 	}
 	public UrgotStats(int initialLevel)
 	{
 		currentLevel = initialLevel;
+		effects = new EffectManager();
 	}
 	public void setLevel(int level) { currentLevel = level; }	
 	public int getLevel() { return currentLevel; }
@@ -320,5 +324,15 @@ public class UrgotStats {
 		}
 	}
 	
+	
+	public void addEffect(Effect effect)
+	{
+		effects.addEffect(effect);
+	}
+	
+	public EffectManager getEffects()
+	{
+		return effects;
+	}
 
 }

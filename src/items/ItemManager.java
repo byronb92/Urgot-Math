@@ -9,9 +9,9 @@ import urgot.UrgotStats;
  *
  */
 public class ItemManager {
-	UrgotStats urgot;
-	Items urgotItems;
-	ItemFactory itemFactory;
+	private UrgotStats urgot;
+	private Items urgotItems;
+	private ItemFactory itemFactory;
 	public ItemManager(UrgotStats urgot)
 	{
 		this.urgot = urgot;
