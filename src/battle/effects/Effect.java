@@ -1,6 +1,7 @@
 package battle.effects;
 
 import battle.Battle;
+import battle.BattleAction;
 import urgot.UrgotStats;
 
 public abstract class Effect {
@@ -16,5 +17,5 @@ public abstract class Effect {
 		return type;
 	}
 	
-	public abstract void runEffectCalculations(Battle battle, UrgotStats urgot);
+	public abstract void runEffectCalculations(Battle battle, BattleAction action, UrgotStats urgot);
 }

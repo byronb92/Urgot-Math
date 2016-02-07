@@ -95,8 +95,8 @@ public class ScenarioManager {
 			}
 			else
 			{
-				double rawDamageA = sce.getBattleStats().getPhysicalDamage();
-				double rawDamageB = highestDamageSce.getBattleStats().getPhysicalDamage();
+				double rawDamageA = sce.getBattleStats().getTotalDamage();
+				double rawDamageB = highestDamageSce.getBattleStats().getTotalDamage();
 				if (rawDamageA > rawDamageB)
 				{
 					highestDamageSce = sce;

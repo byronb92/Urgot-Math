@@ -1,6 +1,7 @@
 package battle.effects;
 
 import battle.Battle;
+import battle.BattleAction;
 import urgot.UrgotStats;
 
 public class Thunderlords extends Effect {
@@ -11,7 +12,7 @@ public class Thunderlords extends Effect {
 	}
 
 	@Override
-	public void runEffectCalculations(Battle battle, UrgotStats urgot) 
+	public void runEffectCalculations(Battle battle, BattleAction action, UrgotStats urgot) 
 	{
 		if (isProc == false)
 		{

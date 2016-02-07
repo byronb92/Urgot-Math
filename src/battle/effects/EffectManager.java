@@ -5,21 +5,21 @@ import java.util.ArrayList;
 import battle.AutoAttack;
 import battle.Battle;
 import battle.BattleAction;
+import battle.BattleManager;
 import battle.Spell;
 import urgot.UrgotStats;
 
 public class EffectManager {
 	private ArrayList<Effect> listEffects;
 	private ArrayList<Effect> listAfterActionEffects;
-	private int autoAttacks = 0;
-	private int damageSpells = 0; 
-	private int nonDamageSpells = 0;
+	private ArrayList<Effect> listAfterBattleEffects;
 	
 	
 	public EffectManager()
 	{
 		listEffects = new ArrayList<Effect>();
 		listAfterActionEffects = new ArrayList<Effect>();
+		listAfterBattleEffects = new ArrayList<Effect>();
 	}
 	
 	public void addEffect(Effect effect)
@@ -39,34 +39,48 @@ public class EffectManager {
 			{
 				listAfterActionEffects.add(listEffects.get(i));	
 			}
+			else if (listEffects.get(i).getEffectType().equals("After Battle"))
+			{
+				listAfterBattleEffects.add(listEffects.get(i));
+			}
 		}
 	}
 	
 	public void runActionEffects(Battle battle, UrgotStats urgot, BattleAction action)
 	{
-		if (action instanceof AutoAttack)
-		{
-			autoAttacks++;
-		}
-		else if (action instanceof Spell)
-		{
-			Spell currentSpell = (Spell)action;
-
-//			if (currentSpell.getSpellType().equals("Damage"))
-//			{
-//				damageSpells++;
-//			}
-		}
-		// TODO: Make UrgotW and UrgotR be involved in spell counting.
 		for (int i = 0; i < listAfterActionEffects.size(); i++)
 		{
-			listAfterActionEffects.get(i).runEffectCalculations(battle, urgot);
+			listAfterActionEffects.get(i).runEffectCalculations(battle, action, urgot);
 		}
 	}
 	
 	
+	public Effect getEffectByClassName(String className)
+	{
+		if (className.equals("Deathfire After Action"))
+		{
+			return findClassInEffects("Deathfire After Action");
+		}
+		System.err.println("Incorrect class name (" + className
+				+ ") given. No object returned.");
+		return null;
+	}
 	
+	private Effect findClassInEffects(String effectName)
+	{
+		if (effectName.equals("DeathFire After Action"))
+		{
+			for (int i = 0; i < listAfterActionEffects.size(); i++)
+			{
+				Effect currentAction = listAfterActionEffects.get(i);
+				if (currentAction instanceof DeathfireAfterAction)
+				{
+					return currentAction;
+				}
+			}
+		}
+		return null;
+	}
 	
-	// Effects:
 	
 }

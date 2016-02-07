@@ -117,6 +117,9 @@ public class BattleManager {
 		
 	}
 	
+	
+	
+	 
 	private void applyAfterBattleActionEffects(BattleAction action)
 	{
 		urgot.getEffects().runActionEffects(battle, urgot, action);
@@ -128,6 +131,11 @@ public class BattleManager {
 		return battle;
 	}
 	
+	
+	public LinkedList<BattleAction> getBattleActions()
+	{
+		return listBattleActions;
+	}
 	
 	
 }

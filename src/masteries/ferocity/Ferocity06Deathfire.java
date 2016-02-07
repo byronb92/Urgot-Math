@@ -1,5 +1,6 @@
 package masteries.ferocity;
 
+import battle.effects.DeathfireAfterAction;
 import masteries.Mastery;
 import urgot.UrgotStats;
 
@@ -23,8 +24,8 @@ public class Ferocity06Deathfire extends Mastery {
 	}
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		double scalingAD = urgot.getBonusAD() * 0.0625;
-		double scalingAP = urgot.getBonusAP() * 0.025;
+		double scalingAD = urgot.getBonusAD() * 0.075;
+		double scalingAP = urgot.getBonusAP() * 0.03125;
 		
 		double decimalForm = secs - (int)secs;
 		double burnSeconds = 0;
@@ -38,6 +39,9 @@ public class Ferocity06Deathfire extends Mastery {
 		}
 		double deathfireDamage = burnSeconds * (1 + scalingAD + scalingAP);
 		
+		
+		DeathfireAfterAction deathfire = new DeathfireAfterAction();
+		urgot.addEffect(deathfire);
 		setMasteryDetails("Deathfire Touch damage across " + burnSeconds + " seconds: (" 
 				+ deathfireDamage + ")");
 		

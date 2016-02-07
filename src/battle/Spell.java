@@ -63,7 +63,7 @@ public abstract class Spell extends BattleAction {
 	}
 	public double getCdrCooldown(double cdr)
 	{
-		return (cooldown * 1 - cdr);
+		return (cooldown * (1 - cdr));
 	}
 	
 	public double getCastTime()
