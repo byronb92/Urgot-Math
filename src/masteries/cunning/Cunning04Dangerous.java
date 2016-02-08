@@ -16,7 +16,7 @@ public class Cunning04Dangerous extends Mastery {
 		setMasteryDetails("Champion kills and assists restore 5% of missing health/"
 				+ "5% of missing mana.\n"
 				+ "Max mana regen: " + maxManaRegen
-				+ "Mana hp regen: " + maxHealthRegen);
+				+ " Mana hp regen: " + maxHealthRegen);
 		
 	}
 

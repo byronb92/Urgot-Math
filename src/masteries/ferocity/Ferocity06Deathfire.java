@@ -1,6 +1,7 @@
 package masteries.ferocity;
 
 import battle.effects.DeathfireAfterAction;
+import battle.effects.DeathfireAfterBattle;
 import masteries.Mastery;
 import urgot.UrgotStats;
 
@@ -24,26 +25,15 @@ public class Ferocity06Deathfire extends Mastery {
 	}
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		double scalingAD = urgot.getBonusAD() * 0.075;
-		double scalingAP = urgot.getBonusAP() * 0.03125;
-		
-		double decimalForm = secs - (int)secs;
-		double burnSeconds = 0;
-		if (decimalForm < 0.5)
-		{
-			burnSeconds = (int)secs;
-		}
-		else
-		{
-			burnSeconds = (int)secs + 0.5;
-		}
-		double deathfireDamage = burnSeconds * (1 + scalingAD + scalingAP);
 		
 		
 		DeathfireAfterAction deathfire = new DeathfireAfterAction();
+		DeathfireAfterBattle deathfireBattle = new DeathfireAfterBattle();
 		urgot.addEffect(deathfire);
-		setMasteryDetails("Deathfire Touch damage across " + burnSeconds + " seconds: (" 
-				+ deathfireDamage + ")");
+		urgot.addEffect(deathfireBattle);
+		setMasteryDetails("Dealing ability damage to enemy champions applies a bleed, "
+				+ "dealing 1 (+ 3.125% AP) (+ 7.5% bonus AD) magic damage "
+				+ "every half-second for a duration based on their type.");
 		
 	}
 

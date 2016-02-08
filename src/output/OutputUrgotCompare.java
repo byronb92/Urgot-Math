@@ -162,6 +162,7 @@ public class OutputUrgotCompare {
 		StringBuilder dmgString = new StringBuilder();
 		for (UrgotScenario sce : sceManager.getScenarios())
 		{
+			dmgString.append(sce.getScenarioName() + "\n");
 			// Items
 			if (sceManager.getScenarioItems(sce) != null)
 			{
@@ -176,6 +177,7 @@ public class OutputUrgotCompare {
 			//Masteries
 	
 			dmgString.append(sce.getMasteryManager().collectMasteryDetails());
+			dmgString.append("\n");
 		}
 		
 		return dmgString.toString();
