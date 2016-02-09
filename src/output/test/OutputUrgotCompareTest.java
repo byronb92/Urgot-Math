@@ -43,6 +43,7 @@ public class OutputUrgotCompareTest extends TestCase {
 		PrintWriter out = new PrintWriter("testTextDumps/testMasteries.txt");
 		out.println(comp.outputHighestRawDamage());
 		out.println(comp.outputPassiveandActivies());
+		out.println(comp.outputSortedDamage(SortRank.ASCENDING));
 		out.close();
 	}
 //	// Simple tests to ensure there are no nullpointer exceptions.

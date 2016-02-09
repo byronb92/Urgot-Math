@@ -177,7 +177,7 @@ public class ScenarioManager {
 		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
 		for (UrgotScenario sce : listAllScenarios)
 		{
-			double rawDmg = sce.getBattleStats().getPhysicalDamage();
+			double rawDmg = sce.getBattleStats().getTotalDamage();
 			map.put(makeKeyUnique(map,rawDmg), sce);
 		}
 		Map<Double,UrgotScenario> newMap = null;
