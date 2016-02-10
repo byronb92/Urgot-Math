@@ -132,7 +132,7 @@ public class OutputUrgotCompare {
 		for (Entry<Double, UrgotScenario> entry : sceManager.sortDamage(rank).entrySet())
 		{
 			dmgString.append("Raw Damage: " + entry.getKey());
-			dmgString.append(" " + sceManager.getScenarioItems(entry.getValue()));
+			dmgString.append(" " + entry.getValue().getScenarioName());
 			dmgString.append("\n");
 		}
 		return dmgString.toString();
