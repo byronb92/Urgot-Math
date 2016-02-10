@@ -2,24 +2,21 @@ package battle.effects;
 
 import java.util.ArrayList;
 
-import battle.AutoAttack;
 import battle.Battle;
 import battle.BattleAction;
-import battle.BattleManager;
-import battle.Spell;
 import urgot.UrgotStats;
 
 public class EffectManager {
 	private ArrayList<Effect> listEffects;
-	private ArrayList<Effect> listAfterActionEffects;
-	private ArrayList<Effect> listAfterBattleEffects;
+	private ArrayList<EffectAfterAction> listAfterActionEffects;
+	private ArrayList<EffectAfterBattle> listAfterBattleEffects;
 	
 	
 	public EffectManager()
 	{
 		listEffects = new ArrayList<Effect>();
-		listAfterActionEffects = new ArrayList<Effect>();
-		listAfterBattleEffects = new ArrayList<Effect>();
+		listAfterActionEffects = new ArrayList<EffectAfterAction>();
+		listAfterBattleEffects = new ArrayList<EffectAfterBattle>();
 	}
 	
 	public void addEffect(Effect effect)
@@ -37,11 +34,11 @@ public class EffectManager {
 		{
 			if (listEffects.get(i).getEffectType().equals("After Action"))
 			{
-				listAfterActionEffects.add(listEffects.get(i));	
+				listAfterActionEffects.add((EffectAfterAction) listEffects.get(i));	
 			}
 			else if (listEffects.get(i).getEffectType().equals("After Battle"))
 			{
-				listAfterBattleEffects.add(listEffects.get(i));
+				listAfterBattleEffects.add((EffectAfterBattle) listEffects.get(i));
 			}
 		}
 	}
@@ -51,6 +48,14 @@ public class EffectManager {
 		for (int i = 0; i < listAfterActionEffects.size(); i++)
 		{
 			listAfterActionEffects.get(i).runEffectCalculations(battle, action, urgot);
+		}
+	}
+	
+	public void runAfterBattleEffects(Battle battle, UrgotStats urgot)
+	{
+		for (int i = 0; i < listAfterBattleEffects.size(); i++)
+		{
+			listAfterBattleEffects.get(i).runEffectCalculations(battle, urgot);
 		}
 	}
 	
@@ -68,7 +73,7 @@ public class EffectManager {
 	
 	private Effect findClassInEffects(String effectName)
 	{
-		if (effectName.equals("DeathFire After Action"))
+		if (effectName.equals("Deathfire After Action"))
 		{
 			for (int i = 0; i < listAfterActionEffects.size(); i++)
 			{
@@ -79,7 +84,9 @@ public class EffectManager {
 				}
 			}
 		}
+		System.err.println("An error occured, class was not found.");
 		return null;
+
 	}
 	
 	

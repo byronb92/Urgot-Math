@@ -1,19 +1,18 @@
 package battle.effects;
 
 import battle.Battle;
-import battle.BattleAction;
 import urgot.UrgotStats;
 
-public class DeathfireAfterBattle extends Effect {
+public class DeathfireAfterBattle extends EffectAfterBattle {
 
 	private DeathfireAfterAction dftAfterAction;
 	
 	public DeathfireAfterBattle() {
-		super("After Battle");
+		super();
 	}
 
 	@Override
-	public void runEffectCalculations(Battle battle, BattleAction action, UrgotStats urgot) {
+	public void runEffectCalculations(Battle battle, UrgotStats urgot) {
 		updateDeathfireStats(urgot);
 		double deathDamage = computeDeathFireDamage(urgot);
 		battle.addMagicDamage(deathDamage);

@@ -4,11 +4,11 @@ import battle.Battle;
 import battle.BattleAction;
 import urgot.UrgotStats;
 
-public class Thunderlords extends Effect {
+public class Thunderlords extends EffectAfterAction {
 	// TODO: Only make it proc after 3 attacks.s
 	private boolean isProc = false;
 	public Thunderlords() {
-		super("After Action");
+		super();
 	}
 
 	@Override

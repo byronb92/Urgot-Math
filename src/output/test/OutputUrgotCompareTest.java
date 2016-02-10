@@ -7,9 +7,7 @@ import java.io.PrintWriter;
 import battle.BattleSetup;
 import battle.SkillRankType;
 import junit.framework.TestCase;
-import masteries.MasterySet;
 import output.OutputUrgotCompare;
-import runes.RuneSetup;
 import scenario.SortRank;
 import scenario.StatSetup;
 

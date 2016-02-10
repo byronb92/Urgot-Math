@@ -12,12 +12,12 @@ import urgot.UrgotStats;
  * dealing 1 (+ 3.125% AP) (+ 7.5% bonus AD) magic damage 
  * every half-second for a duration based on their type.
  */
-public class DeathfireAfterAction extends Effect {
+public class DeathfireAfterAction extends EffectAfterAction {
 	private double totalDeathFireCounter = 0;
 	private boolean noECast = true;
 	private boolean noQCast = true;
 	public DeathfireAfterAction() {
-		super("After Action");
+		super();
 	}
 
 	@Override
