@@ -14,15 +14,10 @@ import urgot.UrgotStats;
  */
 
 public class Ferocity06Deathfire extends Mastery {
-	private double secs;
 	public Ferocity06Deathfire() {
 		super(6);
 	}
 
-	public void setSecondsBurned(double seconds)
-	{
-		secs = seconds;
-	}
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
 		
@@ -31,9 +26,9 @@ public class Ferocity06Deathfire extends Mastery {
 		DeathfireAfterBattle deathfireBattle = new DeathfireAfterBattle();
 		urgot.addEffect(deathfire);
 		urgot.addEffect(deathfireBattle);
-		setMasteryDetails("Dealing ability damage to enemy champions applies a bleed, "
-				+ "dealing 1 (+ 3.125% AP) (+ 7.5% bonus AD) magic damage "
-				+ "every half-second for a duration based on their type.");
+		setMasteryDetails("Dealing ability damage to enemy champions applies a bleed,\n "
+				+ "    dealing 1 (+ 3.125% AP) (+ 7.5% bonus AD) magic damage "
+				+ "\n     every half-second for a duration based on their type.");
 		
 	}
 

@@ -1,8 +1,6 @@
 package battle;
 
 import java.util.LinkedList;
-import java.util.ListIterator;
-
 import urgot.UrgotStats;
 
 public class BattleManager {

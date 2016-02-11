@@ -153,7 +153,8 @@ public class UrgotStats {
 	public double getArmorReduc() 	{ return armorReduc; }
 	public double getDamageAmp()	{ return damageAmp; }
 	public double getDamageReduc() 	{ return damageReduc; }
-	public double getArmorPen() 	{ return flatArmorPen; }
+	public double getFlatArmorPen() 	{ return flatArmorPen; }
+	public double getPercentArmorPen() { return percentArmorPen; }
 	public double getBonusCrit()	{ return critChance; }
 	public double getResistanceReduction(double resistValue)
 	{

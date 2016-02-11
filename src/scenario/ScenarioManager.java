@@ -277,8 +277,9 @@ public class ScenarioManager {
 		StringBuilder offense = new StringBuilder();
 		offense.append("AD: " + sce.getUrgotStats().getTotalAD() +  "\n");
 		offense.append("Mana: " + sce.getUrgotStats().getTotalMana() +  "\n");
-		offense.append("Flat Armor Pen: " + sce.getUrgotStats().getArmorPen() + "\n");
-		offense.append("Percent Armor Pen: " + sce.getUrgotStats().getArmorReduc() + "\n");
+		offense.append("Flat Armor Pen: " + sce.getUrgotStats().getFlatArmorPen() + "\n");
+		offense.append("Armor Reduction: " + sce.getUrgotStats().getArmorReduc() + "\n");
+		offense.append("Percent Armor Pen: " + sce.getUrgotStats().getPercentArmorPen() + "\n");
 		offense.append("AS: " + sce.getUrgotStats().getTotalAS() + "\n");
 		return offense.toString();
 	}
