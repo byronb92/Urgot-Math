@@ -36,11 +36,11 @@ public abstract class Phase {
 	public abstract void runStatCollection(StatSetup setupCode);
 	
 	
-	public void addScenarioLevel(String itemName, int currentLevel)
+	public void addScenarioLevel(String itemName, int currentLevel, String scenarioName)
 	{
 		UrgotScenario currentScenario = new UrgotScenario(currentLevel);
 		currentScenario.addItem(itemName);
-		addScenario(currentScenario);
+		addScenario(currentScenario, scenarioName);
 	}
 	
 	public void addScenarioLevel(String[] itemNames, int currentLevel)

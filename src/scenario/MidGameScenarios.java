@@ -47,11 +47,11 @@ public class MidGameScenarios extends Phase {
 		String ghostblade = "Youmuu's Ghostblade";
 		String frozen = "Frozen Heart";
 		
-		addScenarioLevel(manamune, 9);
-		addScenarioLevel(ibg, 9);
-		addScenarioLevel(cleaver, 9);
-		addScenarioLevel(ghostblade, 9);
-		addScenarioLevel(frozen, 9);
+		addScenarioLevel(manamune, 9, "Manamune");
+		addScenarioLevel(ibg, 9, "Iceborn Gauntlet");
+		addScenarioLevel(cleaver, 9, "Black Cleaver");
+		addScenarioLevel(ghostblade, 9, "Ghostblade");
+		addScenarioLevel(frozen, 9, "Frozen heart");
 	}
 	
 	// Tear --> Black Cleaver --> Iceborne Gauntlet

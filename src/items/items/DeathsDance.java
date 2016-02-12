@@ -6,7 +6,7 @@ import urgot.UrgotStats;
 
 public class DeathsDance extends Item {
 
-	private int ad = 65;
+	private int ad = 75;
 	private double cdr = 0.10;
 	
 	public DeathsDance()
@@ -31,7 +31,7 @@ public class DeathsDance extends Item {
 
 	@Override
 	protected void setCost() {
-		cost = 3400;
+		cost = 3500;
 		
 	}
 
@@ -43,8 +43,8 @@ public class DeathsDance extends Item {
 
 	@Override
 	protected void setDetails() {
-		details = "Instantly heal for 12% of all physical damage dealt."
-				+ "AOE 4% to each unit affected.";
+		details = "Instantly heal for 15% of all physical damage dealt."
+				+ "AOE 5% to each unit affected.";
 	}
 
 }

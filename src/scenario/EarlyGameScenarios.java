@@ -87,20 +87,20 @@ public class EarlyGameScenarios extends Phase {
 		String dirk = "Serrated Dirk";
 		String phage = "Phage";
 		
-		addScenarioLevel(tear, 6);
-		addScenarioLevel(sheen, 6);
-		addScenarioLevel(hammer, 6);
-		addScenarioLevel(dirk, 6);
-		addScenarioLevel(phage, 6);
+		addScenarioLevel(tear, 6, "Tear");
+		addScenarioLevel(sheen, 6, "Sheen");
+		addScenarioLevel(hammer, 6, "Caulfield's Warhammer");
+		addScenarioLevel(dirk, 6, "Serrated Dirk");
+		addScenarioLevel(phage, 6, "Phage");
 	}
 	
 	
 	public void compareStartingItems()
 	{
-		addScenarioLevel("Doran's Blade", 1);
-		addScenarioLevel("Sapphire Crystal", 1);
-		addScenarioLevel("Long Sword", 1);
-		addScenarioLevel("Cloth Armor", 1);
+		addScenarioLevel("Doran's Blade", 1, "Doran's Blade");
+		addScenarioLevel("Sapphire Crystal", 1, "Sapphire Crystal");
+		addScenarioLevel("Long Sword", 1, "Long Sword");
+		addScenarioLevel("Cloth Armor", 1, "Cloth Armor");
 	}
 
 	

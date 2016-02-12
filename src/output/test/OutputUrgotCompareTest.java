@@ -28,12 +28,21 @@ public class OutputUrgotCompareTest extends TestCase {
 		out.println(comp.outputGeneral());
 		out.close();
 	}
-	public void testStartingItems() throws FileNotFoundException
+	public void testStartingItems_AutoAggressive() throws FileNotFoundException
 	{
 		comp.statCollection(StatSetup.STARTING_ITEMS);
 		comp.battleCollection(BattleSetup.AUTOTRADE_NO_W, SkillRankType.AGGRESSIVE);
-		PrintWriter out = new PrintWriter("testTextDumps/startingItems.txt");
-		out.println(comp.outputHighestRawDamage());
+		PrintWriter out = new PrintWriter("testTextDumps/startingItems_AutoAggressive.txt");
+		out.println(comp.outputSortedDamage(SortRank.ASCENDING));
+		out.close();
+	}
+	
+	public void testStartingItems_StandardAutoWeave() throws FileNotFoundException
+	{
+		comp.statCollection(StatSetup.STARTING_ITEMS);
+		comp.battleCollection(BattleSetup.POKE_AUTOWEAVE, SkillRankType.STANDARD);
+		PrintWriter out = new PrintWriter("testTextDumps/startingItems_StandardAutoWeave.txt");
+		out.println(comp.outputSortedDamage(SortRank.ASCENDING));
 		out.close();
 	}
 	public void testMasteries() throws FileNotFoundException
