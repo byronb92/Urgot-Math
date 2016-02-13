@@ -34,8 +34,8 @@ public class ScenarioManager {
 	public void setUpStatCollection(StatSetup setupCode)
 	{
 		
-		if (setupCode == StatSetup.LEVEL6 || setupCode == StatSetup.MASTERIES_LEVEL1
-				|| setupCode == StatSetup.STARTING_ITEMS)
+		if (setupCode == StatSetup.LEVEL4 || setupCode == StatSetup.LEVEL6 || 
+				setupCode == StatSetup.MASTERIES_LEVEL1 || setupCode == StatSetup.STARTING_ITEMS)
 		{
 			early = new EarlyGameScenarios();
 			setUpPhase(early, setupCode);

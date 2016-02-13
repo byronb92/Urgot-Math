@@ -1,6 +1,7 @@
 package scenario;
 
 import masteries.MasterySet;
+import runes.RuneSetup;
 
 /**
  * @author byronb92
@@ -44,6 +45,8 @@ public class EarlyGameScenarios extends Phase {
 	{
 		switch (setupCode)
 		{
+			case LEVEL4: compareLevelFour_ArmorPenVsAD();
+			break;
 			case STARTING_ITEMS: compareStartingItems();
 			break;
 			case MASTERIES_LEVEL1: compareLevelOneMasteries();
@@ -55,6 +58,24 @@ public class EarlyGameScenarios extends Phase {
 						System.out.println("There will be errors");
 			break;
 		}
+	}
+	
+	public void compareLevelFour_ArmorPenVsAD()
+	{
+		UrgotScenario thunderlordLong_AD = new UrgotScenario(4);
+		UrgotScenario thunderlordLong_PEN = new UrgotScenario(4);
+		UrgotScenario deathfireLong_AD = new UrgotScenario(4);
+		UrgotScenario deathfireLong_PEN = new UrgotScenario(4);
+		
+		
+		thunderlordLong_AD.setUpRunesAndMasteries(RuneSetup.STANDARD, 
+				MasterySet.THUNDERLORD_BALANCED);
+		thunderlordLong_PEN.setUpRunesAndMasteries(RuneSetup.ARMPENQUINT, 
+				MasterySet.THUNDERLORD_BALANCED);
+		deathfireLong_AD.setUpRunesAndMasteries(RuneSetup.STANDARD, 
+				MasterySet.DEATHFIRE_BALANCED);
+		deathfireLong_PEN.setUpRunesAndMasteries(RuneSetup.ARMPENQUINT, 
+				MasterySet.DEATHFIRE_BALANCED);
 	}
 	/**
 	 * Tries to compare 

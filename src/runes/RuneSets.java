@@ -55,4 +55,5 @@ public class RuneSets {
 	}
 	
 	
+	//public void addArmorPenFull(Runes rune)
 }
