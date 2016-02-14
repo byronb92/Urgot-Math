@@ -19,6 +19,21 @@ public class RuneManager {
 		{
 			runeSets.addStandardRunes(runes);
 		}
+		
+		else if (runeCode == RuneSetup.ARMPENMARK)
+		{
+			runeSets.addArmorPenMarks(runes);
+		}
+		
+		else if (runeCode == RuneSetup.ARMPENQUINT)
+		{
+			runeSets.addArmorPenQuints(runes);
+		}
+		
+		else if (runeCode == RuneSetup.ARMPENFULL)
+		{
+			runeSets.addArmorPenFull(runes);
+		}
 	}
 
 	public Runes getRunes()
