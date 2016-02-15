@@ -29,6 +29,9 @@ public class UrgotE extends Spell {
 		battle.addPhysicalDamage(totalDps);
 		battle.addSpellDamage(totalDps*5);
 		
+		double armReduc = 0.10 + (.02 * getSpellRank());
+		urgot.addArmReduc(armReduc);
+		
 	}
 
 }

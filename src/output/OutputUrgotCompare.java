@@ -77,6 +77,7 @@ public class OutputUrgotCompare {
 		StringBuilder generalInfo = new StringBuilder();
 		for (UrgotScenario sce : sceManager.getScenarios())
 		{
+			generalInfo.append(sce.getScenarioName() + "\n");
 			generalInfo.append(sceManager.getScenarioItems(sce));
 			generalInfo.append("\n");
 			generalInfo.append("Cost: " + sceManager.getScenarioCost(sce));

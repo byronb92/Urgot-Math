@@ -51,6 +51,8 @@ public class OutputUrgotCompareTest extends TestCase {
 		comp.battleCollection(BattleSetup.ALLIN_NOULT, SkillRankType.STANDARD);
 		PrintWriter out = new PrintWriter("testTextDumps/startingItems_testArmorPenVsAD.txt");
 		out.println(comp.outputSortedDamage(SortRank.ASCENDING));
+		out.println();
+		out.println(comp.outputGeneral());
 		out.close();
 	}
 	public void testMasteries() throws FileNotFoundException
