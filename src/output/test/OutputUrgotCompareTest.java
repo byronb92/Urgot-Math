@@ -47,9 +47,9 @@ public class OutputUrgotCompareTest extends TestCase {
 	}
 	public void testArmorPenVsADStart() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.STARTING_ITEMS);
-		comp.battleCollection(BattleSetup.POKE_AUTOWEAVE, SkillRankType.STANDARD);
-		PrintWriter out = new PrintWriter("testTextDumps/startingItems_StandardAutoWeave.txt");
+		comp.statCollection(StatSetup.LEVEL4);
+		comp.battleCollection(BattleSetup.ALLIN_NOULT, SkillRankType.STANDARD);
+		PrintWriter out = new PrintWriter("testTextDumps/startingItems_testArmorPenVsAD.txt");
 		out.println(comp.outputSortedDamage(SortRank.ASCENDING));
 		out.close();
 	}

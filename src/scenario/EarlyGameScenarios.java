@@ -76,6 +76,16 @@ public class EarlyGameScenarios extends Phase {
 				MasterySet.DEATHFIRE_BALANCED);
 		deathfireLong_PEN.setUpRunesAndMasteries(RuneSetup.ARMPENQUINT, 
 				MasterySet.DEATHFIRE_BALANCED);
+		
+		thunderlordLong_AD.addItem("Long Sword");
+		thunderlordLong_PEN.addItem("Long Sword");
+		deathfireLong_AD.addItem("Long Sword");
+		deathfireLong_PEN.addItem("Long Sword");
+		
+		addScenario(thunderlordLong_AD, "Thunderlord + AD Runes");
+		addScenario(thunderlordLong_PEN, "Thunderlord + Armor Pen Runes");
+		addScenario(deathfireLong_AD, "Deathfire + AD Runes");
+		addScenario(deathfireLong_PEN, "Deathfire + Armor Pen Runes");
 	}
 	/**
 	 * Tries to compare 
