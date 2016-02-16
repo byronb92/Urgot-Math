@@ -12,6 +12,7 @@ public class Ferocity05Blows extends Mastery {
 
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
+		// TODO: Fix percent armor pen
 		urgot.addPercentArmorPen(0.07);
 		
 	}

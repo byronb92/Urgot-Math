@@ -83,6 +83,8 @@ public class OutputUrgotCompare {
 			generalInfo.append("Cost: " + sceManager.getScenarioCost(sce));
 			generalInfo.append("\n");
 			generalInfo.append("Raw Damage: " + sceManager.getRawDamage(sce) + "\n");
+			generalInfo.append("Physical Damage: " + sce.getBattleStats().getPhysicalDamage() + "\n");
+			generalInfo.append("Magic Damage Damage: " + sce.getBattleStats().getMagicDamage() + "\n");
 			generalInfo.append("Offense: \n");
 			generalInfo.append(sceManager.getOffensiveStats(sce));
 			generalInfo.append("Defense: \n");

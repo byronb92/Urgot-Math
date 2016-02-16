@@ -268,7 +268,7 @@ public class ScenarioManager {
 	 */
 	public double getRawDamage(UrgotScenario sce)
 	{
-		return sce.getBattleStats().getPhysicalDamage();
+		return sce.getBattleStats().getTotalDamage();
 	}
 	
 	
