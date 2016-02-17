@@ -19,24 +19,10 @@ public class UrgotVsEnemy {
 	public CompleteDamage damageVsCustomEnemy(UrgotScenario sce, double enemyArmor,
 			double enemyMR, double enemyHP)
 	{
-		damageVsCustomEnemyWrapper(sce, enemyArmor, enemyMR, enemyHP);
-		return null;
+		return damageVsCustomEnemyWrapper(sce, enemyArmor, enemyMR, enemyHP);
 	}
 	
-	private void damageVsCustomEnemyWrapper(UrgotScenario sce, double enemyArmor,
-			double enemyMr, double enemyHP)
-	{
-		double physicalDmgDone = sce.getBattleStats().getPhysicalDamage();
-		double magicDmgDone = sce.getBattleStats().getMagicDamage();
-		
-		double armorReducPercent = sce.getUrgotStats().getArmorReduc();
-		double armorPenPercent = sce.getUrgotStats().getPercentArmorPen();
-		double armorPenFlat =  sce.getUrgotStats().getFlatArmorPen();
-		
-		damageVsCustomEnemy(physicalDmgDone, magicDmgDone, armorPenFlat, 
-				armorPenPercent, armorReducPercent, enemyArmor, enemyMr, enemyHP);
-	}
-	
+
 	
 
 	public CompleteDamage damageVsCustomEnemy(double physicalDamage, double magicDamage,
@@ -44,7 +30,7 @@ public class UrgotVsEnemy {
 			double enemyArmor, double enemyMR, double enemyHP)
 	{
 		// Armor reduction, percentage
-		double trueEnemyArmor = enemyArmor - (enemyArmor * armReducP);
+		double trueEnemyArmor = enemyArmor * armReducP;
 		// Armor penetration, percentage
 		trueEnemyArmor = trueEnemyArmor - (trueEnemyArmor * armPenP);
 		// Armor penetration, flat.
@@ -61,6 +47,22 @@ public class UrgotVsEnemy {
 	}
 	
 	
+	
+	
+	// Wrapper method.
+	private CompleteDamage damageVsCustomEnemyWrapper(UrgotScenario sce, double enemyArmor,
+			double enemyMr, double enemyHP)
+	{
+		double physicalDmgDone = sce.getBattleStats().getPhysicalDamage();
+		double magicDmgDone = sce.getBattleStats().getMagicDamage();
+		
+		double armorReducPercent = sce.getUrgotStats().getArmorReduc();
+		double armorPenPercent = sce.getUrgotStats().getPercentArmorPen();
+		double armorPenFlat =  sce.getUrgotStats().getFlatArmorPen();
+		
+		return damageVsCustomEnemy(physicalDmgDone, magicDmgDone, armorPenFlat, 
+				armorPenPercent, armorReducPercent, enemyArmor, enemyMr, enemyHP);
+	}
 
 
 	
