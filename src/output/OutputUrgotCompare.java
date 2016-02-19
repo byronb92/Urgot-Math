@@ -53,7 +53,7 @@ public class OutputUrgotCompare {
 		for (UrgotScenario sce : sceManager.getScenarios())
 		{
 			sce.setUpRunesAndMasteries(runes, masteries);
-			//sce.computeStats();
+			sce.computeStats();
 		}
 	}
 	

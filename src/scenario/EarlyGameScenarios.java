@@ -70,11 +70,11 @@ public class EarlyGameScenarios extends Phase {
 		
 		thunderlordLong_AD.setUpRunesAndMasteries(RuneSetup.STANDARD, 
 				MasterySet.THUNDERLORD_BALANCED);
-		thunderlordLong_PEN.setUpRunesAndMasteries(RuneSetup.ARMPENQUINT, 
+		thunderlordLong_PEN.setUpRunesAndMasteries(RuneSetup.ARMPENFULL, 
 				MasterySet.THUNDERLORD_BALANCED);
 		deathfireLong_AD.setUpRunesAndMasteries(RuneSetup.STANDARD, 
 				MasterySet.DEATHFIRE_BALANCED);
-		deathfireLong_PEN.setUpRunesAndMasteries(RuneSetup.ARMPENQUINT, 
+		deathfireLong_PEN.setUpRunesAndMasteries(RuneSetup.ARMPENFULL, 
 				MasterySet.DEATHFIRE_BALANCED);
 		
 		thunderlordLong_AD.addItem("Long Sword");

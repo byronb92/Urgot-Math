@@ -11,7 +11,7 @@ public class MarkArmorPen extends Rune {
 
 	@Override
 	public void addRuneStat(UrgotStats urgot) {
-		urgot.addBonusArmorPen(1.28);
+		urgot.addArmorPen(1.28);
 	}
 	
 }

@@ -68,5 +68,14 @@ public class RunesTest {
 		System.out.println(runes.getRunesAsString());
 		System.out.println();
 	}
+	@Test
+	public void testArmorPenFull()
+	{
+		System.out.print("Armor Pen Full");
+		System.out.println();
+		sets.addArmorPenFull(runes);
+		System.out.println(runes.getRunesAsString());
+		System.out.println();
+	}
 
 }

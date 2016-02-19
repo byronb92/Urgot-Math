@@ -99,16 +99,18 @@ public class MasteryManager {
 		masteries.getResolve().addMasteryByName("Perseverance");
 		masteries.getResolve().addMasteryByName("Swiftness");
 		masteries.getResolve().addMasteryByName("Bond of Stone");
-		masteries.getResolve().addMasteryByName("Savagery");
-		masteries.getResolve().addMasteryByName("Secret Stash");
-		masteries.getResolve().addMasteryByName("Meditation");
-		masteries.getResolve().addMasteryByName("Dangerous Game");
+		
+		masteries.getCunning().addMasteryByName("Savagery");
+		masteries.getCunning().addMasteryByName("Secret Stash");
+		masteries.getCunning().addMasteryByName("Meditation");
+		masteries.getCunning().addMasteryByName("Dangerous Game");
 	}
 	
 	
 	/**
 	 * Method should be used after masteries have been successfully added.
 	 */
+	// TODO: This method isn't even needed!!!!! Because of the way we named each tree, masteries are already added.
 	private void aggregateAllMasteries()
 	{
 		listCurrentMasteries.addAll(masteries.getCunning().getListTreeMasteries());

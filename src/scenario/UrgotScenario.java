@@ -90,7 +90,7 @@ public class UrgotScenario {
 	{
 		runeManager.setUpRunes(runes);
 		masteryManager.masterySetup(masteries);
-		computeStats();
+		//computeStats();
 	}
 	
 	

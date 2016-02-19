@@ -34,7 +34,6 @@ public class LongSword extends Item {
 
 	@Override
 	protected void setDetails() {
-		// TODO Auto-generated method stub
 		
 	}
 
