@@ -1,11 +1,13 @@
 package battle.dynamic;
 
 public class CompleteDamage {
+	private String name;
 	private double physicalDamage;
 	private double magicDamage;
 	
-	public CompleteDamage(double physical, double magic)
+	public CompleteDamage(String o, double physical, double magic)
 	{
+		name = o;
 		physicalDamage = physical;
 		magicDamage = magic;
 	}
@@ -18,5 +20,10 @@ public class CompleteDamage {
 	public double getMagicDamage()
 	{
 		return magicDamage;
+	}
+	
+	public double getTotalDamage()
+	{
+		return physicalDamage + magicDamage;
 	}
 }
