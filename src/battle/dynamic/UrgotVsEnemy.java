@@ -5,33 +5,6 @@ import scenario.UrgotScenario;
 public class UrgotVsEnemy {
 	
 	/**
-	 * Computes real damage dealt to enemy after resistances.
-	 * @param name
-	 * @param armReduc_Percent
-	 * @param armPen_Percent
-	 * @param armPen_Flat
-	 * @param enemyArmor
-	 * @param enemyMR
-	 * @param physicalDamage
-	 * @param magicDamage
-	 * @return
-	 */
-	public CompleteDamage damageVsEnemy(String name, double armReduc_Percent,
-			double armPen_Percent, double armPen_Flat,
-			double enemyArmor, double enemyMR, double physicalDamage, double magicDamage)
-	{
-		double trueEnemyArmor = getTrueEnemyArmor(armReduc_Percent, armPen_Percent,
-				armPen_Flat, enemyArmor);
-		return damageVsEnemy(name, physicalDamage, trueEnemyArmor, magicDamage, enemyMR);
-	}
-	
-	public CompleteDamage damageVsEnemy(UrgotScenario sce, double enemyArmor,
-			double enemyMR)
-	{
-		return collectPreDamageStatsFromScenario(sce, enemyArmor, enemyMR);
-	}
-	
-	/**
 	 * Computes real damage done to an enemy after resistances.
 	 * @param name - gives an identity to the numbers assigned.
 	 * @param physicalDamage
@@ -52,7 +25,17 @@ public class UrgotVsEnemy {
 		
 		return new CompleteDamage(name, realPhysicalDamage, realMagicDamage);
 	}
+
 	
+	public CompleteDamage damageVsEnemy(UrgotScenario sce, double enemyArmor,
+			double enemyMR)
+	{
+		return collectPreDamageStatsFromScenario(sce, enemyArmor, enemyMR);
+	}
+	
+
+	
+	// TODO: Move to UrgotScenario.
 	/**
 	 * Finds out which scenario does the most damage to a specific target.
 	 * @param sceA
@@ -79,7 +62,43 @@ public class UrgotVsEnemy {
 	}
 	
 	
-	/** Current assumption, no magic penetration. */
+	
+
+	
+	
+	
+	public ResistanceModifiers aggregrateResistanceMods(String name,
+			double armorReduc_Flat,double armorReduc_Percent,
+			double armorPen_Percent, double armorPenBonus_Percent,
+			double armorPen_Flat, 
+			double magicReduc_Flat,double magicReduc_Percent,
+			double magicPen_Percent, double magicPen_Flat)
+	{
+		ResistanceModifiers resistMod = new ResistanceModifiers(name);
+		resistMod.setArmorModifications(armorReduc_Flat, armorReduc_Percent, 
+				armorPen_Percent, armorPenBonus_Percent, armorPen_Flat);
+		resistMod.setMagicResistanceModifications(
+				magicReduc_Flat, magicReduc_Percent, magicPen_Percent, magicPen_Flat);
+		return resistMod;
+	}
+	
+	public CompleteDamage damageVsEnemy(ResistanceModifiers resistMod,
+			double rawPhysicalDamage, double rawMagicDamage,
+			double enemyBaseArmor, double enemyBonusArmor,
+			double enemyBaseMR, double enemyBonusMR)
+			
+	{
+		double realArmor = resistMod.getTrueEnemyArmor(enemyBaseArmor, enemyBonusArmor);
+		double realMR = resistMod.getTrueEnemyMR(enemyBaseMR, enemyBonusMR);
+		
+		double realPhysicalDamageDealt = 100 / (100 + realArmor);
+		double realMagicDamageDealt = 100 / (100 + realMR);
+		return new CompleteDamage(resistMod.getName(),
+				realPhysicalDamageDealt, realMagicDamageDealt);
+	}
+	
+	
+	// TODO: Move into scenario manager.
 	private CompleteDamage collectPreDamageStatsFromScenario(UrgotScenario sce, 
 			double enemyArmor, double enemyMR)
 	{
