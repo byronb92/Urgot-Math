@@ -91,8 +91,8 @@ public class UrgotVsEnemy {
 		double realArmor = resistMod.getTrueEnemyArmor(enemyBaseArmor, enemyBonusArmor);
 		double realMR = resistMod.getTrueEnemyMR(enemyBaseMR, enemyBonusMR);
 		
-		double realPhysicalDamageDealt = 100 / (100 + realArmor);
-		double realMagicDamageDealt = 100 / (100 + realMR);
+		double realPhysicalDamageDealt = rawPhysicalDamage * (100 / (100 + realArmor));
+		double realMagicDamageDealt = rawMagicDamage * (100 / (100 + realMR));
 		return new CompleteDamage(resistMod.getName(),
 				realPhysicalDamageDealt, realMagicDamageDealt);
 	}
