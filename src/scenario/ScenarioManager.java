@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import battle.dynamic.CompleteDamage;
+import battle.dynamic.UrgotVsEnemy;
 import calc.DefenseCalculator;
 
 import java.util.TreeMap;
@@ -111,6 +113,133 @@ public class ScenarioManager {
 			}
 		}
 		return highestDamageSce;
+	}
+	
+	/**
+	 * Finds the highest damage output scenario in all scenarios.
+	 * @return null - there are no scenarios.
+	 */
+	public UrgotScenario findHighestRealDamage(double enemyBaseArmor,
+			double enemyBonusArmor, double enemyBaseMR, double enemyBonusMR)
+	{
+		UrgotScenario highestDamageSce = null;
+		for (UrgotScenario sce : listAllScenarios)
+		{
+			if (highestDamageSce == null)
+			{
+				highestDamageSce = sce;
+			}
+			else
+			{
+				// TODO: Add MR into equation.
+				CompleteDamage dmgA = damageVsEnemy(sce, 
+						enemyBaseArmor, enemyBonusArmor, enemyBaseMR);
+				CompleteDamage dmgB = damageVsEnemy(highestDamageSce, 
+						enemyBaseArmor, enemyBonusArmor, enemyBaseMR);
+				if (dmgA.getTotalDamage() > dmgB.getTotalDamage())
+				{
+					highestDamageSce = sce;
+				}
+				else if (dmgA == dmgB)
+				{
+					System.out.println("-----------------");
+					System.out.println("Duplicate raw damage: " + dmgA.getTotalDamage());
+					System.out.println("Set 1: " + highestDamageSce.getScenarioName());
+					System.out.println("Set 2: " + sce.getScenarioName());
+				}
+			}
+		}
+		return highestDamageSce;
+	}
+	/**
+	 * Finds out which scenario does the most damage to a specific target.
+	 * @param sceA
+	 * @param sceB
+	 * @param enemyArmor
+	 * @param enemyMR
+	 * @return null if the damage is equal.
+	 */
+	public CompleteDamage findHighestRealDamageFromTwoScenarios(
+			UrgotScenario sceA, UrgotScenario sceB,
+			double enemyBaseArmor, double enemyBonusArmor, double enemyMR)
+	{
+		CompleteDamage dmgA = damageVsEnemy(sceA, 
+				enemyBaseArmor, enemyBonusArmor, enemyMR);
+		CompleteDamage dmgB = damageVsEnemy(sceB, 
+				enemyBaseArmor, enemyBonusArmor, enemyMR);
+		if (dmgA.getTotalDamage() > dmgB.getTotalDamage())
+		{
+			return dmgA;
+		}
+		else if (dmgA.getTotalDamage() < dmgB.getTotalDamage())
+		{
+			return dmgB;
+		}
+		return null;
+	}
+	
+	public CompleteDamage damageVsEnemy(UrgotScenario sce, 
+			double enemyBaseArmor, double enemyBonusArmor,
+			double enemyMR)
+	{
+		return collectPreDamageStatsFromScenario(sce, 
+				enemyBaseArmor, enemyBonusArmor, enemyMR);
+	}
+	
+
+	
+	// TODO: Move into scenario manager.
+	private CompleteDamage collectPreDamageStatsFromScenario(UrgotScenario sce, 
+			double enemyBaseArmor, double enemyBonusArmor, double enemyMR)
+	{
+		String scenarioName = sce.getScenarioName();
+		double rawPhysicalDamage = sce.getBattleStats().getPhysicalDamage();
+		double rawMagicDamage = sce.getBattleStats().getMagicDamage();
+		
+
+		
+		double enemyTrueArmor = getTrueEnemyArmorFromScenario(sce,
+				enemyBaseArmor, enemyBonusArmor);
+		double enemyTrueMR = enemyMR; // Magic penetration not yet incorporated.
+		UrgotVsEnemy urgVsEnemy = new UrgotVsEnemy();
+		return urgVsEnemy.damageVsEnemy(scenarioName, rawPhysicalDamage, enemyTrueArmor,
+				rawMagicDamage, enemyTrueMR);
+				
+	}
+	
+	private double getTrueEnemyArmorFromScenario(UrgotScenario sce,
+			double enemyBaseArmor, double enemyBonusArmor)
+	
+	{
+		double armorReduc_Flat = 0; // Urgot has no flat armor reduction.
+		double armorReduc_Percent = sce.getUrgotStats().getArmorReduc();
+		double armorPen_Percent = sce.getUrgotStats().getPercentArmorPen();
+		double armorPen_Flat = sce.getUrgotStats().getFlatArmorPen();
+		
+		// Armor reduction is split between base and bonus armor.
+		double trueEnemyBaseArmor = enemyBaseArmor - (armorReduc_Flat/2);
+		double trueEnemyBonusArmor = enemyBonusArmor - (armorReduc_Flat/2);
+
+
+		trueEnemyBaseArmor = trueEnemyBaseArmor * (armorReduc_Percent);
+		trueEnemyBonusArmor = trueEnemyBonusArmor * armorReduc_Percent;
+
+		trueEnemyBaseArmor = trueEnemyBaseArmor - (trueEnemyBaseArmor * armorPen_Percent);
+		trueEnemyBonusArmor = trueEnemyBonusArmor - (trueEnemyBonusArmor * armorPen_Percent);
+		// TODO: Add last whisper incorpration into Urgot Stats
+		//trueEnemyBonusArmor = trueEnemyBonusArmor - (trueEnemyBonusArmor * armorPenBonus_Percent);
+
+
+		double enemyTrueArmor = trueEnemyBaseArmor + trueEnemyBonusArmor;
+		enemyTrueArmor = enemyTrueArmor - armorPen_Flat;
+		return enemyTrueArmor;
+	}
+
+	// TODO: getTrueEnemyMR();
+	private double getTrueEnemyMRFromScenario(UrgotScenario sce,
+			double enemyBaseMR, double enemyTotalMR)
+	{
+		return 0;
 	}
 	
 	/**

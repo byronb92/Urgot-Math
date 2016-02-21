@@ -1,6 +1,8 @@
 package battle.dynamic;
 
 
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,8 +41,13 @@ public class UrgotVsEnemyTest {
 		CompleteDamage thundAd_Damage = urgVs.damageVsEnemy(thundAD, 726.12, 47.59, 
 				30, 10, 30, 0);
 		
-		CompleteDamage thundArmpen_Damage = urgVs.damageVsEnemy(thundArmPen, 632.02, 43, 
+		CompleteDamage thundArmPen_Damage = urgVs.damageVsEnemy(thundArmPen, 632.02, 43, 
 				30, 10, 30, 0);
+		
+		CompleteDamage highestDmg = urgVs.findHighestRealDamageFromTwoDamageObjects(
+				thundAd_Damage, thundArmPen_Damage);
+		
+		assertEquals("Thunderlord with Arm Pen", highestDmg.getName());
 	}
 
 }

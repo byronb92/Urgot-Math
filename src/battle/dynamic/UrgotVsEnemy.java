@@ -27,39 +27,36 @@ public class UrgotVsEnemy {
 	}
 
 	
-	public CompleteDamage damageVsEnemy(UrgotScenario sce, double enemyArmor,
-			double enemyMR)
-	{
-		return collectPreDamageStatsFromScenario(sce, enemyArmor, enemyMR);
-	}
+
 	
 
 	
-	// TODO: Move to UrgotScenario.
-	/**
-	 * Finds out which scenario does the most damage to a specific target.
-	 * @param sceA
-	 * @param sceB
-	 * @param enemyArmor
-	 * @param enemyMR
-	 * @return null if the damage is equal.
-	 */
-	public CompleteDamage findHighestRealDamageFromTwoScenarios(
-			UrgotScenario sceA, UrgotScenario sceB,
-			double enemyArmor, double enemyMR)
+
+	
+	public CompleteDamage findHighestRealDamageFromTwoDamageObjects(
+			CompleteDamage dmgA, CompleteDamage dmgB)
 	{
-		CompleteDamage dmgA = damageVsEnemy(sceA, enemyArmor, enemyMR);
-		CompleteDamage dmgB = damageVsEnemy(sceB, enemyArmor, enemyMR);
 		if (dmgA.getTotalDamage() > dmgB.getTotalDamage())
 		{
+			double comparedDamage = dmgA.getTotalDamage() - dmgB.getTotalDamage();
+			String comparedWith = (dmgA.getName() + "(+" + comparedDamage +
+					") over " + dmgB.getName());
+			dmgA.setCompared(comparedWith, comparedDamage);
 			return dmgA;
+			
 		}
 		else if (dmgA.getTotalDamage() < dmgB.getTotalDamage())
 		{
+			double comparedDamage = dmgB.getTotalDamage() - dmgA.getTotalDamage();
+			String comparedWith = dmgB.getName() + "(+" + comparedDamage +
+					") over " + dmgA.getName();
+			dmgB.setCompared(comparedWith, comparedDamage);
 			return dmgB;
 		}
 		return null;
 	}
+	
+	
 	
 	
 	
@@ -94,30 +91,10 @@ public class UrgotVsEnemy {
 		double realPhysicalDamageDealt = rawPhysicalDamage * (100 / (100 + realArmor));
 		double realMagicDamageDealt = rawMagicDamage * (100 / (100 + realMR));
 		return new CompleteDamage(resistMod.getName(),
-				realPhysicalDamageDealt, realMagicDamageDealt);
+				realPhysicalDamageDealt, realMagicDamageDealt, resistMod);
 	}
 	
 	
-	// TODO: Move into scenario manager.
-	private CompleteDamage collectPreDamageStatsFromScenario(UrgotScenario sce, 
-			double enemyArmor, double enemyMR)
-	{
-		String scenarioName = sce.getScenarioName();
-		double rawPhysicalDamage = sce.getBattleStats().getPhysicalDamage();
-		double rawMagicDamage = sce.getBattleStats().getMagicDamage();
-		
-		double armorReduc_Percent = sce.getUrgotStats().getArmorReduc();
-		double armorPen_Percent = sce.getUrgotStats().getPercentArmorPen();
-		double armorPen_Flat = sce.getUrgotStats().getFlatArmorPen();
-		
-		double enemyTrueArmor = getTrueEnemyArmor(armorReduc_Percent,
-				armorPen_Percent, armorPen_Flat, enemyArmor);
-		double enemyTrueMR = enemyMR; // Magic penetration not yet incorporated.
-
-		return damageVsEnemy(scenarioName, rawPhysicalDamage, enemyTrueArmor,
-				rawMagicDamage, enemyTrueMR);
-				
-	}
 
 	
 	/**
@@ -132,15 +109,6 @@ public class UrgotVsEnemy {
 	 * @param armorPen_Flat
 	 * @param enemyArmor
 	 */
-	private double getTrueEnemyArmor(double armorReduc_Percent,
-			double armorPen_Percent, double armorPen_Flat, double enemyArmor)
-	{
 
-		double trueEnemyArmor = enemyArmor * armorReduc_Percent;
-		trueEnemyArmor = trueEnemyArmor - (trueEnemyArmor * armorPen_Percent);
-		trueEnemyArmor = trueEnemyArmor -  armorPen_Flat;
-		double enemyPhysicalReduction = (100/(100+trueEnemyArmor));
-		return enemyPhysicalReduction;
-	}
 
 }
