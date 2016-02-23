@@ -54,4 +54,19 @@ public class CompleteDamage {
 	{
 		return physicalDamage + magicDamage;
 	}
+	
+	public ResistanceModifiers getResistMod()
+	{
+		return resistMod;
+	}
+	
+	public String getComparedWith()
+	{
+		return comparedWith;
+	}
+	
+	public double getComparedDamage()
+	{
+		return comparedDamage;
+	}
 }

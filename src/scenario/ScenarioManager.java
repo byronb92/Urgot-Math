@@ -133,9 +133,9 @@ public class ScenarioManager {
 			{
 				// TODO: Add MR into equation.
 				CompleteDamage dmgA = damageVsEnemy(sce, 
-						enemyBaseArmor, enemyBonusArmor, enemyBaseMR);
+						enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
 				CompleteDamage dmgB = damageVsEnemy(highestDamageSce, 
-						enemyBaseArmor, enemyBonusArmor, enemyBaseMR);
+						enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
 				if (dmgA.getTotalDamage() > dmgB.getTotalDamage())
 				{
 					highestDamageSce = sce;
@@ -161,12 +161,14 @@ public class ScenarioManager {
 	 */
 	public CompleteDamage findHighestRealDamageFromTwoScenarios(
 			UrgotScenario sceA, UrgotScenario sceB,
-			double enemyBaseArmor, double enemyBonusArmor, double enemyMR)
+			double enemyBaseArmor, double enemyBonusArmor, 
+			double enemyBaseMR, double enemyBonusMR)
 	{
 		CompleteDamage dmgA = damageVsEnemy(sceA, 
-				enemyBaseArmor, enemyBonusArmor, enemyMR);
+				enemyBaseArmor, enemyBonusArmor, 
+				enemyBaseMR, enemyBonusMR);
 		CompleteDamage dmgB = damageVsEnemy(sceB, 
-				enemyBaseArmor, enemyBonusArmor, enemyMR);
+				enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
 		if (dmgA.getTotalDamage() > dmgB.getTotalDamage())
 		{
 			return dmgA;
@@ -180,17 +182,18 @@ public class ScenarioManager {
 	
 	public CompleteDamage damageVsEnemy(UrgotScenario sce, 
 			double enemyBaseArmor, double enemyBonusArmor,
-			double enemyMR)
+			double enemyBaseMR, double enemyBonusMR)
 	{
 		return collectPreDamageStatsFromScenario(sce, 
-				enemyBaseArmor, enemyBonusArmor, enemyMR);
+				enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
 	}
 	
 
 	
 	// TODO: Move into scenario manager.
 	private CompleteDamage collectPreDamageStatsFromScenario(UrgotScenario sce, 
-			double enemyBaseArmor, double enemyBonusArmor, double enemyMR)
+			double enemyBaseArmor, double enemyBonusArmor, 
+			double enemyBaseMR, double enemyBonusMR)
 	{
 		String scenarioName = sce.getScenarioName();
 		double rawPhysicalDamage = sce.getBattleStats().getPhysicalDamage();
@@ -200,7 +203,8 @@ public class ScenarioManager {
 		
 		double enemyTrueArmor = getTrueEnemyArmorFromScenario(sce,
 				enemyBaseArmor, enemyBonusArmor);
-		double enemyTrueMR = enemyMR; // Magic penetration not yet incorporated.
+		double enemyTrueMR = getTrueEnemyMRFromScenario(sce,
+				enemyBaseMR, enemyBonusMR); 
 		UrgotVsEnemy urgVsEnemy = new UrgotVsEnemy();
 		return urgVsEnemy.damageVsEnemy(scenarioName, rawPhysicalDamage, enemyTrueArmor,
 				rawMagicDamage, enemyTrueMR);
@@ -234,13 +238,40 @@ public class ScenarioManager {
 		enemyTrueArmor = enemyTrueArmor - armorPen_Flat;
 		return enemyTrueArmor;
 	}
+	
+	private double getTrueEnemyMRFromScenario(UrgotScenario sce,
+			double enemyBaseMR, double enemyBonusMR)
+	
+	{
+		double magicReduc_Flat = 0; 
+		double magicReduc_Percent = 0;
+		double magicPen_Percent = 0;
+		double magicrPen_Flat = 0;
+		
+		// Armor reduction is split between base and bonus armor.
+		double trueEnemyBaseMR = enemyBaseMR - (magicReduc_Flat/2);
+		double trueEnemyBonusMR = enemyBonusMR - (magicReduc_Flat/2);
+
+
+		trueEnemyBaseMR = trueEnemyBaseMR * (magicReduc_Percent);
+		trueEnemyBonusMR = trueEnemyBonusMR * magicReduc_Percent;
+
+		trueEnemyBaseMR = trueEnemyBaseMR - (trueEnemyBaseMR * magicPen_Percent);
+		trueEnemyBonusMR = trueEnemyBonusMR - (trueEnemyBonusMR * magicPen_Percent);
+;
+
+
+		double enemyTrueMR = trueEnemyBaseMR + trueEnemyBonusMR;
+		enemyTrueMR = enemyTrueMR - magicrPen_Flat;
+		return enemyTrueMR;
+	}
 
 	// TODO: getTrueEnemyMR();
-	private double getTrueEnemyMRFromScenario(UrgotScenario sce,
-			double enemyBaseMR, double enemyTotalMR)
-	{
-		return 0;
-	}
+//	private double getTrueEnemyMRFromScenario(UrgotScenario sce,
+//			double enemyBaseMR, double enemyTotalMR)
+//	{
+//		return 0;
+//	}
 	
 	/**
 	 * Finds the highest damage output scenario in all scenarios.

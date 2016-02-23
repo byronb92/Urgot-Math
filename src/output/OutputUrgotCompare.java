@@ -115,6 +115,18 @@ public class OutputUrgotCompare {
 		return rawDamageString.toString();
 	}
 	
+	public String outputHighestRealDamage(double enemyBaseArmor, double enemyBonusArmor,
+			double enemyBaseMR, double enemyBonusMR)
+	{
+		StringBuilder rawDamageString = new StringBuilder();
+		UrgotScenario highestDamage = sceManager.findHighestRealDamage(
+				enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
+		rawDamageString.append("Highest Real Damage: ");
+		rawDamageString.append(highestDamage.getScenarioName());
+		rawDamageString.append("\n");
+		return rawDamageString.toString();
+	}
+	
 	public String outputLowestCost()
 	{
 		StringBuilder costString = new StringBuilder();
