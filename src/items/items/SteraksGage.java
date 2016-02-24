@@ -57,5 +57,14 @@ public class SteraksGage extends Item {
 		}
 		
 	}
+	
+	
+	@Override
+	protected void setCategory() {
+		category.put("Health", "");
+		category.put("Attack Damage", "");
+		
+	}
+	
 
 }

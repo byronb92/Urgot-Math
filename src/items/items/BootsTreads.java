@@ -32,5 +32,11 @@ public class BootsTreads extends Boots {
 		details = "Reduces the duration of all crowd control effects by 20%.";
 	}
 	
+	@Override
+	protected void setCategory() {
+		category.put("Magic Resist", "");
+		category.put("Cooldown Reduction", "");
+		
+	}
 
 }

@@ -46,5 +46,12 @@ public class BlackCleaver extends Item {
 		details = "30% armor reduction after 5 stacks of physical damage."
 				+ "5% armor per stack.";
 	}
+	@Override
+	protected void setCategory() {
+		category.put("Health", "");
+		category.put("Attack Damage", "");
+		category.put("Cooldown Reduction", "");
+		
+	}
 
 }

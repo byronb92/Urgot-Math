@@ -48,18 +48,25 @@ public class IcebornGauntlet extends Item {
 	protected void setDetails() {
 		if (passiveApplied)
 		{
-			details = "Armor scaling zone: 190 + (45% bonus armor) ("
+			details = "Armor scaling zone: 180 + (55% bonus armor) ("
 					+ urgot.getBonusArmor() + ")\n"
 					+ "Spellblade: 125% Base AD( " + currentBaseAD + " )\n"
 					+ "30% Movement Speed Slow";
 		}
 		else
 		{
-			details = "Armor scaling zone: 190 + (45% bonus armor)\n"
+			details = "Armor scaling zone: 180 + (55% bonus armor)\n"
 					+ "Spellblade: 125% Base AD\n"
 					+ "30% Movement Speed Slow";
 		}
-		
+	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Armor", "");
+		category.put("Mana", "");
+		category.put("Cooldown Reduction", "");
+		category.put("Sustain", "");
 		
 	}
 

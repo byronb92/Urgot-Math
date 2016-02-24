@@ -40,5 +40,11 @@ public class SapphireCrystal extends Item {
 		// No details
 		
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Mana", "");
+		
+	}
 
 }

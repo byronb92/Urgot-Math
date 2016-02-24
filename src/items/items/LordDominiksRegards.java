@@ -43,5 +43,13 @@ public class LordDominiksRegards extends Item {
 				+ "difference).";
 		
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		category.put("Armor Penetration", "");
+
+		
+	}
 
 }

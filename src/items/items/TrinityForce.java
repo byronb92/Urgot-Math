@@ -55,5 +55,15 @@ public class TrinityForce extends Item{
 				+ (currentBaseAD * 2) + " AD)";
 		
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Health", "");
+		category.put("Mana", "");
+		category.put("Cooldown Reduction", "");
+		category.put("Attack Damage", "");
+		category.put("Movement Speed", "");
+		
+	}
 
 }

@@ -34,4 +34,10 @@ public class BootsNinja extends Boots {
 				+ "on-hit effects, it does however reduce damage of "
 				+ "basic attack modifiers."; 
 	}
+	@Override
+	protected void setCategory() {
+		category.put("Movement Speed", "");
+		category.put("Armor", "");
+		
+	}
 }

@@ -44,5 +44,13 @@ public class Sheen extends Item
 				+ currentBaseAD + " AD)";
 		
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Mana", "");
+		category.put("Cooldown Reduction", "");
+		category.put("Sustain", "");
+		
+	}
 
 }

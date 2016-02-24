@@ -41,5 +41,13 @@ public class DoransBlade extends Item {
 	protected void setDetails() {
 		
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		category.put("Health", "");
+		category.put("Sustain", "");
+		
+	}
 
 }

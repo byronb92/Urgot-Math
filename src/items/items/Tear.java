@@ -42,6 +42,10 @@ public class Tear extends Item
 	@Override
 	protected void setDetails() { details = "Stacks: " + stacks; }
 	
-	
+	@Override
+	protected void setCategory() {
+		category.put("Mana", "");
+		
+	}
 	
 }

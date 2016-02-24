@@ -5,7 +5,7 @@ import urgot.UrgotStats;
 
 public class RanduinsOmen extends Item {
 
-	private int hp = 450;
+	private int hp = 500;
 	private int armor = 60;
 	public RanduinsOmen()
 	{
@@ -25,7 +25,7 @@ public class RanduinsOmen extends Item {
 
 	@Override
 	protected void setCost() {
-		cost = 3000;
+		cost = 2900;
 		
 	}
 
@@ -41,6 +41,13 @@ public class RanduinsOmen extends Item {
 				+ "the attacker's attack speed by 15% for 1 second.\n" 
 				+ "-10% damage from critical strikes";
 				
+		
+	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Health", "");
+		category.put("Armor","");
 		
 	}
 

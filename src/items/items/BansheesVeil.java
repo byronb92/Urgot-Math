@@ -42,5 +42,12 @@ public class BansheesVeil extends Item {
 				+ "40 second refresh time when hit with an ability.";
 		
 	}
+	@Override
+	protected void setCategory() {
+		category.put("Health", "");
+		category.put("Magic Resistance", "");
+		category.put("Base Health Regeneration", "");
+		
+	}
 
 }

@@ -47,5 +47,13 @@ public class Phage extends Item {
 				+ "Urgot killing bonus: " + (moveSpeed + 30);
 		
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		category.put("Health", "");
+		category.put("Movement Speed", "");
+		
+	}
 
 }

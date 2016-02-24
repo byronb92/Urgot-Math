@@ -33,5 +33,11 @@ public class ClothArmor extends Item {
 	@Override
 	protected void setDetails() {	
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Armor", "");
+		
+	}
 
 }

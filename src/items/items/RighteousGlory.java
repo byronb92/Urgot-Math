@@ -40,5 +40,12 @@ public class RighteousGlory extends Item {
 		
 	}
 	
+	@Override
+	protected void setCategory() {
+		category.put("Health", "");
+		category.put("Mana","");
+		
+	}
+	
 
 }

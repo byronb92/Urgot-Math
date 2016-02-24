@@ -38,5 +38,11 @@ public class Boots extends Item {
 	{
 		moveSpeed = value;
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Movement Speed", "");
+		
+	}
 
 }

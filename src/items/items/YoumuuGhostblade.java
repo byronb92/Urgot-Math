@@ -45,5 +45,12 @@ public class YoumuuGhostblade extends Item {
 		details = "Gain +40% attack speed and +20% movement "
 				+ "speed for 6 seconds. 45 second cooldown";
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		category.put("Cooldown Reduction", "");
+		
+	}
 
 }

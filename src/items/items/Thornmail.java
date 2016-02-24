@@ -58,5 +58,9 @@ public class Thornmail extends Item {
 		// TODO: Compute thornmail damage done.
 		
 	}
-
+	@Override
+	protected void setCategory() {
+		category.put("Armor", "");
+		
+	}
 }

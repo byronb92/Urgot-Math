@@ -32,6 +32,12 @@ public class BootsIonian extends Boots {
 		details = "Reduces summoner spell cooldowns by 10%.";
 	}
 	
+	@Override
+	protected void setCategory() {
+		category.put("Movement Speed", "");
+		category.put("Cooldown Reduction", "");
+		
+	}
 
 
 }

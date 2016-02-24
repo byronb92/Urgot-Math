@@ -50,7 +50,7 @@ public class OutputUrgotCompareTest extends TestCase {
 		comp.statCollection(StatSetup.LEVEL4);
 		comp.battleCollection(BattleSetup.ALLIN_NOULT, SkillRankType.STANDARD);
 		PrintWriter out = new PrintWriter("testTextDumps/startingItems_testArmorPenVsAD.txt");
-		out.println("Highest Damage to Squishy");
+		out.println("Highest Damage to Squishy (Base Armor 16, Bonus 9)");
 		out.println(comp.outputHighestRealDamage(16, 9, 30, 0));
 		out.println(comp.outputSortedDamage(SortRank.ASCENDING));
 		out.println();

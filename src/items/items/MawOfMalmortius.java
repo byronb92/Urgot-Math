@@ -61,5 +61,14 @@ public class MawOfMalmortius extends Item {
 					+ "(90 second cooldown)";
 		}
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		category.put("Armor Penetration", "");
+		category.put("Magic Resistance", "");
+		category.put("Sustain", "");
+		
+	}
 
 }

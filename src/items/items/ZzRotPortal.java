@@ -63,5 +63,12 @@ public class ZzRotPortal extends Item {
 		
 		
 	}
+	@Override
+	protected void setCategory() {
+		category.put("Armor", "");
+		category.put("Magic Resistance", "");
+		category.put("Health Regeneration", "");
+		
+	}
 
 }

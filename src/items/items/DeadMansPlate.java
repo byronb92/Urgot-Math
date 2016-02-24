@@ -4,7 +4,7 @@ import items.Item;
 import urgot.UrgotStats;
 
 public class DeadMansPlate extends Item {
-	private int hp = 600;
+	private int hp = 500;
 	private int arm = 50;
 	public DeadMansPlate()
 	{
@@ -12,7 +12,6 @@ public class DeadMansPlate extends Item {
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -25,7 +24,7 @@ public class DeadMansPlate extends Item {
 
 	@Override
 	protected void setCost() {
-		cost = 2800;
+		cost = 2900;
 		
 	}
 
@@ -39,6 +38,14 @@ public class DeadMansPlate extends Item {
 	protected void setDetails() {
 		details = "Generates Momentum stacks while moving, up to 100, "
 				+ "granting up to +60 bonus movement speed.";
+		
+	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Movement Speed", "");
+		category.put("Health", "");
+		category.put("Armor", "");
 		
 	}
 

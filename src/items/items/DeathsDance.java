@@ -46,5 +46,14 @@ public class DeathsDance extends Item {
 		details = "Instantly heal for 15% of all physical damage dealt."
 				+ "AOE 5% to each unit affected.";
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		category.put("Health", "");
+		category.put("Cooldown Reduction", "");
+		category.put("Sustain", "");
+		
+	}
 
 }

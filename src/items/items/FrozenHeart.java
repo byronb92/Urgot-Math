@@ -11,7 +11,6 @@ public class FrozenHeart extends Item {
 	
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -38,6 +37,14 @@ public class FrozenHeart extends Item {
 	@Override
 	protected void setDetails() {
 		details = "Reduces the attack speed of nearby enemies by 15% (700 range).";
+		
+	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Armor", "");
+		category.put("Mana", "");
+		category.put("Cooldown Reduction", "");
 		
 	}
 

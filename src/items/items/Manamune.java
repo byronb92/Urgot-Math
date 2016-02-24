@@ -53,6 +53,13 @@ public class Manamune extends Tear
 			details = "Bonus AD From Mana: 2% max mana";
 		}
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		category.put("Mana","");
+		
+	}
 
 
 }

@@ -50,4 +50,11 @@ public class SunfireCape extends Item {
 		
 	}
 
+	@Override
+	protected void setCategory() {
+		category.put("Armor", "");
+		category.put("Health", "");
+
+		
+	}
 }

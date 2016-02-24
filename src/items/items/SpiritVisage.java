@@ -52,5 +52,15 @@ public class SpiritVisage extends Item {
 		details = "Increases effectiveness of all sources of healing by 20%.";
 		
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Health Regeneration", "");
+		category.put("Health", "");
+		category.put("Cooldown Reduction", "");
+		category.put("Magic Resistance", "");
+		category.put("Sustain", "");
+		
+	}
 
 }

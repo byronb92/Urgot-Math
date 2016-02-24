@@ -39,7 +39,12 @@ public class CaulfieldWarhammer extends Item {
 
 	@Override
 	protected void setDetails() {
-		// No details.
+		
+	}
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		category.put("Cooldown Reduction", "");
 		
 	}
 

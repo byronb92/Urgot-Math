@@ -41,5 +41,12 @@ public class SerratedDirk extends Item {
 				+ "or single target ability deals +15 bonus damage.";
 		
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		category.put("Armor Penetration", "");
+		
+	}
 
 }

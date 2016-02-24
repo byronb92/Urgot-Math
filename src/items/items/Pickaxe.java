@@ -33,5 +33,11 @@ public class Pickaxe extends Item{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	protected void setCategory() {
+		category.put("Attack Damage", "");
+		
+	}
 
 }

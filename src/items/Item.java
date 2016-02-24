@@ -1,5 +1,7 @@
 package items;
 
+import java.util.HashMap;
+
 import battle.Battle;
 import urgot.UrgotStats;
 
@@ -8,6 +10,7 @@ public abstract class Item {
 	protected int cost;
 	protected String name;
 	protected String details = null;
+	protected HashMap<String,String> category;
 	
 	
 	public abstract void applyPassive(UrgotStats urgot);
@@ -24,7 +27,7 @@ public abstract class Item {
 	protected abstract void setCost();
 	protected abstract void setName();
 	protected abstract void setDetails();
-	
+	protected abstract void setCategory();
 	
 	public int getCost() { return cost; }
 	public String getName() { return name; }
@@ -33,9 +36,11 @@ public abstract class Item {
 	
 	public Item()
 	{
+		category = new HashMap<String,String>();
 		setCost();
 		setName();
 		setDetails();
+		setCategory();
 	}
 
 
