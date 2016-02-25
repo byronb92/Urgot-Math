@@ -8,10 +8,16 @@ import urgot.UrgotStats;
  * @author byronb92
  *
  */
-public class ItemManager {
+public class ItemManager implements Cloneable {
 	private UrgotStats urgot;
 	private Items urgotItems;
 	private ItemFactory itemFactory;
+	
+	public Object Clone() throws CloneNotSupportedException
+	{
+		return super.clone();
+	}
+	
 	public ItemManager(UrgotStats urgot)
 	{
 		this.urgot = urgot;
@@ -51,10 +57,14 @@ public class ItemManager {
 		
 	}
 	
-	// TODO: Fix with Muraman stacks.
 	public void addItem(String itemName)
 	{
 		urgotItems.addItem(itemName, itemFactory.getItem(itemName));
+	}
+	
+	public void addItem(Item item)
+	{
+		urgotItems.addItem(item.getName(), item);
 	}
 	
 	/**
@@ -77,7 +87,6 @@ public class ItemManager {
 	}
 	
 
-	
 	public Items getItems()
 	{
 		return urgotItems;

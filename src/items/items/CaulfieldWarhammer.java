@@ -14,7 +14,6 @@ public class CaulfieldWarhammer extends Item {
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 

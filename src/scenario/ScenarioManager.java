@@ -1,18 +1,27 @@
 package scenario;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import battle.BattleSetup;
+import battle.SkillRankType;
 import battle.dynamic.CompleteDamage;
 import battle.dynamic.UrgotVsEnemy;
 import calc.DefenseCalculator;
 
 import java.util.TreeMap;
 
+import org.json.simple.parser.ParseException;
+
+import com.rits.cloning.Cloner;
+
 import items.Item;
+import items.algorithm.ItemObjects;
 
 /** 
  * ScenarioManager gives the ability to aggregate data 
@@ -81,6 +90,78 @@ public class ScenarioManager {
 	
 
 
+	/**
+	 * Looks through complete item lists and finds the item that will
+	 * increase damage output the best.
+	 * ASSUMPTION: Scenario passed in has already had stats computed.
+	 * @param sce
+	 * @param itemCategory
+	 * @return
+	 * @throws CloneNotSupportedException
+	 * @throws ClassNotFoundException
+	 * @throws NoSuchMethodException
+	 * @throws SecurityException
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 * @throws ParseException
+	 * @throws IOException
+	 */
+	public UrgotScenario bestDamageItemToAdd(UrgotScenario sce, String itemCategory) throws CloneNotSupportedException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ParseException, IOException
+	{
+		ItemObjects itemObjects = new ItemObjects();
+		itemObjects.constructAllItems();
+		// Scan through current scenario and remove any the scenario already has.
+		for(Entry<String,Item> itemA: sce.getUrgotItems().getItems().entrySet())
+		{
+			itemObjects.getItemObjects().remove(itemA);
+		}
+		
+		UrgotScenario highestDamageScenario = sce;
+		Cloner cloner = new Cloner();
+		
+		//for (Item currentItem : itemObjects.getItemObjects())
+		for(Entry<String,Item> item: itemObjects.getItemObjects().entrySet())
+		{
+			UrgotScenario duplicateSce = cloner.deepClone(sce);
+			UrgotScenario originalScenario = cloner.deepClone(sce);
+			//duplicateSce.addItem(currentItem);
+			//sce.setScenarioName(currentItem.getName());
+			duplicateSce.addItem(item.getValue());
+			duplicateSce.setScenarioName(item.getKey());
+
+			
+			originalScenario.computeStats();
+			duplicateSce.computeStats();
+			originalScenario.computeBattleScenario(BattleSetup.ALLIN_NOULT, SkillRankType.STANDARD);
+			duplicateSce.computeBattleScenario(BattleSetup.ALLIN_NOULT, SkillRankType.STANDARD);
+			highestDamageScenario = findHighestRawDamage(highestDamageScenario, duplicateSce);
+			
+		}
+		return highestDamageScenario;
+	}
+	
+
+	public UrgotScenario findHighestRawDamage(UrgotScenario sceA, UrgotScenario sceB)
+	{
+		double rawDamageA = sceA.getBattleStats().getTotalDamage();
+		double rawDamageB = sceB.getBattleStats().getTotalDamage();
+		if (rawDamageA > rawDamageB)
+		{
+			return sceA;
+		}
+		else if (rawDamageA == rawDamageB)
+		{
+			System.out.println("-----------------");
+			System.out.println("Duplicate raw damage: " + rawDamageA);
+			System.out.println("Set 1: " + sceA.getScenarioName());
+			System.out.println("Set 2: " + sceB.getScenarioName());
+			return sceA;
+		}
+
+		return sceB;
+	}
 	
 	/**
 	 * Finds the highest damage output scenario in all scenarios.

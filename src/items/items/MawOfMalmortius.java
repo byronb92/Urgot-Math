@@ -25,7 +25,7 @@ public class MawOfMalmortius extends Item {
 	@Override
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusMR(mr);
-		urgot.addArmorPen(armorPen);
+		urgot.addFlatArmorPen(armorPen);
 		urgot.addBonusAD(ad);
 		this.urgot = urgot;
 		

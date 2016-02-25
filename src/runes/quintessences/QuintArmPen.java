@@ -11,7 +11,7 @@ public class QuintArmPen extends Rune {
 
 	@Override
 	public void addRuneStat(UrgotStats urgot) {
-		urgot.addArmorPen(2.56);
+		urgot.addFlatArmorPen(2.56);
 
 	}
 

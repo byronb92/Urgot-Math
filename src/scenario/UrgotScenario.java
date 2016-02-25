@@ -33,7 +33,7 @@ import urgot.UrgotStats;
  * @author byronb92
  *
  */
-public class UrgotScenario {
+public class UrgotScenario implements Cloneable {
 	private String scenarioName;
 	private UrgotStats urgot;
 	private ItemManager itemManager;
@@ -50,6 +50,43 @@ public class UrgotScenario {
 		itemManager = new ItemManager(urgot);
 		battleManager = new BattleManager(urgot);
 	}
+	public UrgotScenario(UrgotStats urgot, MasteryManager masteryManager,
+			RuneManager runeManager, ItemManager itemManager, BattleManager battleManager)
+	{
+		setUrgot(urgot);
+		setMasteryManager(masteryManager);
+		setRuneManager(runeManager);
+		setBattleManager(battleManager);
+		setItemManager(itemManager);
+	}
+	
+//	public Object clone() throws CloneNotSupportedException
+//	{
+//		return deepClone(this);
+//	}
+	 public UrgotScenario(UrgotScenario urg) {
+		 this(urg.urgot,
+				 urg.masteryManager,
+				 urg.runeManager,
+				 urg.itemManager,
+				 urg.battleManager);
+	 }
+
+	 @Override
+	 public Object clone() throws CloneNotSupportedException {
+		 UrgotScenario cloned = (UrgotScenario)super.clone();
+		 cloned.setUrgot((UrgotStats)cloned.getUrgotStats().Clone());
+		 cloned.setItemManager((ItemManager)cloned.itemManager.Clone());
+		 cloned.setRuneManager((RuneManager)cloned.getRuneManager().Clone());
+		 cloned.setMasteryManager((MasteryManager)cloned.getMasteryManager().Clone());
+		 cloned.setBattleManager((BattleManager)cloned.battleManager.Clone());
+		 // the above is applicable in case of primitive member types, 
+		 // however, in case of non primitive types
+		 // cloned.setNonPrimitiveType(cloned.getNonPrimitiveType().clone());
+		 return cloned;
+	 }
+	 
+	 
 	
 	public void setScenarioName(String name)
 	{
@@ -65,6 +102,11 @@ public class UrgotScenario {
 	public void addItem(String itemName)
 	{
 		itemManager.addItem(itemName);
+	}
+	
+	public void addItem(Item item)
+	{
+		itemManager.addItem(item);
 	}
 	
 
@@ -169,5 +211,33 @@ public class UrgotScenario {
 	public MasteryManager getMasteryManager()
 	{
 		return masteryManager;
+	}
+	
+	
+	
+	// Used for clone methods.
+	private void setUrgot(UrgotStats urgotA)
+	{
+		urgot = urgotA;
+	}
+	
+	private void setItemManager(ItemManager itemM)
+	{
+		itemManager = itemM;
+	}
+	
+	private void setRuneManager(RuneManager runeM)
+	{
+		runeManager = runeM;
+	}
+	
+	private void setMasteryManager(MasteryManager masteryM)
+	{
+		masteryManager = masteryM;
+	}
+	
+	private void setBattleManager(BattleManager battleM)
+	{
+		battleManager = battleM;
 	}
 }

@@ -8,6 +8,11 @@ public class Manamune extends Tear
 	private double attackDamage = 25;
 	UrgotStats urgot;
 	private boolean passiveApplied = false;
+	
+	public Manamune()
+	{
+		super(0);
+	}
 	public Manamune(int stacks) {
 		super(stacks);
 	}

@@ -13,7 +13,7 @@ public class Cunning05Precision extends Mastery {
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
 		double levelScaling = 0.3 * urgot.getLevel();
-		urgot.addArmorPen(3 + levelScaling);
+		urgot.addFlatArmorPen(3 + levelScaling);
 		urgot.addMagicPen(3 + levelScaling);
 		
 		

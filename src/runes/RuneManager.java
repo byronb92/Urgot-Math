@@ -2,10 +2,15 @@ package runes;
 
 import urgot.UrgotStats;
 
-public class RuneManager {
+public class RuneManager implements Cloneable {
 	RuneSets runeSets;
 	Runes runes;
 	UrgotStats urgot;
+	
+	public Object Clone() throws CloneNotSupportedException
+	{
+		return super.clone();
+	}
 	public RuneManager(UrgotStats urgot)
 	{
 		runes = new Runes();

@@ -1,9 +1,11 @@
-package items.items;
+package items.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import items.items.SapphireCrystal;
 
 public class SapphireCrystalTest {
 

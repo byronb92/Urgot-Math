@@ -9,7 +9,6 @@ public class SerratedDirk extends Item {
 	private int armorpen = 10;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -19,7 +18,7 @@ public class SerratedDirk extends Item {
 	}
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		urgot.addArmorPen(armorpen);
+		urgot.addFlatArmorPen(armorpen);
 		urgot.addBonusAD(ad);
 		
 	}

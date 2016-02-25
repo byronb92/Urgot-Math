@@ -12,7 +12,6 @@ public class YoumuuGhostblade extends Item {
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -24,7 +23,7 @@ public class YoumuuGhostblade extends Item {
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusAD(ad);
 		urgot.addCDR(cdr);
-		urgot.addArmorPen(20);
+		urgot.addFlatArmorPen(20);
 		
 	}
 

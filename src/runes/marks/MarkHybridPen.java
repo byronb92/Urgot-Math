@@ -11,7 +11,7 @@ public class MarkHybridPen extends Rune{
 
 	@Override
 	public void addRuneStat(UrgotStats urgot) {
-		urgot.addArmorPen(0.9);
+		urgot.addFlatArmorPen(0.9);
 		urgot.addMagicPen(0.62);
 		
 	}

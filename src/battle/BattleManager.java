@@ -3,11 +3,15 @@ package battle;
 import java.util.LinkedList;
 import urgot.UrgotStats;
 
-public class BattleManager {
+public class BattleManager implements Cloneable {
 	private LinkedList<BattleAction> listBattleActions;
 	private Battle battle;
 	private UrgotStats urgot;
 	
+	public Object Clone() throws CloneNotSupportedException
+	{
+		return super.clone();
+	}
 	
 	public BattleManager(UrgotStats urgot)
 	{

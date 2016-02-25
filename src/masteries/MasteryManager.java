@@ -11,13 +11,16 @@ import urgot.UrgotStats;
  * @author byronb92
  *
  */
-public class MasteryManager {
+public class MasteryManager implements Cloneable {
 	private Masteries masteries;
 	private ArrayList<Mastery> listCurrentMasteries;
 	private ArrayList<String> masteryBenefits;
 	private UrgotStats urgot;
 	
-	
+	public Object Clone() throws CloneNotSupportedException
+	{
+		return super.clone();
+	}
 	public MasteryManager(UrgotStats urgot)
 	{
 		masteries = new Masteries();

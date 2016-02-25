@@ -7,7 +7,11 @@ public class ItemFactory {
 	{
 		// Basic Items
 		// Always include the amount of stacks after Manamune.
-		if (itemName.contains("Manamune"))
+		if (itemName.equals("Manamune"))
+		{
+			return new Manamune(0);
+		}
+		else if (itemName.contains("Manamune"))
 		{
 			String manaMuneStacks = (String)itemName.subSequence(8, itemName.length());
 			int muneStacks = Integer.parseInt(manaMuneStacks);
@@ -176,6 +180,11 @@ public class ItemFactory {
 		if (itemName.equals("Sapphire Crystal"))
 		{
 			return new SapphireCrystal();
+		}
+		
+		if (itemName.equals("Duskblade of Draktharr"))
+		{
+			return new DuskbladeOfDraktharr();
 		}
 		
 		

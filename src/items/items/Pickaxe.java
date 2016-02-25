@@ -4,11 +4,10 @@ import items.Item;
 import urgot.UrgotStats;
 
 public class Pickaxe extends Item{
-
+	private int ad = 25;
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		// TODO Auto-generated method stub
-		
+		urgot.addBonusAD(ad);
 	}
 
 	@Override

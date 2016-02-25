@@ -4,12 +4,12 @@ import battle.effects.Effect;
 import battle.effects.EffectManager;
 import calc.UniqueCalculator;
 
-public class UrgotStats {
+public class UrgotStats implements Cloneable {
 	
 	private int currentLevel		= 1;
 
 
-	private double baseAD			= 52.048;
+	private double baseAD			= 54.05;
 	private double baseArmor		= 24.544;
 	private double baseMR			= 30.0;
 	private double baseAS			= 0.64443298969;
@@ -78,6 +78,10 @@ public class UrgotStats {
 
 	private EffectManager effects;
 
+	public Object Clone() throws CloneNotSupportedException
+	{
+		return super.clone();
+	}
 	public UrgotStats()
 	{
 		currentLevel = 1;
@@ -241,7 +245,7 @@ public class UrgotStats {
 			armorReduc = armorReduc * (1-value);
 		}
 	}
-	public void addArmorPen(double value) { flatArmorPen = flatArmorPen + value; }
+	public void addFlatArmorPen(double value) { flatArmorPen = flatArmorPen + value; }
 	public void addMagicPen(double value) { flatMagicPen = flatMagicPen + value; }
 	public void addDamageReduc(double value) {
 		if (damageReduc == 0)

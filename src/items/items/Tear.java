@@ -8,7 +8,12 @@ public class Tear extends Item
 	private int stacks = 0;
 	private double bonusManaRegen = 0.25;
 	
-	
+	public Tear()
+	{
+		super();
+		setStacks(0);
+		setDetails();
+	}
 	// 15 intervals of 8 in 2 minutes.
 	// +8 mana per interval.
 	// 120 stacks per 2 minutes.
