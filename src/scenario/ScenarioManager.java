@@ -21,7 +21,8 @@ import org.json.simple.parser.ParseException;
 import com.rits.cloning.Cloner;
 
 import items.Item;
-import items.algorithm.ItemObjects;
+import items.ItemObjects;
+import items.ItemRemovalWrapper;
 
 /** 
  * ScenarioManager gives the ability to aggregate data 
@@ -63,6 +64,18 @@ public class ScenarioManager {
 		}
 	}
 	
+	/**
+	 * Collections stats for all scenarios.
+	 * @param setupCode
+	 */
+	public void statCollection(StatSetup setupCode)
+	{
+		setUpStatCollection(setupCode);
+		for (UrgotScenario sce : getScenarios())
+		{
+			sce.computeStats();
+		}
+	}
 	
 	
 	/**
@@ -77,6 +90,13 @@ public class ScenarioManager {
 		
 	}
 	
+	public void battleCollection(BattleSetup battleSetup, SkillRankType rankType)
+	{
+		for (UrgotScenario sce : getScenarios())
+		{
+			sce.computeBattleScenario(battleSetup, rankType);
+		}
+	}
 
 	public ArrayList<UrgotScenario> getScenarios()
 	{
@@ -113,9 +133,11 @@ public class ScenarioManager {
 		ItemObjects itemObjects = new ItemObjects();
 		itemObjects.constructAllItems();
 		// Scan through current scenario and remove any the scenario already has.
+		ItemRemovalWrapper removeItem = new ItemRemovalWrapper();
+		
 		for(Entry<String,Item> itemA: sce.getUrgotItems().getItems().entrySet())
 		{
-			itemObjects.getItemObjects().remove(itemA);
+			removeItem.removeItemAfterBeingUsed(itemA.getKey(), itemObjects);
 		}
 		
 		UrgotScenario highestDamageScenario = sce;
@@ -155,8 +177,9 @@ public class ScenarioManager {
 		{
 			System.out.println("-----------------");
 			System.out.println("Duplicate raw damage: " + rawDamageA);
-			System.out.println("Set 1: " + sceA.getScenarioName());
-			System.out.println("Set 2: " + sceB.getScenarioName());
+			System.out.println("Set 1 Scenario Name: " + sceA.getScenarioName());
+			System.out.println("Set 2 Scenario Name: " + sceB.getScenarioName());
+			System.out.println();
 			return sceA;
 		}
 

@@ -1,6 +1,5 @@
-package items.algorithm.test;
+package items.test;
 
-import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -9,7 +8,7 @@ import org.json.simple.parser.ParseException;
 import org.junit.Before;
 import org.junit.Test;
 
-import items.algorithm.ItemObjects;
+import items.ItemObjects;
 
 public class ItemObjectsTest {
 	ItemObjects itemObjs;

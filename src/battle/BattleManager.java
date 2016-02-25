@@ -77,19 +77,21 @@ public class BattleManager implements Cloneable {
 			addBattleAction(new AutoAttack());
 			addBattleAction(new AutoAttack());
 			addBattleAction(new UrgotQ(qRank));
-			addBattleAction(new UrgotQ(qRank));
 			addBattleAction(new AutoAttack());
+			addBattleAction(new UrgotQ(qRank));
 			break;
 		case ALLIN_ULT:
-			addBattleAction(new UrgotR(rRank));
 			addBattleAction(new UrgotW(wRank));
+			addBattleAction(new UrgotR(rRank));
 			addBattleAction(new UrgotE(eRank));
 			addBattleAction(new UrgotQ(qRank));
 			addBattleAction(new AutoAttack());
 			addBattleAction(new AutoAttack());
 			addBattleAction(new UrgotQ(qRank));
+			addBattleAction(new AutoAttack());
 			addBattleAction(new UrgotQ(qRank));
 			addBattleAction(new AutoAttack());
+
 			break;
 		default:
 			addBattleAction(new UrgotW(wRank));

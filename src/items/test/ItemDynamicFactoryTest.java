@@ -1,4 +1,4 @@
-package items.algorithm.test;
+package items.test;
 
 
 import java.io.IOException;
@@ -7,13 +7,13 @@ import org.json.simple.parser.ParseException;
 import org.junit.Before;
 import org.junit.Test;
 
-import items.algorithm.ItemObjectFactory;
+import items.ItemDynamicFactory;
 
-public class ItemObjectFactoryTest {
-	ItemObjectFactory factory;
+public class ItemDynamicFactoryTest {
+	ItemDynamicFactory factory;
 	@Before
 	public void setUp() throws Exception {
-		factory = new ItemObjectFactory();
+		factory = new ItemDynamicFactory();
 	}
 
 	@Test

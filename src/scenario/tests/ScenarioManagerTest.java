@@ -24,13 +24,15 @@ public class ScenarioManagerTest {
 
 	@Test
 	public void testEarlyRawDamage() {
-		sceManage.setUpStatCollection(StatSetup.LEVEL6);
-		System.out.println(sceManage.findHighestRawDamage().getBattleStats().getPhysicalDamage());
+		sceManage.statCollection(StatSetup.LEVEL6);
+		sceManage.battleCollection(BattleSetup.ALLIN_NOULT, SkillRankType.STANDARD);
+		sceManage.findHighestRawDamage();
+		
 	}
 	
 	@Test
 	public void testBestFirstItem() throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, CloneNotSupportedException, ParseException, IOException {
-		UrgotScenario sceA = new UrgotScenario(18);
+		UrgotScenario sceA = new UrgotScenario(6);
 		//UrgotScenario sceB = sceManage.bestDamageItemToAdd(sceA, "Starting");
 		UrgotScenario sceB;
 		//System.out.println(sceB.getScenarioName());

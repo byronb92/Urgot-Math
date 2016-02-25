@@ -17,6 +17,7 @@ public class MawOfMalmortius extends Item {
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
+		this.urgot = urgot;
 		passiveApplied = true;
 		setDetails();
 		
@@ -27,7 +28,6 @@ public class MawOfMalmortius extends Item {
 		urgot.addBonusMR(mr);
 		urgot.addFlatArmorPen(armorPen);
 		urgot.addBonusAD(ad);
-		this.urgot = urgot;
 		
 	}
 

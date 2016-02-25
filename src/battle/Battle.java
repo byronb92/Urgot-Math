@@ -4,6 +4,7 @@ public class Battle
 {
 	private int spellsCast = 0;
 	private double spellCastTime = 0;
+	private double battleTime = 0;
 	private int physicalAttacksDone = 0;
 	
 	private double physicalDamage = 0;
@@ -31,6 +32,11 @@ public class Battle
 	public void addSpellCast()
 	{
 		spellsCast++;
+	}
+	
+	public void addBattleTime(double time)
+	{
+		battleTime = battleTime + time;
 	}
 	
 	/**
@@ -105,6 +111,7 @@ public class Battle
 	}
 	
 	public int getSpellsCast() { return spellsCast; }
+	public double getBattleTime() { return battleTime; }
 	public int getPhysicalAttacks() { return physicalAttacksDone; }
 	public double getTotalDamage() { return magicDamage + physicalDamage; }
 	public double getPhysicalDamage() { return physicalDamage; }

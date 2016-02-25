@@ -1,5 +1,7 @@
 package items.items;
 
+import battle.effects.SheenAfterAction;
+import battle.effects.SheenWrapper.SheenVariation;
 import items.Item;
 import urgot.UrgotStats;
 
@@ -30,6 +32,8 @@ public class IcebornGauntlet extends Item {
 		urgot.addBonusArmor(armor);
 		urgot.addBonusMana(mana);
 		urgot.addCDR(cdr);
+		SheenAfterAction sheenAdd = new SheenAfterAction(SheenVariation.SHEEN);
+		urgot.addEffect(sheenAdd);
 		
 	}
 

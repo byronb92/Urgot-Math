@@ -1,4 +1,4 @@
-package items.algorithm;
+package items;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
@@ -7,32 +7,32 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
-import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
 /**
+ * Creates item objects from JSON file.
  * https://code.google.com/archive/p/json-simple/
  * http://www.tutorialspoint.com/json/json_java_example.htm
  * @author byronb92
  *
  */
-public class ItemObjectFactory {
+public class ItemDynamicFactory {
 	private JSONParser parser;
 	
-	// Categories of JSON item list.
+	// Item categories (non-stat related)
 	public static final String SINGLE = "Single";
 	public static final String INTERMEDIATE = "Intermediate";
 	public static final String LEGENDARY = "Legendary";
 	public static final String BOOTS = "Boots";
 	public static final String SPECIAL = "Special";
 	
+	// Flag used for lazy initialization of item list.
 	private boolean isCreated = false;
 	private ArrayList<String> itemsToCreate;
-	public ItemObjectFactory()
+	public ItemDynamicFactory()
 	{
 		parser = new JSONParser();
 		itemsToCreate = new ArrayList<String>();
@@ -72,7 +72,7 @@ public class ItemObjectFactory {
 		itemsToCreate.addAll(getItemCategoryAsArray(obj, INTERMEDIATE));
 		itemsToCreate.addAll(getItemCategoryAsArray(obj, LEGENDARY));
 		itemsToCreate.addAll(getItemCategoryAsArray(obj, BOOTS));
-		//itemsToCreate.addAll(getItemCategoryAsArray(obj, SPECIAL));
+		itemsToCreate.addAll(getItemCategoryAsArray(obj, SPECIAL));
 	}
 	
 	private void parseCategoryOfJSONFile(String category)  throws ParseException, IOException
@@ -93,6 +93,8 @@ public class ItemObjectFactory {
 		}
 		return stringArray;
 	}
+	
+	
 	
 	// Used for testing purposes.
 	public String getItemCategoryAsString(JSONObject obj, String itemCategory)

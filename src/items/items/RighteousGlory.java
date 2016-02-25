@@ -1,4 +1,4 @@
-package items.items;
+ package items.items;
 
 import items.Item;
 import urgot.UrgotStats;
@@ -14,7 +14,6 @@ public class RighteousGlory extends Item {
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
@@ -36,7 +35,6 @@ public class RighteousGlory extends Item {
 	}
 	@Override
 	protected void setDetails() {
-		// TODO Auto-generated method stub
 		
 	}
 	
