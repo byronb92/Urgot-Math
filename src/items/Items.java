@@ -26,6 +26,20 @@ public class Items {
 		return items;
 	}
 	
+	@Override
+	public String toString()
+	{
+		StringBuilder itemString = new StringBuilder();
+		for(Entry<String,Item> item: getItems().entrySet())
+		{
+			if (item.getValue().getDetails() != null)
+			{
+				itemString.append(item.getValue().getName() + " ");
+			}
+		}
+		return itemString.toString();
+	}
+	
 	public String getAllItemDetails()
 	{
 		StringBuilder itemString = new StringBuilder();

@@ -186,6 +186,10 @@ public class UrgotScenario implements Cloneable {
 	// -------------- Accessor Methods -------------- 
 	public String getScenarioName()
 	{
+		if (scenarioName == null)
+		{
+			return getUrgotItems().toString();
+		}
 		return scenarioName;
 	}
 	public Battle getBattleStats()
