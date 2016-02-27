@@ -540,6 +540,7 @@ public class ScenarioManager {
 	{
 		StringBuilder offense = new StringBuilder();
 		offense.append("AD: " + sce.getUrgotStats().getTotalAD() +  "\n");
+		offense.append("Base AD: " + sce.getUrgotStats().getBaseADFromLevel() + "\n");
 		offense.append("Bonus AD: " + sce.getUrgotStats().getBonusAD() + "\n");
 		offense.append("Mana: " + sce.getUrgotStats().getTotalMana() +  "\n");
 		offense.append("Flat Armor Pen: " + sce.getUrgotStats().getFlatArmorPen() + "\n");

@@ -6,6 +6,7 @@ import urgot.UrgotStats;
 public class YoumuuGhostblade extends Item {
 	private int ad = 65;
 	private double cdr = 0.10;
+	private double armPen = 20;
 	public YoumuuGhostblade()
 	{
 		super();
@@ -23,7 +24,7 @@ public class YoumuuGhostblade extends Item {
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusAD(ad);
 		urgot.addCDR(cdr);
-		urgot.addFlatArmorPen(20);
+		urgot.addFlatArmorPen(armPen);
 		
 	}
 

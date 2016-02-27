@@ -6,7 +6,7 @@ import urgot.UrgotStats;
 public class MawOfMalmortius extends Item {
 
 	private int mr = 50;
-	private int ad = 50;
+	private int ad = 55;
 	private int armorPen = 10;
 	private UrgotStats urgot;
 	private boolean passiveApplied = false;

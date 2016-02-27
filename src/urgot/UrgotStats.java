@@ -19,7 +19,7 @@ public class UrgotStats implements Cloneable {
 	private double baseHealthRegen  = 6.505;
 	private double baseManaRegen	= 8.59; 	// 8.59 per 5 seconds, additive.
 
-	private double adPerLevel				= 5.2048;
+	private double adPerLevel				= 3.58823;
 	private double armPerLevel				= 3.3;
 	private double asPerLevel				= 0.029;
 	

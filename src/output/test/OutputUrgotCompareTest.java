@@ -24,6 +24,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	public void testGeneralOutput_FinalBuilds() throws FileNotFoundException
 	{
 		comp.statCollection(StatSetup.LEVEL18);
+		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
 		PrintWriter out = new PrintWriter("testTextDumps/generalOutput_FinalBuild.txt");
 		out.println(comp.outputGeneral());
 		out.close();
