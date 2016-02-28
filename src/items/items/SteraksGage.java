@@ -8,7 +8,7 @@ import urgot.UrgotStats;
 // 0.25+ more base damage.
 public class SteraksGage extends Item {
 
-	private int hp = 500;
+	private int hp = 400;
 	private double baseAD = 0.25;
 	private UrgotStats urgot;
 	private boolean passiveApplied = false;

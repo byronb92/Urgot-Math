@@ -26,19 +26,7 @@ public class Items {
 		return items;
 	}
 	
-	@Override
-	public String toString()
-	{
-		StringBuilder itemString = new StringBuilder();
-		for(Entry<String,Item> item: getItems().entrySet())
-		{
-			if (item.getValue().getDetails() != null)
-			{
-				itemString.append(item.getValue().getName() + " ");
-			}
-		}
-		return itemString.toString();
-	}
+
 	
 	public String getAllItemDetails()
 	{
@@ -49,6 +37,20 @@ public class Items {
 			{
 				itemString.append(item.getValue().getName());
 				itemString.append(": " + item.getValue().getDetails());
+			}
+		}
+		return itemString.toString();
+	}
+	
+	@Override
+	public String toString()
+	{
+		StringBuilder itemString = new StringBuilder();
+		for(Entry<String,Item> item: getItems().entrySet())
+		{
+			if (item.getValue().getDetails() != null)
+			{
+				itemString.append(item.getValue().getName() + " ");
 			}
 		}
 		return itemString.toString();

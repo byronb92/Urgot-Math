@@ -27,6 +27,9 @@ public class LateGameScenarios extends Phase {
 	
 	public void compareLevel18()
 	{
+		String[] fullBuild1 = {"Duskblade of Draktharr", "Black Cleaver", "Youmuu's Ghostblade", 
+				"Maw of Malmortius", "Muramana", "Mercury's Treads"};
+		
 		String[] fullBuild = {"Muramana", "Black Cleaver", "Youmuu's Ghostblade", 
 				"Maw of Malmortius", "Death's Dance", "Mercury's Treads"};
 		String[] ghostTwo = {"Muramana", "Black Cleaver", "Youmuu's Ghostblade", 
@@ -59,6 +62,7 @@ public class LateGameScenarios extends Phase {
 				"Dead Man's Plate", "Sunfire Cape"};
 		
 		
+		addScenarioLevel(fullBuild1, 18);
 		addScenarioLevel(fullBuild, 18);
 		addScenarioLevel(ghostTwo, 18);
 		addScenarioLevel(fullBuildTwo, 18);
