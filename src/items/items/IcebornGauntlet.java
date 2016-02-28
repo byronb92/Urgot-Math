@@ -20,7 +20,7 @@ public class IcebornGauntlet extends Item {
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		currentBaseAD = urgot.getBonusBaseAD();
+		currentBaseAD = urgot.getBaseADFromLevel();
 		this.urgot = urgot;
 		passiveApplied = true;
 		setDetails();
@@ -32,7 +32,7 @@ public class IcebornGauntlet extends Item {
 		urgot.addBonusArmor(armor);
 		urgot.addBonusMana(mana);
 		urgot.addCDR(cdr);
-		SheenAfterAction sheenAdd = new SheenAfterAction(SheenVariation.SHEEN);
+		SheenAfterAction sheenAdd = new SheenAfterAction(SheenVariation.ICEBORN);
 		urgot.addEffect(sheenAdd);
 		
 	}

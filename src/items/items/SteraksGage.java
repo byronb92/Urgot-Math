@@ -22,7 +22,7 @@ public class SteraksGage extends Item {
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		urgot.addBonusBaseAD(baseAD);
+		urgot.addBonusPercentBaseAD(baseAD);
 		urgot.addBonusHP(hp);
 		
 	}

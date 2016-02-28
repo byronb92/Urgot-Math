@@ -4,7 +4,6 @@ package scenario;
 /**
  * Level 13-18 4-5th item purchases. 
  * Full build comparisons.
- * https://docs.google.com/document/d/1ubpEPaYxwOA02NtEOEFRouxlbDoHz0dnHaqB9FzV9FQ/edit
  * @author byronb92
  *
  */
@@ -12,40 +11,55 @@ public class LateGameScenarios extends Phase {
 	@Override
 	public void runStatCollection(StatSetup setupCode)
 	{
+		// TODO: Rename setup codes.
 		switch (setupCode)
 		{
-			case LEVEL18: compareLevel18();
-			break;
-			
+			case LEVEL18: compareNoTearBuild();
+				break;	
 			default: 	System.out.println("Invalid stat collection code: " + setupCode);
 						System.out.println("There will be errors");
-			break;
+				break;
 		}
 	}
 	
 
-	
-	public void compareLevel18()
+	/**
+	 * Sets up comparison between Muramana builds.
+	 */
+	public void compareFullBuildMuramana()
 	{
-		String[] fullBuild1 = {"Duskblade of Draktharr", "Black Cleaver", "Youmuu's Ghostblade", 
+		String[] duskbladeDamage = {"Duskblade of Draktharr", "Black Cleaver", "Youmuu's Ghostblade", 
 				"Maw of Malmortius", "Muramana", "Mercury's Treads"};
-		
-		String[] fullBuild = {"Muramana", "Black Cleaver", "Youmuu's Ghostblade", 
+		String[] deathDanceDamage = {"Muramana", "Black Cleaver", "Youmuu's Ghostblade", 
 				"Maw of Malmortius", "Death's Dance", "Mercury's Treads"};
-		String[] ghostTwo = {"Muramana", "Black Cleaver", "Youmuu's Ghostblade", 
+		String[] dominikDamage = {"Muramana", "Black Cleaver", "Youmuu's Ghostblade", 
 				"Lord Dominik's Regards", "Death's Dance", "Mercury's Treads"};
-		String[] fullBuildTwo = {"Muramana", "Black Cleaver", "Sterak's Gage", 
+		String[] sterakMaw = {"Muramana", "Black Cleaver", "Sterak's Gage", 
 				"Iceborn Gauntlet", "Maw of Malmortius"};
-		String[] fullBuildThree = {"Muramana", "Black Cleaver", "Sterak's Gage", 
+		String[] sterakDominik = {"Muramana", "Black Cleaver", "Sterak's Gage", 
 				"Iceborn Gauntlet", "Lord Dominik's Regards"};
+		String[] tankAP = {"Muramana", "Black Cleaver", "Spirit Visage", 
+				"Death's Dance", "Maw of Malmortius", "Mercury's Treads"};
+		
+		String[] tankIceborn = {"Iceborn Gauntlet", "Muramana", "Frozen Heart", 
+				"Randuin's Omen", "Dead Man's Plate", "Ninja Tabi"};
+		addScenarioLevel(duskbladeDamage, 18);
+		addScenarioLevel(deathDanceDamage, 18);
+		addScenarioLevel(dominikDamage, 18);
+		addScenarioLevel(sterakMaw, 18);
+		addScenarioLevel(sterakDominik, 18);
+		addScenarioLevel(tankAP, 18);
+		addScenarioLevel(tankIceborn, 18);
+		
+	}
+	
+	/** Sets up scenario and item sets that aren't influenced by Muramana. */
+	public void compareNoTearBuild()
+	{
 		
 		String[] threeAD = {"Iceborn Gauntlet", "Black Cleaver", "Randuin's Omen", 
 				"Maw of Malmortius", "Death's Dance", "Ninja Tabi"};
-		String[] threeADTwo = {"Iceborn Gauntlet", "Muramana", "Frozen Heart", 
-				"Randuin's Omen", "Dead Man's Plate", "Ninja Tabi"};
 		
-		String[] vsAP = {"Muramana", "Black Cleaver", "Spirit Visage", 
-				"Death's Dance", "Maw of Malmortius", "Mercury's Treads"};
 		String[] vsAP2 = {"Righteous Glory", "Black Cleaver", "Spirit Visage", 
 				"Death's Dance", "Maw of Malmortius", "Mercury's Treads"};
 		
@@ -62,14 +76,8 @@ public class LateGameScenarios extends Phase {
 				"Dead Man's Plate", "Sunfire Cape"};
 		
 		
-		addScenarioLevel(fullBuild1, 18);
-		addScenarioLevel(fullBuild, 18);
-		addScenarioLevel(ghostTwo, 18);
-		addScenarioLevel(fullBuildTwo, 18);
-		addScenarioLevel(fullBuildThree, 18);
+
 		addScenarioLevel(threeAD, 18);
-		addScenarioLevel(threeADTwo, 18);
-		addScenarioLevel(vsAP, 18);
 		addScenarioLevel(vsAP2, 18);
 		addScenarioLevel(balanced, 18);
 		addScenarioLevel(balancedTwo, 18);

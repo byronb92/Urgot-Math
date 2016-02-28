@@ -1,6 +1,7 @@
 package items.items;
 
 import battle.Battle;
+import battle.effects.PassiveDeathDance;
 import items.Item;
 import urgot.UrgotStats;
 
@@ -14,13 +15,10 @@ public class DeathsDance extends Item {
 		super();
 	}
 	
-	@Override 
-	public void applyAfterBattleUniques(Battle calc)
-	{
-		calc.addHealing(calc.getPhysicalDamage() * 0.15);
-	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
+		PassiveDeathDance deathPassive = new PassiveDeathDance();
+		urgot.addEffect(deathPassive);
 	}
 
 	@Override

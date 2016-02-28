@@ -46,7 +46,7 @@ public class UrgotStats implements Cloneable {
 	private double bonusManaRegen 	= 0;
 	private double bonusArmorPen 	= 0;		// Last Whisper changes in preseason.
 	
-	private double bonusBaseAD		= 0;		// Sterak's gage.
+	private double percentBonusBaseAD		= 0;		// Sterak's gage.
 	private double bonusADPerLevel	= 0;
 	private double bonusAPPerLevel	= 0;
 	
@@ -106,11 +106,14 @@ public class UrgotStats implements Cloneable {
 
 	// Base Stats
 	public double getBaseAD() { return baseAD; }
-	public double getBaseADFromLevel() { 
-		return (baseAD + (adPerLevel * (currentLevel -1))) + 
-			(baseAD + (adPerLevel * (currentLevel -1))) * bonusBaseAD; 
+	private double trueBaseAD()
+	{
+		return baseAD + (adPerLevel * (currentLevel - 1));
 	}
-	public double getBaseADFromItems() { return bonusBaseAD; }
+	public double getBaseADFromLevel() { 
+		return (trueBaseAD()) + (trueBaseAD() * percentBonusBaseAD);
+	}
+	public double getBaseADFromItems() { return percentBonusBaseAD; }
 	public double getBaseArmorFromLevel() { return baseArmor + (armPerLevel * (currentLevel - 1)); }
 	public double getBaseAS() { return baseAS; }
 	public double getBaseHPRegenFromLevel() { 
@@ -119,7 +122,7 @@ public class UrgotStats implements Cloneable {
 	public double getBaseManaRegenFromLevel() { 
 		return baseManaRegen + (baseManaRegenPerLevel * (currentLevel - 1));	
 	}
-	public double getBonusBaseAD() 	{ return bonusBaseAD; }
+	public double getPercentBonusBaseAD() 	{ return percentBonusBaseAD; }
 
 	// Total Stats
 
@@ -199,7 +202,7 @@ public class UrgotStats implements Cloneable {
 	public void addBonusPercentHP(double value) { bonusPercentHP = bonusPercentHP + value; }
 	
 	// As of patch 5.24, Sterak's Gauge only affects this.
-	public void addBonusBaseAD(double value) { bonusBaseAD = getBaseADFromLevel() + (getBaseADFromLevel() * value);}
+	public void addBonusPercentBaseAD(double value) { percentBonusBaseAD = percentBonusBaseAD + value; }
 	public void addBonusADPerLevel(double value) { bonusADPerLevel = bonusADPerLevel + value; }
 	public void addBonusAPPerLevel(double value) { bonusAPPerLevel = bonusAPPerLevel + value; }
 
