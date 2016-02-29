@@ -4,8 +4,8 @@ import items.Item;
 import urgot.UrgotStats;
 
 public class ZzRotPortal extends Item {
-	private int mr = 60;
-	private int armor = 60;
+	private int mr = 55;
+	private int armor = 55;
 	private double healthRegen = 1.25;
 	private boolean passiveApplied = false;
 	private UrgotStats urgot;
