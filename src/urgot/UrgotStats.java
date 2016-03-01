@@ -1,7 +1,7 @@
 package urgot;
 
-import battle.effects.Effect;
-import battle.effects.EffectManager;
+import battle.actions.effects.Effect;
+import battle.actions.effects.EffectManager;
 import calc.UniqueCalculator;
 
 public class UrgotStats implements Cloneable {

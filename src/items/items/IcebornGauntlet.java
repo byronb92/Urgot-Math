@@ -1,7 +1,7 @@
 package items.items;
 
-import battle.effects.SheenAfterAction;
-import battle.effects.SheenWrapper.SheenVariation;
+import battle.actions.effects.SheenAfterAction;
+import battle.actions.effects.SheenWrapper.SheenVariation;
 import items.Item;
 import urgot.UrgotStats;
 

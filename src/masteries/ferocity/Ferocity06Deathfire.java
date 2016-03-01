@@ -1,7 +1,7 @@
 package masteries.ferocity;
 
-import battle.effects.DeathfireAfterAction;
-import battle.effects.DeathfireAfterBattle;
+import battle.actions.effects.DeathfireAfterAction;
+import battle.actions.effects.DeathfireAfterBattle;
 import masteries.Mastery;
 import urgot.UrgotStats;
 

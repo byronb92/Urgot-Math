@@ -1,9 +1,10 @@
-package battle;
+package battle.actions;
 
+import battle.Battle;
 import urgot.UrgotStats;
 
 
-/** Replicates an auto attack, given the total ad */
+/** Object representation of an Auto Attack. */
 public class AutoAttack extends BattleAction {
 
 	@Override

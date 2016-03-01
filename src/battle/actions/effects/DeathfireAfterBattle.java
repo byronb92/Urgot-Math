@@ -1,8 +1,9 @@
-package battle.effects;
+package battle.actions.effects;
 
 import battle.Battle;
 import urgot.UrgotStats;
 
+/** Interactions with DeathfireAfterAction to compute Deathfire Touch damage */
 public class DeathfireAfterBattle extends EffectAfterBattle {
 
 	private DeathfireAfterAction dftAfterAction;

@@ -1,17 +1,22 @@
 package battle;
 
 import java.util.LinkedList;
+
+import battle.actions.AutoAttack;
+import battle.actions.BattleAction;
+import battle.actions.UrgotE;
+import battle.actions.UrgotQ;
+import battle.actions.UrgotR;
+import battle.actions.UrgotW;
 import urgot.UrgotStats;
 
+/** Manages interaction between Battle and BattleAction classes. */
 public class BattleManager implements Cloneable {
 	private LinkedList<BattleAction> listBattleActions;
 	private Battle battle;
 	private UrgotStats urgot;
 	
-	public Object Clone() throws CloneNotSupportedException
-	{
-		return super.clone();
-	}
+
 	
 	public BattleManager(UrgotStats urgot)
 	{
@@ -20,13 +25,23 @@ public class BattleManager implements Cloneable {
 		this.urgot = urgot;
 	}
 	
+	public Object Clone() throws CloneNotSupportedException
+	{
+		return super.clone();
+	}
+	
+	public Battle getBattle()
+	{
+		return battle;
+	}
+	
+	
+	public LinkedList<BattleAction> getBattleActions()
+	{
+		return listBattleActions;
+	}
 
 	
-	
-	private void addBattleAction(BattleAction action)
-	{
-		listBattleActions.add(action);
-	}
 	public void battleSetup(BattleSetup battleSetup, SkillRankType rankType)
 	{
 		UrgotAbilityLevels urgotAbilities = new UrgotAbilityLevels();
@@ -104,6 +119,8 @@ public class BattleManager implements Cloneable {
 
 	}
 	
+
+	
 	public void runBattleCalculations()
 	{
 		urgot.getEffects().sortEffects();
@@ -116,9 +133,13 @@ public class BattleManager implements Cloneable {
 		applyAfterBattleEffects();
 	}
 	
+
 	
+	private void addBattleAction(BattleAction action)
+	{
+		listBattleActions.add(action);
+	}
 	
-	 
 	private void applyAfterBattleActionEffects(BattleAction action)
 	{
 		urgot.getEffects().runActionEffects(battle, urgot, action);
@@ -130,16 +151,7 @@ public class BattleManager implements Cloneable {
 	}
 	
 	
-	public Battle getBattle()
-	{
-		return battle;
-	}
-	
-	
-	public LinkedList<BattleAction> getBattleActions()
-	{
-		return listBattleActions;
-	}
+
 	
 	
 }

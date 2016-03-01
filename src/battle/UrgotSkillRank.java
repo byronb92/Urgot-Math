@@ -1,5 +1,6 @@
 package battle;
 
+/** Wrapper class encapsulating urgot skills into one object. */
 public class UrgotSkillRank {
 	private int qRank = 0;
 	private int wRank = 0;

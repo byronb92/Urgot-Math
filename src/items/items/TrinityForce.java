@@ -1,7 +1,7 @@
 package items.items;
 
-import battle.effects.SheenAfterAction;
-import battle.effects.SheenWrapper.SheenVariation;
+import battle.actions.effects.SheenAfterAction;
+import battle.actions.effects.SheenWrapper.SheenVariation;
 import items.Item;
 import urgot.UrgotStats;
 
@@ -37,7 +37,7 @@ public class TrinityForce extends Item{
 		urgot.addBonusCritChance(critChance);
 		urgot.addPercentMoveSpeed(movement);
 		urgot.addBonusAS(attackSpeed);	
-		SheenAfterAction sheenAdd = new SheenAfterAction(SheenVariation.SHEEN);
+		SheenAfterAction sheenAdd = new SheenAfterAction(SheenVariation.TRINITY);
 		urgot.addEffect(sheenAdd);
 	}
 

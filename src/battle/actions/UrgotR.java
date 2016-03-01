@@ -1,5 +1,7 @@
-package battle;
+package battle.actions;
 
+import battle.Battle;
+import battle.SpellCostType;
 import urgot.UrgotStats;
 
 public class UrgotR extends Spell {

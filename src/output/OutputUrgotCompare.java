@@ -30,8 +30,7 @@ public class OutputUrgotCompare {
 
 	/**
 	 * Adds and sets up UrgotScenarios to be analyzed.
-	 * StatSetup enum located in scenario package.
-	 * @param setupCode
+	 * @param setupCode StatSetup enum specifying scenarios to be added.
 	 */
 	public void statCollection(StatSetup setupCode)
 	{
@@ -44,7 +43,9 @@ public class OutputUrgotCompare {
 	
 
 	/** Provides ability to apply same runes and masteries across multiple scenarios.
-	 * @param setupCode
+	 * @param setupCode StatSetup enum specifying scenarios to be added.
+	 * @param runes RuneSetup enum specifying runes to be added.
+	 * @param masteries MasterySet enum specifying masteries to be added.
 	 */
 	public void statCollection(StatSetup setupCode, 
 			RuneSetup runes, MasterySet masteries)
@@ -57,6 +58,11 @@ public class OutputUrgotCompare {
 		}
 	}
 	
+	/**
+	 * Designates the combo that will be normalized acrossed all scenarios.
+	 * @param battleSetup BattleSetup enum.
+	 * @param rankType SkilLRankType enum specifying ability ranks based on Urgot's level.
+	 */
 	public void battleCollection(BattleSetup battleSetup, SkillRankType rankType)
 	{
 		for (UrgotScenario sce : sceManager.getScenarios())
@@ -68,10 +74,7 @@ public class OutputUrgotCompare {
 	
 
 			
-	/**
-	 * Outputs general statistics about every scenario added from statCollection.
-	 * @return
-	 */
+	/** @return string containing statical overview of a scenario. */
 	public String outputGeneral()
 	{
 		StringBuilder generalInfo = new StringBuilder();
@@ -96,7 +99,10 @@ public class OutputUrgotCompare {
 		}
 		return generalInfo.toString();
 	}
-	// Highest raw damage. This is the damage before any resistances are incorporated.
+
+	/**
+	 * @return Highest raw damage before resistances are applied.
+	 */
 	public String outputHighestRawDamage()
 	{
 		StringBuilder rawDamageString = new StringBuilder();
@@ -115,6 +121,12 @@ public class OutputUrgotCompare {
 		return rawDamageString.toString();
 	}
 	
+	/**
+	 * @return Highest real damage, the damage calculated AFTER resistances.
+	 * @param enemyBaseArmor Enemy armor growth per level.
+	 * @param enemyBonusArmor Armor from runes/masteries/items/abilities
+	 * @param enemyBonusMR Magic Resistance from runes/masteries/items/abilities
+	 */
 	public String outputHighestRealDamage(double enemyBaseArmor, double enemyBonusArmor,
 			double enemyBaseMR, double enemyBonusMR)
 	{
@@ -127,6 +139,7 @@ public class OutputUrgotCompare {
 		return rawDamageString.toString();
 	}
 	
+	/** @return Cheapest item build contained in the scenario list. */
 	public String outputLowestCost()
 	{
 		StringBuilder costString = new StringBuilder();
@@ -139,11 +152,14 @@ public class OutputUrgotCompare {
 	}
 	
 
-	// SortRank located in Scenario package. ASCENDING/DESCENDING
+	/** 
+	 * Sorts all scenarios by highest or lowest RAW damage.
+	 * @param rank SortRank enum that sorts in ascending or descending order
+	 * @return String of sorted scenarios by raw damage.
+	 */
 	public String outputSortedDamage(SortRank rank)
 	{
 		StringBuilder dmgString = new StringBuilder();
-		
 		for (Entry<Double, UrgotScenario> entry : sceManager.sortDamage(rank).entrySet())
 		{
 			dmgString.append("Raw Damage: " + entry.getKey());
@@ -153,7 +169,11 @@ public class OutputUrgotCompare {
 		return dmgString.toString();
 	}
 	
-	// SortRank located in Scenario package. ASCENDING/DESCENDING
+	/** 
+	 * Sorts all scenarios by highest or lowest REAL damage.
+	 * @param rank SortRank enum that sorts in ascending or descending order
+	 * @return String of sorted scenarios by raw damage.
+	 */
 	public String outputSortedRealDamage(SortRank rank, double enemyBaseArmor, double enemyBonusArmor, 
 			double enemyBaseMR, double enemyBonusMR)
 	{
@@ -170,7 +190,11 @@ public class OutputUrgotCompare {
 	}
 
 
-	
+	/** 
+	 * Sorts all scenarios by highest armor.
+	 * @param rank SortRank enum that sorts in ascending or descending order.
+	 * @return String of sorted armor values.
+	 */
 	public String outputSortedArmor(SortRank rank)
 	{
 		StringBuilder dmgString = new StringBuilder();
@@ -185,9 +209,8 @@ public class OutputUrgotCompare {
 	}
 	
 	/**
-	 * Passive and actives include any extra item/mastery information.
-	 * This will give an insight to how much utility is given by item/mastery builds.
-	 * @return
+	 * Outputs passive and actives including any extra item/mastery information.
+	 * @return String of informationa bout passive and actives.
 	 */
 	public String outputPassiveandActivies()
 	{

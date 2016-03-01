@@ -1,12 +1,12 @@
-package battle.effects;
+package battle.actions.effects;
 
 import java.util.HashMap;
 
-import battle.AutoAttack;
 import battle.Battle;
-import battle.BattleAction;
-import battle.Spell;
-import battle.effects.SheenWrapper.SheenVariation;
+import battle.actions.AutoAttack;
+import battle.actions.BattleAction;
+import battle.actions.Spell;
+import battle.actions.effects.SheenWrapper.SheenVariation;
 import urgot.UrgotStats;
 
 public class SheenAfterAction extends EffectAfterAction {

@@ -1,5 +1,11 @@
 package battle;
 
+
+/**
+ * Contains data about battle numbers.
+ * @author byronb92
+ *
+ */
 public class Battle 
 {
 	private int spellsCast = 0;

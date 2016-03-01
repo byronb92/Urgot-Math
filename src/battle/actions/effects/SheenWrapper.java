@@ -1,10 +1,10 @@
-package battle.effects;
+package battle.actions.effects;
 
 public class SheenWrapper {
 	
 	private final static double SHEEN_COEFFICIENT = 1.0;
-	private final static double TRINITY_COEFFICIENT = 1.0;
-	private final static double ICEBORN_COEFFICIENT = 1.0;
+	private final static double TRINITY_COEFFICIENT = 2.0;
+	private final static double ICEBORN_COEFFICIENT = 1.5;
 	private final static double LICHBANE_COEFFICIENT = 1.0;
 	
 	private double sheenCoefficient = 0;

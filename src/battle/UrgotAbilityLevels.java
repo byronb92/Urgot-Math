@@ -3,6 +3,8 @@ package battle;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
+/** Completely sets up Urgot ability rankings based on SkillRankType enum */
 public class UrgotAbilityLevels {
 	HashMap<SkillRankType, ArrayList<UrgotSkillRank>> abilityRanks;
 	

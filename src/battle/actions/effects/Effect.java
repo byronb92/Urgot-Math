@@ -1,6 +1,6 @@
-package battle.effects;
+package battle.actions.effects;
 
-
+/** Effect that takes place from items/passives/masteries */
 public class Effect {
 	private String type;
 	

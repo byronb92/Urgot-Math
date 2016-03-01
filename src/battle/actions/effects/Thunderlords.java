@@ -1,7 +1,7 @@
-package battle.effects;
+package battle.actions.effects;
 
 import battle.Battle;
-import battle.BattleAction;
+import battle.actions.BattleAction;
 import urgot.UrgotStats;
 
 public class Thunderlords extends EffectAfterAction {

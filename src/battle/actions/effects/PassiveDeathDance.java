@@ -1,4 +1,4 @@
-package battle.effects;
+package battle.actions.effects;
 
 import battle.Battle;
 import urgot.UrgotStats;

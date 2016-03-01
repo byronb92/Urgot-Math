@@ -1,17 +1,12 @@
-package battle.effects;
+package battle.actions.effects;
 
 import battle.Battle;
-import battle.BattleAction;
-import battle.UrgotQ;
-import battle.UrgotE;
+import battle.actions.BattleAction;
+import battle.actions.UrgotE;
+import battle.actions.UrgotQ;
 import urgot.UrgotStats;
 
-/** 
- * Deathfire Touch programmed specifically for Urgot 
- * Dealing ability damage to enemy champions applies a bleed, 
- * dealing 1 (+ 3.125% AP) (+ 7.5% bonus AD) magic damage 
- * every half-second for a duration based on their type.
- */
+/** Keeps track of Deathfire tick damage to be computed in DeathfireAfterBattle */
 public class DeathfireAfterAction extends EffectAfterAction {
 	private double totalDeathFireCounter = 0;
 	private boolean noECast = true;

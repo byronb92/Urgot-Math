@@ -1,6 +1,6 @@
 package masteries.cunning;
 
-import battle.effects.Thunderlords;
+import battle.actions.effects.Thunderlords;
 import masteries.Mastery;
 import urgot.UrgotStats;
 

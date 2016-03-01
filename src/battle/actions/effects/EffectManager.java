@@ -1,9 +1,9 @@
-package battle.effects;
+package battle.actions.effects;
 
 import java.util.ArrayList;
 
 import battle.Battle;
-import battle.BattleAction;
+import battle.actions.BattleAction;
 import urgot.UrgotStats;
 
 public class EffectManager {

@@ -1,6 +1,8 @@
-package battle;
+package battle.actions;
 
+import battle.SpellCostType;
 
+/** Subclass of BattleAction and Superclass of Urgot's abilities */
 public abstract class Spell extends BattleAction {
 	
 	private String spellType;
