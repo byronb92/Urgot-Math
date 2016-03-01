@@ -132,9 +132,8 @@ public class ScenarioManager {
 	{
 		ItemObjects itemObjects = new ItemObjects();
 		itemObjects.constructAllItems();
-		// Scan through current scenario and remove any the scenario already has.
+		// Scan through current scenario and remove any items the scenario already has.
 		ItemRemovalWrapper removeItem = new ItemRemovalWrapper();
-		
 		for(Entry<String,Item> itemA: sce.getUrgotItems().getItems().entrySet())
 		{
 			removeItem.removeItemAfterBeingUsed(itemA.getKey(), itemObjects);
@@ -143,13 +142,10 @@ public class ScenarioManager {
 		UrgotScenario highestDamageScenario = sce;
 		Cloner cloner = new Cloner();
 		
-		//for (Item currentItem : itemObjects.getItemObjects())
 		for(Entry<String,Item> item: itemObjects.getItemObjects().entrySet())
 		{
 			UrgotScenario duplicateSce = cloner.deepClone(sce);
 			UrgotScenario originalScenario = cloner.deepClone(sce);
-			//duplicateSce.addItem(currentItem);
-			//sce.setScenarioName(currentItem.getName());
 			duplicateSce.addItem(item.getValue());
 			duplicateSce.setScenarioName(item.getKey());
 
@@ -255,6 +251,26 @@ public class ScenarioManager {
 		}
 		return highestDamageSce;
 	}
+	/**
+	 * Finds out which scenario does the most damage to a specific target.
+	 * @param sceA
+	 * @param sceB
+	 * @param enemyArmor
+	 * @param enemyMR
+	 * @return null if the damage is equal.
+	 */
+	public CompleteDamage findRealDamage(
+			UrgotScenario sceA,
+			double enemyBaseArmor, double enemyBonusArmor, 
+			double enemyBaseMR, double enemyBonusMR)
+	{
+		
+		CompleteDamage dmgA = damageVsEnemy(sceA, 
+				enemyBaseArmor, enemyBonusArmor, 
+				enemyBaseMR, enemyBonusMR);
+		return dmgA;
+	}
+	
 	/**
 	 * Finds out which scenario does the most damage to a specific target.
 	 * @param sceA
@@ -443,6 +459,28 @@ public class ScenarioManager {
 		{
 			double rawDmg = sce.getBattleStats().getTotalDamage();
 			map.put(makeKeyUnique(map,rawDmg), sce);
+		}
+		Map<Double,UrgotScenario> newMap = null;
+		if (rank == SortRank.ASCENDING)
+		{
+			newMap = new TreeMap<Double, UrgotScenario>(map);
+			return newMap;
+		}
+		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
+		newMap.putAll(map);
+		return newMap;
+	}
+	
+	public Map<Double,UrgotScenario> sortRealDamage(SortRank rank,
+			double enemyBaseArmor, double enemyBonusArmor, 
+			double enemyBaseMR, double enemyBonusMR)
+	{
+		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
+		for (UrgotScenario sce : listAllScenarios)
+		{
+			double realDmg = findRealDamage(sce, enemyBaseArmor, enemyBonusArmor,
+					enemyBaseMR, enemyBonusMR).getTotalDamage();
+			map.put(makeKeyUnique(map,realDmg), sce);
 		}
 		Map<Double,UrgotScenario> newMap = null;
 		if (rank == SortRank.ASCENDING)

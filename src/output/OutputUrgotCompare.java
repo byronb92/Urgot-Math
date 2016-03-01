@@ -152,6 +152,23 @@ public class OutputUrgotCompare {
 		}
 		return dmgString.toString();
 	}
+	
+	// SortRank located in Scenario package. ASCENDING/DESCENDING
+	public String outputSortedRealDamage(SortRank rank, double enemyBaseArmor, double enemyBonusArmor, 
+			double enemyBaseMR, double enemyBonusMR)
+	{
+		StringBuilder dmgString = new StringBuilder();
+		
+		for (Entry<Double, UrgotScenario> entry : sceManager.sortRealDamage(rank,
+				enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR).entrySet())
+		{
+			dmgString.append("Real Damage: " + entry.getKey());
+			dmgString.append(" " + entry.getValue().getScenarioName());
+			dmgString.append("\n");
+		}
+		return dmgString.toString();
+	}
+
 
 	
 	public String outputSortedArmor(SortRank rank)

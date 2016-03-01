@@ -1,6 +1,5 @@
 package items.items;
 
-import battle.Battle;
 import battle.effects.PassiveDeathDance;
 import items.Item;
 import urgot.UrgotStats;

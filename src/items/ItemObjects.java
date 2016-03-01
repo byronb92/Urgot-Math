@@ -68,6 +68,12 @@ public class ItemObjects {
 
 	}
 	
+	public Item getItemBasedOnStatCategory()
+	{
+		return null;
+	}
+	
+	
 	
 	/**
 	 * Methods that only obtain items from a given category.

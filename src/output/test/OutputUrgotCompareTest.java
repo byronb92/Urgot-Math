@@ -29,6 +29,16 @@ public class OutputUrgotCompareTest extends TestCase {
 		out.println(comp.outputGeneral());
 		out.close();
 	}
+	
+	public void testRealDamage_FinalBuilds() throws FileNotFoundException
+	{
+		comp.statCollection(StatSetup.LEVEL18);
+		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
+		PrintWriter out = new PrintWriter("testTextDumps/generalRealDamaage_FinalBuild.txt");
+		out.println(comp.outputSortedRealDamage(SortRank.ASCENDING, 
+				60, 50, 30, 0));
+		out.close();
+	}
 	public void testStartingItems_AutoAggressive() throws FileNotFoundException
 	{
 		comp.statCollection(StatSetup.STARTING_ITEMS);

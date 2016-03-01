@@ -14,7 +14,8 @@ public class LateGameScenarios extends Phase {
 		// TODO: Rename setup codes.
 		switch (setupCode)
 		{
-			case LEVEL18: compareNoTearBuild();
+			case LEVEL18: 	compareFullBuildMuramana();
+							compareNoTearBuild();
 				break;	
 			default: 	System.out.println("Invalid stat collection code: " + setupCode);
 						System.out.println("There will be errors");
@@ -43,13 +44,13 @@ public class LateGameScenarios extends Phase {
 		
 		String[] tankIceborn = {"Iceborn Gauntlet", "Muramana", "Frozen Heart", 
 				"Randuin's Omen", "Dead Man's Plate", "Ninja Tabi"};
-		addScenarioLevel(duskbladeDamage, 18);
-		addScenarioLevel(deathDanceDamage, 18);
-		addScenarioLevel(dominikDamage, 18);
-		addScenarioLevel(sterakMaw, 18);
-		addScenarioLevel(sterakDominik, 18);
-		addScenarioLevel(tankAP, 18);
-		addScenarioLevel(tankIceborn, 18);
+		addScenarioLevel(duskbladeDamage, 18, "Duskblade");
+		addScenarioLevel(deathDanceDamage, 18, "Death's Dance");
+		addScenarioLevel(dominikDamage, 18, "Lord Dominik's");
+		addScenarioLevel(sterakMaw, 18, "Sterak + Maw");
+		addScenarioLevel(sterakDominik, 18, "Sterak + Dominik");
+		addScenarioLevel(tankAP, 18, "Muramana Anti AP");
+		addScenarioLevel(tankIceborn, 18, "Iceborn Anti AD");
 		
 	}
 	

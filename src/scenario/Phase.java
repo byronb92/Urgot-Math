@@ -52,4 +52,15 @@ public abstract class Phase {
 		}
 		addScenario(currentScenario);
 	}
+	
+	public void addScenarioLevel(String[] itemNames, int currentLevel, String sceName)
+	{
+		UrgotScenario currentScenario = new UrgotScenario(currentLevel);
+		for (String item: itemNames)
+		{
+			currentScenario.addItem(item);
+		}
+		currentScenario.setScenarioName(sceName);
+		addScenario(currentScenario);
+	}
 }
