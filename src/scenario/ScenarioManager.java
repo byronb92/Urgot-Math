@@ -43,21 +43,21 @@ public class ScenarioManager {
 		listAllScenarios = new ArrayList<UrgotScenario>();
 	}
 	
-	public void setUpStatCollection(StatSetup setupCode)
+	public void setUpStatCollection(ItemAndLevelSetup setupCode)
 	{
 		
-		if (setupCode == StatSetup.LEVEL4 || setupCode == StatSetup.LEVEL6 || 
-				setupCode == StatSetup.MASTERIES_LEVEL1 || setupCode == StatSetup.STARTING_ITEMS)
+		if (setupCode == ItemAndLevelSetup.LEVEL4 || setupCode == ItemAndLevelSetup.LEVEL6 || 
+				setupCode == ItemAndLevelSetup.MASTERIES_LEVEL1 || setupCode == ItemAndLevelSetup.STARTING_ITEMS)
 		{
 			early = new EarlyGameScenarios();
 			setUpPhase(early, setupCode);
 		}
-		else if (setupCode == StatSetup.LEVEL9 || setupCode == StatSetup.LEVEL12)
+		else if (setupCode == ItemAndLevelSetup.LEVEL9 || setupCode == ItemAndLevelSetup.LEVEL12)
 		{
 			mid = new MidGameScenarios();
 			setUpPhase(mid, setupCode);
 		}
-		else if (setupCode == StatSetup.LEVEL15 || setupCode == StatSetup.LEVEL18)
+		else if (setupCode == ItemAndLevelSetup.LEVEL15 || setupCode == ItemAndLevelSetup.LEVEL18)
 		{
 			late = new LateGameScenarios();
 			setUpPhase(late, setupCode);
@@ -68,7 +68,7 @@ public class ScenarioManager {
 	 * Collections stats for all scenarios.
 	 * @param setupCode
 	 */
-	public void statCollection(StatSetup setupCode)
+	public void statCollection(ItemAndLevelSetup setupCode)
 	{
 		setUpStatCollection(setupCode);
 		for (UrgotScenario sce : getScenarios())
@@ -83,7 +83,7 @@ public class ScenarioManager {
 	 * @param phase, early, mid, late game setup.
 	 * @param code - dependent on phase. Each Phase object has it's own outputs.
 	 */
-	private void setUpPhase(Phase phase, StatSetup setupCode)
+	private void setUpPhase(Phase phase, ItemAndLevelSetup setupCode)
 	{
 		phase.runStatCollection(setupCode);
 		addAllScenarios(phase.getScenarios());

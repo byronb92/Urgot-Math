@@ -20,7 +20,7 @@ public class MidGameScenarios extends Phase {
 	}
 	
 	@Override
-	public void runStatCollection(StatSetup setupCode)
+	public void runStatCollection(ItemAndLevelSetup setupCode)
 	{
 		switch (setupCode)
 		{

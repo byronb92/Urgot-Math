@@ -11,7 +11,7 @@ import masteries.MasterySet;
 import output.OutputUrgotCompare;
 import runes.RuneSetup;
 import scenario.SortRank;
-import scenario.StatSetup;
+import scenario.ItemAndLevelSetup;
 
 
 public class OutputUrgotCompareTest extends TestCase {
@@ -23,7 +23,7 @@ public class OutputUrgotCompareTest extends TestCase {
 
 	public void testGeneralOutput_FinalBuilds() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.LEVEL18);
+		comp.statCollection(ItemAndLevelSetup.LEVEL18);
 		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
 		PrintWriter out = new PrintWriter("testTextDumps/generalOutput_FinalBuild.txt");
 		out.println(comp.outputGeneral());
@@ -32,7 +32,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	
 	public void testRealDamage_FinalBuilds() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.LEVEL18);
+		comp.statCollection(ItemAndLevelSetup.LEVEL18);
 		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
 		PrintWriter out = new PrintWriter("testTextDumps/generalRealDamaage_FinalBuild.txt");
 		out.println(comp.outputSortedRealDamage(SortRank.ASCENDING, 
@@ -41,7 +41,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	}
 	public void testStartingItems_AutoAggressive() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.STARTING_ITEMS);
+		comp.statCollection(ItemAndLevelSetup.STARTING_ITEMS);
 		comp.battleCollection(BattleSetup.AUTOTRADE_NO_W, SkillRankType.AGGRESSIVE);
 		PrintWriter out = new PrintWriter("testTextDumps/startingItems_AutoAggressive.txt");
 		out.println(comp.outputSortedDamage(SortRank.ASCENDING));
@@ -50,7 +50,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	
 	public void testStartingItems_StandardAutoWeave() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.STARTING_ITEMS);
+		comp.statCollection(ItemAndLevelSetup.STARTING_ITEMS);
 		comp.battleCollection(BattleSetup.POKE_AUTOWEAVE, SkillRankType.STANDARD);
 		PrintWriter out = new PrintWriter("testTextDumps/startingItems_StandardAutoWeave.txt");
 		out.println(comp.outputSortedDamage(SortRank.ASCENDING));
@@ -58,7 +58,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	}
 	public void testArmorPenVsADStart() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.LEVEL4);
+		comp.statCollection(ItemAndLevelSetup.LEVEL4);
 		comp.battleCollection(BattleSetup.ALLIN_NOULT, SkillRankType.STANDARD);
 		PrintWriter out = new PrintWriter("testTextDumps/startingItems_testArmorPenVsAD.txt");
 		out.println("Highest Damage to Squishy (Base Armor 16, Bonus 9)");
@@ -70,7 +70,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	}
 	public void testMasteries() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.MASTERIES_LEVEL1);
+		comp.statCollection(ItemAndLevelSetup.MASTERIES_LEVEL1);
 		comp.battleCollection(BattleSetup.POKE_AUTOWEAVE, SkillRankType.AGGRESSIVE);
 		PrintWriter out = new PrintWriter("testTextDumps/testMasteries.txt");
 		out.println(comp.outputHighestRawDamage());
@@ -80,7 +80,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	}
 	public void testArmorLevelSix() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.LEVEL18);
+		comp.statCollection(ItemAndLevelSetup.LEVEL18);
 		PrintWriter out = new PrintWriter("testTextDumps/testArmorLevel6.txt");
 		out.println(comp.outputSortedArmor(SortRank.ASCENDING));
 		out.close();
@@ -88,7 +88,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	}
 	public void testFullBuildRawDamage() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.LEVEL18);
+		comp.statCollection(ItemAndLevelSetup.LEVEL18);
 		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
 		PrintWriter out = new PrintWriter("testTextDumps/testFullBuildRawDamage.txt");
 		out.println(comp.outputHighestRawDamage());
@@ -98,7 +98,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	
 	public void testOutputCheapestFullBuild() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.LEVEL18);
+		comp.statCollection(ItemAndLevelSetup.LEVEL18);
 		PrintWriter out = new PrintWriter("testTextDumps/testCheapestBuild.txt");
 		out.println(comp.outputLowestCost());
 		out.close();
@@ -108,7 +108,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	
 	public void testOutputSortedArmorFullBuild() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.LEVEL18, 
+		comp.statCollection(ItemAndLevelSetup.LEVEL18, 
 				RuneSetup.STANDARD, 
 				MasterySet.THUNDERLORD_BALANCED);
 		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
@@ -121,7 +121,7 @@ public class OutputUrgotCompareTest extends TestCase {
 	
 	public void testPassiveAndActives() throws FileNotFoundException
 	{
-		comp.statCollection(StatSetup.LEVEL6,
+		comp.statCollection(ItemAndLevelSetup.LEVEL6,
 				RuneSetup.STANDARD, 
 				MasterySet.THUNDERLORD_BALANCED);
 		comp.battleCollection(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);

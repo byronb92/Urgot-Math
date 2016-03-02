@@ -33,7 +33,7 @@ public abstract class Phase {
 	 * Based on the code input, a different comparison will be made.
 	 * @param code
 	 */
-	public abstract void runStatCollection(StatSetup setupCode);
+	public abstract void runStatCollection(ItemAndLevelSetup setupCode);
 	
 	
 	public void addScenarioLevel(String itemName, int currentLevel, String scenarioName)

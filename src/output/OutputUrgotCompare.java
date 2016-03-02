@@ -1,5 +1,5 @@
 package output;
-import scenario.StatSetup;
+import scenario.ItemAndLevelSetup;
 
 import java.util.Map.Entry;
 
@@ -32,7 +32,7 @@ public class OutputUrgotCompare {
 	 * Adds and sets up UrgotScenarios to be analyzed.
 	 * @param setupCode StatSetup enum specifying scenarios to be added.
 	 */
-	public void statCollection(StatSetup setupCode)
+	public void statCollection(ItemAndLevelSetup setupCode)
 	{
 		sceManager.setUpStatCollection(setupCode);
 		for (UrgotScenario sce : sceManager.getScenarios())
@@ -47,7 +47,7 @@ public class OutputUrgotCompare {
 	 * @param runes RuneSetup enum specifying runes to be added.
 	 * @param masteries MasterySet enum specifying masteries to be added.
 	 */
-	public void statCollection(StatSetup setupCode, 
+	public void statCollection(ItemAndLevelSetup setupCode, 
 			RuneSetup runes, MasterySet masteries)
 	{
 		sceManager.setUpStatCollection(setupCode);
