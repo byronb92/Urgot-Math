@@ -187,6 +187,15 @@ public class ItemFactory {
 			return new DuskbladeOfDraktharr();
 		}
 		
+		if (itemName.equals("Corrupting Potion"))
+		{
+			return new CorruptingPotion();
+		}
+		
+		if (itemName.equals("RefillablePotion"))
+		{
+			return new RefillablePotion();
+		}
 		
 		System.err.println("Invalid item name: " + itemName);
 		return null;
