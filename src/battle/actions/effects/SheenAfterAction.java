@@ -19,6 +19,7 @@ public class SheenAfterAction extends EffectAfterAction {
 	{
 		prevActions = new HashMap<BattleAction, Double>();
 		sheenWrapper = new SheenWrapper(sheenType);
+		setEffectName(sheenType.toString());
 	}
 	
 	@Override
@@ -34,7 +35,9 @@ public class SheenAfterAction extends EffectAfterAction {
 		else if (action instanceof AutoAttack && isSheenActive)
 		{
 			// TODO: Do trinity force, iceborn gauntlet math.
-			battle.addPhysicalDamage(urgot.getBaseADFromLevel() * sheenWrapper.getSheenCoefficient());
+			double sheenDamage = urgot.getBaseADFromLevel() * sheenWrapper.getSheenCoefficient();
+			battle.addPhysicalDamage(sheenDamage);
+			addEffectNumbers(sheenDamage);
 			sheenCooldown = 1.5;
 			isSheenActive = false;
 		}

@@ -9,6 +9,7 @@ public class Thunderlords extends EffectAfterAction {
 	private boolean isProc = false;
 	public Thunderlords() {
 		super();
+		setEffectName("Thunderlord's");
 	}
 
 	@Override
@@ -20,6 +21,7 @@ public class Thunderlords extends EffectAfterAction {
 					(0.30 * urgot.getBonusAD() + 
 					(0.10 * urgot.getBonusAP())));
 			battle.addMagicDamage(thunderDamage);
+			addEffectNumbers(thunderDamage);
 		}
 		isProc = true;
 	}

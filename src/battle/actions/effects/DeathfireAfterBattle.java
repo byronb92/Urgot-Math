@@ -17,7 +17,8 @@ public class DeathfireAfterBattle extends EffectAfterBattle {
 		updateDeathfireStats(urgot);
 		double deathDamage = computeDeathFireDamage(urgot);
 		battle.addMagicDamage(deathDamage);
-		
+		addEffectNumbers(deathDamage);
+		setEffectName("Deathfire Touch");
 	}
 
 	private void updateDeathfireStats(UrgotStats urgot)
