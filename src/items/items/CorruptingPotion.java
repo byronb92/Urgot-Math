@@ -1,5 +1,6 @@
 package items.items;
 
+import battle.actions.effects.TouchOfCorruptionAfterBattle;
 import items.Item;
 import urgot.UrgotStats;
 
@@ -11,7 +12,8 @@ public class CorruptingPotion extends Item {
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		
+		TouchOfCorruptionAfterBattle corruptEffect = new TouchOfCorruptionAfterBattle();
+		urgot.addEffect(corruptEffect);
 	}
 
 	@Override

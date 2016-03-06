@@ -1,5 +1,6 @@
 package battle;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import battle.actions.AutoAttack;
@@ -123,10 +124,13 @@ public class BattleManager implements Cloneable {
 	
 	public void runBattleCalculations()
 	{
+		// TODO: Does this effect calculations at all?
 		urgot.getEffects().sortEffects();
+		HashMap<String,Double> battleTimeMap = new HashMap<String,Double>();		
 		for (int i = 0; i < listBattleActions.size(); i++)
 		{
 			BattleAction currentAction = listBattleActions.get(i);
+			handleBattleTime(battleTimeMap, currentAction);
 			currentAction.runBattleCalculations(battle, urgot);
 			applyAfterBattleActionEffects(currentAction);
 		}
@@ -134,7 +138,48 @@ public class BattleManager implements Cloneable {
 	}
 	
 
-	
+	private void handleBattleTime(HashMap<String,Double> battleMap, BattleAction battleAction)
+	{
+		double skillTime = 0;
+		if (battleAction instanceof UrgotQ)
+		{
+			
+			UrgotQ urgQ = (UrgotQ)battleAction;
+			skillTime = urgQ.getCdrCooldown(urgot.getCDR()) + urgQ.getCastTime();
+			if (!battleMap.containsKey("UrgotQ"))
+			{
+				 skillTime = 0;
+				 battleMap.put("UrgotQ", skillTime);
+			}
+			else
+			{
+				double oldSkillTime = battleMap.get("UrgotQ");
+				double totalTime = oldSkillTime + skillTime;
+				battleMap.put("UrgotQ", totalTime);
+				battle.addBattleTime(skillTime);
+				
+			}
+			
+		}
+
+		else if (battleAction instanceof AutoAttack)
+		{
+			skillTime = urgot.getTotalAS();
+			if (!battleMap.containsKey("AutoAttack"))
+			{
+				 skillTime = 0;
+				 battleMap.put("AutoAttack", skillTime);
+			}
+			else
+			{
+				double oldSkillTime = battleMap.get("UrgotQ");
+				double totalTime = oldSkillTime + skillTime;
+				battleMap.put("AutoAttack", totalTime);
+				battle.addBattleTime(skillTime);
+			}
+		}
+	}
+		
 	private void addBattleAction(BattleAction action)
 	{
 		listBattleActions.add(action);
