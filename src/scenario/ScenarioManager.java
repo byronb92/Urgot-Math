@@ -13,6 +13,7 @@ import battle.SkillRankType;
 import battle.dynamic.CompleteDamage;
 import battle.dynamic.UrgotVsEnemy;
 import calc.DefenseCalculator;
+import calc.UniqueCalculator;
 
 import java.util.TreeMap;
 
@@ -180,6 +181,49 @@ public class ScenarioManager {
 		}
 
 		return sceB;
+	}
+	
+	
+	public UrgotScenario damageVsHPDifferenceArmor(UrgotScenario sceA, UrgotScenario sceB)
+	{
+		
+		UrgotScenario moreDamage = findHighestRawDamage(sceA,sceB);
+		UrgotScenario tankier;
+		if (sceA.getUrgotStats().getTotalArmor() > sceB.getUrgotStats().getTotalArmor())
+		{
+			tankier = sceA;
+			if (moreDamage == sceA)
+			{
+				return sceA;
+			}
+		}
+		else if (sceA.getUrgotStats().getTotalArmor() < sceB.getUrgotStats().getTotalArmor());
+		{
+			tankier = sceB;
+			if (moreDamage == sceB)
+			{
+				return sceB;
+			}
+		}
+		if (damageVsHPHelper(moreDamage,tankier) >= 0)
+		{
+			return tankier;
+		}
+		return moreDamage;
+		
+	}
+	
+	private double damageVsHPHelper(UrgotScenario moreDamage, UrgotScenario tankier)
+	{
+		double damageDifference = moreDamage.getBattleStats().getTotalDamage() -
+				tankier.getBattleStats().getTotalDamage();
+		// TODO: Make this a class method where I don't have to create an object for it.
+		DefenseCalculator defense = new DefenseCalculator();
+		double trueHPDifference = defense.findHealthVsPhysical(tankier) - 
+				defense.findHealthVsPhysical(moreDamage);
+		System.out.println ("Damage difference: " + (damageDifference - trueHPDifference));
+		return damageDifference - trueHPDifference;
+		
 	}
 	
 	/**
