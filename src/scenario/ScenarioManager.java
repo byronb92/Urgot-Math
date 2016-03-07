@@ -37,6 +37,7 @@ public class ScenarioManager {
 	private MidGameScenarios mid;
 	private LateGameScenarios late;
 	private ArrayList<UrgotScenario> listAllScenarios;
+	private String scenarioManagerName;
 	
 	
 	public ScenarioManager()
@@ -44,6 +45,15 @@ public class ScenarioManager {
 		listAllScenarios = new ArrayList<UrgotScenario>();
 	}
 	
+	public void setScenarioManagerName(String name)
+	{
+		scenarioManagerName = name;
+	}
+	
+	public String getScenarioManagerName()
+	{
+		return scenarioManagerName;
+	}
 	public void setUpStatCollection(ItemAndLevelSetup setupCode)
 	{
 		

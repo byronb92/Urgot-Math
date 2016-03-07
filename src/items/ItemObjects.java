@@ -38,6 +38,16 @@ public class ItemObjects {
 			mapItemObjects.put(itemToAdd.getName(), itemToAdd);
 		}
 	}
+	
+	public void constructItem(String itemClassName) throws ParseException, IOException, 
+		ClassNotFoundException, NoSuchMethodException, SecurityException, 
+		InstantiationException, IllegalAccessException, IllegalArgumentException, 
+		InvocationTargetException
+	{
+		Class<?> clazz = Class.forName("items.items." + itemClassName);
+		Item itemToAdd = (Item)clazz.newInstance();
+		mapItemObjects.put(itemToAdd.getName(), itemToAdd);
+	}
 
 	/**
 	 * Allocates only the specified items with the given itemCategory

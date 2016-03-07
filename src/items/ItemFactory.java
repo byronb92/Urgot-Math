@@ -196,6 +196,37 @@ public class ItemFactory {
 		{
 			return new RefillablePotion();
 		}
+		if (itemName.equals("Hextech Gunblade"))
+		{
+			return new HextechGunblade();
+		}
+		if (itemName.equals("Locket of the Iron Solari"))
+		{
+			return new LocketOfTheIronSolari();
+		}
+		
+		if (itemName.equals("Mortal Reminder"))
+		{
+			return new MortalReminder();
+		}
+		
+		if (itemName.equals("Mercurial Scimitar"))
+		{
+			return new MercurialScimitar();
+		}
+		
+		if (itemName.equals("Warmog's Armor"))
+		{
+			return new WarmogsArmor();
+		}
+		
+		
+		if (itemName.equals("Frozen Mallet"))
+		{
+			return new FrozenMallet();
+		}
+		
+		
 		
 		System.err.println("Invalid item name: " + itemName);
 		return null;
