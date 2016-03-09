@@ -226,6 +226,11 @@ public class ItemFactory {
 			return new FrozenMallet();
 		}
 		
+		if (itemName.equals("Guardian Angel"))
+		{
+			return new GuardianAngel();
+		}
+		
 		
 		
 		System.err.println("Invalid item name: " + itemName);

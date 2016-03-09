@@ -114,7 +114,7 @@ public class ScenarioManager {
 		return listAllScenarios;
 	}
 
-	private void addAllScenarios(ArrayList<UrgotScenario> smallList)
+	public void addAllScenarios(ArrayList<UrgotScenario> smallList)
 	{
 		listAllScenarios.addAll(smallList);
 	}
