@@ -38,8 +38,9 @@ public class LocketOfTheIronSolari extends Item {
 
 	@Override
 	protected void setDetails() {
-		// TODO Auto-generated method stub
-		
+		details = "UNIQUE: Shield yourself and nearby allied champions for 2 seconds, "
+				+ "absorbing up to 90 - 345 (based on level) "
+				+ "damage (60 second cooldown) (600 range).";
 	}
 
 	@Override
@@ -47,7 +48,6 @@ public class LocketOfTheIronSolari extends Item {
 		category.put("Health", "");
 		category.put("Magic Resistance", "");
 		category.put("Cooldown Reduction", "");
-		// TODO: FIx these categories.
 		category.put("Health Regeneration", "");
 		
 	}

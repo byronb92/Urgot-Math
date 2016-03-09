@@ -4,7 +4,8 @@ import items.Item;
 import urgot.UrgotStats;
 
 public class MortalReminder extends Item {
-
+	private int ad = 40;
+	private double bonusArmorPen = 0.45;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
 		// TODO Auto-generated method stub
@@ -13,13 +14,15 @@ public class MortalReminder extends Item {
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		// TODO Auto-generated method stub
+		urgot.addBonusAD(ad);
+		// TODO: Check armor pen.
+		urgot.addBonusArmorPen(bonusArmorPen);
 		
 	}
 
 	@Override
 	protected void setCost() {
-		// TODO Auto-generated method stub
+		cost = 2700;
 		
 	}
 
@@ -31,13 +34,15 @@ public class MortalReminder extends Item {
 
 	@Override
 	protected void setDetails() {
-		// TODO Auto-generated method stub
+		details = "UNIQUE – EXECUTIONER: Physical damage inflicts Grievous Wounds icon "
+				+ "Grievous Wounds on enemy champions for 5 seconds.";
 		
 	}
 
 	@Override
 	protected void setCategory() {
-		// TODO Auto-generated method stub
+		category.put("Attack Damage", "");
+		category.put("Armor Penetration", "");
 		
 	}
 

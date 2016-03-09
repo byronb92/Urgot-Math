@@ -4,7 +4,9 @@ import items.Item;
 import urgot.UrgotStats;
 
 public class MercurialScimitar extends Item {
-
+	private int mr = 35;
+	private int ad = 65;
+	private double lifeSteal = 0.10;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
 		// TODO Auto-generated method stub
@@ -13,13 +15,15 @@ public class MercurialScimitar extends Item {
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		// TODO Auto-generated method stub
+		urgot.addBonusMR(mr);
+		urgot.addBonusAD(ad);
+		urgot.addLifeSteal(lifeSteal);
 		
 	}
 
 	@Override
 	protected void setCost() {
-		// TODO Auto-generated method stub
+		cost = 3600;
 		
 	}
 
@@ -31,13 +35,16 @@ public class MercurialScimitar extends Item {
 
 	@Override
 	protected void setDetails() {
-		// TODO Auto-generated method stub
+		details = "UNIQUE – QUICKSILVER: Removes CC from your champion and "
+				+ "grants +50% movement speed for 1 second. (90 second cooldown.)";
 		
 	}
 
 	@Override
 	protected void setCategory() {
-		// TODO Auto-generated method stub
+		category.put("Magic Resistance", "");
+		category.put("Attack Damage", "");
+		category.put("Sustain", "");
 		
 	}
 

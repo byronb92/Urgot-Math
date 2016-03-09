@@ -4,16 +4,18 @@ import items.Item;
 import urgot.UrgotStats;
 
 public class WarmogsArmor extends Item {
-
+	private int hp = 850;
+	private int baseHealthRegen = 2;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		// TODO Auto-generated method stub
+		urgot.addBonusHP(hp);
+		// TODO: Check health regen formula.
+		urgot.addBonusHealthRegen(baseHealthRegen);
 		
 	}
 
@@ -31,13 +33,15 @@ public class WarmogsArmor extends Item {
 
 	@Override
 	protected void setDetails() {
-		// TODO Auto-generated method stub
+		details = "UNIQUE – WARMOG'S HEART: Regenerate 「 1.5% maximum health every half-second 」"
+				+ "if damage has not been taken in the last 8 seconds.";
 		
 	}
 
 	@Override
 	protected void setCategory() {
-		// TODO Auto-generated method stub
+		category.put("Health","");
+		category.put("Health Regeneration","");
 		
 	}
 

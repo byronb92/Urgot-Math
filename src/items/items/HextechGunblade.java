@@ -1,5 +1,6 @@
 package items.items;
 
+import battle.actions.effects.HextechAfterBattle;
 import items.Item;
 import urgot.UrgotStats;
 
@@ -9,10 +10,8 @@ public class HextechGunblade extends Item {
 	private int ap = 80;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO: Implement Hextech and it's Passive'
-
-		// UNIQUE – OMNIVORE: Instantly heal for 15% of all damage dealt, including physical, magical and true damage.
-		// Area of effect damage only heals 5% for every unit affected.
+		HextechAfterBattle hextechPassive = new HextechAfterBattle();
+		urgot.addEffect(hextechPassive);
 		
 	}
 

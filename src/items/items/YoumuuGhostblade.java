@@ -49,6 +49,7 @@ public class YoumuuGhostblade extends Item {
 	@Override
 	protected void setCategory() {
 		category.put("Attack Damage", "");
+		category.put("Armor Penetration", "");
 		category.put("Cooldown Reduction", "");
 		
 	}
