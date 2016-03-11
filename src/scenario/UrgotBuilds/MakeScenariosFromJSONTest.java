@@ -1,9 +1,13 @@
 package scenario.UrgotBuilds;
 
-import static org.junit.Assert.*;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
+import org.json.simple.parser.ParseException;
 import org.junit.Before;
 import org.junit.Test;
+
+import scenario.UrgotBuilds.MakeScenariosFromJSON.BuildType;
 
 public class MakeScenariosFromJSONTest {
 	private MakeScenariosFromJSON jsonMake;
@@ -13,7 +17,8 @@ public class MakeScenariosFromJSONTest {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException, ParseException {
+		jsonMake.parseJSONByBuildType(BuildType.ALL);
 	}
 
 }

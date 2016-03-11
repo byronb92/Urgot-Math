@@ -8,12 +8,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import items.Item;
 import items.ItemObjects;
 import scenario.ScenarioManager;
 import scenario.UrgotScenario;
@@ -21,93 +23,135 @@ import scenario.UrgotScenario;
 public class MakeScenariosFromJSON {
 	private JSONParser parser;
 	private HashMap<String, ScenarioManager> mapScenarioManagers;
-	private static final String STARTING_ITEMS = "starting";
-	
+	private static final String STARTING = "starting";
 	private static final String DAMAGE = "damage";
-	private static final String DAMAGE_RISKY = "Risky Damage Builds";
-	private static final String DAMAGE_TRADITIONAL = "Traditional Damage Builds";
-	
-	private static final String BRUISER = "bruiser";
-	private static final String BRUISER_DUELIST = "Duelist Bruiser Builds";
-	private static final String BRUISER_BURST = "Duelist Against Burst Bruiser Builds";
-	
+	private static final String BRUISER = "bruiser";	
 	private static final String TANKY = "tanky";
-	private static final String TANK_ARMOR = "Anti-AD Builds";
-	private static final String TANK_MAGIC = "Anti-Magic Builds";
 
+	public enum BuildType
+	{
+		ALL, STARTING, DAMAGE, BRUISER, TANKY
+	}
+	
 	public MakeScenariosFromJSON()
 	{
 		parser = new JSONParser();
 		mapScenarioManagers = new HashMap<String,ScenarioManager>();
 	}
 	
-	public enum parseType
+
+	
+	public boolean parseJSONByBuildType(BuildType buildType) throws IOException, ParseException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{
-		ALL, DAMAGE, BRUISER, TANKY
+		String itemsFile = readItemFile();
+		JSONObject obj = (JSONObject)parser.parse(itemsFile);
+		JSONObject buildTypeJSONObject = null;
+		switch (buildType)
+		{
+			case ALL:
+				parseCompleteJSONFile();
+				return true;
+			case STARTING:
+				buildTypeJSONObject = (JSONObject)obj.get(STARTING);
+				break;
+			case DAMAGE:
+				buildTypeJSONObject = (JSONObject)obj.get(DAMAGE);
+				break;
+			case BRUISER:
+				buildTypeJSONObject = (JSONObject)obj.get(BRUISER);
+				break;
+			case TANKY:
+				buildTypeJSONObject = (JSONObject)obj.get(TANKY);
+				break;
+			default:
+				parseCompleteJSONFile();
+				return true;
+		}	
+		HashMap<String,JSONArray> mapBuildTypes = new HashMap<String, JSONArray>();
+		mapBuildTypes.putAll(buildTypeJSONObject);
+		for(Entry<String, JSONArray> item: mapBuildTypes.entrySet())
+		{
+			addSceManagerToManagersListFromJSONArray(item.getValue(), item.getKey());
+		}
+		
+		return true;
 	}
-	private void parseCompleteJSONFile() throws ParseException, IOException, ClassNotFoundException, 
+	
+	private boolean parseCompleteJSONFile() throws ParseException, IOException, ClassNotFoundException, 
 		NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, 
 		IllegalArgumentException, InvocationTargetException
 	{
 		String itemsFile = readItemFile();
 		JSONObject obj = (JSONObject)parser.parse(itemsFile);
-		JSONArray starting = (JSONArray)obj.get("starting");
-		ScenarioManager startingItems = new ScenarioManager();
-		startingItems.addAllScenarios(makeListOfScenariosFromJSONLevel(starting,1));
-		
-		
-		JSONObject damage = (JSONObject)obj.get(DAMAGE);
-		JSONArray damageRisky = (JSONArray)damage.get(DAMAGE_RISKY);
-		JSONArray damageTraditional = (JSONArray)damage.get(DAMAGE_TRADITIONAL);
-		createManagerWithJSONArray(damageRisky, DAMAGE_RISKY);
-		createManagerWithJSONArray(damageTraditional, DAMAGE_TRADITIONAL);
-		
-		
-		JSONObject bruiser = (JSONObject)obj.get(BRUISER);
-		JSONArray bruiserDuelist = (JSONArray)bruiser.get(BRUISER_DUELIST);
-		JSONArray bruiserVsBurst = (JSONArray)bruiser.get(BRUISER_BURST);
-		createManagerWithJSONArray(bruiserDuelist, BRUISER_DUELIST);
-		createManagerWithJSONArray(bruiserVsBurst, BRUISER_BURST);
-		
-		JSONObject tanky = (JSONObject)obj.get(TANKY);
-		JSONArray tankyArmor = (JSONArray)tanky.get(TANK_ARMOR);
-		JSONArray tankyMagic = (JSONArray)tanky.get(TANK_MAGIC);
-		createManagerWithJSONArray(tankyArmor, TANK_ARMOR);
-		createManagerWithJSONArray(tankyMagic, TANK_MAGIC);
+		HashMap<String,JSONObject> mapBuildTypeJSONObjects = new HashMap<String, JSONObject>();
+		mapBuildTypeJSONObjects.putAll(obj);
+		for(Entry<String, JSONObject> item: mapBuildTypeJSONObjects.entrySet())
+		{
+			HashMap<String,JSONArray> mapBuildTypes = new HashMap<String, JSONArray>();
+			mapBuildTypes.putAll(item.getValue());
+			for(Entry<String, JSONArray> itemB: mapBuildTypes.entrySet())
+			{
+				addSceManagerToManagersListFromJSONArray(itemB.getValue(), itemB.getKey());
+			}
+		}
+		return true;
 	}
 	
-	
-	private boolean createManagerWithJSONArray(JSONArray arrayJSON, String managerTag) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ParseException, IOException
+	private boolean addSceManagerToManagersListFromJSONArray(
+		JSONArray arrayJSON, String managerTag) throws 
+			ClassNotFoundException, NoSuchMethodException, SecurityException, 
+			InstantiationException, IllegalAccessException, IllegalArgumentException, 
+			InvocationTargetException, ParseException, IOException
 	{
 		ScenarioManager currentSceManager = new ScenarioManager();
 		currentSceManager.setScenarioManagerName(managerTag);
-		currentSceManager.addAllScenarios(makeListOfScenariosFromJSON(arrayJSON));
+		// Special case for starting items.
+		if (managerTag.equals("Potions") || managerTag.equals("Battle Stats"))
+		{
+			currentSceManager.addAllScenarios(
+					makeListOfScenariosFromJSONArrayWithCustomLevel(arrayJSON,1));
+		}
+		currentSceManager.addAllScenarios(makeListOfScenariosFromJSONArray(arrayJSON));
 		mapScenarioManagers.put(managerTag,currentSceManager);
 		return true;
 	}
-	private ArrayList<UrgotScenario> makeListOfScenariosFromJSONLevel(JSONArray JSONitems, int urgLevel) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ParseException, IOException
+
+	private ArrayList<UrgotScenario> makeListOfScenariosFromJSONArray
+		(JSONArray JSONitems) throws 
+			ClassNotFoundException, NoSuchMethodException, SecurityException, 
+			InstantiationException, IllegalAccessException, IllegalArgumentException, 
+			InvocationTargetException, ParseException, IOException
 	{
 		ArrayList<UrgotScenario> urgList = new ArrayList<UrgotScenario>();
 		for (int i =0; i < JSONitems.size(); i++)
 		{
 			JSONArray currentArray = (JSONArray)JSONitems.get(i);
-			urgList.add(makeScenarioFromItemArray(currentArray, urgLevel));
+			urgList.add(makeFullBuildScenarioFromJSONArrayWithItems(currentArray));
 		}
 		return urgList;
 	}
 	
-	private ArrayList<UrgotScenario> makeListOfScenariosFromJSON(JSONArray JSONitems) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ParseException, IOException
+	private ArrayList<UrgotScenario> makeListOfScenariosFromJSONArrayWithCustomLevel
+	(JSONArray JSONitems,int urgotLevel) throws ClassNotFoundException, 
+		NoSuchMethodException, SecurityException, InstantiationException, 
+		IllegalAccessException, IllegalArgumentException, 
+		InvocationTargetException, ParseException, IOException
+{
+	ArrayList<UrgotScenario> urgList = new ArrayList<UrgotScenario>();
+	for (int i =0; i < JSONitems.size(); i++)
 	{
-		ArrayList<UrgotScenario> urgList = new ArrayList<UrgotScenario>();
-		for (int i =0; i < JSONitems.size(); i++)
-		{
-			JSONArray currentArray = (JSONArray)JSONitems.get(i);
-			urgList.add(makeScenarioFromItemArrayFullBuild(currentArray));
-		}
-		return urgList;
+		JSONArray currentArray = (JSONArray)JSONitems.get(i);
+		urgList.add(makeScenarioFromJSONArrayWithLevel(
+				currentArray,urgotLevel));
 	}
+	return urgList;
+}
 	
-	private UrgotScenario makeScenarioFromItemArrayFullBuild(JSONArray JSONitems) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ParseException, IOException
+	private UrgotScenario makeFullBuildScenarioFromJSONArrayWithItems
+		(JSONArray JSONitems) throws ClassNotFoundException, NoSuchMethodException, 
+		SecurityException, InstantiationException, IllegalAccessException, 
+		IllegalArgumentException, InvocationTargetException, ParseException, 
+		IOException
 	{
 		UrgotScenario itemScenario = new UrgotScenario(18);
 		ItemObjects itemObjs = new ItemObjects();
@@ -119,9 +163,13 @@ public class MakeScenariosFromJSON {
 	
 		return itemScenario;
 	}
-	private UrgotScenario makeScenarioFromItemArray(JSONArray JSONitems, int urgLevel) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ParseException, IOException
+
+	
+
+	
+	private UrgotScenario makeScenarioFromJSONArrayWithLevel(JSONArray JSONitems, int urgotLevel) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ParseException, IOException
 	{
-		UrgotScenario itemScenario = new UrgotScenario(urgLevel);
+		UrgotScenario itemScenario = new UrgotScenario(urgotLevel);
 		ItemObjects itemObjs = new ItemObjects();
 		for (int i = 0; i < JSONitems.size(); i++)
 		{
@@ -130,8 +178,8 @@ public class MakeScenariosFromJSON {
 		}
 	
 		return itemScenario;
-		
 	}
+	
 	/** 
 	 * Extracts list of items from JSON file "ItemList";
 	 * @return
