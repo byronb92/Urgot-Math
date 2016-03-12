@@ -15,13 +15,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import items.Item;
 import items.ItemObjects;
 import scenario.ScenarioManager;
 import scenario.UrgotScenario;
 
 public class MakeScenariosFromJSON {
 	private JSONParser parser;
+	private HashMap<String, ?> mapCurrentBuildTypesProcessed;
+	private HashMap<HashMap<BuildType,String>, HashMap<String, ScenarioManager>> 
+		mapBuildTypesOfScenarioManagers;
 	private HashMap<String, ScenarioManager> mapScenarioManagers;
 	private static final String STARTING = "starting";
 	private static final String DAMAGE = "damage";
@@ -32,11 +34,44 @@ public class MakeScenariosFromJSON {
 	{
 		ALL, STARTING, DAMAGE, BRUISER, TANKY
 	}
-	
+	public ArrayList<ScenarioManager> 
+		getAllManagersFromBuildType(BuildType buildType)
+	{
+		ArrayList<ScenarioManager> listScenarioManagers = 
+				new ArrayList<ScenarioManager>();
+		for(Entry<HashMap<BuildType,String> , HashMap<String, ScenarioManager>> item: 
+			mapBuildTypesOfScenarioManagers.entrySet())
+		{
+			String scenarioManagerString = item.getKey().get(buildType);
+			if (scenarioManagerString != null)
+			{
+				ScenarioManager currentManager =
+						item.getValue().get(scenarioManagerString);
+			 listScenarioManagers.add(currentManager);
+			}
+		}
+		return listScenarioManagers;
+	}
 	public MakeScenariosFromJSON()
 	{
 		parser = new JSONParser();
+		mapCurrentBuildTypesProcessed = new HashMap<String,String>();
+		mapBuildTypesOfScenarioManagers = new HashMap<HashMap<BuildType,String>, 
+				HashMap<String, ScenarioManager>>();
 		mapScenarioManagers = new HashMap<String,ScenarioManager>();
+
+	}
+	
+	public ArrayList<ScenarioManager> getAllManagersWithKey(BuildType buildType)
+	{
+		ArrayList<ScenarioManager> buildTypeScenarioManagers =
+				new ArrayList<ScenarioManager>();
+		HashMap<String,ScenarioManager> mapManager = mapBuildTypesOfScenarioManagers.get(buildType);
+		for(Entry<String, ScenarioManager> managerPair: mapManager.entrySet())
+		{
+			buildTypeScenarioManagers.add(managerPair.getValue());
+		}
+		return buildTypeScenarioManagers;
 	}
 	
 
@@ -52,16 +87,40 @@ public class MakeScenariosFromJSON {
 				parseCompleteJSONFile();
 				return true;
 			case STARTING:
-				buildTypeJSONObject = (JSONObject)obj.get(STARTING);
+				if (!mapCurrentBuildTypesProcessed.containsKey(STARTING)) 
+				{
+					buildTypeJSONObject = (JSONObject)obj.get(STARTING);
+					mapCurrentBuildTypesProcessed.put(STARTING, null);
+				}
+				else 
+				{
+					return true;
+				}
 				break;
 			case DAMAGE:
 				buildTypeJSONObject = (JSONObject)obj.get(DAMAGE);
 				break;
 			case BRUISER:
-				buildTypeJSONObject = (JSONObject)obj.get(BRUISER);
+				if (!mapCurrentBuildTypesProcessed.containsKey(BRUISER)) 
+				{
+					buildTypeJSONObject = (JSONObject)obj.get(BRUISER);
+					mapCurrentBuildTypesProcessed.put(BRUISER, null);
+				}
+				else 
+				{
+					return true;
+				}
 				break;
 			case TANKY:
-				buildTypeJSONObject = (JSONObject)obj.get(TANKY);
+				if (!mapCurrentBuildTypesProcessed.containsKey(TANKY)) 
+				{
+					mapCurrentBuildTypesProcessed.put(TANKY, null);
+					buildTypeJSONObject = (JSONObject)obj.get(TANKY);
+				}
+				else
+				{
+					return true;
+				}
 				break;
 			default:
 				parseCompleteJSONFile();
@@ -71,11 +130,13 @@ public class MakeScenariosFromJSON {
 		mapBuildTypes.putAll(buildTypeJSONObject);
 		for(Entry<String, JSONArray> item: mapBuildTypes.entrySet())
 		{
-			addSceManagerToManagersListFromJSONArray(item.getValue(), item.getKey());
+			addSceManagerToManagersListFromJSONArray(item.getValue(), item.getKey(), buildType);
 		}
 		
 		return true;
 	}
+	
+	//private boolean addMapBuildTypesProcessed(BuildType buildType)
 	
 	private boolean parseCompleteJSONFile() throws ParseException, IOException, ClassNotFoundException, 
 		NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, 
@@ -91,14 +152,14 @@ public class MakeScenariosFromJSON {
 			mapBuildTypes.putAll(item.getValue());
 			for(Entry<String, JSONArray> itemB: mapBuildTypes.entrySet())
 			{
-				addSceManagerToManagersListFromJSONArray(itemB.getValue(), itemB.getKey());
+				addSceManagerToManagersListFromJSONArray(itemB.getValue(), itemB.getKey(), BuildType.ALL);
 			}
 		}
 		return true;
 	}
 	
 	private boolean addSceManagerToManagersListFromJSONArray(
-		JSONArray arrayJSON, String managerTag) throws 
+		JSONArray arrayJSON, String managerTag, BuildType buildType) throws 
 			ClassNotFoundException, NoSuchMethodException, SecurityException, 
 			InstantiationException, IllegalAccessException, IllegalArgumentException, 
 			InvocationTargetException, ParseException, IOException
@@ -113,6 +174,9 @@ public class MakeScenariosFromJSON {
 		}
 		currentSceManager.addAllScenarios(makeListOfScenariosFromJSONArray(arrayJSON));
 		mapScenarioManagers.put(managerTag,currentSceManager);
+		HashMap<BuildType,String> wtfPair = new HashMap<BuildType,String>();
+		wtfPair.put(buildType, managerTag);
+		mapBuildTypesOfScenarioManagers.put(wtfPair,mapScenarioManagers);
 		return true;
 	}
 
