@@ -27,14 +27,7 @@ public abstract class Phase {
 	{
 		return listScenarios;
 	}
-	
-	/**
-	 * This will be overridden by each individual Phase object.
-	 * Based on the code input, a different comparison will be made.
-	 * @param code
-	 */
-	public abstract void runStatCollection(ItemAndLevelSetup setupCode);
-	
+
 	
 	public void addScenarioLevel(String itemName, int currentLevel, String scenarioName)
 	{

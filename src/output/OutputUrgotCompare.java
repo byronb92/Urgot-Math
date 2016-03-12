@@ -1,5 +1,4 @@
 package output;
-import scenario.ItemAndLevelSetup;
 
 import java.util.Map.Entry;
 
@@ -28,29 +27,14 @@ public class OutputUrgotCompare {
 		sceManager = new ScenarioManager();
 	}
 
-	/**
-	 * Adds and sets up UrgotScenarios to be analyzed.
-	 * @param setupCode StatSetup enum specifying scenarios to be added.
-	 */
-	public void statCollection(ItemAndLevelSetup setupCode)
-	{
-		sceManager.setUpStatCollection(setupCode);
-		for (UrgotScenario sce : sceManager.getScenarios())
-		{
-			sce.computeStats();
-		}
-	}
-	
-
 	/** Provides ability to apply same runes and masteries across multiple scenarios.
 	 * @param setupCode StatSetup enum specifying scenarios to be added.
 	 * @param runes RuneSetup enum specifying runes to be added.
 	 * @param masteries MasterySet enum specifying masteries to be added.
 	 */
-	public void statCollection(ItemAndLevelSetup setupCode, 
-			RuneSetup runes, MasterySet masteries)
+	public void statCollection(RuneSetup runes, MasterySet masteries)
 	{
-		sceManager.setUpStatCollection(setupCode);
+		// TODO: Should work if scenarios are already setup.
 		for (UrgotScenario sce : sceManager.getScenarios())
 		{
 			sce.setUpRunesAndMasteries(runes, masteries);

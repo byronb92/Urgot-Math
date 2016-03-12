@@ -11,7 +11,6 @@ import org.junit.Test;
 import battle.BattleSetup;
 import battle.SkillRankType;
 import scenario.ScenarioManager;
-import scenario.ItemAndLevelSetup;
 import scenario.UrgotScenario;
 
 public class ScenarioManagerTest {
@@ -24,7 +23,6 @@ public class ScenarioManagerTest {
 
 	@Test
 	public void testEarlyRawDamage() {
-		sceManage.statCollection(ItemAndLevelSetup.LEVEL6);
 		sceManage.battleCollection(BattleSetup.ALLIN_NOULT, SkillRankType.STANDARD);
 		sceManage.findHighestRawDamage();
 		

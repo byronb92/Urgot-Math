@@ -32,10 +32,6 @@ import items.ItemRemovalWrapper;
  *
  */
 public class ScenarioManager {
-	
-	private EarlyGameScenarios early;
-	private MidGameScenarios mid;
-	private LateGameScenarios late;
 	private ArrayList<UrgotScenario> listAllScenarios;
 	private String scenarioManagerName;
 	
@@ -54,51 +50,10 @@ public class ScenarioManager {
 	{
 		return scenarioManagerName;
 	}
-	public void setUpStatCollection(ItemAndLevelSetup setupCode)
+
+	public ArrayList<UrgotScenario> getScenarios()
 	{
-		
-		if (setupCode == ItemAndLevelSetup.LEVEL4 || setupCode == ItemAndLevelSetup.LEVEL6 || 
-				setupCode == ItemAndLevelSetup.MASTERIES_LEVEL1 || setupCode == ItemAndLevelSetup.STARTING_ITEMS)
-		{
-			early = new EarlyGameScenarios();
-			setUpPhase(early, setupCode);
-		}
-		else if (setupCode == ItemAndLevelSetup.LEVEL9 || setupCode == ItemAndLevelSetup.LEVEL12)
-		{
-			mid = new MidGameScenarios();
-			setUpPhase(mid, setupCode);
-		}
-		else if (setupCode == ItemAndLevelSetup.LEVEL15 || setupCode == ItemAndLevelSetup.LEVEL18)
-		{
-			late = new LateGameScenarios();
-			setUpPhase(late, setupCode);
-		}
-	}
-	
-	/**
-	 * Collections stats for all scenarios.
-	 * @param setupCode
-	 */
-	public void statCollection(ItemAndLevelSetup setupCode)
-	{
-		setUpStatCollection(setupCode);
-		for (UrgotScenario sce : getScenarios())
-		{
-			sce.computeStats();
-		}
-	}
-	
-	
-	/**
-	 * Preps output by grabbing the relevant item sets, based on phase and code passed in.
-	 * @param phase, early, mid, late game setup.
-	 * @param code - dependent on phase. Each Phase object has it's own outputs.
-	 */
-	private void setUpPhase(Phase phase, ItemAndLevelSetup setupCode)
-	{
-		phase.runStatCollection(setupCode);
-		addAllScenarios(phase.getScenarios());
-		
+		return listAllScenarios;
 	}
 	
 	public void battleCollection(BattleSetup battleSetup, SkillRankType rankType)
@@ -107,11 +62,6 @@ public class ScenarioManager {
 		{
 			sce.computeBattleScenario(battleSetup, rankType);
 		}
-	}
-
-	public ArrayList<UrgotScenario> getScenarios()
-	{
-		return listAllScenarios;
 	}
 
 	public void addAllScenarios(ArrayList<UrgotScenario> smallList)

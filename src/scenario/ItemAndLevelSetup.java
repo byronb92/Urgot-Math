@@ -1,6 +1,0 @@
-package scenario;
-
-public enum ItemAndLevelSetup {
-	MASTERIES_LEVEL1, STARTING_ITEMS, LEVEL4,
-	LEVEL6, LEVEL9, LEVEL12, LEVEL15, LEVEL18
-}
