@@ -1,7 +1,6 @@
 package battle.actions.effects;
 
 import battle.Battle;
-import battle.actions.BattleAction;
 import urgot.UrgotStats;
 
 public class HextechAfterBattle extends EffectAfterBattle {

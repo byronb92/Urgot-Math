@@ -13,7 +13,6 @@ import battle.SkillRankType;
 import battle.dynamic.CompleteDamage;
 import battle.dynamic.UrgotVsEnemy;
 import calc.DefenseCalculator;
-import calc.UniqueCalculator;
 
 import java.util.TreeMap;
 

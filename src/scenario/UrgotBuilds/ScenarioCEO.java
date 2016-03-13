@@ -13,6 +13,10 @@ public class ScenarioCEO {
 		listAllScenarioManagers = new ArrayList<ScenarioManager>();
 	}
 	
+	public ArrayList<ScenarioManager> getScenarioManagers()
+	{
+		return listAllScenarioManagers;
+	}
 	public void addScenarioManager(ScenarioManager sceManager)
 	{
 		listAllScenarioManagers.add(sceManager);

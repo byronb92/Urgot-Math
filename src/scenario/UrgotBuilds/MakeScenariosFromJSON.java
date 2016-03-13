@@ -21,7 +21,6 @@ import scenario.UrgotScenario;
 
 public class MakeScenariosFromJSON {
 	private JSONParser parser;
-	private HashMap<String, ?> mapCurrentBuildTypesProcessed;
 	private HashMap<HashMap<BuildType,String>, HashMap<String, ScenarioManager>> 
 		mapBuildTypesOfScenarioManagers;
 	private HashMap<String, ScenarioManager> mapScenarioManagers;
@@ -55,7 +54,6 @@ public class MakeScenariosFromJSON {
 	public MakeScenariosFromJSON()
 	{
 		parser = new JSONParser();
-		mapCurrentBuildTypesProcessed = new HashMap<String,String>();
 		mapBuildTypesOfScenarioManagers = new HashMap<HashMap<BuildType,String>, 
 				HashMap<String, ScenarioManager>>();
 		mapScenarioManagers = new HashMap<String,ScenarioManager>();
@@ -87,40 +85,16 @@ public class MakeScenariosFromJSON {
 				parseCompleteJSONFile();
 				return true;
 			case STARTING:
-				if (!mapCurrentBuildTypesProcessed.containsKey(STARTING)) 
-				{
-					buildTypeJSONObject = (JSONObject)obj.get(STARTING);
-					mapCurrentBuildTypesProcessed.put(STARTING, null);
-				}
-				else 
-				{
-					return true;
-				}
+				buildTypeJSONObject = (JSONObject)obj.get(STARTING);
 				break;
 			case DAMAGE:
 				buildTypeJSONObject = (JSONObject)obj.get(DAMAGE);
 				break;
 			case BRUISER:
-				if (!mapCurrentBuildTypesProcessed.containsKey(BRUISER)) 
-				{
-					buildTypeJSONObject = (JSONObject)obj.get(BRUISER);
-					mapCurrentBuildTypesProcessed.put(BRUISER, null);
-				}
-				else 
-				{
-					return true;
-				}
+				buildTypeJSONObject = (JSONObject)obj.get(BRUISER);
 				break;
 			case TANKY:
-				if (!mapCurrentBuildTypesProcessed.containsKey(TANKY)) 
-				{
-					mapCurrentBuildTypesProcessed.put(TANKY, null);
-					buildTypeJSONObject = (JSONObject)obj.get(TANKY);
-				}
-				else
-				{
-					return true;
-				}
+				buildTypeJSONObject = (JSONObject)obj.get(TANKY);
 				break;
 			default:
 				parseCompleteJSONFile();
@@ -135,8 +109,6 @@ public class MakeScenariosFromJSON {
 		
 		return true;
 	}
-	
-	//private boolean addMapBuildTypesProcessed(BuildType buildType)
 	
 	private boolean parseCompleteJSONFile() throws ParseException, IOException, ClassNotFoundException, 
 		NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, 
