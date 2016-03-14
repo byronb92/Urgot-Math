@@ -1,0 +1,45 @@
+{
+  "Items": {
+    "Legendary": {
+      "BansheesVeil": {},
+      "BlackCleaver": {},
+      "DeadMansPlate": {},
+      "FrozenHeart": {},
+      "IcebornGauntlet": {},
+      "LordDominiksRegards": {},
+      "Manamune": {},
+      "MawOfMalmortius": {},
+      "RanduinsOmen": {},
+      "RighteousGlory": {},
+      "SpiritVisage": {},
+      "SteraksGage": {},
+      "SunfireCape": {},
+      "Thornmail": {},
+      "TrinityForce": {},
+      "YoumuuGhostblade": {},
+      "ZzRotPortal": {}
+    },
+    "Boots": {
+      "Boots": {},
+      "BootsIonian": {},
+      "BootsNinja": {},
+      "BootsTreads": {}
+    },
+    "Intermediate": {
+      "CaulfieldWarhammer": {},
+      "Phage": {},
+      "SerratedDirk": {},
+      "Sheen": {},
+      "Tear": {}
+    },
+    "Single": {
+      "ClothArmor": {},
+      "LongSword": {},
+      "SapphireCrystal": {},
+      "Pickaxe": {}
+    },
+    "Special": {
+      "Muramana": {}
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "Single": {
+    "ClothArmor": {},
+    "LongSword": {},
+    "SapphireCrystal": {},
+    "Pickaxe": {}
+  },
+  "Intermediate": {
+    "CaulfieldWarhammer": {},
+    "Phage": {},
+    "SerratedDirk": {},
+    "Sheen": {},
+    "Tear": {}
+  },
+  "Legendary": {
+    "BansheesVeil": {},
+    "BlackCleaver": {},
+    "DeadMansPlate": {},
+    "DuskbladeOfDraktharr": {},
+    "FrozenHeart": {},
+    "IcebornGauntlet": {},
+    "LordDominiksRegards": {},
+    "Manamune": {},
+    "MawOfMalmortius": {},
+    "RanduinsOmen": {},
+    "RighteousGlory": {},
+    "SpiritVisage": {},
+    "SteraksGage": {},
+    "SunfireCape": {},
+    "Thornmail": {},
+    "TrinityForce": {},
+    "YoumuuGhostblade": {},
+    "ZzRotPortal": {}
+  },
+  "Boots": {
+    "Boots": {},
+    "BootsIonian": {},
+    "BootsNinja": {},
+    "BootsTreads": {}
+  },
+  "Special": {
+    "Muramana": {}
+  }
+}
