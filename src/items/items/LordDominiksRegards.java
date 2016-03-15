@@ -6,7 +6,7 @@ import urgot.UrgotStats;
 public class LordDominiksRegards extends Item {
 
 	private int ad = 40;
-	private double bonusArmorPen = 0.40;
+	private double bonusArmorPen = 0.45;
 	
 	public LordDominiksRegards()
 	{
@@ -14,13 +14,12 @@ public class LordDominiksRegards extends Item {
 	}
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		urgot.addBonusArmorPen(bonusArmorPen);
+		urgot.addBonusPercentArmorPen(bonusArmorPen);
 		urgot.addBonusAD(ad);
 	}
 
@@ -37,10 +36,9 @@ public class LordDominiksRegards extends Item {
 
 	@Override
 	protected void setDetails() {
-		details = "Grants up to +15% physical damage "
-				+ "against enemy champions with greater maximum Health than you "
-				+ "(+1.5% damage per 50 Health difference, maxing at 500 Health "
-				+ "difference).";
+		details = "15% physical damage increase against enemy champions with "
+				+ "greater max HP than you (+1.5% damage per 50 Health difference, "
+				+ "maxing at 500 Health difference).";
 		
 	}
 	

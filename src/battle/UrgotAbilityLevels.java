@@ -19,14 +19,25 @@ public class UrgotAbilityLevels {
 	}
 	private void addAggressiveAbilities()
 	{
-		// TODO: Find out aggressive skill pathing.
 		ArrayList<UrgotSkillRank> aggressiveRank = new ArrayList<UrgotSkillRank>(18);
 		aggressiveRank.add(new UrgotSkillRank(1,0,0,0));
 		aggressiveRank.add(new UrgotSkillRank(1,0,1,0));
 		aggressiveRank.add(new UrgotSkillRank(2,0,1,0));
 		aggressiveRank.add(new UrgotSkillRank(2,0,2,0));
-		aggressiveRank.add(new UrgotSkillRank(3,0,2,0));
+		aggressiveRank.add(new UrgotSkillRank(3,0,2,0));	
 		aggressiveRank.add(new UrgotSkillRank(3,0,2,1));
+		aggressiveRank.add(new UrgotSkillRank(4,0,2,1));
+		aggressiveRank.add(new UrgotSkillRank(4,0,3,1));
+		aggressiveRank.add(new UrgotSkillRank(5,0,3,1));
+		aggressiveRank.add(new UrgotSkillRank(5,0,4,1));
+		aggressiveRank.add(new UrgotSkillRank(5,0,4,2));	
+		aggressiveRank.add(new UrgotSkillRank(5,0,5,2));
+		aggressiveRank.add(new UrgotSkillRank(5,1,5,2));
+		aggressiveRank.add(new UrgotSkillRank(5,2,5,2));
+		aggressiveRank.add(new UrgotSkillRank(5,3,5,2));
+		aggressiveRank.add(new UrgotSkillRank(5,3,5,3));
+		aggressiveRank.add(new UrgotSkillRank(5,4,5,3));
+		aggressiveRank.add(new UrgotSkillRank(5,5,5,3));
 		abilityRanks.put(SkillRankType.AGGRESSIVE, aggressiveRank);
 	}
 	private void addStandardAbilities()

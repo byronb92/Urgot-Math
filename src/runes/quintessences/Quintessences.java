@@ -8,7 +8,6 @@ public class Quintessences extends UtilityRune {
 	public void setUpRuneTable() {
 		this.mapRuneValueLookup.put("Ability Power", 4.95);
 		this.mapRuneValueLookup.put("Armor", 4.26);
-		// TODO: Add gold per second stat.
 		this.mapRuneValueLookup.put("Gold", 1.0);
 		this.mapRuneValueLookup.put("Health", 26.0);
 		this.mapRuneValueLookup.put("Health Regeneration", 2.7);

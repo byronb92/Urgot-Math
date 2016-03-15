@@ -7,7 +7,6 @@ import urgot.UrgotStats;
 /**
  * Handles addition of masteries.
  * Any misspelling of a mastery that does not exist creates an error.
- * TODO: Catch this error.
  * @author byronb92
  *
  */

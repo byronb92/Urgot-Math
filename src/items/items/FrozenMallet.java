@@ -4,17 +4,17 @@ import items.Item;
 import urgot.UrgotStats;
 
 public class FrozenMallet extends Item {
-
+	private int hp = 650;
+	private int ad = 40;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void addItemStats(UrgotStats urgot) {
-		// TODO Auto-generated method stub
-		
+		urgot.addBonusHP(hp);
+		urgot.addBonusAD(ad);		
 	}
 
 	@Override
@@ -31,13 +31,15 @@ public class FrozenMallet extends Item {
 
 	@Override
 	protected void setDetails() {
-		// TODO Auto-generated method stub
+		details = "UNIQUE – ICY: Basic attacks (on-hit) apply 40% (30% ranged) slow "
+				+ "to your target for 1.5 seconds, refreshing with every hit.";
 		
 	}
 
 	@Override
 	protected void setCategory() {
-		// TODO Auto-generated method stub
+		category.put("Attack Damage", "");
+		category.put("Health", "");
 		
 	}
 

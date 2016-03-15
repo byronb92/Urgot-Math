@@ -8,9 +8,7 @@ public class MercurialScimitar extends Item {
 	private int ad = 65;
 	private double lifeSteal = 0.10;
 	@Override
-	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
-		
+	public void applyPassive(UrgotStats urgot) {		
 	}
 
 	@Override

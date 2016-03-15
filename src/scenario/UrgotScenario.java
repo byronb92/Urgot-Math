@@ -60,10 +60,6 @@ public class UrgotScenario implements Cloneable {
 		setItemManager(itemManager);
 	}
 	
-//	public Object clone() throws CloneNotSupportedException
-//	{
-//		return deepClone(this);
-//	}
 	 public UrgotScenario(UrgotScenario urg) {
 		 this(urg.urgot,
 				 urg.masteryManager,
@@ -72,19 +68,7 @@ public class UrgotScenario implements Cloneable {
 				 urg.battleManager);
 	 }
 
-	 @Override
-	 public Object clone() throws CloneNotSupportedException {
-		 UrgotScenario cloned = (UrgotScenario)super.clone();
-		 cloned.setUrgot((UrgotStats)cloned.getUrgotStats().Clone());
-		 cloned.setItemManager((ItemManager)cloned.itemManager.Clone());
-		 cloned.setRuneManager((RuneManager)cloned.getRuneManager().Clone());
-		 cloned.setMasteryManager((MasteryManager)cloned.getMasteryManager().Clone());
-		 cloned.setBattleManager((BattleManager)cloned.battleManager.Clone());
-		 // the above is applicable in case of primitive member types, 
-		 // however, in case of non primitive types
-		 // cloned.setNonPrimitiveType(cloned.getNonPrimitiveType().clone());
-		 return cloned;
-	 }
+
 	 
 	 
 	
@@ -157,6 +141,12 @@ public class UrgotScenario implements Cloneable {
 		battleManager.runBattleCalculations();
 	}
 	
+	public void computeStatsAndBattleScenario(BattleSetup battleSetup, SkillRankType rankType)
+	{
+		computeStats();
+		battleManager.battleSetup(battleSetup, rankType);
+		battleManager.runBattleCalculations();
+	}
 	public void computeBattleScenario(BattleSetup battleSetup, SkillRankType rankType)
 	{
 		battleManager.battleSetup(battleSetup, rankType);

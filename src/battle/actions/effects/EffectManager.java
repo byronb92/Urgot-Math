@@ -24,10 +24,7 @@ public class EffectManager {
 		listEffects.add(effect);
 	}
 	
-	/**
-	 * Sorts effects to be called only when they are added properly.
-	 * Prevents unnecessary calling of effects.
-	 */
+	/** Seperates effects into different maps to prevent unnecessary calling */
 	public void sortEffects()
 	{
 		for (int i = 0; i < listEffects.size(); i++)

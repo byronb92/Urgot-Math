@@ -10,14 +10,14 @@ public class DefenseCalculator {
 		
 	}
 	
-	public double findHealthVsPhysical(UrgotScenario sce)
+	public static double findHealthVsPhysical(UrgotScenario sce)
 	{
 		double healthA = sce.getUrgotStats().getTotalHP();
 		double trueHP = healthA + ((healthA * 0.01)*(sce.getUrgotStats().getTotalArmor()));
 		return trueHP;
 	}
 	
-	public double findHealthVsMagic(UrgotScenario sce)
+	public static double findHealthVsMagic(UrgotScenario sce)
 	{
 		double healthA = sce.getUrgotStats().getTotalHP();
 		double trueHP = healthA + ((healthA * 0.01)*(sce.getUrgotStats().getTotalMR()));
@@ -54,15 +54,6 @@ public class DefenseCalculator {
 		return false;
 	}
 	
-	
-	public void findBestBalancedBuildArmor(UrgotScenario sce)
-	{
-		
-	}
-	
-	public void findBestBalancedBuildMR()
-	{
-		
-	}
+
 
 }

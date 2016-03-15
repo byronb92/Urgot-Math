@@ -54,9 +54,7 @@ public class Thornmail extends Item {
 						+ "from basic attacks and on-hit effects back to its source as "
 						+ "magic damage";
 			}
-		}
-		// TODO: Compute thornmail damage done.
-		
+		}		
 	}
 	@Override
 	protected void setCategory() {

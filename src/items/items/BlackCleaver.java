@@ -1,13 +1,23 @@
 package items.items;
 
+import calc.UniqueCalculator;
 import items.Item;
 import urgot.UrgotStats;
 
+/**
+ * Important assumption about Black Cleaver:
+ * Math is assumed to always have full stacks.
+ * Numbers may seem more powerful than they actually are.
+ * @author bbeck799
+ *
+ */
 public class BlackCleaver extends Item {
 
 	private int health = 300;
 	private int ad = 55;
 	private double cdr = 0.20;
+	private boolean passiveApplied = false;
+	private UrgotStats urgot;
 	
 	public BlackCleaver()
 	{
@@ -16,7 +26,9 @@ public class BlackCleaver extends Item {
 	
 	@Override
 	public void applyPassive(UrgotStats urgot) {
-		
+		this.urgot = urgot;
+		passiveApplied = true;
+		setDetails();
 	}
 
 	@Override
@@ -24,10 +36,7 @@ public class BlackCleaver extends Item {
 		urgot.addBonusHP(health);
 		urgot.addBonusAD(ad);
 		urgot.addCDR(cdr);
-		// TODO: Calculate Black Cleaver on stack by stack basis.
-		urgot.addArmReduc(0.30);
-		// TODO: Calculate movement speed boost.
-		
+		urgot.addPercentArmReduc(0.30);		
 	}
 
 	@Override
@@ -43,8 +52,26 @@ public class BlackCleaver extends Item {
 
 	@Override
 	protected void setDetails() {
-		details = "30% armor reduction after 5 stacks of physical damage."
-				+ "5% armor per stack.";
+		if (!passiveApplied)
+		{
+			details = "UNIQUE: 30% armor reduction after 5 stacks of physical damage."
+					+ "5% armor per stack.\n"
+					+ "RAGE: Physical damage grants 20 (10 for ranged) movement speed for 2 seconds.\n"
+					+ "Kills on unit or assists on champs grants 60 (30 for ranged) movement speed.";
+		}
+		else
+		{
+			details = "UNIQUE: 30% armor reduction after 5 stacks of physical damage."
+					+ "5% armor per stack.\n"
+					+ "RAGE: Physical damage grants 20 (10 for ranged) movement speed for 2 seconds.\n"
+					+ "Kills on unit or assists on champs grants 60 (30 for ranged) movement speed.\n"
+					+ "Urgot Physical Damage MS; " + 
+						UniqueCalculator.getMSBonus(urgot, 10) + "\n"
+					+ "Urgot Kill MS: " + 
+						UniqueCalculator.getMSBonus(urgot, 30);
+		}
+
+		
 	}
 	@Override
 	protected void setCategory() {

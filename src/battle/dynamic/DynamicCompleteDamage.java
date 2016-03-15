@@ -1,23 +1,30 @@
 package battle.dynamic;
 
-public class CompleteDamage {
+
+/**
+ * Uses DynamicResistModifers to compute damage after damage modifiers.
+ * Damage modifiers are considered to be armor and magic resistance.
+ * @author bbeck799
+ *
+ */
+public class DynamicCompleteDamage {
 	private String name;
 	private double physicalDamage;
 	private double magicDamage;
-	private ResistanceModifiers resistMod;
+	private DynamicResistModifier resistMod;
 	
 	private String comparedWith;
 	private double comparedDamage;
 	
-	public CompleteDamage(String o, double physical, double magic)
+	public DynamicCompleteDamage(String o, double physical, double magic)
 	{
 		name = o;
 		physicalDamage = physical;
 		magicDamage = magic;
 	}
 	
-	public CompleteDamage(String o, double physical, double magic,
-			ResistanceModifiers resistMod)
+	public DynamicCompleteDamage(String o, double physical, double magic,
+			DynamicResistModifier resistMod)
 	{
 		name = o;
 		physicalDamage = physical;
@@ -55,7 +62,7 @@ public class CompleteDamage {
 		return physicalDamage + magicDamage;
 	}
 	
-	public ResistanceModifiers getResistMod()
+	public DynamicResistModifier getResistMod()
 	{
 		return resistMod;
 	}

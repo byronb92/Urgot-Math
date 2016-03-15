@@ -1,6 +1,8 @@
 package battle.dynamic;
 
-public class ResistanceModifiers {
+import java.util.HashMap;
+
+public class DynamicResistModifier {
 	
 	private String name;
 	private double armorReduc_Flat;
@@ -14,10 +16,11 @@ public class ResistanceModifiers {
 	private double magicPen_Percent;
 	private double magicPen_Flat;
 	
-	public ResistanceModifiers(String name)
+	public DynamicResistModifier(String name)
 	{
 		this.name = name;
 	}
+	public String getName() { return name; }
 	
 	public void setArmorModifications(
 			double armorReduc_Flat, double armorReduc_Percent,
@@ -29,7 +32,6 @@ public class ResistanceModifiers {
 		this.armorPenBonus_Percent = armorPenBonus_Percent;
 		this.armorPen_Flat = armorPen_Flat;
 	}
-	
 	public void setMagicResistanceModifications(
 			double magicReduc_Flat, double magicReduc_Percent,
 			double magicPen_Percent, double magicPen_Flat)
@@ -38,10 +40,6 @@ public class ResistanceModifiers {
 		this.magicReduc_Percent = magicReduc_Percent;
 		this.magicPen_Percent = magicPen_Percent;
 		this.magicPen_Flat = magicPen_Flat;
-	}
-	public String getName()
-	{
-		return name;
 	}
 	public double getTrueEnemyArmor(double enemyBaseArmor, double enemyBonusArmor)
 	{
@@ -61,8 +59,32 @@ public class ResistanceModifiers {
 		double enemyTrueArmor = trueEnemyBaseArmor + trueEnemyBonusArmor;
 		enemyTrueArmor = enemyTrueArmor - armorPen_Flat;
 		return enemyTrueArmor;
+		
+		/*
+		 * 		double armorReduc_Flat = 0; // Urgot has no flat armor reduction.
+		double armorReduc_Percent = sce.getUrgotStats().getPercentArmorReduc();
+		double armorPen_Percent = sce.getUrgotStats().getPercentArmorPen();
+		double armorPen_BonusPercent = sce.getUrgotStats().getBonusPercentArmorPen();
+		double armorPen_Flat = sce.getUrgotStats().getFlatArmorPen();
+		
+		// Armor reduction is split between base and bonus armor.
+		double trueEnemyBaseArmor = enemyBaseArmor - (armorReduc_Flat/2);
+		double trueEnemyBonusArmor = enemyBonusArmor - (armorReduc_Flat/2);
+
+
+		trueEnemyBaseArmor = trueEnemyBaseArmor * (armorReduc_Percent);
+		trueEnemyBonusArmor = trueEnemyBonusArmor * armorReduc_Percent;
+
+		trueEnemyBaseArmor = trueEnemyBaseArmor - (trueEnemyBaseArmor * armorPen_Percent);
+		trueEnemyBonusArmor = trueEnemyBonusArmor - (trueEnemyBonusArmor * armorPen_Percent);
+		trueEnemyBonusArmor = trueEnemyBonusArmor - (trueEnemyBonusArmor * armorPen_BonusPercent);
+
+
+		double enemyTrueArmor = trueEnemyBaseArmor + trueEnemyBonusArmor;
+		enemyTrueArmor = enemyTrueArmor - armorPen_Flat;
+		return enemyTrueArmor;
+		 */
 	}
-	
 	public double getTrueEnemyMR(double enemyBaseMR, double enemyBonusMR)
 	{
 		double trueEnemyBaseMR = enemyBaseMR - (magicReduc_Flat/2);
@@ -81,6 +103,4 @@ public class ResistanceModifiers {
 		return enemyTrueMR;
 	}
 	
-	
-
 }
