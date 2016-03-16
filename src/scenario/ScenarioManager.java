@@ -538,7 +538,27 @@ public class ScenarioManager {
 	
 
 	
-	
+	public String getAllScenarioItems()
+	{
+		StringBuilder builder = new StringBuilder();
+		for (UrgotScenario currentScenario : getScenarios())
+		{
+			// TODO: If there is no name the default returns item list.
+			// There will be duplicates here if the scenario doesn't have a name but has items...
+			builder.append("Scenario Name: " + currentScenario.getScenarioName() + "\n");
+			if (currentScenario.getUrgotItems().getItems().size() > 0)
+			{
+				builder.append("Items: ");
+				for(Entry<String,Item> item: currentScenario.getUrgotItems().getItems().entrySet())
+				{
+					builder.append(item.getValue().getName() + " ");
+				}
+				builder.append("\n");
+			}
+			builder.append("\n");
+		}
+		return builder.toString();
+	}
 	public String getScenarioItems(UrgotScenario sce)
 	{
 

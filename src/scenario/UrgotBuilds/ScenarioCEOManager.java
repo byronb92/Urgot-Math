@@ -2,6 +2,7 @@ package scenario.UrgotBuilds;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 
 import org.json.simple.parser.ParseException;
 
@@ -20,6 +21,10 @@ public class ScenarioCEOManager {
 		scenariosFromJSON = new MakeScenariosFromJSON();
 	}
 	
+	public ArrayList<ScenarioManager> getScenarioManagers()
+	{
+		return sceCEO.getScenarioManagers();
+	}
 	public boolean addScenariosByBuildType(BuildType buildType) throws ClassNotFoundException, 
 		NoSuchMethodException, SecurityException, InstantiationException, 
 		IllegalAccessException, IllegalArgumentException, InvocationTargetException, 
