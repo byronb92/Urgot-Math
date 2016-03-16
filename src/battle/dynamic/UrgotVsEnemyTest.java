@@ -8,10 +8,10 @@ import org.junit.Test;
 
 public class UrgotVsEnemyTest {
 
-	private DynamicDamageVSEnemy urgVs;
+	//private DynamicDamageVSEnemy urgVs;
 	@Before
 	public void setUp() throws Exception {
-		urgVs = new DynamicDamageVSEnemy();
+		//urgVs = new DynamicDamageVSEnemy();
 	}
 
 	@Test

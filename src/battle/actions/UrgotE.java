@@ -23,16 +23,19 @@ public class UrgotE extends Spell {
 		double totalDps = baseDps + scalingDps;
 		
 		// Urgot E ticks 5 times in 5 seconds.
+		double armReduc = 0.10 + (.02 * getSpellRank());
+		urgot.addPercentArmReduc(armReduc);
 		battle.addSpellCast();
 		battle.addPhysicalDamage(totalDps);
+		
+		
 		battle.addPhysicalDamage(totalDps);
 		battle.addPhysicalDamage(totalDps);
 		battle.addPhysicalDamage(totalDps);
 		battle.addPhysicalDamage(totalDps);
 		battle.addSpellDamage(totalDps*5);
 		
-		double armReduc = 0.10 + (.02 * getSpellRank());
-		urgot.addPercentArmReduc(armReduc);
+
 		
 	}
 

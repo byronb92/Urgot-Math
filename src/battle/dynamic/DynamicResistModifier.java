@@ -1,6 +1,5 @@
 package battle.dynamic;
 
-import java.util.HashMap;
 
 public class DynamicResistModifier {
 	

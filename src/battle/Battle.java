@@ -116,6 +116,14 @@ public class Battle
 		spellCastTime = spellCastTime + spellTime;
 	}
 	
+	/** Helps with computing damage dynamically.
+	 * In particular with Black Cleaver.
+	 */
+	public void undoLastPhysicalAddition(double oldDamage)
+	{
+		physicalDamage = physicalDamage - oldDamage;
+	}
+	
 	public int getSpellsCast() { return spellsCast; }
 	public double getBattleTime() { return battleTime; }
 	public int getPhysicalAttacks() { return physicalAttacksDone; }

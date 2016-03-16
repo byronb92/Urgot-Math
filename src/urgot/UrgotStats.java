@@ -1,8 +1,14 @@
 package urgot;
 
+import java.util.HashMap;
+
 import battle.actions.effects.Effect;
 import battle.actions.effects.EffectManager;
+import battle.dynamic.DynamicCompleteDamage;
+import battle.dynamic.DynamicDamageVSEnemy;
+import battle.dynamic.DynamicResistModifier;
 import calc.UniqueCalculator;
+import scenario.UrgotScenario;
 
 public class UrgotStats implements Cloneable {
 	
@@ -336,5 +342,53 @@ public class UrgotStats implements Cloneable {
 	{
 		return baseAD + (adPerLevel * (currentLevel - 1));
 	}
+	
+	
+	public DynamicCompleteDamage computeDamageAfterResistances(UrgotStats urgot, double rawPhysicalDamage,
+			double enemyBaseArmor, double enemyBonusArmor)
+	{
+		
+		DynamicDamageVSEnemy urgVsEnemy = new DynamicDamageVSEnemy();
+		return urgVsEnemy.damageVsEnemy(resistModFromUrgotStats(urgot,urgVsEnemy),
+				rawPhysicalDamage, 0,
+				enemyBaseArmor, enemyBonusArmor, 0, 0);			
+	}
+	
+	private HashMap<String,Double> getArmorandMRModifiersAsMap(UrgotStats urgot)
+	{
+		double armorReduc_Flat = urgot.getFlatArmorReduc();
+		double armorReduc_Percent = urgot.getPercentArmorReduc();
+		double armorPen_Percent = urgot.getPercentArmorPen();
+		double armorPen_BonusPercent = urgot.getBonusPercentArmorPen();
+		double armorPen_Flat = urgot.getFlatArmorPen();
+		
+		// TODO: Add magic penetration stats to UrgotStats.
+		double magicReduc_Flat = 0;
+		double magicReduc_Percent = 0;
+		double magicPen_Percent = 0;
+		double magicPen_Flat = 0;
+		
+		HashMap<String,Double> mapMod = new HashMap<String,Double>();
+		mapMod.put("Flat Armor Reduction", armorReduc_Flat);
+		mapMod.put("Percent Armor Reduction", armorReduc_Percent);
+		mapMod.put("Percent Armor Penetration", armorPen_Percent);
+		mapMod.put("Percent Bonus Armor Penetration", armorPen_BonusPercent);
+		mapMod.put("Flat Armor Penetration", armorPen_Flat);
+		
+		mapMod.put("Flat Magic Reduction", magicReduc_Flat);
+		mapMod.put("Percent Magic Reduction", magicReduc_Percent);
+		mapMod.put("Percent Magic Reduction", magicPen_Percent);
+		mapMod.put("Flat Magic Penetration", magicPen_Flat);
+		return mapMod;
+	}
+	
+	private DynamicResistModifier resistModFromUrgotStats(UrgotStats urgot,
+			DynamicDamageVSEnemy urgotVsEnemy)
+	{
+		HashMap<String,Double> modMap = getArmorandMRModifiersAsMap(urgot);
+		return urgotVsEnemy.resistModifierWithMap("TODO: Name Urgot Stats", modMap);
+	}
+	
+
 
 }

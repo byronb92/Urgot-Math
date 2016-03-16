@@ -144,9 +144,7 @@ public class BattleManager implements Cloneable {
 		{
 			BattleAction currentAction = listBattleActions.get(i);
 			handleBattleTime(battleTimeMap, currentAction);
-			double preCalcPhysicalDamage = battle.getPhysicalDamage();
 			currentAction.runBattleCalculations(battle, urgot);
-			double physicalDamageAdded = battle.getPhysicalDamage() - preCalcPhysicalDamage;
 			applyAfterBattleActionEffects(currentAction);
 		}
 		applyAfterBattleEffects();

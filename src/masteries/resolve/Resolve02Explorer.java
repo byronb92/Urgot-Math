@@ -13,8 +13,7 @@ public class Resolve02Explorer extends Mastery {
 
 	@Override
 	public void runMasteryCalculations(UrgotStats urgot) {
-		UniqueCalculator calc = new UniqueCalculator();
-		double totalMS = calc.getMSBonus(urgot, 15);
+		double totalMS = UniqueCalculator.getMSBonus(urgot, 15);
 		setMasteryDetails("Explorer: +15 MS in River/Brush. (" + totalMS + ")");
 		
 	}
