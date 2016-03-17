@@ -5,6 +5,8 @@ import scenario.UrgotScenario;
 import urgot.UrgotStats;
 
 public class UniqueCalculator {
+	
+	//public double computeMuramanaDamage(int mana, )
 	/**
 	 * Each scenario is based on a typical urgot E-Q combo.
 	 * Computes enhanced damage of sheen usage.=

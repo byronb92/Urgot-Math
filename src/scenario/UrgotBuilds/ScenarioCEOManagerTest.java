@@ -1,4 +1,5 @@
 package scenario.UrgotBuilds;
+import scenario.*;
 
 import static org.junit.Assert.*;
 
@@ -9,6 +10,8 @@ import org.json.simple.parser.ParseException;
 import org.junit.Before;
 import org.junit.Test;
 
+import battle.BattleSetup;
+import battle.SkillRankType;
 import scenario.ScenarioManager;
 import scenario.UrgotBuilds.MakeScenariosFromJSON.BuildType;
 
@@ -33,7 +36,7 @@ public class ScenarioCEOManagerTest {
 				
 	}
 	
-	@Test
+	//@Test
 	public void testOutputItemListToConsole() throws 
 		ClassNotFoundException, NoSuchMethodException, SecurityException, 
 		InstantiationException, IllegalAccessException, IllegalArgumentException, 
@@ -42,5 +45,15 @@ public class ScenarioCEOManagerTest {
 		System.out.println("Complete list of items contained in Damage Scenario Managers");
 		sceCEOManager.addScenariosByBuildType(BuildType.DAMAGE);
 		System.out.println(getItemListAsStringFromEachScenarioManager());
+	}
+	@Test
+	public void testOutputGeneralToConsole() throws ClassNotFoundException, 
+	NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, 
+	IllegalArgumentException, InvocationTargetException, IOException, ParseException
+	{
+		System.out.println("Super general output.");
+		sceCEOManager.addScenariosByBuildType(BuildType.DAMAGE);
+		sceCEOManager.computeStatsAndBattleScenario(BattleSetup.ALLIN_ULT, SkillRankType.STANDARD);
+		System.out.println(sceCEOManager.outputGeneral());
 	}
 }

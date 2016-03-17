@@ -24,6 +24,8 @@ import items.Item;
 import items.ItemObjects;
 import items.ItemRemovalWrapper;
 
+
+
 /** 
  * ScenarioManager gives the ability to aggregate data 
  * about Urgot builds/stats/calculations.
@@ -33,7 +35,6 @@ import items.ItemRemovalWrapper;
 public class ScenarioManager {
 	private ArrayList<UrgotScenario> listAllScenarios;
 	private String scenarioManagerName;
-	
 	
 	public ScenarioManager()
 	{
@@ -63,6 +64,13 @@ public class ScenarioManager {
 		}
 	}
 
+	public void computeStatsAndBattleScenario(BattleSetup battleSetup, SkillRankType rankType)
+	{
+		for (UrgotScenario sce : getScenarios())
+		{
+			sce.computeStatsAndBattleScenario(battleSetup, rankType);
+		}
+	}
 	public void addAllScenarios(ArrayList<UrgotScenario> smallList)
 	{
 		listAllScenarios.addAll(smallList);
