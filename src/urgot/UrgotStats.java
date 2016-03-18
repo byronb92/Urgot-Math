@@ -67,6 +67,7 @@ public class UrgotStats implements Cloneable {
 	private double flatArmorPen 	= 0;
 	private double flatMagicPen		= 0;
 	private double percentArmorPen  = 0;
+	private double bonusPercentArmorPen  = 0;
 	private double percentMagicPen	= 0;
 	private double armorReduc		= 0;
 	
@@ -162,6 +163,7 @@ public class UrgotStats implements Cloneable {
 	public double getDamageReduc() 	{ return damageReduc; }
 	public double getFlatArmorPen() 	{ return flatArmorPen; }
 	public double getPercentArmorPen() { return percentArmorPen; }
+	public double getBonusPercentArmorPen() { return bonusPercentArmorPen; }
 	public double getBonusCrit()	{ return critChance; }
 	public double getResistanceReduction(double resistValue)
 	{
@@ -236,6 +238,8 @@ public class UrgotStats implements Cloneable {
 	
 	// Damage Amplification/Reduction
 	public void addBonusArmorPen(double value) { bonusArmorPen = bonusArmorPen + value; }
+	public void addBonusPercentArmorPen(double value) { 
+		bonusPercentArmorPen = bonusPercentArmorPen + value; }
 	public void addPercentArmorPen(double value) { percentArmorPen = percentArmorPen + value; }
 	public void addPercentMagicPen(double value) { percentMagicPen = percentMagicPen + value; }
 	public void addArmReduc(double value) {

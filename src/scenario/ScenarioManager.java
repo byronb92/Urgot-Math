@@ -615,6 +615,7 @@ public class ScenarioManager {
 		offense.append("Flat Armor Pen: " + sce.getUrgotStats().getFlatArmorPen() + "\n");
 		offense.append("Armor Reduction: " + sce.getUrgotStats().getArmorReduc() + "\n");
 		offense.append("Percent Armor Pen: " + sce.getUrgotStats().getPercentArmorPen() + "\n");
+		offense.append("Bonus Armor Percent Pen: " + sce.getUrgotStats().getBonusPercentArmorPen() + "\n");
 		offense.append("AS: " + sce.getUrgotStats().getTotalAS() + "\n");
 		return offense.toString();
 	}

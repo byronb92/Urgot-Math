@@ -5,7 +5,7 @@ import urgot.UrgotStats;
 
 public class MortalReminder extends Item {
 	private int ad = 40;
-	private double bonusArmorPen = 0.45;
+	private double bonusPercentArmorPen = 0.45;
 	@Override
 	public void applyPassive(UrgotStats urgot) {
 		// TODO Auto-generated method stub
@@ -15,8 +15,7 @@ public class MortalReminder extends Item {
 	@Override
 	public void addItemStats(UrgotStats urgot) {
 		urgot.addBonusAD(ad);
-		// TODO: Check armor pen.
-		urgot.addBonusArmorPen(bonusArmorPen);
+		urgot.addBonusPercentArmorPen(bonusPercentArmorPen);
 		
 	}
 
