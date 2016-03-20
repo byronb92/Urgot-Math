@@ -1,15 +1,10 @@
 package scenario.UrgotBuilds;
-import scenario.*;
-
-import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-
 import org.json.simple.parser.ParseException;
 import org.junit.Before;
 import org.junit.Test;
-
 import battle.BattleSetup;
 import battle.SkillRankType;
 import scenario.ScenarioManager;

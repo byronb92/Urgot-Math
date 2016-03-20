@@ -25,7 +25,7 @@ public class BlackCleaver extends Item {
 		urgot.addBonusAD(ad);
 		urgot.addCDR(cdr);
 		// TODO: Calculate Black Cleaver on stack by stack basis.
-		urgot.addArmReduc(0.30);
+		urgot.addPercentArmReduc(0.30);
 		// TODO: Calculate movement speed boost.
 		
 	}

@@ -86,6 +86,7 @@ public class UrgotVsEnemy {
 			double magicReduc_Flat,double magicReduc_Percent,
 			double magicPen_Percent, double magicPen_Flat)
 	{
+		// TODO: Check math on penetration.
 		ResistanceModifiers resistMod = new ResistanceModifiers(name);
 		resistMod.setArmorModifications(armorReduc_Flat, armorReduc_Percent, 
 				armorPen_Percent, armorPenBonus_Percent, armorPen_Flat);

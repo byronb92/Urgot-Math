@@ -347,7 +347,7 @@ public class ScenarioManager {
 	
 	{
 		double armorReduc_Flat = 0; // Urgot has no flat armor reduction.
-		double armorReduc_Percent = sce.getUrgotStats().getArmorReduc();
+		double armorReduc_Percent = sce.getUrgotStats().getPercentArmorReduc();
 		double armorPen_Percent = sce.getUrgotStats().getPercentArmorPen();
 		double armorPen_Flat = sce.getUrgotStats().getFlatArmorPen();
 		
@@ -613,7 +613,7 @@ public class ScenarioManager {
 		offense.append("Bonus AD: " + sce.getUrgotStats().getBonusAD() + "\n");
 		offense.append("Mana: " + sce.getUrgotStats().getTotalMana() +  "\n");
 		offense.append("Flat Armor Pen: " + sce.getUrgotStats().getFlatArmorPen() + "\n");
-		offense.append("Armor Reduction: " + sce.getUrgotStats().getArmorReduc() + "\n");
+		offense.append("Armor Reduction: " + sce.getUrgotStats().getPercentArmorReduc() + "\n");
 		offense.append("Percent Armor Pen: " + sce.getUrgotStats().getPercentArmorPen() + "\n");
 		offense.append("Bonus Armor Percent Pen: " + sce.getUrgotStats().getBonusPercentArmorPen() + "\n");
 		offense.append("AS: " + sce.getUrgotStats().getTotalAS() + "\n");
