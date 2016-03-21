@@ -7,9 +7,7 @@ public class MortalReminder extends Item {
 	private int ad = 40;
 	private double bonusPercentArmorPen = 0.45;
 	@Override
-	public void applyPassive(UrgotStats urgot) {
-		// TODO Auto-generated method stub
-		
+	public void applyPassive(UrgotStats urgot) {	
 	}
 
 	@Override

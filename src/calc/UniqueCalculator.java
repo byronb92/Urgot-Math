@@ -102,7 +102,7 @@ public class UniqueCalculator {
 	 * @param moveSpeedIncrease
 	 * @return
 	 */
-	public double getMSBonus(UrgotStats urgot, int moveSpeedIncrease)
+	public static double getMSBonus(UrgotStats urgot, int moveSpeedIncrease)
 	{
 		double newFlatMS = urgot.getFlatMS() + 15;
 		return newFlatMS  + (newFlatMS * urgot.getTotalMS());

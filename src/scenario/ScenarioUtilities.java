@@ -26,7 +26,6 @@ public class ScenarioUtilities {
 	public static HashMap<String,Double> mapOfArmorMods(UrgotScenario sce)
 	{
 		HashMap<String,Double> mapOfArmorMods = new HashMap<String,Double>();
-		// TODO: Add flat armor reduction to UrgotStats.
 		mapOfArmorMods.put("ArmorReductionFlat",sce.getUrgotStats().getFlatArmorReduc());
 		mapOfArmorMods.put("ArmorReductionPercent",sce.getUrgotStats().getPercentArmorReduc());
 		mapOfArmorMods.put("ArmorPenFlat",sce.getUrgotStats().getFlatArmorPen());

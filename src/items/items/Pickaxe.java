@@ -16,21 +16,17 @@ public class Pickaxe extends Item{
 	}
 
 	@Override
-	// No passive, nothing happens/
 	public void applyPassive(UrgotStats urgot) {
 		
 	}
 
 	@Override
 	protected void setName() {
-		name = "Pickaxe";
-		
+		name = "Pickaxe";	
 	}
 
 	@Override
-	protected void setDetails() {
-		// TODO Auto-generated method stub
-		
+	protected void setDetails() {		
 	}
 	
 	@Override

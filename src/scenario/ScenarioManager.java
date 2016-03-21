@@ -259,7 +259,6 @@ public class ScenarioManager {
 			}
 			else
 			{
-				// TODO: Add MR into equation.
 				CompleteDamage dmgA = damageVsEnemy(sce, 
 						enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
 				CompleteDamage dmgB = damageVsEnemy(highestDamageSce, 
@@ -366,6 +365,7 @@ public class ScenarioManager {
 		double armorReduc_Flat = 0; // Urgot has no flat armor reduction.
 		double armorReduc_Percent = sce.getUrgotStats().getPercentArmorReduc();
 		double armorPen_Percent = sce.getUrgotStats().getPercentArmorPen();
+		double armorPen_BonusPercent = sce.getUrgotStats().getBonusPercentArmorPen();
 		double armorPen_Flat = sce.getUrgotStats().getFlatArmorPen();
 		
 		// Armor reduction is split between base and bonus armor.
@@ -378,8 +378,7 @@ public class ScenarioManager {
 
 		trueEnemyBaseArmor = trueEnemyBaseArmor - (trueEnemyBaseArmor * armorPen_Percent);
 		trueEnemyBonusArmor = trueEnemyBonusArmor - (trueEnemyBonusArmor * armorPen_Percent);
-		// TODO: Add last whisper incorpration into Urgot Stats
-		//trueEnemyBonusArmor = trueEnemyBonusArmor - (trueEnemyBonusArmor * armorPenBonus_Percent);
+		trueEnemyBonusArmor = trueEnemyBonusArmor - (trueEnemyBonusArmor * armorPen_BonusPercent);
 
 
 		double enemyTrueArmor = trueEnemyBaseArmor + trueEnemyBonusArmor;
@@ -396,7 +395,6 @@ public class ScenarioManager {
 		double magicPen_Percent = 0;
 		double magicrPen_Flat = 0;
 		
-		// Armor reduction is split between base and bonus armor.
 		double trueEnemyBaseMR = enemyBaseMR - (magicReduc_Flat/2);
 		double trueEnemyBonusMR = enemyBonusMR - (magicReduc_Flat/2);
 
