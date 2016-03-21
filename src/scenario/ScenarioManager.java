@@ -180,14 +180,31 @@ public class ScenarioManager {
 		
 	}
 	
+	public UrgotScenario damageVsHPDifferenceArmor()
+	{
+		UrgotScenario bestBalancedScenario = null;
+		for (UrgotScenario currentScenario : getScenarios())
+		{
+			if (bestBalancedScenario == null)
+			{
+				bestBalancedScenario = currentScenario;
+			}
+			else
+			{
+				bestBalancedScenario = damageVsHPDifferenceArmor(bestBalancedScenario, currentScenario);
+			}
+		}
+		return bestBalancedScenario;
+
+		
+	}
+	
 	private double damageVsHPHelper(UrgotScenario moreDamage, UrgotScenario tankier)
 	{
 		double damageDifference = moreDamage.getBattleStats().getTotalDamage() -
 				tankier.getBattleStats().getTotalDamage();
-		// TODO: Make this a class method where I don't have to create an object for it.
-		DefenseCalculator defense = new DefenseCalculator();
-		double trueHPDifference = defense.findHealthVsPhysical(tankier) - 
-				defense.findHealthVsPhysical(moreDamage);
+		double trueHPDifference = DefenseCalculator.findHealthVsPhysical(tankier) - 
+				DefenseCalculator.findHealthVsPhysical(moreDamage);
 		System.out.println ("Damage difference: " + (damageDifference - trueHPDifference));
 		return damageDifference - trueHPDifference;
 		
@@ -508,10 +525,9 @@ public class ScenarioManager {
 	public Map<Double,UrgotScenario> sortArmor(SortRank rank)
 	{
 		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
-		DefenseCalculator compareObject = new DefenseCalculator();
 		for (UrgotScenario sce : listAllScenarios)
 		{
-			double trueHp = compareObject.findHealthVsPhysical(sce);
+			double trueHp = DefenseCalculator.findHealthVsPhysical(sce);
 			map.put(makeKeyUnique(map,trueHp), sce);
 		}
 		Map<Double,UrgotScenario> newMap = null;
@@ -528,10 +544,9 @@ public class ScenarioManager {
 	public Map<Double,UrgotScenario> sortMagicResist(SortRank rank)
 	{
 		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
-		DefenseCalculator compareObject = new DefenseCalculator();
 		for (UrgotScenario sce : listAllScenarios)
 		{
-			double trueHp = compareObject.findHealthVsMagic(sce);
+			double trueHp = DefenseCalculator.findHealthVsMagic(sce);
 			map.put(makeKeyUnique(map,trueHp), sce);
 		}
 		Map<Double,UrgotScenario> newMap = null;
@@ -624,6 +639,8 @@ public class ScenarioManager {
 	{
 		StringBuilder defense = new StringBuilder();
 		defense.append("HP: " + sce.getUrgotStats().getTotalHP() +  "\n");
+		defense.append("True Physical HP: " + DefenseCalculator.findHealthVsPhysical(sce) +  "\n");
+		defense.append("True Magic HP: " + DefenseCalculator.findHealthVsMagic(sce) +  "\n");
 		defense.append("Armor: " + sce.getUrgotStats().getTotalArmor() +  "\n");
 		defense.append("MR: " + sce.getUrgotStats().getTotalMR() +  "\n");
 		return defense.toString();

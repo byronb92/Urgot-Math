@@ -1,6 +1,9 @@
 package scenario;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
+
+import items.Item;
 
 public class ScenarioUtilities {
 
@@ -30,6 +33,22 @@ public class ScenarioUtilities {
 		mapOfArmorMods.put("ArmorPenBonusPercent",sce.getUrgotStats().getBonusPercentArmorPen());
 		mapOfArmorMods.put("ArmorPenPercent",sce.getUrgotStats().getPercentArmorPen());
 		return mapOfArmorMods;
+	}
+	
+	public static String getScenarioItems(UrgotScenario sce)
+	{
+
+		if (sce.getUrgotItems().getItems().size() > 0)
+		{
+			StringBuilder builder = new StringBuilder();
+			builder.append("Items: ");
+			for(Entry<String,Item> item: sce.getUrgotItems().getItems().entrySet())
+			{
+				builder.append(item.getValue().getName() + " ");
+			}
+			return builder.toString();
+		}
+		return null;
 	}
 
 }

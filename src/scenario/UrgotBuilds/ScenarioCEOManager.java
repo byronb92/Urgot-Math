@@ -3,12 +3,17 @@ package scenario.UrgotBuilds;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.json.simple.parser.ParseException;
 
 import battle.BattleSetup;
 import battle.SkillRankType;
 import scenario.ScenarioManager;
+import scenario.SortRank;
 import scenario.UrgotScenario;
 import scenario.UrgotBuilds.MakeScenariosFromJSON.BuildType;
 
@@ -52,11 +57,12 @@ public class ScenarioCEOManager {
 	
 	public String outputGeneral()
 	{
-		for (ScenarioManager currentManager : sceCEO.getScenarioManagers())
+		StringBuilder outputGeneral = new StringBuilder();
+		for (ScenarioManager currentManager : getScenarioManagers())
 		{
-			return outputGeneral(currentManager);
+			outputGeneral.append(outputGeneral(currentManager) + "\n\n");
 		}
-		return null;
+		return outputGeneral.toString();
 	}
 	/** @return string containing statistical overview of a scenario. */
 	private String outputGeneral(ScenarioManager sceManager)
@@ -85,5 +91,73 @@ public class ScenarioCEOManager {
 	}
 
 	
+	public Map<Double,UrgotScenario> sortDamage(SortRank rank)
+	{
+		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
+		ArrayList<UrgotScenario> allScenarios = new ArrayList<UrgotScenario>();
+		for (ScenarioManager currentManager : getScenarioManagers())
+		{
+			allScenarios.addAll(currentManager.getScenarios());
+		}
+
+		for (UrgotScenario sce : allScenarios)
+		{
+			double rawDmg = sce.getBattleStats().getTotalDamage();
+			map.put(makeKeyUnique(map,rawDmg), sce);
+		}
+		Map<Double,UrgotScenario> newMap = null;
+		if (rank == SortRank.ASCENDING)
+		{
+			newMap = new TreeMap<Double, UrgotScenario>(map);
+			return newMap;
+		}
+		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
+		newMap.putAll(map);
+		return newMap;
+	}
+	
+	/**
+	 * Takes care of duplicate cases inserted into maps, by making them differentiate slightly.
+	 * @param map
+	 * @param key
+	 * @return
+	 */
+	private double makeKeyUnique(Map<?,?> map, Double key)
+	{
+		boolean isUnique = false;
+		double currentValue = key;
+		while (!isUnique)
+		{
+			if (map.containsKey(currentValue))
+			{
+				currentValue = currentValue + 0.0001;
+			}
+			else
+			{
+				isUnique = true;
+			}
+		}
+		return currentValue;
+
+	}
+	
+	public UrgotScenario damageVsHPDifferenceArmor()
+	{
+		UrgotScenario bestBalancedScenario = null;
+		for (ScenarioManager currentManager : getScenarioManagers())
+		{
+			if (bestBalancedScenario == null)
+			{
+				bestBalancedScenario = currentManager.damageVsHPDifferenceArmor();
+			}
+			else
+			{
+				UrgotScenario intermediateScenario = currentManager.damageVsHPDifferenceArmor();
+				bestBalancedScenario = currentManager.damageVsHPDifferenceArmor(
+						intermediateScenario, bestBalancedScenario);
+			}
+		}
+		return bestBalancedScenario;
+	}
 
 }

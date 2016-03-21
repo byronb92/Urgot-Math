@@ -68,7 +68,6 @@ public class UniqueCalculator {
 		enemyTrueArmor = enemyTrueArmor - armorPen_Flat;
 		return enemyTrueArmor;
 	}			
-	//public double computeMuramanaDamage(int mana, )
 	
 	public double getEnemyArmorLost(double enemyBaseArmor, double enemyBonusArmor,
 			double armorReduc_Flat,
