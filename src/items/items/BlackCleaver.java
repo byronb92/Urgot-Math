@@ -4,6 +4,13 @@ import calc.UniqueCalculator;
 import items.Item;
 import urgot.UrgotStats;
 
+/**
+ * Important assumption about Black Cleaver:
+ * Math is assumed to always have full stacks.
+ * Numbers may seem more powerful than they actually are.
+ * @author bbeck799
+ *
+ */
 public class BlackCleaver extends Item {
 
 	private int health = 300;
@@ -29,10 +36,7 @@ public class BlackCleaver extends Item {
 		urgot.addBonusHP(health);
 		urgot.addBonusAD(ad);
 		urgot.addCDR(cdr);
-		// TODO: Calculate Black Cleaver on stack by stack basis.
-		urgot.addPercentArmReduc(0.30);
-
-		
+		urgot.addPercentArmReduc(0.30);		
 	}
 
 	@Override
@@ -48,7 +52,7 @@ public class BlackCleaver extends Item {
 
 	@Override
 	protected void setDetails() {
-		if (passiveApplied)
+		if (!passiveApplied)
 		{
 			details = "UNIQUE: 30% armor reduction after 5 stacks of physical damage."
 					+ "5% armor per stack.\n"

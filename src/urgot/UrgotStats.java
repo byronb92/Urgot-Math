@@ -22,7 +22,7 @@ public class UrgotStats implements Cloneable {
 	private double baseManaRegen			= 8.59;
 	private double baseManaRegenPerLevel 	= 0.65;
 	private double baseMR					= 30.0;
-
+	private double baseGoldPerTen			= 20.4;		// Summoner's rift GP/10
 	private double bonusAD					= 0;
 	private double bonusADPerLevel			= 0;
 	private double bonusAP					= 0;
@@ -30,6 +30,7 @@ public class UrgotStats implements Cloneable {
 	private double bonusArmor				= 0;
 	private double bonusArmorPen 			= 0;		
 	private double bonusAS					= 0;
+	private double bonusGoldPerTen			= 0;
 	private double bonusHealthRegen 		= 0;
 	private double bonusHP					= 0;
 	private double bonusMana	 			= 0;
@@ -85,6 +86,7 @@ public class UrgotStats implements Cloneable {
 	public void addBonusArmorPen(double value) { bonusArmorPen = bonusArmorPen + value; }
 	public void addBonusAS(double value) { bonusAS = bonusAS + value; }
 	public void addBonusCritChance(double value) { critChance = critChance + value; }
+	public void addBonusGoldPerTen(double value) { bonusGoldPerTen = bonusGoldPerTen + value; }
 	public void addBonusHealthRegen(double value) { bonusHealthRegen = bonusHealthRegen + value; }
 	public void addBonusHP(double value) { bonusHP = bonusHP + value; }
 	public void addBonusMana(double value) { bonusMana = bonusMana + value;}
@@ -256,6 +258,7 @@ public class UrgotStats implements Cloneable {
 	public double getBonusAS() { return bonusAS; }
 	
 	public double getBonusCrit()	{ return critChance; }
+	public double getBonusGoldPerTen() { return bonusGoldPerTen; }
 	public double getBonusMR() { return bonusMR; }
 	public double getBonusPercentArmorPen() { return bonusPercentArmorPen; }
 	public double getCDR() 		{ return cdr; }
@@ -299,6 +302,9 @@ public class UrgotStats implements Cloneable {
 	public double getTotalArmor() { return getBaseArmorFromLevel() + bonusArmor; }
 	public double getTotalAS() {
 		return baseAS + (baseAS * (asPerLevel * (currentLevel - 1))) + (baseAS * bonusAS);
+	}
+	public double getTotalGoldPerTen() {
+		return baseGoldPerTen + bonusGoldPerTen;
 	}
 	public double getTotalHP() { 
 		return (baseHP + (hpPerLevel * (currentLevel - 1)) + bonusHP) + 

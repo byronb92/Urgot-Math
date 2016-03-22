@@ -49,5 +49,26 @@ public class ScenarioUtilities {
 		}
 		return null;
 	}
+	
+	
+	
+	// TODO: Move several scenario utilities from scenario manager into here.
+	/**
+	 * bestDamageItemToAdd
+	 * collectPreDamaageStatsFromScenario
+	 * damageVsEnemy
+	 * damageVSHPDifferenceArmor
+	 * damageVsHPHelper
+	 * findHighestRawDamage(sceA,sceB)
+	 * findHighestRealDamageFromTwoScenarios
+	 * findRealDamage
+	 * getDefensiveStats
+	 * getOffensiveStats
+	 * getRawDamage()
+	 * getScenarioItems()
+	 * getSustainStats()
+	 * resistModFromScenario
+	 * getUtilityStats(
+	 */
 
 }

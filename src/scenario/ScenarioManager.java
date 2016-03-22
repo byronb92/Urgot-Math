@@ -10,8 +10,9 @@ import java.util.Map.Entry;
 
 import battle.BattleSetup;
 import battle.SkillRankType;
-import battle.dynamic.CompleteDamage;
-import battle.dynamic.UrgotVsEnemy;
+import battle.dynamic.DynamicCompleteDamage;
+import battle.dynamic.DynamicDamageVSEnemy;
+import battle.dynamic.DynamicResistModifier;
 import calc.DefenseCalculator;
 
 import java.util.TreeMap;
@@ -24,11 +25,8 @@ import items.Item;
 import items.ItemObjects;
 import items.ItemRemovalWrapper;
 
-
-
 /** 
- * ScenarioManager gives the ability to aggregate data 
- * about Urgot builds/stats/calculations.
+ * Aggregates multiple scenarios into a single list.
  * @author byronb92
  *
  */
@@ -41,20 +39,11 @@ public class ScenarioManager {
 		listAllScenarios = new ArrayList<UrgotScenario>();
 	}
 	
-	public void setScenarioManagerName(String name)
+	public void addAllScenarios(ArrayList<UrgotScenario> smallList)
 	{
-		scenarioManagerName = name;
-	}
-	
-	public String getScenarioManagerName()
-	{
-		return scenarioManagerName;
+		listAllScenarios.addAll(smallList);
 	}
 
-	public ArrayList<UrgotScenario> getScenarios()
-	{
-		return listAllScenarios;
-	}
 	
 	public void battleCollection(BattleSetup battleSetup, SkillRankType rankType)
 	{
@@ -63,25 +52,10 @@ public class ScenarioManager {
 			sce.computeBattleScenario(battleSetup, rankType);
 		}
 	}
-
-	public void computeStatsAndBattleScenario(BattleSetup battleSetup, SkillRankType rankType)
-	{
-		for (UrgotScenario sce : getScenarios())
-		{
-			sce.computeStatsAndBattleScenario(battleSetup, rankType);
-		}
-	}
-	public void addAllScenarios(ArrayList<UrgotScenario> smallList)
-	{
-		listAllScenarios.addAll(smallList);
-	}
 	
-
-
 	/**
-	 * Looks through complete item lists and finds the item that will
-	 * increase damage output the best.
-	 * ASSUMPTION: Scenario passed in has already had stats computed.
+	 * Looks through complete item lists and finds the item that will optimize damage output.
+	 * ASSUMPTION: Scenario passed in has already has stats computed.
 	 * @param sce
 	 * @param itemCategory
 	 * @return
@@ -127,30 +101,59 @@ public class ScenarioManager {
 		}
 		return highestDamageScenario;
 	}
-	
 
-	public UrgotScenario findHighestRawDamage(UrgotScenario sceA, UrgotScenario sceB)
+	private DynamicCompleteDamage collectPreDamageStatsFromScenario(UrgotScenario sce, 
+			double enemyBaseArmor, double enemyBonusArmor, 
+			double enemyBaseMR, double enemyBonusMR)
 	{
-		double rawDamageA = sceA.getBattleStats().getTotalDamage();
-		double rawDamageB = sceB.getBattleStats().getTotalDamage();
-		if (rawDamageA > rawDamageB)
-		{
-			return sceA;
-		}
-		else if (rawDamageA == rawDamageB)
-		{
-			System.out.println("-----------------");
-			System.out.println("Duplicate raw damage: " + rawDamageA);
-			System.out.println("Set 1 Scenario Name: " + sceA.getScenarioName());
-			System.out.println("Set 2 Scenario Name: " + sceB.getScenarioName());
-			System.out.println();
-			return sceA;
-		}
-
-		return sceB;
+		double rawPhysicalDamage = sce.getBattleStats().getPhysicalDamage();
+		double rawMagicDamage = sce.getBattleStats().getMagicDamage();
+		
+		DynamicDamageVSEnemy urgVsEnemy = new DynamicDamageVSEnemy();
+		return urgVsEnemy.damageVsEnemy(resistModFromScenario(sce, urgVsEnemy),
+				rawPhysicalDamage, rawMagicDamage, 
+				enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);			
 	}
 	
 	
+	public void computeStatsAndBattleScenario(BattleSetup battleSetup, SkillRankType rankType)
+	{
+		for (UrgotScenario sce : getScenarios())
+		{
+			sce.computeStatsAndBattleScenario(battleSetup, rankType);
+		}
+	}
+	
+
+	public DynamicCompleteDamage damageVsEnemy(UrgotScenario sce, 
+			double enemyBaseArmor, double enemyBonusArmor,
+			double enemyBaseMR, double enemyBonusMR)
+	{
+		return collectPreDamageStatsFromScenario(sce, 
+				enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
+	}
+
+
+	public UrgotScenario damageVsHPDifferenceArmor()
+	{
+		UrgotScenario bestBalancedScenario = null;
+		for (UrgotScenario currentScenario : getScenarios())
+		{
+			if (bestBalancedScenario == null)
+			{
+				bestBalancedScenario = currentScenario;
+			}
+			else
+			{
+				bestBalancedScenario = damageVsHPDifferenceArmor(bestBalancedScenario, currentScenario);
+			}
+		}
+		return bestBalancedScenario;
+
+		
+	}
+	
+
 	public UrgotScenario damageVsHPDifferenceArmor(UrgotScenario sceA, UrgotScenario sceB)
 	{
 		
@@ -180,24 +183,6 @@ public class ScenarioManager {
 		
 	}
 	
-	public UrgotScenario damageVsHPDifferenceArmor()
-	{
-		UrgotScenario bestBalancedScenario = null;
-		for (UrgotScenario currentScenario : getScenarios())
-		{
-			if (bestBalancedScenario == null)
-			{
-				bestBalancedScenario = currentScenario;
-			}
-			else
-			{
-				bestBalancedScenario = damageVsHPDifferenceArmor(bestBalancedScenario, currentScenario);
-			}
-		}
-		return bestBalancedScenario;
-
-		
-	}
 	
 	private double damageVsHPHelper(UrgotScenario moreDamage, UrgotScenario tankier)
 	{
@@ -243,6 +228,27 @@ public class ScenarioManager {
 		return highestDamageSce;
 	}
 	
+	public UrgotScenario findHighestRawDamage(UrgotScenario sceA, UrgotScenario sceB)
+	{
+		double rawDamageA = sceA.getBattleStats().getTotalDamage();
+		double rawDamageB = sceB.getBattleStats().getTotalDamage();
+		if (rawDamageA > rawDamageB)
+		{
+			return sceA;
+		}
+		else if (rawDamageA == rawDamageB)
+		{
+			System.out.println("-----------------");
+			System.out.println("Duplicate raw damage: " + rawDamageA);
+			System.out.println("Set 1 Scenario Name: " + sceA.getScenarioName());
+			System.out.println("Set 2 Scenario Name: " + sceB.getScenarioName());
+			System.out.println();
+			return sceA;
+		}
+
+		return sceB;
+	}
+	
 	/**
 	 * Finds the highest damage output scenario in all scenarios.
 	 * @return null - there are no scenarios.
@@ -259,9 +265,9 @@ public class ScenarioManager {
 			}
 			else
 			{
-				CompleteDamage dmgA = damageVsEnemy(sce, 
+				DynamicCompleteDamage dmgA = damageVsEnemy(sce, 
 						enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
-				CompleteDamage dmgB = damageVsEnemy(highestDamageSce, 
+				DynamicCompleteDamage dmgB = damageVsEnemy(highestDamageSce, 
 						enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
 				if (dmgA.getTotalDamage() > dmgB.getTotalDamage())
 				{
@@ -278,25 +284,6 @@ public class ScenarioManager {
 		}
 		return highestDamageSce;
 	}
-	/**
-	 * Finds out which scenario does the most damage to a specific target.
-	 * @param sceA
-	 * @param sceB
-	 * @param enemyArmor
-	 * @param enemyMR
-	 * @return null if the damage is equal.
-	 */
-	public CompleteDamage findRealDamage(
-			UrgotScenario sceA,
-			double enemyBaseArmor, double enemyBonusArmor, 
-			double enemyBaseMR, double enemyBonusMR)
-	{
-		
-		CompleteDamage dmgA = damageVsEnemy(sceA, 
-				enemyBaseArmor, enemyBonusArmor, 
-				enemyBaseMR, enemyBonusMR);
-		return dmgA;
-	}
 	
 	/**
 	 * Finds out which scenario does the most damage to a specific target.
@@ -306,15 +293,15 @@ public class ScenarioManager {
 	 * @param enemyMR
 	 * @return null if the damage is equal.
 	 */
-	public CompleteDamage findHighestRealDamageFromTwoScenarios(
+	public DynamicCompleteDamage findHighestRealDamageFromTwoScenarios(
 			UrgotScenario sceA, UrgotScenario sceB,
 			double enemyBaseArmor, double enemyBonusArmor, 
 			double enemyBaseMR, double enemyBonusMR)
 	{
-		CompleteDamage dmgA = damageVsEnemy(sceA, 
+		DynamicCompleteDamage dmgA = damageVsEnemy(sceA, 
 				enemyBaseArmor, enemyBonusArmor, 
 				enemyBaseMR, enemyBonusMR);
-		CompleteDamage dmgB = damageVsEnemy(sceB, 
+		DynamicCompleteDamage dmgB = damageVsEnemy(sceB, 
 				enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
 		if (dmgA.getTotalDamage() > dmgB.getTotalDamage())
 		{
@@ -326,99 +313,6 @@ public class ScenarioManager {
 		}
 		return null;
 	}
-	
-	public CompleteDamage damageVsEnemy(UrgotScenario sce, 
-			double enemyBaseArmor, double enemyBonusArmor,
-			double enemyBaseMR, double enemyBonusMR)
-	{
-		return collectPreDamageStatsFromScenario(sce, 
-				enemyBaseArmor, enemyBonusArmor, enemyBaseMR, enemyBonusMR);
-	}
-	
-
-	
-	// TODO: Move into scenario manager.
-	private CompleteDamage collectPreDamageStatsFromScenario(UrgotScenario sce, 
-			double enemyBaseArmor, double enemyBonusArmor, 
-			double enemyBaseMR, double enemyBonusMR)
-	{
-		String scenarioName = sce.getScenarioName();
-		double rawPhysicalDamage = sce.getBattleStats().getPhysicalDamage();
-		double rawMagicDamage = sce.getBattleStats().getMagicDamage();
-		
-
-		
-		double enemyTrueArmor = getTrueEnemyArmorFromScenario(sce,
-				enemyBaseArmor, enemyBonusArmor);
-		double enemyTrueMR = getTrueEnemyMRFromScenario(sce,
-				enemyBaseMR, enemyBonusMR); 
-		UrgotVsEnemy urgVsEnemy = new UrgotVsEnemy();
-		return urgVsEnemy.damageVsEnemy(scenarioName, rawPhysicalDamage, enemyTrueArmor,
-				rawMagicDamage, enemyTrueMR);
-				
-	}
-	
-	private double getTrueEnemyArmorFromScenario(UrgotScenario sce,
-			double enemyBaseArmor, double enemyBonusArmor)
-	
-	{
-		double armorReduc_Flat = 0; // Urgot has no flat armor reduction.
-		double armorReduc_Percent = sce.getUrgotStats().getPercentArmorReduc();
-		double armorPen_Percent = sce.getUrgotStats().getPercentArmorPen();
-		double armorPen_BonusPercent = sce.getUrgotStats().getBonusPercentArmorPen();
-		double armorPen_Flat = sce.getUrgotStats().getFlatArmorPen();
-		
-		// Armor reduction is split between base and bonus armor.
-		double trueEnemyBaseArmor = enemyBaseArmor - (armorReduc_Flat/2);
-		double trueEnemyBonusArmor = enemyBonusArmor - (armorReduc_Flat/2);
-
-
-		trueEnemyBaseArmor = trueEnemyBaseArmor * (armorReduc_Percent);
-		trueEnemyBonusArmor = trueEnemyBonusArmor * armorReduc_Percent;
-
-		trueEnemyBaseArmor = trueEnemyBaseArmor - (trueEnemyBaseArmor * armorPen_Percent);
-		trueEnemyBonusArmor = trueEnemyBonusArmor - (trueEnemyBonusArmor * armorPen_Percent);
-		trueEnemyBonusArmor = trueEnemyBonusArmor - (trueEnemyBonusArmor * armorPen_BonusPercent);
-
-
-		double enemyTrueArmor = trueEnemyBaseArmor + trueEnemyBonusArmor;
-		enemyTrueArmor = enemyTrueArmor - armorPen_Flat;
-		return enemyTrueArmor;
-	}
-	
-	private double getTrueEnemyMRFromScenario(UrgotScenario sce,
-			double enemyBaseMR, double enemyBonusMR)
-	
-	{
-		double magicReduc_Flat = 0; 
-		double magicReduc_Percent = 0;
-		double magicPen_Percent = 0;
-		double magicrPen_Flat = 0;
-		
-		double trueEnemyBaseMR = enemyBaseMR - (magicReduc_Flat/2);
-		double trueEnemyBonusMR = enemyBonusMR - (magicReduc_Flat/2);
-
-
-		trueEnemyBaseMR = trueEnemyBaseMR * (magicReduc_Percent);
-		trueEnemyBonusMR = trueEnemyBonusMR * magicReduc_Percent;
-
-		trueEnemyBaseMR = trueEnemyBaseMR - (trueEnemyBaseMR * magicPen_Percent);
-		trueEnemyBonusMR = trueEnemyBonusMR - (trueEnemyBonusMR * magicPen_Percent);
-;
-
-
-		double enemyTrueMR = trueEnemyBaseMR + trueEnemyBonusMR;
-		enemyTrueMR = enemyTrueMR - magicrPen_Flat;
-		return enemyTrueMR;
-	}
-
-	// TODO: getTrueEnemyMR();
-//	private double getTrueEnemyMRFromScenario(UrgotScenario sce,
-//			double enemyBaseMR, double enemyTotalMR)
-//	{
-//		return 0;
-//	}
-	
 	/**
 	 * Finds the highest damage output scenario in all scenarios.
 	 * @return null - there are no scenarios.
@@ -455,6 +349,188 @@ public class ScenarioManager {
 	}
 	
 	/**
+	 * Finds out which scenario does the most damage to a specific target.
+	 * @param sceA
+	 * @param sceB
+	 * @param enemyArmor
+	 * @param enemyMR
+	 * @return null if the damage is equal.
+	 */
+	public DynamicCompleteDamage findRealDamage(
+			UrgotScenario sceA,
+			double enemyBaseArmor, double enemyBonusArmor, 
+			double enemyBaseMR, double enemyBonusMR)
+	{
+		
+		DynamicCompleteDamage dmgA = damageVsEnemy(sceA, 
+				enemyBaseArmor, enemyBonusArmor, 
+				enemyBaseMR, enemyBonusMR);
+		return dmgA;
+	}
+	
+	public String getAllScenarioItems()
+	{
+		StringBuilder builder = new StringBuilder();
+		for (UrgotScenario currentScenario : getScenarios())
+		{
+			// TODO: If there is no name the default returns item list.
+			// There will be duplicates here if the scenario doesn't have a name but has items...
+			builder.append("Scenario Name: " + currentScenario.getScenarioName() + "\n");
+			if (currentScenario.getUrgotItems().getItems().size() > 0)
+			{
+				builder.append("Items: ");
+				for(Entry<String,Item> item: currentScenario.getUrgotItems().getItems().entrySet())
+				{
+					builder.append(item.getValue().getName() + " ");
+				}
+				builder.append("\n");
+			}
+			builder.append("\n");
+		}
+		return builder.toString();
+	}
+	
+
+	
+	public String getDefensiveStats(UrgotScenario sce)
+	{
+		StringBuilder defense = new StringBuilder();
+		defense.append("HP: " + sce.getUrgotStats().getTotalHP() +  "\n");
+		defense.append("True Physical HP: " + DefenseCalculator.findHealthVsPhysical(sce) +  "\n");
+		defense.append("True Magic HP: " + DefenseCalculator.findHealthVsMagic(sce) +  "\n");
+		defense.append("Armor: " + sce.getUrgotStats().getTotalArmor() +  "\n");
+		defense.append("MR: " + sce.getUrgotStats().getTotalMR() +  "\n");
+		return defense.toString();
+	}
+	
+	public String getOffensiveStats(UrgotScenario sce)
+	{
+		StringBuilder offense = new StringBuilder();
+		offense.append("AD: " + sce.getUrgotStats().getTotalAD() +  "\n");
+		offense.append("Base AD: " + sce.getUrgotStats().getBaseADFromLevel() + "\n");
+		offense.append("Bonus AD: " + sce.getUrgotStats().getBonusAD() + "\n");
+		offense.append("Mana: " + sce.getUrgotStats().getTotalMana() +  "\n");
+		offense.append("Flat Armor Pen: " + sce.getUrgotStats().getFlatArmorPen() + "\n");
+		offense.append("Armor Reduction: " + sce.getUrgotStats().getPercentArmorReduc() + "\n");
+		offense.append("Percent Armor Pen: " + sce.getUrgotStats().getPercentArmorPen() + "\n");
+		offense.append("Bonus Armor Percent Pen: " + sce.getUrgotStats().getBonusPercentArmorPen() + "\n");
+		offense.append("AS: " + sce.getUrgotStats().getTotalAS() + "\n");
+		return offense.toString();
+	}
+	
+	/**
+	 * Accessor method to obtain Scenario's raw damage.
+	 * NOTE: Currently only accounts for physical damage.
+	 * @param sce
+	 * @return
+	 */
+	public double getRawDamage(UrgotScenario sce)
+	{
+		return sce.getBattleStats().getTotalDamage();
+	}
+
+	// TODO: getTrueEnemyMR();
+//	private double getTrueEnemyMRFromScenario(UrgotScenario sce,
+//			double enemyBaseMR, double enemyTotalMR)
+//	{
+//		return 0;
+//	}
+	
+	public int getScenarioCost(UrgotScenario sce)
+	{
+		int runningCost = 0;
+		for(Entry<String,Item> item: sce.getUrgotItems().getItems().entrySet())
+		{
+			runningCost = runningCost + item.getValue().getCost();
+		}
+		return runningCost;
+	}
+	
+	public String getScenarioItems(UrgotScenario sce)
+	{
+
+		if (sce.getUrgotItems().getItems().size() > 0)
+		{
+			StringBuilder builder = new StringBuilder();
+			builder.append("Items: ");
+			for(Entry<String,Item> item: sce.getUrgotItems().getItems().entrySet())
+			{
+				builder.append(item.getValue().getName() + " ");
+			}
+			return builder.toString();
+		}
+		return null;
+	}
+	public String getScenarioManagerName()
+	{
+		return scenarioManagerName;
+	}
+	
+	public ArrayList<UrgotScenario> getScenarios()
+	{
+		return listAllScenarios;
+	}
+	
+	
+	public String getSustainStats(UrgotScenario sce)
+	{
+		StringBuilder sustain = new StringBuilder();
+		sustain.append("Healing Done: " + sce.getBattleStats().getHealingDone() + "\n");
+		sustain.append("Life Steal: " + sce.getUrgotStats().getLifeSteal() + "\n");
+		sustain.append("Spell Vamp: " + sce.getUrgotStats().getSpellVamp() + "\n");
+		sustain.append("HP Regen: " + sce.getUrgotStats().getTotalHPRegen() + "\n");
+		sustain.append("Mana Regen: " + (sce.getUrgotStats().getTotalManaRegen()) + "\n");
+		return sustain.toString();	
+	}
+	
+	public DynamicResistModifier resistModFromScenario(UrgotScenario sce,
+			DynamicDamageVSEnemy urgotVsEnemy)
+	{
+		HashMap<String,Double> modMap = getArmorandMRModifiersAsMap(sce);
+		return urgotVsEnemy.resistModifierWithMap(sce.getScenarioName(), modMap);
+	}
+	
+	public HashMap<String,Double> getArmorandMRModifiersAsMap(UrgotScenario sce)
+	{
+		double armorReduc_Flat = sce.getUrgotStats().getFlatArmorReduc();
+		double armorReduc_Percent = sce.getUrgotStats().getPercentArmorReduc();
+		double armorPen_Percent = sce.getUrgotStats().getPercentArmorPen();
+		double armorPen_BonusPercent = sce.getUrgotStats().getBonusPercentArmorPen();
+		double armorPen_Flat = sce.getUrgotStats().getFlatArmorPen();
+		
+		// TODO: Add magic penetration stats to UrgotStats.
+		double magicReduc_Flat = 0;
+		double magicReduc_Percent = 0;
+		double magicPen_Percent = 0;
+		double magicPen_Flat = 0;
+		
+		HashMap<String,Double> mapMod = new HashMap<String,Double>();
+		mapMod.put("Flat Armor Reduction", armorReduc_Flat);
+		mapMod.put("Percent Armor Reduction", armorReduc_Percent);
+		mapMod.put("Percent Armor Penetration", armorPen_Percent);
+		mapMod.put("Percent Bonus Armor Penetration", armorPen_BonusPercent);
+		mapMod.put("Flat Armor Penetration", armorPen_Flat);
+		
+		mapMod.put("Flat Magic Reduction", magicReduc_Flat);
+		mapMod.put("Percent Magic Reduction", magicReduc_Percent);
+		mapMod.put("Percent Magic Reduction", magicPen_Percent);
+		mapMod.put("Flat Magic Penetration", magicPen_Flat);
+		return mapMod;
+	}
+	
+
+	
+	public String getUtilityStats(UrgotScenario sce)
+	{
+		StringBuilder utility = new StringBuilder();
+		utility.append("Movement Speed: " + sce.getUrgotStats().getTotalMS() + "\n");
+		utility.append("CDR: " + sce.getUrgotStats().getCDR() + "\n");
+		utility.append("Tenacity: " + sce.getUrgotStats().getTenacity() + "\n");
+		utility.append("Slow Resist: " + sce.getUrgotStats().getSlowResist() + "\n");
+		return utility.toString();
+	}
+	
+	/**
 	 * Takes care of duplicate cases inserted into maps, by making them differentiate slightly.
 	 * @param map
 	 * @param key
@@ -478,6 +554,31 @@ public class ScenarioManager {
 		return currentValue;
 
 	}
+	
+	public void setScenarioManagerName(String name)
+	{
+		scenarioManagerName = name;
+	}
+	
+	
+	public Map<Double,UrgotScenario> sortArmor(SortRank rank)
+	{
+		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
+		for (UrgotScenario sce : listAllScenarios)
+		{
+			double trueHp = DefenseCalculator.findHealthVsPhysical(sce);
+			map.put(makeKeyUnique(map,trueHp), sce);
+		}
+		Map<Double,UrgotScenario> newMap = null;
+		if (rank == SortRank.ASCENDING)
+		{
+			newMap = new TreeMap<Double, UrgotScenario>(map);
+		}
+		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
+		newMap.putAll(map);
+		return newMap;
+	}
+	
 	public Map<Double,UrgotScenario> sortDamage(SortRank rank)
 	{
 		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
@@ -491,6 +592,24 @@ public class ScenarioManager {
 		{
 			newMap = new TreeMap<Double, UrgotScenario>(map);
 			return newMap;
+		}
+		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
+		newMap.putAll(map);
+		return newMap;
+	}
+	
+	public Map<Double,UrgotScenario> sortMagicResist(SortRank rank)
+	{
+		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
+		for (UrgotScenario sce : listAllScenarios)
+		{
+			double trueHp = DefenseCalculator.findHealthVsMagic(sce);
+			map.put(makeKeyUnique(map,trueHp), sce);
+		}
+		Map<Double,UrgotScenario> newMap = null;
+		if (rank == SortRank.ASCENDING)
+		{
+			newMap = new TreeMap<Double, UrgotScenario>(map);
 		}
 		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
 		newMap.putAll(map);
@@ -517,152 +636,6 @@ public class ScenarioManager {
 		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
 		newMap.putAll(map);
 		return newMap;
-	}
-	
-	
-	public Map<Double,UrgotScenario> sortArmor(SortRank rank)
-	{
-		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
-		for (UrgotScenario sce : listAllScenarios)
-		{
-			double trueHp = DefenseCalculator.findHealthVsPhysical(sce);
-			map.put(makeKeyUnique(map,trueHp), sce);
-		}
-		Map<Double,UrgotScenario> newMap = null;
-		if (rank == SortRank.ASCENDING)
-		{
-			newMap = new TreeMap<Double, UrgotScenario>(map);
-		}
-		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
-		newMap.putAll(map);
-		return newMap;
-	}
-	
-	
-	public Map<Double,UrgotScenario> sortMagicResist(SortRank rank)
-	{
-		HashMap<Double,UrgotScenario> map = new HashMap<Double,UrgotScenario>();
-		for (UrgotScenario sce : listAllScenarios)
-		{
-			double trueHp = DefenseCalculator.findHealthVsMagic(sce);
-			map.put(makeKeyUnique(map,trueHp), sce);
-		}
-		Map<Double,UrgotScenario> newMap = null;
-		if (rank == SortRank.ASCENDING)
-		{
-			newMap = new TreeMap<Double, UrgotScenario>(map);
-		}
-		newMap = new TreeMap<Double, UrgotScenario>(Collections.reverseOrder());
-		newMap.putAll(map);
-		return newMap;
-	}
-	
-
-	
-	public String getAllScenarioItems()
-	{
-		StringBuilder builder = new StringBuilder();
-		for (UrgotScenario currentScenario : getScenarios())
-		{
-			// TODO: If there is no name the default returns item list.
-			// There will be duplicates here if the scenario doesn't have a name but has items...
-			builder.append("Scenario Name: " + currentScenario.getScenarioName() + "\n");
-			if (currentScenario.getUrgotItems().getItems().size() > 0)
-			{
-				builder.append("Items: ");
-				for(Entry<String,Item> item: currentScenario.getUrgotItems().getItems().entrySet())
-				{
-					builder.append(item.getValue().getName() + " ");
-				}
-				builder.append("\n");
-			}
-			builder.append("\n");
-		}
-		return builder.toString();
-	}
-	public String getScenarioItems(UrgotScenario sce)
-	{
-
-		if (sce.getUrgotItems().getItems().size() > 0)
-		{
-			StringBuilder builder = new StringBuilder();
-			builder.append("Items: ");
-			for(Entry<String,Item> item: sce.getUrgotItems().getItems().entrySet())
-			{
-				builder.append(item.getValue().getName() + " ");
-			}
-			return builder.toString();
-		}
-		return null;
-	}
-	
-	public int getScenarioCost(UrgotScenario sce)
-	{
-		int runningCost = 0;
-		for(Entry<String,Item> item: sce.getUrgotItems().getItems().entrySet())
-		{
-			runningCost = runningCost + item.getValue().getCost();
-		}
-		return runningCost;
-	}
-	
-	/**
-	 * Accessor method to obtain Scenario's raw damage.
-	 * NOTE: Currently only accounts for physical damage.
-	 * @param sce
-	 * @return
-	 */
-	public double getRawDamage(UrgotScenario sce)
-	{
-		return sce.getBattleStats().getTotalDamage();
-	}
-	
-	
-	public String getOffensiveStats(UrgotScenario sce)
-	{
-		StringBuilder offense = new StringBuilder();
-		offense.append("AD: " + sce.getUrgotStats().getTotalAD() +  "\n");
-		offense.append("Base AD: " + sce.getUrgotStats().getBaseADFromLevel() + "\n");
-		offense.append("Bonus AD: " + sce.getUrgotStats().getBonusAD() + "\n");
-		offense.append("Mana: " + sce.getUrgotStats().getTotalMana() +  "\n");
-		offense.append("Flat Armor Pen: " + sce.getUrgotStats().getFlatArmorPen() + "\n");
-		offense.append("Armor Reduction: " + sce.getUrgotStats().getPercentArmorReduc() + "\n");
-		offense.append("Percent Armor Pen: " + sce.getUrgotStats().getPercentArmorPen() + "\n");
-		offense.append("Bonus Armor Percent Pen: " + sce.getUrgotStats().getBonusPercentArmorPen() + "\n");
-		offense.append("AS: " + sce.getUrgotStats().getTotalAS() + "\n");
-		return offense.toString();
-	}
-	
-	public String getDefensiveStats(UrgotScenario sce)
-	{
-		StringBuilder defense = new StringBuilder();
-		defense.append("HP: " + sce.getUrgotStats().getTotalHP() +  "\n");
-		defense.append("True Physical HP: " + DefenseCalculator.findHealthVsPhysical(sce) +  "\n");
-		defense.append("True Magic HP: " + DefenseCalculator.findHealthVsMagic(sce) +  "\n");
-		defense.append("Armor: " + sce.getUrgotStats().getTotalArmor() +  "\n");
-		defense.append("MR: " + sce.getUrgotStats().getTotalMR() +  "\n");
-		return defense.toString();
-	}
-	
-	public String getSustainStats(UrgotScenario sce)
-	{
-		StringBuilder sustain = new StringBuilder();
-		sustain.append("Healing Done: " + sce.getBattleStats().getHealingDone() + "\n");
-		sustain.append("Life Steal: " + sce.getUrgotStats().getLifeSteal() + "\n");
-		sustain.append("Spell Vamp: " + sce.getUrgotStats().getSpellVamp() + "\n");
-		sustain.append("HP Regen: " + sce.getUrgotStats().getTotalHPRegen() + "\n");
-		sustain.append("Mana Regen: " + (sce.getUrgotStats().getTotalManaRegen()) + "\n");
-		return sustain.toString();	
-	}
-	
-	public String getUtilityStats(UrgotScenario sce)
-	{
-		StringBuilder utility = new StringBuilder();
-		utility.append("Movement Speed: " + sce.getUrgotStats().getTotalMS() + "\n");
-		utility.append("CDR: " + sce.getUrgotStats().getCDR() + "\n");
-		utility.append("Tenacity: " + sce.getUrgotStats().getTenacity() + "\n");
-		utility.append("Slow Resist: " + sce.getUrgotStats().getSlowResist() + "\n");
-		return utility.toString();
 	}
 	
 	

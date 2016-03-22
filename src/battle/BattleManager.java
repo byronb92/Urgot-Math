@@ -124,7 +124,6 @@ public class BattleManager implements Cloneable {
 	
 	public void runBattleCalculations()
 	{
-		// TODO: Does this effect calculations at all?
 		urgot.getEffects().sortEffects();
 		HashMap<String,Double> battleTimeMap = new HashMap<String,Double>();		
 		for (int i = 0; i < listBattleActions.size(); i++)
@@ -132,6 +131,22 @@ public class BattleManager implements Cloneable {
 			BattleAction currentAction = listBattleActions.get(i);
 			handleBattleTime(battleTimeMap, currentAction);
 			currentAction.runBattleCalculations(battle, urgot);
+			applyAfterBattleActionEffects(currentAction);
+		}
+		applyAfterBattleEffects();
+	}
+	
+	public void runBattleCalculationsDynamically()
+	{
+		urgot.getEffects().sortEffects();
+		HashMap<String,Double> battleTimeMap = new HashMap<String,Double>();		
+		for (int i = 0; i < listBattleActions.size(); i++)
+		{
+			BattleAction currentAction = listBattleActions.get(i);
+			handleBattleTime(battleTimeMap, currentAction);
+			double preCalcPhysicalDamage = battle.getPhysicalDamage();
+			currentAction.runBattleCalculations(battle, urgot);
+			double physicalDamageAdded = battle.getPhysicalDamage() - preCalcPhysicalDamage;
 			applyAfterBattleActionEffects(currentAction);
 		}
 		applyAfterBattleEffects();

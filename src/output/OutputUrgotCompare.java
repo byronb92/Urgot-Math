@@ -34,7 +34,6 @@ public class OutputUrgotCompare {
 	 */
 	public void statCollection(RuneSetup runes, MasterySet masteries)
 	{
-		// TODO: Should work if scenarios are already setup.
 		for (UrgotScenario sce : sceManager.getScenarios())
 		{
 			sce.setUpRunesAndMasteries(runes, masteries);
